@@ -1,0 +1,188 @@
+project:
+  type: book
+  output-dir: docs
+  
+
+
+book:
+  title: "Differential Geometry"
+  subtitle: "Revision Guide"
+  author: 
+    - name: "Dr. Silvio Fanzon"
+      affiliations:
+        - name: "University of Hull"
+          department: "Department of Mathematics"
+          state: "United Kingdom"
+      email: "S.Fanzon@hull.ac.uk"
+      url: "https://www.silviofanzon.com"
+  date: today 
+  # To enter today's date replace by today
+  # Enter date formatted as dd MM yyyy
+  date-format: "D MMM YYYY"
+  downloads: pdf
+  favicon: images/favicon.png
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    center: 
+      - text: "License"
+        href: sections/license.qmd
+      - text: "Contact" 
+        href: https://www.silviofanzon.com/contact
+  navbar:
+    search: true
+    pinned: false
+    background: black
+    foreground: "#E8E8E8"
+  sidebar:
+    search: false
+
+
+    
+  chapters:
+    - index.qmd
+    - sections/chap_1.qmd
+    - sections/chap_2.qmd
+    - sections/chap_3.qmd
+    - sections/license.qmd
+
+
+
+
+
+
+format:
+
+  html:
+    toc: true
+    toc-title: On this page
+    toc-location: right
+    code-overflow: wrap
+    execute:
+      freeze: auto
+    theme:
+      light: [flatly, theme-custom.scss]
+      dark: [darkly]
+    fig-align: center
+    fig-cap-location: bottom
+    link-external-icon: true
+    number-sections: true
+
+  
+  pdf:
+    documentclass: scrreprt
+    classoption: [twocolumn]
+    fontfamily: libertinus
+    fontfamilyoptions:
+      - osf
+      - p
+    fontsize: 11pt
+    geometry:
+      - top=10mm
+      - left=10mm
+      - right=10mm
+      - bottom=12mm
+      - headheight=14pt
+      - footskip=20pt
+    link-citations: true
+    link-external-icon: true
+    linkcolor: magenta
+    urlcolor: magenta
+    citecolor: magenta
+    cite-method: biblatex
+    biblatexoptions: maxbibnames=99, style=numeric, giveninits=true, url=true
+    callout-appearance: simple
+    callout-icon: true
+    include-in-header:
+      - text: |
+          \usepackage{fvextra}
+          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+          \setlength{\parindent}{0pt}
+
+  
+
+
+
+crossref:
+  eq-prefix: ""
+
+
+filters:
+  - custom-numbered-blocks
+
+custom-numbered-blocks:
+  groups:
+    thmlike:
+      colors: [f4cce0, db4d92]
+      boxstyle: foldbox.simple
+      collapse: false
+      listin: [mathstuff]
+    todos: default  
+  
+  classes:
+    
+    Theorem:
+      group: thmlike
+    
+    Corollary:
+      group: thmlike
+    
+    Conjecture:
+      group: thmlike
+
+    Proposition:
+      group: thmlike
+    
+    Lemma:
+      group: thmlike
+    
+    Question: 
+      group: thmlike
+    
+    Axiom: 
+      group: thmlike
+
+    Important: 
+      group: thmlike
+      numbered: false
+
+    Warning: 
+      group: thmlike
+      numbered: false
+
+    Problem: 
+      group: thmlike
+      numbered: false
+
+    Definition:
+      group: thmlike
+      colors: [c6e6ed, 1995ad]
+
+    Notation: 
+      group: thmlike
+      colors: [c6e6ed, 1995ad]
+
+    Remark: 
+      group: thmlike
+      colors: [bce5de, 21aa93]
+
+    Example: 
+      group: thmlike
+      colors: [bce5de, 21aa93]
+
+    Proof:
+      group: thmlike
+      colors: [f1f1f2, c0c0c1]
+      numbered: false
+
+    TODO:
+      label: "To do"
+      colors: [e7b1b4, 8c3236]
+      group: todos
+      listin: [stilltodo]
+      
+    DONE:
+      label: "Done"
+      colors: [cce7b1, 86b754]  
+      group: todos

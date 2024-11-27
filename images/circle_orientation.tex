@@ -1,0 +1,57 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+
+\begin{tikzpicture}
+   % Define a style for larger red arrows on the circumference
+  \tikzset{
+    large red arrow/.style={
+      postaction={
+        decorate,
+        decoration={
+          markings,
+          mark=at position 0.125 with {\arrow[color=magenta, scale=2]{>}},
+          mark=at position 0.375 with {\arrow[color=magenta, scale=2]{>}},
+          mark=at position 0.625 with {\arrow[color=magenta, scale=2]{>}},
+          mark=at position 0.875 with {\arrow[color=magenta, scale=2]{>}}
+        }
+      }
+    }
+  }
+  
+  \tikzset{
+    large red arrow opposite/.style={
+      postaction={
+        decorate,
+        decoration={
+          markings,
+          mark=at position 0.125 with {\arrow[color=magenta, scale=2]{<}},
+          mark=at position 0.375 with {\arrow[color=magenta, scale=2]{<}},
+          mark=at position 0.625 with {\arrow[color=magenta, scale=2]{<}},
+          mark=at position 0.875 with {\arrow[color=magenta, scale=2]{<}}
+        }
+      }
+    }
+  }
+  
+  % Left pair of axes with label \gamma
+  \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+  \draw[->] (0,-2) -- (0,2) node[above] {$y$};
+  \draw (0,0) circle (1.5);
+  \draw[large red arrow] (0,0) circle (1.5);
+  \node at (1.4,1.8) {$\gamma$};
+  
+  % Right pair of axes with label \tilde{\gamma}
+  \begin{scope}[xshift=5cm]
+    \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+    \draw[->] (0,-2) -- (0,2) node[above] {$y$};
+    \draw (0,0) circle (1.5);
+    \draw[large red arrow opposite] (0,0) circle (1.5);
+    \node at (1.6,1.8) {$\tilde{\gamma}$};
+  \end{scope}
+\end{tikzpicture}
+
+\end{document}

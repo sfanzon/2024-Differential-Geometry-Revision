@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\begin{document}
+
+\begin{tikzpicture}[scale=2] % Adjust the scale as needed
+  % Define the radius 'r'
+  \def\r{1cm}
+  
+  % Euclidean Metric (d₂)
+  \draw[->] (-1.5, 0) -- (1.5, 0) node[below] {$x_1$};
+  \draw[->] (0, -1.5) -- (0, 1.5) node[left] {$x_2$};
+  \draw[thick,magenta] (0, 0) circle (\r);
+      \node at (0.16,1.2) {\large$r$};
+  
+  % d∞ Metric
+  \begin{scope}[xshift=3.5cm]
+    \draw[->] (-1.5, 0) -- (1.5, 0) node[below] {$x_1$};
+    \draw[->] (0, -1.5) -- (0, 1.5) node[left] {$x_2$};
+    \draw[thick,magenta] (-\r, -\r) -- (-\r, \r) -- (\r, \r) -- (\r, -\r) -- cycle;
+    \node at (0.2,1.2) {\large$r$};
+  \end{scope}
+  
+  % d₁ Metric
+  \begin{scope}[xshift=7cm]
+    \draw[->] (-1.5, 0) -- (1.5, 0) node[below] {$x_1$};
+    \draw[->] (0, -1.5) -- (0, 1.5) node[left] {$x_2$};
+    \draw[thick,magenta] (0, \r) -- (\r, 0) -- (0, -\r) -- (-\r, 0) -- cycle;
+    \node at (0.2,1.1) {\large$r$};
+  \end{scope}
+\end{tikzpicture}
+
+\end{document}

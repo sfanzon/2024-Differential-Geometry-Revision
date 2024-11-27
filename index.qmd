@@ -1,0 +1,123 @@
+::: {.content-hidden}
+$$
+{{< include sections/macros.tex >}}
+$$
+:::
+
+
+# Revision Guide {.unnumbered}
+
+Revision Guide document for the module **Differential Geometry 661955** 2024/25 at the University of Hull. If you have any question or find any typo, please email me at
+
+
+::: {.content-visible when-format="html"}
+<div style="text-align: center;">
+**[S.Fanzon@hull.ac.uk](mailto: S.Fanzon@hull.ac.uk)**
+</div>
+:::
+
+
+::: {.content-visible when-format="pdf"}
+\begin{center}
+\textbf{
+\href{mailto: S.Fanzon@hull.ac.uk}{S.Fanzon@hull.ac.uk}
+}
+\end{center}
+:::
+
+Full lenght Lecture Notes of the module available at
+
+::: {.content-visible when-format="html"}
+<div style="text-align: center;">
+**[silviofanzon.com/2024-Differential-Geometry-Notes](https://www.silviofanzon.com/2024-Differential-Geometry-Notes)**
+</div>
+:::
+
+
+::: {.content-visible when-format="pdf"}
+\begin{center}
+\textbf{
+\href{https://www.silviofanzon.com/2024-Differential-Geometry-Notes}{silviofanzon.com/2024-Differential-Geometry-Notes}
+}
+\end{center}
+:::
+
+
+
+## Recommended revision strategy {.unnumbered}
+
+Make sure you are very comfortable with:
+
+1. The Definitions, Theorems, Proofs, and Examples contained in this Revision Guide
+2. The Homework questions
+3. The 2022/23 and 2023/24 Exam Papers questions.
+4. The Checklist below
+
+
+
+
+## Checklist {.unnumbered}
+
+You should be comfortable with the following topics/taks:
+
+
+You should be comfortable with the following topics/tasks:
+
+
+**Curves**
+
+- Regularity of curves
+
+- Length, arc-length, and arc-length reparametrization
+
+- Calculating the curvature and torsion of unit speed curves from the definitions
+
+- Calculating the curvature and torsion of (possibly not unit speed) curves from the formulae
+
+- Calculating the Frenet frame of a unit-speed curve
+
+- Applying the Fundamental Theorem of Space Curves to determine if two curves coincide, up to a ridig motion
+
+- Proving that a curve is contained in a plane, and computing the equation of such plane
+
+- Proving that a curve is part of a circle
+
+
+
+**Topology:** To be completed
+
+
+**Surfaces:**
+
+- Regularity of surface charts
+
+- Computing reparametrizations
+
+- Computing a basis and the equation of the tangent plane
+
+- Calculating the standard unit normal of a surface chart
+
+- Calculating the differential of a smooth function between surfaces
+
+- Proving that a given level surface is regular, and computing its tangent plane
+
+- Proving that a given surface is ruled
+
+- Calculating the first fundamental form of a surface chart
+
+- Proving that a given map is a local isometry / conformal
+
+- Prove that a given parametrization is conformal
+
+- Calculating length and angles of curves on surfaces
+
+- Calculating the second fundamental form of a surface chart
+
+- Calculating the matrix of the Weingarten map, the principal curvatures, and principal directions of a surface chart
+
+- Calculating Gaussian and mean curvature of a surface chart
+
+- Calculating normal and geodesic curvature of a curve on a surface
+
+- Classifying points of a surface as elliptic, parabolic, hyperbolic, planar
+

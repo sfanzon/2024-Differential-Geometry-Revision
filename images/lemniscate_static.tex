@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{decorations.markings}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+
+
+
+ % Plot the curve in magenta with increased thickness
+  \begin{axis}[
+    domain=0:360, % Define the domain for t from 0 to 360 degrees (2*pi)
+    samples=100, % Number of samples to draw the curve
+    smooth, % Smoothly connect the points
+    axis lines=center, % Centered axes
+    axis line style={-latex}, % Arrows on axes
+    xtick=\empty, % No x-axis ticks
+    ytick=\empty, % No y-axis ticks
+    scale=0.8, % Scale down the plot
+    xmin=-1.3, xmax=1.3, % Extend x-axis by 1cm
+    ymin=-0.9, ymax=0.9, % Extend y-axis by 1cm
+  ]
+    \addplot[magenta, thick] ({sin(x)}, {sin(x)*cos(x)});
+  \end{axis}  
+  
+\end{tikzpicture}
+
+\end{document}

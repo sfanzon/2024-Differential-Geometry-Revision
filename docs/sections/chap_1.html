@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; Curves – Differential Geometry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/chap_2.html" rel="next">
+<link href="../index.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.Remark {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Definition {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Problem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Proof {
+  --color1: #f1f1f2;
+  --color2: #c0c0c1;
+}
+.Conjecture {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Question {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Theorem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Important {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Lemma {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Example {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Corollary {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Proposition {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Differential Geometry</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../Differential-Geometry.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sections/chap_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Curves</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Revision Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Curves</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Topology</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Surfaces</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#curvature" id="toc-curvature" class="nav-link active" data-scroll-target="#curvature"><span class="header-section-number">1.1</span> Curvature</a></li>
+  <li><a href="#frenet-frame-and-torsion" id="toc-frenet-frame-and-torsion" class="nav-link" data-scroll-target="#frenet-frame-and-torsion"><span class="header-section-number">1.2</span> Frenet frame and torsion</a></li>
+  <li><a href="#frenet-serret-equations" id="toc-frenet-serret-equations" class="nav-link" data-scroll-target="#frenet-serret-equations"><span class="header-section-number">1.3</span> Frenet-Serret equations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Curves</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="length" class="Definition" title="Length">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 1: </strong>Length</summary><div>The <strong>length</strong> of the curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <span class="math display">\[
+L({\pmb{\gamma}}) = \int_a^b  \left\| \dot{{\pmb{\gamma}}}(u) \right\| \, du \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="length-of-circle" class="Example" title="Length of Circle">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 2: </strong>Length of Circle</summary><div><strong>Question.</strong> Compute the length of the circle of radius <span class="math inline">\(R\)</span> <span class="math display">\[
+{\pmb{\gamma}}(t) = (x_0 + R\cos(t), y_0 + R\sin(t),0) \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We compute <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = (-R\sin(t), R\cos(t),0) \\
+\left\| \dot{{\pmb{\gamma}}}(t) \right\| &amp; = \sqrt{ {\dot\gamma}_1^2(t) +   {\dot \gamma}_2^2(t)      }  = R \\
+L({\pmb{\gamma}})  &amp; = \int_{0}^{2\pi}  \left\|   \dot{{\pmb{\gamma}}}(t) \right\| \, dt
+        = \int_0^{2\pi} R \, dt  = 2 \pi R \,.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="length-of-helix" class="Example" title="Length of Helix">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 3: </strong>Length of Helix</summary><div><strong>Question.</strong> Compute the length of the Helix <span class="math display">\[
+{\pmb{\gamma}}(t) = (R\cos(t), R\sin(t) ,Ht) \,, \quad t \in (0,2\pi) \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We compute <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = (-R\sin(t), R\cos(t) , H) \\
+\left\|  \dot{{\pmb{\gamma}}}(t)   \right\| &amp;  = \sqrt{R^2 + H^2} \\
+L({\pmb{\gamma}}) &amp; = \int_0^{2\pi} \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du = 2 \pi \sqrt{R^2 + H^2}
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="arc-length" class="Definition" title="Arc-Length">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 4: </strong>Arc-Length</summary><div>The <strong>arc-length</strong> along <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> from <span class="math inline">\(t_{0}\)</span> to <span class="math inline">\(t\)</span> is <span class="math display">\[
+s \colon (a,b) \to \mathbb{R}\,, \quad s(t)=\int_{t_{0}}^{t}\|\dot{{\pmb{\gamma}}}(u)\| d u \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="arc-length-of-logarithmic-spiral" class="Example" title="Arc-length of Logarithmic Spiral">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 5: </strong>Arc-length of Logarithmic Spiral</summary><div><strong>Question.</strong> Compute the arc-length of <span class="math display">\[
+{\pmb{\gamma}}(t) = (e^{kt} \cos(t), e^{kt} \sin(t),0) \,, \quad t \in (0,2\pi) \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> The arc-length starting from <span class="math inline">\(t_0\)</span> is <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = e^{kt} ( k \cos(t) - \sin(t), k \sin(t) + \cos(t) ,0) \\
+\left\| \dot{{\pmb{\gamma}}}(t) \right\|^2  &amp; =  (k^2 + 1) e^{2kt} \\
+s(t) &amp; = \int_{t_0}^t \left\| \dot{{\pmb{\gamma}}}(\tau) \right\| \, d \tau
+     = \frac{\sqrt{k^2 + 1}}{k} ( e^{kt} - e^{k t_0} ) \,.
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="unit-speed-curve" class="Definition" title="Unit-speed curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 6: </strong>Unit-speed curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>unit-speed</strong> if <span class="math display">\[
+\left\| \dot{{\pmb{\gamma}}}(t) \right\|  = 1 \,, \quad \forall \, t \in (a,b) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Theorem-7" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 7</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^n\)</span> be a unit-speed curve. Then <span class="math display">\[
+\dot{{\pmb{\gamma}}}\cdot \ddot{{\pmb{\gamma}}}= 0  \,, \quad \forall \, t \in (a,b) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Proof*-1" class="Proof">
+<p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Since <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed, we have <span class="math inline">\(\dot{{\pmb{\gamma}}}\cdot \dot{{\pmb{\gamma}}}= 1\)</span>. Differentiating both sides, we get the thesis: <span class="math display">\[
+0 = \frac{d}{dt} (\dot{{\pmb{\gamma}}}\cdot \dot{{\pmb{\gamma}}}) = \ddot{{\pmb{\gamma}}}\cdot \dot{{\pmb{\gamma}}}
++  \dot{{\pmb{\gamma}}}\cdot \ddot{{\pmb{\gamma}}}= 2 \dot{{\pmb{\gamma}}}\cdot \ddot{{\pmb{\gamma}}}\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="reparametrization" class="Definition" title="Reparametrization">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 8: </strong>Reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a curve <span class="math inline">\(\tilde{{\pmb{\gamma}}} \ \colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> such that <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(t) = {\pmb{\gamma}}(\phi(t)) \,,\quad \forall \, t \in (\tilde{a},\tilde{b})\,,
+\]</span> for <span class="math inline">\(\phi\colon (\tilde{a},\tilde{b}) \to (a,b)\)</span> diffeomorphism.<p></p>
+</div></details>
+</div>
+<div id="unit-speed-reparametrization" class="Definition" title="Unit-speed reparametrization">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 9: </strong>Unit-speed reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>unit-speed reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> which is unit-speed, that is, <span class="math display">\[
+\left\|  \dot{\widetilde{{\pmb{\gamma}}}}(t)  \right\| = 1 \,, \quad \forall \, t \in (\tilde{a},\tilde{b})\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="regular-curve" class="Definition" title="Regular curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 10: </strong>Regular curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>regular</strong> if <span class="math display">\[
+\left\| \dot{{\pmb{\gamma}}}(t) \right\|  \neq 0 \,, \quad \forall \, t \in (a,b)
+\]</span><p></p>
+</div></details>
+</div>
+<div id="existence-of-unit-speed-reparametrization" class="Theorem" title="Existence of unit-speed reparametrization">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 11: </strong>Existence of unit-speed reparametrization</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a curve. They are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\({\pmb{\gamma}}\)</span> is regular,</li>
+<li><span class="math inline">\({\pmb{\gamma}}\)</span> admits unit-speed reparametrization.</li>
+</ol>
+</div></details>
+</div>
+<div id="arc-length-and-unit-speed-reparametrization" class="Theorem" title="Arc-length and unit-speed reparametrization">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 12: </strong>Arc-length and unit-speed reparametrization</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve. Let <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\ \colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> be a reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>, that is, <span class="math display">\[
+{\pmb{\gamma}}(t) = \widetilde{{\pmb{\gamma}}}( \phi(t) )  , \quad \forall \, t \in (a,b)
+\]</span> for some diffeomorphism <span class="math inline">\(\phi\ \colon (a,b) \to (\tilde{a},\tilde{b})\)</span>. We have</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is unit-speed, there exists <span class="math inline">\(c \in \mathbb{R}\)</span> such that <span id="eq-proposition-unit-speed"><span class="math display">\[
+\phi(t) = \pm s(t) + c   \,, \quad \forall \, t \in (a,b) \,.
+\tag{1.1}\]</span></span></p></li>
+<li><p>If <span class="math inline">\(\phi\)</span> is given by (<a href="#eq-proposition-unit-speed" class="quarto-xref"><span>1.1</span></a>), then <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is unit-speed.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="arc-length-reparametrization" class="Definition" title="Arc-length reparametrization">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 13: </strong>Arc-length reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be regular. The <strong>arc-length reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the curve <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}= {\pmb{\gamma}}\circ s^{-1}
+\]</span> with <span class="math inline">\(s^{-1}\)</span> inverse of the arc-length function of <span class="math inline">\({\pmb{\gamma}}\)</span>.<p></p>
+</div></details>
+</div>
+<div id="arc-length-reparametrization-of-circle" class="Example" title="Arc-length reparametrization of Circle">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 14: </strong>Arc-length reparametrization of Circle</summary><div><strong>Question.</strong> The circle of radius <span class="math inline">\(R&gt;0\)</span> is <span class="math display">\[
+{\pmb{\gamma}}(t) = ( x_0 + R \cos (t), y_0 + \sin (t),0) \,.
+\]</span> Reparametrize <span class="math inline">\({\pmb{\gamma}}\)</span> by arc-length.<p></p>
+<p><strong>Solution.</strong> The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting from <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[
+s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = Rt
+\]</span> The inverse is <span class="math inline">\(t(s) = s/R\)</span>. The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}(t(s)) = \left( x_0 + R \cos \left( \frac{s}{R} \right), y_0 + \sin \left( \frac{s}{R} \right), 0 \right) \,.
+\]</span></p>
+</div></details>
+</div>
+<div id="Example-15" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 15</strong></summary><div>
+<p><strong>Question.</strong> Consider the curve <span class="math display">\[
+{\pmb{\gamma}}(t)=(5 \cos (t), 5 \sin (t), 12 t) \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</li>
+<li>Reparametrize <span class="math inline">\({\pmb{\gamma}}\)</span> by arc-length.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; =(-5 \sin (t), 5 \cos (t), 12) \\
+\|\dot{{\pmb{\gamma}}}(t)\| &amp; = 13 \neq 0
+\end{align*}\]</span></p></li>
+<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting from <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[
+s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = 13 t \,.
+\]</span> The inverse is <span class="math inline">\(t(s) = s/13\)</span>. The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(s)= {\pmb{\gamma}}(t(s)) = \left(5 \cos \left(\frac{s}{13} \right), 5 \sin \left(\frac{s}{13} \right), \frac{12}{13} s\right) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<section id="curvature" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="curvature"><span class="header-section-number">1.1</span> Curvature</h2>
+<div id="curvature-of-unit-speed-curve" class="Definition" title="Curvature of unit-speed curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 16: </strong>Curvature of unit-speed curve</summary><div>The <strong>curvature</strong> of a unit-speed curve <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\kappa(t) = \left\| \ddot{{\pmb{\gamma}}}(t) \right\| \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="curvature-of-the-circle" class="Example" title="Curvature of the Circle">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 17: </strong>Curvature of the Circle</summary><div><strong>Question.</strong> Compute the curvature of the circle of radius <span class="math inline">\(R&gt;0\)</span> <span class="math display">\[
+{\pmb{\gamma}}(t) =  \left( x_0 + R \cos \left( \frac{t}{R} \right), y_0 + \sin \left( \frac{t}{R} \right) , 0\right)  \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> First, check that <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed: <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; =  \left( - \sin \left( \frac{t}{R} \right) ,  \cos \left( \frac{t}{R} \right), 0\right) \\
+\left\| \dot{{\pmb{\gamma}}}(t) \right\| &amp; = 1
+\end{align*}\]</span> Now, compute second derivative and curvature <span class="math display">\[\begin{align*}
+\ddot{{\pmb{\gamma}}}(t) &amp; =  \left( -\frac{1}{R} \cos \left( \frac{t}{R} \right) ,  - \frac{1}{R} \sin \left( \frac{t}{R} \right) ,0\right) \\
+\kappa(t) &amp; = \left\|  \ddot{{\pmb{\gamma}}}(t)  \right\| = \frac{1}{R}
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="curvature-of-regular-curve" class="Definition" title="Curvature of regular curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 18: </strong>Curvature of regular curve</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>, with <span class="math display">\[
+{\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi \,,  \quad \phi\colon  (a,b) \to (\tilde{a},\tilde{b}) \,.
+\]</span> Let <span class="math inline">\(\widetilde{\kappa}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>curvature</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\kappa(t) = \widetilde{\kappa}(\phi(t)) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="computing-curvature-of-regular-pmbgamma" class="Remark" title="Computing curvature of regular {\pmb{\gamma}}">
+<details class="Remark fbx-simplebox fbx-default" open=""><summary><strong>Remark 19: </strong>Computing curvature of regular <span class="math inline">\({\pmb{\gamma}}\)</span></summary><div>
+<ol type="1">
+<li><p>Compute the arc-length <span class="math inline">\(s(t)\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span> and its inverse <span class="math inline">\(t(s)\)</span>.</p></li>
+<li><p>Compute the arc-length reparametrization <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}(t(s)) \,.
+\]</span></p></li>
+<li><p>Compute the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> <span class="math display">\[
+\widetilde{\kappa}(s) = \left\| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \right\|\,.
+\]</span></p></li>
+<li><p>The curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\kappa (t)= \widetilde{\kappa}(s(t)) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="hyperbolic-functions" class="Definition" title="Hyperbolic functions">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 20: </strong>Hyperbolic functions</summary><div>The <strong>hyperbolic functions</strong> are defined by:<p></p>
+<p><span class="math display">\[\begin{align*}
+\cosh (t) &amp; = \frac {e^t + e^{-t}} {2} \,, \quad
+\sinh (t)  = \frac {e^t - e^{-t}} {2}  \\
+\tanh(t) &amp; = \frac{\sinh (t)}{\cosh (t)} \,, \quad
+\coth (t)  = \frac{\cosh (t)}{\sinh (t)} \\
+\mathop{\mathrm{sech}}(t) &amp; = \frac{1}{\cosh (t)}\,, \quad
+\mathop{\mathrm{csch}}(t)  = \frac{1}{\sinh (t)}
+\end{align*}\]</span></p>
+<p>Key identities involving hyperbolic functions:</p>
+<p><span class="math display">\[\begin{align*}
+&amp;\cosh^2(t) - \sinh^2(t)  = 1 \,, \quad
+{\mathop{\mathrm{sech}}}^2(t) - \tanh^2(t)  = 1  \\
+&amp; \frac{d}{dt} \left[ \sinh(t) \right]  = \cosh (t) \,, \quad
+\frac{d}{dt} \left[ \cosh(t) \right]  = \sinh (t) \\
+&amp; \frac{d}{dt} \left[ \tanh(t) \right]  = 1 - \tanh^2 (t) = - {\mathop{\mathrm{csch}}}^2(t)
+\end{align*}\]</span></p>
+</div></details>
+</div>
+<div id="curvature-of-the-catenary" class="Example" title="Curvature of the Catenary">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 21: </strong>Curvature of the Catenary</summary><div>
+<p><strong>Question.</strong> Consider the Catenary curve <span class="math display">\[
+{\pmb{\gamma}}(t) = ( t, \cosh(t) ) \,, \quad t \in \mathbb{R}\,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</li>
+<li>Compute the arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+<li>Compute the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>.</li>
+<li>Compute the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = (1 , \sinh(t))  \\
+\left\|  \dot{{\pmb{\gamma}}} \right\| &amp; = \sqrt{1 + {\sinh}^2 (t)} = \cosh (t) \geq 1
+\end{align*}\]</span></p></li>
+<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting at <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[
+s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du =  \int_0^t \cosh (u) \, du = \sinh (t)
+\]</span> where we used that <span class="math inline">\(\sinh(0) = 0\)</span>. Moreover, <span class="math display">\[\begin{align*}
+s = \sinh(t) \quad &amp; \iff \quad s = \frac{e^t - e^{-t}}{2} \\
+          \quad &amp; \iff \quad e^{2t} - 2s e^{t} - 1 = 0
+\end{align*}\]</span> Substitute <span class="math inline">\(y = e^t\)</span> to obtain <span class="math display">\[\begin{align*}
+e^{2t} - 2s e^{t} - 1 = 0 \quad &amp; \iff \quad y^{2} - 2s y - 1 = 0 \\
+                        \quad &amp; \iff \quad y_{\pm} = s \pm \sqrt{1+s^2} \,.
+\end{align*}\]</span> Notice that <span class="math display">\[
+y_{+} = s + \sqrt{1 + s^2} \geq s + \sqrt{s^2} = s + |s| \geq 0
+\]</span> by definition of absolute value. As we were looking for <span class="math inline">\(y\)</span> in the form <span class="math inline">\(y=e^t\)</span>, we only consider the positive solution <span class="math inline">\(y_+\)</span>. Then, <span class="math display">\[\begin{align*}
+&amp; e^t  = y_+ = s + \sqrt{1 + s^2 } \\
+&amp; t(s)  = \log \left( s + \sqrt{1 + s^2} \right)
+\end{align*}\]</span> The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}( t(s) ) = \left(  \log \left( s + \sqrt{ 1+ s^2} \right) , \sqrt{1 + s^2}  \right)
+\]</span></p></li>
+<li><p>Compute the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> <span class="math display">\[\begin{align*}
+\dot{\widetilde{{\pmb{\gamma}}}}(s) &amp;  = \left(  \frac{1}{ \sqrt{1 + s^2} } , \frac{s}{ \sqrt{1 + s^2}}   \right) \\
+\ddot{\widetilde{{\pmb{\gamma}}}}(s) &amp; = \left( - \frac{s}{ (1 + s^2)^{3/2} } , \frac{1}{(1 + s^2)^{3/2} }   \right) \\
+\left\| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \right\|^2 &amp; = \frac{1}{(1+s^2)^2} \\
+\widetilde{\kappa}(s) &amp; = \left\| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \right\|= \frac{1}{1+s^2}
+\end{align*}\]</span></p></li>
+<li><p>Recalling that <span class="math inline">\(s(t) = \sinh(t)\)</span>, the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\kappa (t) = \widetilde{\kappa}(s(t)) = \frac{1}{1+ \sinh^2(t)} =
+\frac{1}{\cosh^2(t)} \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="vector-product" class="Definition" title="Vector product">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 22: </strong>Vector product</summary><div>The <strong>vector product</strong> of two vectors <span class="math inline">\(\mathbf{u},\mathbf{v}\in \mathbb{R}^3\)</span> is <span id="eq-formula-cross-product"><span class="math display">\[
+\mathbf{u}\times \mathbf{v}=
+\left|
+\begin{array}{cc}
+u_2 &amp; u_3  \\
+v_2 &amp; v_3
+\end{array}
+\right| \mathbf{e}_1 -
+\left|
+\begin{array}{cc}
+u_1 &amp; u_3  \\
+v_1 &amp; v_3
+\end{array}
+\right| \mathbf{e}_2 +
+\left|
+\begin{array}{cc}
+u_1 &amp; u_2  \\
+v_1 &amp; v_2
+\end{array}
+\right| \mathbf{e}_3  \,
+\tag{1.2}\]</span></span> with <span class="math inline">\(\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\)</span> vectors of the standard basis of <span class="math inline">\(R^3\)</span>. Formula (<a href="#eq-formula-cross-product" class="quarto-xref"><span>1.2</span></a>) is usually denoted by <span class="math display">\[
+\mathbf{u}\times \mathbf{v}=
+\left|
+\begin{array}{ccc}
+\mathbf{i}&amp; \mathbf{j}&amp; \mathbf{k}\\
+u_1 &amp; u_2 &amp; u_2 \\
+v_1 &amp; v_2 &amp; v_3
+\end{array}
+\right| \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="geometric-properties-of-vector-product" class="Theorem" title="Geometric Properties of vector product">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 23: </strong>Geometric Properties of vector product</summary><div>
+<p>Let <span class="math inline">\(\mathbf{u},\mathbf{v}\in \mathbb{R}^3\)</span> be linearly independent. Then</p>
+<ul>
+<li><span class="math inline">\(\mathbf{u}\times \mathbf{v}\)</span> is orthogonal to the plane spanned by <span class="math inline">\(\mathbf{u},\mathbf{v}\)</span></li>
+<li><span class="math inline">\(\| \mathbf{u}\times \mathbf{v}\|\)</span> equals the area of the parallelogram with sides <span class="math inline">\(\mathbf{u},\mathbf{v}\)</span></li>
+<li>The following triple is a positive (right-handed) basis of <span class="math inline">\(\mathbb{R}^3\)</span> <span class="math display">\[
+(\mathbf{u},\mathbf{v},\mathbf{u}\times \mathbf{v}) \,.
+\]</span></li>
+</ul>
+</div></details>
+</div>
+<div id="Theorem-24" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 24</strong></summary><div>For all <span class="math inline">\(\mathbf{u}, \mathbf{v}, \mathbf{w}\in \mathbb{R}^3\)</span> it holds: <span class="math display">\[
+(\mathbf{u}\times \mathbf{v}) \times \mathbf{w}= ( \mathbf{u}\cdot \mathbf{w}) \mathbf{v}- ( \mathbf{v}\cdot \mathbf{w}) \mathbf{u}
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Theorem-25" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 25</strong></summary><div>Suppose <span class="math inline">\({\pmb{\gamma}},{\pmb{\eta}}\ \colon (a,b) \to \mathbb{R}^3\)</span> are parametrized curves. Then, the curve <span class="math inline">\({\pmb{\gamma}}\times {\pmb{\eta}}\)</span> is smooth, and <span class="math display">\[
+\frac{d}{dt} ( {\pmb{\gamma}}\times {\pmb{\eta}}) = \dot{{\pmb{\gamma}}}\times {\pmb{\eta}}+ {\pmb{\gamma}}\times \dot{{\pmb{\eta}}}  \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="curvature-formula" class="Theorem" title="Curvature formula">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 26: </strong>Curvature formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve. The curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\kappa(t) = \frac{ \left\| \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) \right\| }{ \left\| \dot{{\pmb{\gamma}}}(t) \right\|^3 } \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="curvature-of-the-helix" class="Example" title="Curvature of the Helix">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 27: </strong>Curvature of the Helix</summary><div>
+<p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H\)</span>, <span class="math display">\[
+{\pmb{\gamma}}(t) = ( R\cos(t) , R\sin(t) , Ht) \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</li>
+<li>Compute the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = ( -R\sin(t) , R\cos(t) , H)  \\
+\left\| \dot{{\pmb{\gamma}}}(t) \right\| &amp; = \sqrt{R^2 + H^2} \geq R &gt; 0
+\end{align*}\]</span></p></li>
+<li><p>Compute the curvature using the formula: <span class="math display">\[\begin{align*}
+\ddot{{\pmb{\gamma}}}(t) &amp; = ( -R\cos(t) , -R\sin(t) , 0) \\
+\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}&amp; = \left(   
+RH\sin(t),    
+-RH\cos(t),
+R^2
+\right) \\
+\left\|  \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| &amp; =  R\sqrt{R^2 + H^2   } \\
+\kappa (t) &amp; = \frac{ \left\|  \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)  \right\| }{ \left\| \dot{{\pmb{\gamma}}}(t) \right\|^3 } =
+\frac{ R }{  R^2 + H^2   }
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="example-curvature" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 28</strong></summary><div>
+<p><strong>Question.</strong> Define the curve <span class="math display">\[
+{\pmb{\gamma}}(t)=\left(\frac{8}{5} \cos (t), 1-2 \sin (t), \frac{6}{5} \cos (t)\right) \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</li>
+<li>Compute the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[
+\begin{aligned}
+\dot{{\pmb{\gamma}}}(t) &amp; =\left(-\frac{8}{5} \sin (t),-2 \cos (t),-\frac{6}{5} \sin (t)\right) \\
+\|\dot{{\pmb{\gamma}}}(t)\| &amp; =2 \neq 0
+\end{aligned}
+\]</span></p></li>
+<li><p>Compute the curvature using the formula: <span class="math display">\[
+\begin{aligned}
+&amp; \ddot{{\pmb{\gamma}}}(t) =\left(-\frac{8}{5} \cos (t), 2 \sin (t),-\frac{6}{5} \cos (t)\right) \\
+&amp; \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)=\left(-\frac{12}{5}, 0, \frac{16}{5}\right) \\
+&amp; \|\dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)\|=4 \\
+&amp; \kappa(t)  = \frac{1}{2} \,.
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="different-curves-same-curvature" class="Example" title="Different curves, same curvature">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 29: </strong>Different curves, same curvature</summary><div><strong>Question</strong> Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a circle <span class="math display">\[
+{\pmb{\gamma}}(t) = (2\cos(t),2\sin(t),0) \,,
+\]</span> and <span class="math inline">\({\pmb{\eta}}\)</span> be a helix of radius <span class="math inline">\(S&gt;0\)</span> and rise <span class="math inline">\(H&gt;0\)</span> <span class="math display">\[
+{\pmb{\eta}}(t) = (S\cos(t),S\sin(t),Ht) \,.
+\]</span> Find <span class="math inline">\(S\)</span> and <span class="math inline">\(H\)</span> such that <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\({\pmb{\eta}}\)</span> have the same curvature.<p></p>
+<p><strong>Solution.</strong> Curvatures of <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\({\pmb{\eta}}\)</span> were already computed: <span class="math display">\[
+\kappa^{\pmb{\gamma}}= \frac{1}{2}\,, \quad
+\kappa^{\pmb{\eta}}= \frac{S}{S^2 + H^2} \,.
+\]</span> Imposing that <span class="math inline">\(\kappa^{\pmb{\gamma}}= \kappa^{\pmb{\eta}}\)</span>, we get <span class="math display">\[
+\frac12 = \frac{S}{S^2 + H^2} \quad \implies \quad  H^2 = 2S - S^2  \,.
+\]</span> Choosing <span class="math inline">\(S=1\)</span> and <span class="math inline">\(H=1\)</span> yields <span class="math inline">\(\kappa^{\pmb{\gamma}}= \kappa^{\pmb{\eta}}\)</span>.</p>
+</div></details>
+</div>
+</section>
+<section id="frenet-frame-and-torsion" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="frenet-frame-and-torsion"><span class="header-section-number">1.2</span> Frenet frame and torsion</h2>
+<div id="frenet-frame-of-unit-speed-curve" class="Definition" title="Frenet frame of unit-speed curve">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 30: </strong>Frenet frame of unit-speed curve</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>.</p>
+<ol type="1">
+<li><p>The <strong>tangent vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\mathbf{t}(t)= \dot{{\pmb{\gamma}}}(t) \,.
+\]</span></p></li>
+<li><p>The <strong>principal normal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\mathbf{n}(t) = \frac{1}{\kappa (t)} \, \ddot{{\pmb{\gamma}}}(t) \,.
+\]</span></p></li>
+<li><p>The <strong>binormal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\mathbf{b}(t) = \dot{{\pmb{\gamma}}}(t) \times \mathbf{n}(t) \,.
+\]</span></p></li>
+<li><p>The <strong>Frenet frame</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the triple <span class="math display">\[
+\{ \mathbf{t}, \mathbf{n}, \mathbf{b}\} \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-31" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 31</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame <span class="math display">\[
+\{ \mathbf{t}(t), \mathbf{n}(t), \mathbf{b}(t)\}
+\]</span> is a positive orthonomal basis of <span class="math inline">\(\mathbb{R}^3\)</span> for each <span class="math inline">\(t \in (a,b)\)</span>.<p></p>
+</div></details>
+</div>
+<div id="torsion-of-unit-speed-curve-with-kappa-neq-0" class="Definition" title="Torsion of unit-speed curve with \kappa \neq 0">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 32: </strong>Torsion of unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the unique scalar <span class="math inline">\(\tau (t)\)</span> such that <span class="math display">\[
+\dot{\mathbf{b}} (t) = - \tau(t) \mathbf{n}(t) \,.
+\]</span> In particular, <span class="math display">\[
+\tau(t) = - \dot{\mathbf{b}} (t) \cdot \mathbf{n}(t) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="torsion-of-regular-curve-with-kappa-neq-0" class="Definition" title="Torsion of regular curve with \kappa \neq 0">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 33: </strong>Torsion of regular curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve with <span class="math inline">\(\kappa \neq 0\)</span>. Let <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> with <span class="math display">\[
+{\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi \,,  \quad \phi\colon  (a,b) \to (\tilde{a},\tilde{b})  \,.
+\]</span> Let <span class="math inline">\(\widetilde{\tau}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the torsion of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\tau(t) = \widetilde{\tau}(\phi(t)) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="frenet-frame-of-helix" class="Example" title="Frenet frame of Helix">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 34: </strong>Frenet frame of Helix</summary><div>
+<p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H\)</span> <span class="math display">\[
+{\pmb{\gamma}}(t) = ( R\cos(t), R\sin(t),t H)\,, \quad \, t \in \mathbb{R}\,.
+\]</span></p>
+<ol type="1">
+<li>Compute the arc-length reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+<li>Compute Frenet frame, curvature and torsion of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>.</li>
+<li>Compute curvature and torsion <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting at <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = ( -R\sin(t), R\cos(t), H )  \\
+\left\|  \dot{{\pmb{\gamma}}} \right\| &amp; = \rho, \qquad \rho := \sqrt{R^2 + H^2} \\
+s(t) &amp; = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du = \rho  t \,,
+\end{align*}\]</span> which is invertible, with inverse <span class="math display">\[
+t(s) = \frac{s}{\rho} \,.
+\]</span> The arc-length reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}( t(s)) = \left( R \cos \left( \frac{s}{\rho}  \right) ,R \sin \left( \frac{s}{\rho}  \right) , \frac{H s }{\rho}    \right) \,.
+\]</span></p></li>
+<li><p>Compute the tangent vector to <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> and its derivative <span class="math display">\[\begin{align*}
+\widetilde{\mathbf{t}}(s) &amp; = \dot{\widetilde{{\pmb{\gamma}}}}= \frac{1}{\rho}
+\left(  - R \sin \left( \frac{s}{\rho}  \right) ,
+R \cos \left( \frac{s}{\rho}  \right)
+, H    \right) \\
+\dot{\widetilde{\mathbf{t}}}(s) &amp; = \frac{R}{\rho^2} \left(  -\cos \left( \frac{s}{\rho}  \right) , -\sin \left( \frac{s}{\rho}  \right) , 0    \right)
+\end{align*}\]</span> The curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is <span class="math display">\[\begin{align*}
+\widetilde{\kappa}(s) &amp; = \| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \| = \| \dot{\widetilde{\mathbf{t}}}(s) \|
+           = \frac{R}{R^2 + H^2}\,.
+\end{align*}\]</span> The principal normal vector and binormal are <span class="math display">\[\begin{align*}
+\widetilde{\mathbf{n}}(s)  &amp; = \frac{\widetilde{\mathbf{t}}}{\widetilde{\kappa}}
+       = \left(  -\cos \left( \frac{s}{\rho}  \right) , -\sin \left( \frac{s}{\rho}  \right) , 0    \right)  \\
+\widetilde{\mathbf{b}}(s) &amp; = \widetilde{\mathbf{t}}\times \widetilde{\mathbf{n}}
+  = \frac{1}{\rho} \left( H \sin \left( \frac{s}{\rho}  \right) , - H \cos \left( \frac{s}{\rho}  \right) ,  R \right) \,.
+\end{align*}\]</span> We are left to compute the torsion of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>: <span class="math display">\[\begin{align*}
+\dot{\widetilde{\mathbf{b}}}(s) &amp; = \frac{H}{\rho^2} \left(  \cos \left( \frac{s}{\rho}  \right) , \sin \left( \frac{s}{\rho}  \right) , 0   \right) \\
+\dot{\widetilde{\mathbf{b}}}(s) &amp; \cdot \widetilde{\mathbf{n}}(s)  = - \frac{H}{\rho^2} \\
+\widetilde{\tau}(s) &amp; = - \dot{\widetilde{\mathbf{b}}}(s) \cdot \widetilde{\mathbf{n}}(s)
+         = \frac{H}{\rho^2} = \frac{H}{R^2 + H^2}
+\end{align*}\]</span></p></li>
+<li><p>The curvature and torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> are <span class="math display">\[\begin{align*}
+\kappa(t) &amp; = \widetilde{\kappa}(s(t)) = \frac{R}{R^2 + H^2} \\
+\tau(t) &amp; = \widetilde{\tau}(s(t)) = \frac{H}{R^2 + H^2}
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="torsion-formula" class="Theorem" title="Torsion formula">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 35: </strong>Torsion formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve with <span class="math inline">\(\kappa \neq 0\)</span>. The torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\tau (t) = \frac{ ( \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) ) \cdot \dddot{{\pmb{\gamma}}}(t) }{ \left\|  \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)  \right\|^2 } \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="torsion-of-helix-with-formula" class="Example" title="Torsion of Helix with formula">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 36: </strong>Torsion of Helix with formula</summary><div>
+<p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H&gt;0\)</span> <span class="math display">\[
+{\pmb{\gamma}}(t) = ( R\cos(t) , R\sin(t) , Ht) \,, \quad t \in \mathbb{R}\,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular with non-vanishing curvature.</li>
+<li>Compute the torsion of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular with non-vanishing curvature, since <span class="math display">\[\begin{align*}
+&amp; \left\| \dot{{\pmb{\gamma}}}(t) \right\| = \sqrt{R^2 + H^2} \geq R &gt; 0 \,,\\
+&amp; \kappa  = \frac{R}{R^2 + H^2} &gt; 0 \,.
+\end{align*}\]</span></p></li>
+<li><p>We compute the torsion using the formula: <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = ( -R\sin(t) , R\cos(t) , H)  \\
+\ddot{{\pmb{\gamma}}}(t) &amp; = ( -R\cos(t) , -R\sin(t) , 0) \\
+\dddot{{\pmb{\gamma}}}(t) &amp; = ( R\sin(t) , -R\cos(t) , 0)  \\
+\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}&amp; = \left( RH\sin(t), -RH\cos(t), R^2 \right)  \\
+\left\|  \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| &amp; =  R\sqrt{R^2 + H^2   } \\
+(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}&amp; = R^2 H \\
+\tau (t) &amp; = \frac{ ( \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}}{ \left\|  \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|^2 }
+    = \frac{ H }{ R^2 + H^2 }
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="Example-37" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 37</strong></summary><div><strong>Question.</strong> Compute the torsion of the curve <span class="math display">\[
+{\pmb{\gamma}}(t) = \left(\frac{8}{5} \cos (t), 1-2 \sin (t), \frac{6}{5} \cos (t)\right) \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> Resuming calculations from Example <a href="chap_1.html#example-curvature">28</a>, <span class="math display">\[
+\begin{aligned}
+\dddot{{\pmb{\gamma}}}(t) &amp; =\left(\frac{8}{5} \sin (t), 2 \cos (t), \frac{6}{5} \sin (t)\right) \\
+( \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)) \cdot \dddot{{\pmb{\gamma}}}(t) &amp; = \frac{96}{25} \sin (t)-\frac{96}{25} \sin (t) = 0 \\
+\tau(t) &amp; = \frac{ ( \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}}{ \left\|  \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|^2 } =  0
+\end{aligned}
+\]</span></p>
+</div></details>
+</div>
+<div id="general-frenet-frame-formulas" class="Theorem" title="General Frenet frame formulas">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 38: </strong>General Frenet frame formulas</summary><div>The Frenet frame of a regular curve <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[\begin{align*}
+&amp; \mathbf{t}= \frac{\dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|} \,, \quad \,\,
+\mathbf{b}= \frac{ \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| } \,, \\
+&amp; \mathbf{n}= \mathbf{b}\times \mathbf{t}= \frac{(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}})\times \dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| \left\| \dot{{\pmb{\gamma}}} \right\|} \,.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="twisted-cubic" class="Example" title="Twisted cubic">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 39: </strong>Twisted cubic</summary><div>
+<p><strong>Question.</strong> Let <span class="math inline">\({\pmb{\gamma}}\colon \mathbb{R}\to \mathbb{R}^3\)</span> be the <em>twisted cubic</em> <span class="math display">\[
+{\pmb{\gamma}}(t) = (t,t^2,t^3 ) \,.
+\]</span></p>
+<ol type="1">
+<li>Is <span class="math inline">\({\pmb{\gamma}}\)</span> regular/unit-speed? Justify your answer.</li>
+<li>Compute the curvature and torsion of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+<li>Compute the Frenet frame of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular, but not-unit speed, because <span class="math display">\[\begin{align*}
+\dot {\pmb{\gamma}}(t) &amp; = (1 , 2t , 3t^2) \\
+\left\| \dot {\pmb{\gamma}}(t) \right\| &amp; = \sqrt{1 + 4t^2 + 9t^4} \geq 1 \\
+\left\| \dot{\pmb{\gamma}}(1) \right\| &amp; = \sqrt{14} \neq 1
+\end{align*}\]</span></p></li>
+<li><p>Compute curvature and torsion using the formulas: <span class="math display">\[\begin{align*}
+\ddot {\pmb{\gamma}}(t) &amp; = (0,2,6t) \\
+\dddot {\pmb{\gamma}}(t) &amp; = (0,0,6) \\
+\dot {\pmb{\gamma}}(t) \times \ddot {\pmb{\gamma}}(t) &amp; = (6t^2, -6t, 2 ) \\
+\left\| \dot {\pmb{\gamma}}(t) \times \ddot {\pmb{\gamma}}(t) \right\| &amp; = 2 \sqrt{ 1 + 9t^2 + 9t^4  } \\
+(\dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}) \cdot \dddot {\pmb{\gamma}}&amp;  = 12 \\
+\kappa(t) &amp; = \frac{ \left\| \dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}} \right\| }{\left\|  \dot {\pmb{\gamma}} \right\|^3}
+           = \frac{ 2 \sqrt{ 1 + 9t^2 + 9t^4  }  }{ (1 + 4t^2 + 9t^4)^{3/2}   } \\
+\tau(t) &amp; = \frac{ (\dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}) \cdot \dddot {\pmb{\gamma}}}{ \left\| \dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}} \right\|^2  } = \frac{3}{1 + 9t^2 + 9t^4} \,.
+\end{align*}\]</span></p></li>
+<li><p>By the Frenet frame formulas and the above calculations, <span class="math display">\[\begin{align*}
+\mathbf{t}&amp; = \frac{\dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|} = \frac{1}{\sqrt{1 + 4t^2 + 9t^4}} \  (1 , 2t , 3t^2) \\   
+\mathbf{b}&amp; = \frac{ \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| }
+= \frac{1}{\sqrt{ 1 + 9t^2 + 9t^4}}  (3t^2, -3t, 1 ) \\
+\mathbf{n}&amp; = \mathbf{b}\times \mathbf{t}
+  = \frac{(−9t^3 − 2t,1 − 9t^4,6t^3 + 3t)}{\sqrt{ 1 + 9t^2 + 9t^4} \, \sqrt{1 + 4t^2 + 9t^4}}
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="frenet-serret-equations" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="frenet-serret-equations"><span class="header-section-number">1.3</span> Frenet-Serret equations</h2>
+<div id="frenet-frame-is-right-handed" class="Theorem" title="Frenet frame is right-handed">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 40: </strong>Frenet frame is right-handed</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. Then <span class="math display">\[
+\mathbf{b}= \mathbf{t}\times \mathbf{n}\,, \quad
+\mathbf{n}= \mathbf{b}\times \mathbf{t}\,, \quad
+\mathbf{t}= \mathbf{n}\times \mathbf{b}\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="frenet-serret-equations-1" class="Theorem" title="Frenet-Serret equations">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 41: </strong>Frenet-Serret equations</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame of <span class="math inline">\({\pmb{\gamma}}\)</span> solves the <strong>Frenet-Serret</strong> equations <span class="math display">\[\begin{align*}  
+\dot{\mathbf{t}}  = \kappa \mathbf{n}\,, \qquad
+\dot{\mathbf{n}}  = - \kappa \mathbf{t}+ \tau \mathbf{b}\,, \qquad
+\dot{\mathbf{b}}  = -\tau \mathbf{n}\,.
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="rigid-motion" class="Definition" title="Rigid motion">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 42: </strong>Rigid motion</summary><div>A <strong>rigid motion</strong> of <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> of the form <span class="math display">\[
+M(\mathbf{v}) = R \mathbf{v}+ \mathbf{p}\,, \qquad \mathbf{v}\in \mathbb{R}^3 \,,
+\]</span> where <span class="math inline">\(\mathbf{p}\in \mathbb{R}^3\)</span>, and <span class="math inline">\(R \in \mathbb{R}^{3 \times 3}\)</span> <strong>rotation matrix</strong>, <span class="math display">\[
+R \in \mathrm{SO}(3) := \{ R \in \mathbb{R}^{3 \times 3} \ \colon \ R^T R = I \,, \,\, \det(R) = 1 \} \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="fundamental-theorem-of-space-curves" class="Theorem" title="Fundamental Theorem of Space Curves">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 43: </strong>Fundamental Theorem of Space Curves</summary><div>
+<p>Let <span class="math inline">\(\kappa, \tau \ \colon (a,b) \to \mathbb{R}\)</span> be smooth, with <span class="math inline">\(\kappa&gt;0\)</span>. Then:</p>
+<ol type="1">
+<li><p>There exists a unit-speed curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> with curvature <span class="math inline">\(\kappa(t)\)</span> and torsion <span class="math inline">\(\tau(t)\)</span>.</p></li>
+<li><p>Suppose that <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is a unit-speed curve whose curvature <span class="math inline">\(\widetilde{\kappa}\)</span> and torsion <span class="math inline">\(\widetilde{\tau}\)</span> satisfy <span class="math display">\[
+\widetilde{\kappa}(t) = \kappa(t) \,, \quad
+\widetilde{\tau}(t) = \tau(t)
+  \,, \quad \forall \, t \in (a,b) \,.
+\]</span> There exists a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> such that <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}(t) = M ({\pmb{\gamma}}(t)) \,, \qquad \forall \, t \in (a,b) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="application-of-ftsc" class="Example" title="Application of FTSC">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 44: </strong>Application of FTSC</summary><div>
+<p><strong>Question.</strong> Consider the curve <span class="math display">\[
+    {\pmb{\gamma}}( t ) = \left( \sqrt{3}\, t - \sin ( t ) , \sqrt{3} \sin ( t ) + t , 2 \cos ( t ) \right)\,.
+\]</span></p>
+<ol type="1">
+<li><p>Calculate the curvature and torsion of <span class="math inline">\({\pmb{\gamma}}\)</span>.</p></li>
+<li><p>The helix of radius <span class="math inline">\(R\)</span> and rise <span class="math inline">\(H\)</span> is parametrized by <span class="math display">\[
+{\pmb{\eta}}(t) = (R \cos(t), R\sin(t), Ht) \,.
+\]</span> Recall that <span class="math inline">\({\pmb{\eta}}\)</span> has curvature and torsion <span class="math display">\[
+\kappa^{{\pmb{\eta}}} = \frac{R}{R^2 + H^2} \,, \qquad \tau^{{\pmb{\eta}}} = \frac{H}{R^2 + H^2} \,.
+\]</span> Prove that there exist a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> such that <span id="eq-rigid-example"><span class="math display">\[
+{\pmb{\gamma}}(t) = M({\pmb{\eta}}(t)) \,, \quad \forall \, t \in \mathbb{R}\,.
+  \tag{1.3}\]</span></span></p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Compute curvature and torsion with the formulas <span class="math display">\[
+\begin{aligned}
+     &amp; \dot {\pmb{\gamma}}(t)  = \left( \sqrt{3} - \cos ( t ), \sqrt{3}\cos ( t ) + 1, -2 \sin ( t ) \right) \\
+     &amp; \ddot {\pmb{\gamma}}(t) = \left( \sin ( t ),-\sqrt{3}\sin ( t ), -2 \cos ( t ) \right) \\
+     &amp; \dddot {\pmb{\gamma}}(t) = \left( \cos ( t ),-\sqrt{3}\cos ( t ), 2 \sin ( t ) \right) \\
+     &amp; \dot {\pmb{\gamma}}(t)  \times \ddot {\pmb{\gamma}}(t)  = {\small \left( -2 \left( \sqrt{3} + \cos ( t ) \right), 2 \left( \sqrt{3} \cos ( t ) - 1 \right), -4 \sin ( t ) \right) }\\
+      &amp; \left\| \dot {\pmb{\gamma}}(t)  \times \ddot {\pmb{\gamma}}(t)  \right\|^2 = 32 \\
+     &amp; \left\| \dot {\pmb{\gamma}}(t)   \right\|^2 = 8 \\
+     &amp; \left( \dot {\pmb{\gamma}}(t)  \times \ddot {\pmb{\gamma}}(t)  \right) \cdot \dddot {\pmb{\gamma}}( t ) = -8 \\
+    &amp;  \kappa ( t )  =  \frac{ \left\|  \dot{\pmb{\gamma}}\times \ddot {\pmb{\gamma}} \right\| }{ \left\|  \dot{\pmb{\gamma}} \right\|^3  } =  \dfrac{\sqrt{32}}{8^{\frac{3}{2}}} = \dfrac{1}{4} \\
+    &amp; \tau ( t )  =   \frac{ \left(\dot{\pmb{\gamma}}\times \ddot{\pmb{\gamma}}\right)  \cdot \dddot {\pmb{\gamma}}}{ \left\| \dot{\pmb{\gamma}}\times \ddot{\pmb{\gamma}} \right\|^2 } = \dfrac{-8}{32} = -\dfrac{1}{4} \, .
+\end{aligned}
+\]</span></p></li>
+<li><p>Equating <span class="math inline">\(\kappa = \kappa^{{\pmb{\eta}}}\)</span> and <span class="math inline">\(\tau = \tau^{{\pmb{\eta}}}\)</span>, we obtain <span class="math display">\[
+         \frac{R}{R^2 + H^2} = \frac{1}{4} \,, \qquad
+             \frac{H}{R^2 + H^2} = - \frac{1}{4}
+\]</span> Rearranging both equalities we get <span class="math display">\[
+R^2 + H^2 = 4 R \,, \qquad
+             R^2 + H^2 = -4 H \,,
+\]</span> from which we find the relation <span class="math inline">\(R = -  H\)</span>. Substituting into <span class="math inline">\(R^2 + H^2 = -4 H\)</span>, we get <span class="math display">\[
+H = - 2 \,, \quad R = - H = 2 \,.
+\]</span> For these values of <span class="math inline">\(R\)</span> and <span class="math inline">\(H\)</span> we have <span class="math inline">\(\kappa = \kappa^{{\pmb{\eta}}}\)</span> and <span class="math inline">\(\tau = \tau^{{\pmb{\eta}}}\)</span>. By the FTSC, there exists a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> satisfying (<a href="#eq-rigid-example" class="quarto-xref"><span>1.3</span></a>).</p></li>
+</ol>
+</div></details>
+</div>
+<div id="curves-contained-in-a-plane" class="Theorem" title="Curves contained in a plane">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 45: </strong>Curves contained in a plane</summary><div>
+<p>For <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> regular with <span class="math inline">\(\kappa \neq 0\)</span>,they are equivalent</p>
+<ol type="1">
+<li><p>The torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> satisfies <span class="math display">\[
+\tau(t) = 0 \,, \quad \forall  \, t \in (a,b) \,.
+\]</span></p></li>
+<li><p>The image of <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a plane: There exists a vector <span class="math inline">\(\mathbf{P} \in \mathbb{R}^3\)</span> and a scalar <span class="math inline">\(d \in \mathbb{R}\)</span> such that <span class="math display">\[
+{\pmb{\gamma}}(t)\cdot \mathbf{P} = d \,, \quad \forall \, t \in (a,b) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="curves-contained-in-a-plane-1" class="Theorem" title="Curves contained in a plane">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 46: </strong>Curves contained in a plane</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular, with <span class="math inline">\(\kappa \neq 0\)</span> and <span class="math inline">\(\tau = 0\)</span>. Then, the binormal <span class="math inline">\(\mathbf{b}\)</span> is a constant vector, and <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in the plane of equation <span class="math display">\[
+(\mathbf{x}- {\pmb{\gamma}}(t_0)) \cdot \mathbf{b}= 0 \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Example-47" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 47</strong></summary><div>
+<p><strong>Question.</strong> Consider the curve <span class="math display">\[
+{\pmb{\gamma}}(t) = ( t,2t,t^4) \,, \quad t &gt; 0 \,.
+\]</span></p>
+<ol type="1">
+<li><p>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</p></li>
+<li><p>Compute the curvature and torsion of <span class="math inline">\({\pmb{\gamma}}\)</span>.</p></li>
+<li><p>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a plane. Compute the equation of such plane.</p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regualar because <span class="math inline">\(\dot{{\pmb{\gamma}}}(t) = (1,2,4t^3) \neq {\pmb{0}}\)</span>.</p></li>
+<li><p>Compute curvature and torsion with the formulas <span class="math display">\[\begin{align*}
+&amp; \left\| \dot{{\pmb{\gamma}}}(t) \right\| = \sqrt{5 + 16 t^4} \\
+&amp; \ddot{{\pmb{\gamma}}}(t)   = 12 \, (0,0,t^2) \\
+&amp; \dddot{{\pmb{\gamma}}}(t) = 24 \, (0,0,t) \\
+&amp; \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) = 12 \,(2t^2, -t^2, 0) \\
+&amp; \left\| \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) \right\| = 12 \sqrt{5} \, t^2 \\
+&amp; (\dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) ) \cdot \dddot{{\pmb{\gamma}}}(t) = 0 \\
+&amp; \kappa(t) = \frac{\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|^3} =
+\frac{12 \sqrt{5} \, t^2}{\sqrt{ 5 + 16 t^4 }} \\
+&amp; \tau(t) = \frac{(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| } = 0 \,.
+\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> lies in a plane because <span class="math inline">\(\tau = 0\)</span>. The binormal is <span class="math display">\[
+\mathbf{b}= \frac{\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|} = \frac{1}{\sqrt{5}} \, (2,-1,0) \,.
+\]</span> At <span class="math inline">\(t_0 = 0\)</span> we have <span class="math inline">\({\pmb{\gamma}}\left( 0 \right) = {\pmb{0}}\)</span>. The equation of the plane containing <span class="math inline">\({\pmb{\gamma}}\)</span> is then <span class="math display">\[
+\frac{2}{\sqrt5} x -  \frac{1}{\sqrt5} y = 0 \quad \implies \quad
+2x - y = 0 \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="curves-contained-in-a-circle" class="Theorem" title="Curves contained in a circle">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 48: </strong>Curves contained in a circle</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve. They are equivalent:</p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a circle of radius <span class="math inline">\(R&gt;0\)</span>.</p></li>
+<li><p>There exists <span class="math inline">\(R&gt;0\)</span> such that <span class="math display">\[
+\kappa (t) = \frac{1}{R} \,, \quad  \tau(t) = 0\,,  \quad \forall \, t \in (a,b)\,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="Example-49" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 49</strong></summary><div>
+<p><strong>Question.</strong> Consider the curve <span class="math display">\[
+{\pmb{\gamma}}(t) = \left( \frac45 \cos(t),  1 - \sin(t) , -\frac35 \cos(t)  \right) \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed.</li>
+<li>Compute Frenet frame, curvature and torsion of <span class="math inline">\({\pmb{\gamma}}\)</span>.</li>
+<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is part of a circle.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed because <span class="math display">\[\begin{align*}
+\dot{{\pmb{\gamma}}}(t) &amp; = \left( -\frac45 \sin(t),  - \cos(t) , \frac35 \sin(t)  \right) \\
+\left\|  \dot{{\pmb{\gamma}}}(t)  \right\|^2 &amp; = \frac{16}{25} \sin^2(t) + \cos^2(t) + \frac{9}{25} \sin^2(t) = 1
+\end{align*}\]</span></p></li>
+<li><p>As <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed, the tangent vector is <span class="math inline">\(\mathbf{t}(t) = \dot{{\pmb{\gamma}}}(t)\)</span>. The curvature, normal, binormal and torsion are <span class="math display">\[\begin{align*}
+\dot{\mathbf{t}} (t) &amp; =  \left( -\frac45 \cos(t),  \sin(t) , \frac35 \cos(t)  \right) \\
+\kappa(t) &amp; = \left\|  \dot{\mathbf{t}}(t)  \right\| = \frac{16}{25} \cos^2(t) + \sin^2(t) + \frac{9}{25} \cos^2(t) = 1 \\
+\mathbf{n}(t)&amp; = \frac{1}{\kappa(t)}  \ddot{{\pmb{\gamma}}}(t) =  \left( -\frac45 \cos(t),  \sin(t) , \frac35 \cos(t)  \right) \\
+\mathbf{b}(t) &amp; = \dot{{\pmb{\gamma}}}(t) \times \mathbf{n}(t)  = \left( -\frac35, 0 ,-\frac45  \right) \\
+\dot{\mathbf{b}} &amp; = {\pmb{0}}\\
+\tau &amp; = - \dot{\mathbf{b}} \cdot \mathbf{n}= 0
+\end{align*}\]</span></p></li>
+<li><p>The curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is constant and the torsion is zero. Therefore <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a circle of radius <span class="math display">\[
+R = \frac{1}{\kappa} = 1 \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Revision Guide">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Revision Guide</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/chap_2.html" class="pagination-link" aria-label="Topology">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Topology</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link active" href="../sections/license.html" aria-current="page">
+<p>License</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.silviofanzon.com/contact">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

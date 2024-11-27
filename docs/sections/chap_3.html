@@ -1,0 +1,2585 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Surfaces – Differential Geometry</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sections/license.html" rel="next">
+<link href="../sections/chap_2.html" rel="prev">
+<link href="../images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+.Important {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Example {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Proposition {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Conjecture {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Theorem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Lemma {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Remark {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Definition {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Proof {
+  --color1: #f1f1f2;
+  --color2: #c0c0c1;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Question {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Problem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Corollary {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Differential Geometry</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+    <a href="../Differential-Geometry.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sections/chap_3.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Surfaces</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Revision Guide</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Curves</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Topology</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/chap_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Surfaces</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/license.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries"><span class="header-section-number">3.1</span> Preliminaries</a></li>
+  <li><a href="#regular-surfaces" id="toc-regular-surfaces" class="nav-link" data-scroll-target="#regular-surfaces"><span class="header-section-number">3.2</span> Regular surfaces</a></li>
+  <li><a href="#reparametrizations" id="toc-reparametrizations" class="nav-link" data-scroll-target="#reparametrizations"><span class="header-section-number">3.3</span> Reparametrizations</a></li>
+  <li><a href="#functions-between-surfaces" id="toc-functions-between-surfaces" class="nav-link" data-scroll-target="#functions-between-surfaces"><span class="header-section-number">3.4</span> Functions between surfaces</a></li>
+  <li><a href="#tangent-plane" id="toc-tangent-plane" class="nav-link" data-scroll-target="#tangent-plane"><span class="header-section-number">3.5</span> Tangent plane</a></li>
+  <li><a href="#unit-normal-and-orientability" id="toc-unit-normal-and-orientability" class="nav-link" data-scroll-target="#unit-normal-and-orientability"><span class="header-section-number">3.6</span> Unit normal and orientability</a></li>
+  <li><a href="#differential-of-smooth-functions" id="toc-differential-of-smooth-functions" class="nav-link" data-scroll-target="#differential-of-smooth-functions"><span class="header-section-number">3.7</span> Differential of smooth functions</a></li>
+  <li><a href="#level-surfaces" id="toc-level-surfaces" class="nav-link" data-scroll-target="#level-surfaces"><span class="header-section-number">3.8</span> Level surfaces</a></li>
+  <li><a href="#ruled-surfaces" id="toc-ruled-surfaces" class="nav-link" data-scroll-target="#ruled-surfaces"><span class="header-section-number">3.9</span> Ruled surfaces</a></li>
+  <li><a href="#surfaces-of-revolution" id="toc-surfaces-of-revolution" class="nav-link" data-scroll-target="#surfaces-of-revolution"><span class="header-section-number">3.10</span> Surfaces of Revolution</a></li>
+  <li><a href="#first-fundamental-form" id="toc-first-fundamental-form" class="nav-link" data-scroll-target="#first-fundamental-form"><span class="header-section-number">3.11</span> First fundamental form</a></li>
+  <li><a href="#length-of-curves" id="toc-length-of-curves" class="nav-link" data-scroll-target="#length-of-curves"><span class="header-section-number">3.12</span> Length of curves</a></li>
+  <li><a href="#isometries" id="toc-isometries" class="nav-link" data-scroll-target="#isometries"><span class="header-section-number">3.13</span> Isometries</a></li>
+  <li><a href="#angles-between-curves" id="toc-angles-between-curves" class="nav-link" data-scroll-target="#angles-between-curves"><span class="header-section-number">3.14</span> Angles between curves</a></li>
+  <li><a href="#conformal-maps" id="toc-conformal-maps" class="nav-link" data-scroll-target="#conformal-maps"><span class="header-section-number">3.15</span> Conformal maps</a></li>
+  <li><a href="#conformal-parametrizations" id="toc-conformal-parametrizations" class="nav-link" data-scroll-target="#conformal-parametrizations"><span class="header-section-number">3.16</span> Conformal parametrizations</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Surfaces</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="preliminaries" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="preliminaries"><span class="header-section-number">3.1</span> Preliminaries</h2>
+<div id="topology-of-mathbbrn" class="Definition" title="Topology of \mathbb{R}^n">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 1: </strong>Topology of <span class="math inline">\(\mathbb{R}^n\)</span></summary><div>
+<p>The Euclidean norm on <span class="math inline">\(\mathbb{R}^n\)</span> is denoted by <span class="math display">\[
+\| \mathbf{x}\| := \sqrt{ \sum_{i=1}^n x_i^2 }\,, \quad \mathbf{x}= (x_1 , \ldots, x_n) \in \mathbb{R}^n \,.
+\]</span> The Euclidean norm induces the distance <span class="math display">\[
+d(\mathbf{x},\mathbf{y}) := \| \mathbf{x}- \mathbf{y}\| =   \sqrt{ \sum_{i=1}^n (x_i - y_i)^2 } \,.
+\]</span></p>
+<p>In particular, we have:</p>
+<ol type="1">
+<li><p>The pair <span class="math inline">\((\mathbb{R}^n,d)\)</span> is a metric space.</p></li>
+<li><p>The topology induced by the metric <span class="math inline">\(d\)</span> is called the Euclidean topology, denoted by <span class="math inline">\(\mathcal{T}\)</span>.</p></li>
+<li><p>A set <span class="math inline">\(U \subseteq \mathbb{R}^n\)</span> is <strong>open</strong> if for all <span class="math inline">\(\mathbf{x}\in U\)</span> there exists <span class="math inline">\(\varepsilon&gt;0\)</span> such that <span class="math inline">\(B_{\varepsilon}(\mathbf{x}) \subseteq U\)</span>, where <span class="math display">\[
+B_{\varepsilon}(\mathbf{x}) := \{  \mathbf{y}\in \mathbb{R}^n \, \colon \,\| \mathbf{x}- \mathbf{y}\| &lt; \varepsilon\}
+\]</span> is the open ball of radius <span class="math inline">\(\varepsilon&gt;0\)</span> and centered at <span class="math inline">\(\mathbf{x}\)</span>. In this case we write <span class="math inline">\(U \in \mathcal{T}\)</span>, with <span class="math inline">\(\mathcal{T}\)</span> the Euclidean topology in <span class="math inline">\(\mathbb{R}^n\)</span>.</p></li>
+<li><p>A set <span class="math inline">\(V \subseteq \mathbb{R}^n\)</span> is <strong>closed</strong> if <span class="math inline">\(V^c := \mathbb{R}^n \smallsetminus U\)</span> is open.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="subspace-topology" class="Definition" title="Subspace Topology">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 2: </strong>Subspace Topology</summary><div>Given a subset <span class="math inline">\(A \subseteq \mathbb{R}^n\)</span> the <strong>subspace topology</strong> on <span class="math inline">\(A\)</span> is the family of sets <span class="math display">\[
+\mathcal{T}_A := \{  U \subseteq A \, \colon \,\exists \,\, W \in \mathcal{T}\, \text{ s.t. } \, U = A \cap W  \} \,.
+\]</span> If <span class="math inline">\(U \in \mathcal{T}_A\)</span>, we say that <span class="math inline">\(U\)</span> is open in <span class="math inline">\(A\)</span>.<p></p>
+</div></details>
+</div>
+<div id="continuous-function" class="Definition" title="Continuous Function">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 3: </strong>Continuous Function</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}^m\)</span> with <span class="math inline">\(U\)</span> open. We say that <span class="math inline">\(f\)</span> is <strong>continuous</strong> at <span class="math inline">\(\mathbf{x}\in U\)</span> if <span class="math inline">\(\forall \, \varepsilon&gt;0\)</span>, <span class="math inline">\(\exists \, \delta &gt; 0\)</span> such that <span class="math display">\[
+\|  \mathbf{x}- \mathbf{y}\| &lt; \delta \quad \implies \quad
+\| f(\mathbf{x}) - f (\mathbf{y}) \| &lt; \varepsilon\,.
+\]</span> <span class="math inline">\(f\)</span> is continuous in <span class="math inline">\(U\)</span> if it is continuous for all <span class="math inline">\(\mathbf{x}\in U\)</span>.<p></p>
+</div></details>
+</div>
+<div id="continuity-topological-definition" class="Theorem" title="Continuity: Topological definition">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 4: </strong>Continuity: Topological definition</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to V \subseteq \mathbb{R}^m\)</span>, with <span class="math inline">\(U,V\)</span> open. We have that <span class="math inline">\(f\)</span> is continuous if and only if <span class="math inline">\(f^{-1}(A)\)</span> is open in <span class="math inline">\(U\)</span>, for all <span class="math inline">\(A\)</span> open in <span class="math inline">\(V\)</span>.<p></p>
+</div></details>
+</div>
+<div id="homeomorphism" class="Definition" title="Homeomorphism">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 5: </strong>Homeomorphism</summary><div>
+<p>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to V \subseteq \mathbb{R}^m\)</span> with <span class="math inline">\(U,V\)</span> open. We say that <span class="math inline">\(f\)</span> is a <strong>homeomorphism</strong> if:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is continuous;</li>
+<li>There exists continuous inverse <span class="math inline">\(f^{-1} \colon V \to U\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="differentiable-function" class="Definition" title="Differentiable Function">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 6: </strong>Differentiable Function</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}^m\)</span> with <span class="math inline">\(U\)</span> open. We say that <span class="math inline">\(f\)</span> is <strong>differentiable</strong> at <span class="math inline">\(\mathbf{x}\in U\)</span> if there exists a linear map <span class="math inline">\(d_{\mathbf{x}} f \colon \mathbb{R}^n \to \mathbb{R}^m\)</span> such that <span class="math display">\[
+d_{\mathbf{x}}f (\mathbf{h}) = \lim_{\varepsilon\to 0} \   \frac{ f(\mathbf{x}+ \varepsilon\mathbf{h} )  - f(\mathbf{x})  }{ \varepsilon} \,,
+\]</span> for all <span class="math inline">\(\mathbf{h} \in \mathbb{R}^n\)</span>, where the limit is taken in <span class="math inline">\(\mathbb{R}^m\)</span>. The linear map <span class="math inline">\(d_{\mathbf{x}} f\)</span> is called the <strong>differential</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{x}\)</span>.<p></p>
+</div></details>
+</div>
+<div id="partial-derivative" class="Definition" title="Partial Derivative">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 7: </strong>Partial Derivative</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}^m\)</span>, <span class="math inline">\(U\)</span> open, <span class="math inline">\(f\)</span> differentiable. The <strong>partial derivative</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{x}\in U\)</span> in direction <span class="math inline">\(\mathbf{e}_i\)</span> is given by <span class="math display">\[
+\frac{\partial f}{\partial x_i}(\mathbf{x}) := d_{\mathbf{x}} f (\mathbf{e}_i) =  \lim_{\varepsilon\to 0}  \frac{ f( \mathbf{x}+ \varepsilon\mathbf{e}_i ) - f(\mathbf{x}) }{ \varepsilon} \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="jacobian-matrix" class="Definition" title="Jacobian Matrix">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 8: </strong>Jacobian Matrix</summary><div>Let <span class="math inline">\(f \colon U \subset \mathbb{R}^n \to \mathbb{R}^m\)</span> be differentiable. The <strong>Jacobian</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{x}\)</span> is the <span class="math inline">\(m \times n\)</span> matrix of partial derivatives: <span class="math display">\[
+Jf(\mathbf{x}):= \left( \frac{\partial f_i}{\partial x_j}(\mathbf{x}) \right)_{i,j}  \in \mathbb{R}^{m \times n} \,.
+\]</span> If <span class="math inline">\(m=n\)</span> then <span class="math inline">\(Jf \in \mathbb{R}^{n \times n}\)</span> is a square matrix and we can compute its determinant, denoted by <span class="math display">\[
+\det (Jf) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="matrix-representation-of-d_mathbfx-f" class="Proposition" title="Matrix representation of d_{\mathbf{x}} f">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 9: </strong>Matrix representation of <span class="math inline">\(d_{\mathbf{x}} f\)</span></summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}^m\)</span> be differentiable. The matrix of the linear map <span class="math inline">\(d_{\mathbf{x}} f \colon \mathbb{R}^n \to \mathbb{R}^m\)</span> with respect to the standard basis is given by the Jacobian matrix <span class="math inline">\(Jf(\mathbf{x})\)</span>.<p></p>
+</div></details>
+</div>
+<div id="smooth-function" class="Definition" title="Smooth Function">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 10: </strong>Smooth Function</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}^m\)</span> with <span class="math inline">\(U\)</span> open. We say that <span class="math inline">\(f\)</span> is smooth if the derivatives <span class="math display">\[
+\frac{\partial^{|\alpha|} f}{d\mathbf{x}^\alpha} :=  \frac{\partial^{\alpha_1}}{ \partial x_1^{\alpha_1}} \cdots \frac{\partial^{\alpha_n}}{ \partial x_n^{\alpha_n}} \, f
+\]</span> exist for each multi-index <span class="math inline">\(\alpha \in \mathbb{N}^n\)</span>. Note that in this case all the derivatives of <span class="math inline">\(f\)</span> are automatically continuous.<p></p>
+</div></details>
+</div>
+<div id="gradient-and-partial-derivatives" class="Notation" title="Gradient and partial derivatives">
+<p></p><details class="Notation fbx-simplebox fbx-default" open=""><summary><strong>Notation 11: </strong>Gradient and partial derivatives</summary><div>Let <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}\)</span> be smooth. We denote the partial derivatives by <span class="math display">\[
+\begin{aligned}
+\partial_{x_i} f &amp; = f_{x_i} =  \frac{\partial f}{\partial x_i} \\
+\partial_{x_i x_j} f &amp; = f_{x_i x_j} = \frac{\partial^2 f}{\partial x_i \partial x_j} \\
+\partial_{x_i x_j x_k} f &amp; = f_{x_i x_j x_k} =  \frac{\partial^3 f}{\partial x_i \partial x_j \partial x_k}
+\end{aligned}
+\]</span><p></p>
+<p>For <span class="math inline">\(f \colon U \subseteq \mathbb{R}^n \to \mathbb{R}\)</span> smooth we denote the <strong>gradient</strong> by <span class="math display">\[
+\nabla f (\mathbf{x}) = \left(  f_{x_1}(\mathbf{x}) , \ldots ,  f_{x_n}(\mathbf{x}) \right) \,.
+\]</span> Note that <span class="math inline">\(\nabla f(\mathbf{x})\)</span> coincides with <span class="math inline">\(Jf(\mathbf{x})\)</span>.</p>
+</div></details>
+</div>
+<div id="diffeomorphism" class="Definition" title="Diffeomorphism">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 12: </strong>Diffeomorphism</summary><div>
+<p>Let <span class="math inline">\(f \colon U \to V\)</span>, with <span class="math inline">\(U,V \subseteq \mathbb{R}^n\)</span> open. We say that <span class="math inline">\(f\)</span> is a <strong>diffeomorphism</strong> between <span class="math inline">\(U\)</span> and <span class="math inline">\(V\)</span> if:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is smooth,</li>
+<li>There exists the inverse <span class="math inline">\(f^{-1} \colon V \to U\)</span>,</li>
+<li><span class="math inline">\(f^{-1}\)</span> is smooth.</li>
+</ol>
+</div></details>
+</div>
+<div id="local-diffeomorphism" class="Definition" title="Local diffeomorphism">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 13: </strong>Local diffeomorphism</summary><div>
+<p>A function <span class="math inline">\(f \colon \mathbb{R}^n \to \mathbb{R}^n\)</span> is a <strong>local diffeomorphism</strong> at <span class="math inline">\(\mathbf{x}_0 \in \mathbb{R}^n\)</span> if:</p>
+<ol type="1">
+<li>There exists an open set <span class="math inline">\(U \subseteq \mathbb{R}^n\)</span> such that <span class="math inline">\(\mathbf{x}_0 \in U\)</span>,</li>
+<li>There exists an open set <span class="math inline">\(V \subseteq \mathbb{R}^n\)</span> such that <span class="math inline">\(f(\mathbf{x}_0) \in V\)</span>,</li>
+<li><span class="math inline">\(f \colon U \to V\)</span> is a diffeomorphism.</li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-14" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 14</strong></summary><div>If <span class="math inline">\(f \colon U \to V\)</span> is a diffeomorphism, then <span class="math inline">\(f\)</span> is a local diffeomorphism at each <span class="math inline">\(\mathbf{x}_0 \in U\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-15" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 15</strong></summary><div>Let <span class="math inline">\(f \colon U \to \mathbb{R}^n\)</span> with <span class="math inline">\(U \subseteq \mathbb{R}^n\)</span> open. Suppose <span class="math inline">\(f\)</span> is a local diffeomorhism at <span class="math inline">\(\mathbf{x}_0 \in U\)</span>. Then <span class="math display">\[
+\det Jf (\mathbf{x}_0) \neq 0 \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="inverse-function-theorem" class="Theorem" title="Inverse Function Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 16: </strong>Inverse Function Theorem</summary><div>
+<p>Let <span class="math inline">\(f \colon U \to \mathbb{R}^n\)</span> with <span class="math inline">\(U \subseteq \mathbb{R}^n\)</span> open, <span class="math inline">\(f\)</span> smooth. Assume <span class="math display">\[
+\det J f(\mathbf{x}_0) \neq 0 \,,
+\]</span> for some <span class="math inline">\(\mathbf{x}_0 \in U\)</span>. Then:</p>
+<ol type="1">
+<li>There exists an open set <span class="math inline">\(U_0 \subseteq U\)</span> such that <span class="math inline">\(\mathbf{x}_0 \in U_0\)</span>,</li>
+<li>There exists an open set <span class="math inline">\(V\)</span> such that <span class="math inline">\(f(\mathbf{x}_0) \in V\)</span>,</li>
+<li><span class="math inline">\(f \colon U_0 \to V\)</span> is a diffeomorphism.</li>
+</ol>
+</div></details>
+</div>
+<div id="Example-17" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 17</strong></summary><div>
+<p><strong>Question.</strong> Consider the function <span class="math inline">\(f \colon \mathbb{R}^2 \to \mathbb{R}^2\)</span> <span class="math display">\[
+f(x,y) = (e^x \cos(y), e^x \sin(y)) \,.
+\]</span></p>
+<ol type="1">
+<li><p>Prove that <span class="math inline">\(f\)</span> is a local diffeomorphism at each point.</p></li>
+<li><p>Prove that <span class="math inline">\(f\)</span> is not a diffeomorphism.</p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>We compute <span class="math display">\[\begin{align*}
+&amp; J f (x,y) =
+e^x \left(
+\begin{array}{cc}
+  \cos(y)  &amp;    \sin(y) \\
+  -\sin(y)    &amp;  \cos(y)
+\end{array}
+\right)  \\
+&amp; \det Jf(x,y) = e^{2x} \neq 0
+\end{align*}\]</span> By the Inverse Function Theorem, <span class="math inline">\(f\)</span> is a local diffeomorphism at each point <span class="math inline">\((x,y) \in \mathbb{R}^2\)</span>.</p></li>
+<li><p><span class="math inline">\(f\)</span> is not injective, since <span class="math display">\[
+f(x,y) = f(x, y + 2n\pi) \,, \quad \forall\, (x,y) \in \mathbb{R}^2 , \,  n \in \mathbb{N}\,.
+\]</span> Therefore <span class="math inline">\(f\)</span> is not invertible from <span class="math inline">\(\mathbb{R}^2\)</span> into <span class="math inline">\(\mathbb{R}^2\)</span>. This implies <span class="math inline">\(f\)</span> cannot be a diffeomorphism of <span class="math inline">\(\mathbb{R}^2\)</span> into <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="regular-surfaces" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="regular-surfaces"><span class="header-section-number">3.2</span> Regular surfaces</h2>
+<div id="surface" class="Definition" title="Surface">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 18: </strong>Surface</summary><div>Let <span class="math inline">\(\mathcal{S}\subseteq \mathbb{R}^3\)</span> be a connected set. We say that <span class="math inline">\(\mathcal{S}\)</span> is a <strong>surface</strong> if for every point <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span> there exist<p></p>
+<ol type="1">
+<li>An open set <span class="math inline">\(U \subseteq \mathbb{R}^2\)</span>,</li>
+<li>A smooth map <span class="math inline">\({\pmb{\sigma}}\colon U \to  {\pmb{\sigma}}(U) \subseteq \mathcal{S}\)</span> such that
+<ul>
+<li><span class="math inline">\(\mathbf{p}\in {\pmb{\sigma}}(U)\)</span>,</li>
+<li><span class="math inline">\({\pmb{\sigma}}(U)\)</span> is open in <span class="math inline">\(\mathcal{S}\)</span></li>
+<li><span class="math inline">\({\pmb{\sigma}}\)</span> is a homeomorphism between <span class="math inline">\(U\)</span> and <span class="math inline">\({\pmb{\sigma}}(U)\)</span></li>
+</ul></li>
+</ol>
+<p>The homeomorphism <span class="math inline">\({\pmb{\sigma}}\)</span> is called a <strong>surface chart</strong> at <span class="math inline">\(\mathbf{p}\)</span>.</p>
+</div></details>
+</div>
+<div id="atlas-of-a-surface" class="Definition" title="Atlas of a surface">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 19: </strong>Atlas of a surface</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a surface. Assume given a collection of charts <span class="math display">\[
+\mathcal{A} = \{ {\pmb{\sigma}}_i\}_{i \in I} \,, \qquad
+{\pmb{\sigma}}_i  \colon U_i \to {\pmb{\sigma}}(U_i) \subseteq \mathcal{S}\,.
+\]</span> The family <span class="math inline">\(\mathcal{A}\)</span> is an <strong>atlas</strong> of <span class="math inline">\(\mathcal{S}\)</span> if <span class="math display">\[
+\mathcal{S}= \bigcup_{i \in I} {\pmb{\sigma}}_i(U_i)  \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="regular-chart" class="Definition" title="Regular Chart">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 20: </strong>Regular Chart</summary><div>Let <span class="math inline">\(U \subseteq \mathbb{R}^2\)</span> be open. A map <span class="math display">\[
+{\pmb{\sigma}}= {\pmb{\sigma}}(u,v)  \colon U \to \mathbb{R}^3
+\]</span> is called a <strong>regular chart</strong> if the partial derivatives <span class="math display">\[
+{\pmb{\sigma}}_u(u,v) = \frac{d{\pmb{\sigma}}}{du}(u,v) \,, \quad
+{\pmb{\sigma}}_v(u,v) = \frac{d{\pmb{\sigma}}}{dv}(u,v)
+\]</span> are linearly independent vectors of <span class="math inline">\(\mathbb{R}^3\)</span> for all <span class="math inline">\((u,v) \in U\)</span>.<p></p>
+</div></details>
+</div>
+<div id="regular-surface" class="Definition" title="Regular surface">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 21: </strong>Regular surface</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a surface. We say that:</p>
+<ul>
+<li><span class="math inline">\(\mathcal{A}\)</span> is a <strong>regular atlas</strong> if any <span class="math inline">\({\pmb{\sigma}}\)</span> in <span class="math inline">\(\mathcal{A}\)</span> is regular.</li>
+<li><span class="math inline">\(\mathcal{S}\)</span> is a <strong>regular surface</strong> if it admits a regular atlas.</li>
+</ul>
+</div></details>
+</div>
+<div id="Theorem-22" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 22</strong></summary><div>
+<p>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> with <span class="math inline">\(U \subseteq \mathbb{R}^2\)</span> open. They are equivalent</p>
+<ol type="1">
+<li><span class="math inline">\({\pmb{\sigma}}\)</span> is a regular chart.</li>
+<li><span class="math inline">\(d_{\mathbf{x}} {\pmb{\sigma}}\colon \mathbb{R}^2 \to \mathbb{R}^3\)</span> is injective for all <span class="math inline">\(\mathbf{x}\in U\)</span>.</li>
+<li>The Jacobian matrix <span class="math inline">\(J {\pmb{\sigma}}\)</span> has rank <span class="math inline">\(2\)</span> for all <span class="math inline">\((u,v) \in U\)</span>.</li>
+<li><span class="math inline">\({\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \neq 0\)</span> for all <span class="math inline">\((u,v) \in U\)</span>.</li>
+</ol>
+</div></details>
+</div>
+<div id="d-plane-in-mathbbr3" class="Example" title="2D Plane in \mathbb{R}^3">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 23: </strong>2D Plane in <span class="math inline">\(\mathbb{R}^3\)</span></summary><div><strong>Question.</strong> Let <span class="math inline">\(\mathbf{a}, \mathbf{p}, \mathbf{q} \in \mathbb{R}^3\)</span>, with <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(\mathbf{q}\)</span> orthonormal. The plane <span class="math display">\[
+{\pmb{\pi}}= \{ \mathbf{a} + u \mathbf{p}+ v \mathbf{q} \, \colon \,u,v \in \mathbb{R}\}
+\]</span> is a surface with atlas <span class="math inline">\(\mathcal{A} = \{{\pmb{\sigma}}\}\)</span>, where <span class="math display">\[
+{\pmb{\sigma}}\colon \mathbb{R}^2 \to {\pmb{\pi}}\,, \quad {\pmb{\sigma}}(u,v):= \mathbf{a} + u \mathbf{p}+ v \mathbf{q} \,.
+\]</span> Prove that <span class="math inline">\({\pmb{\pi}}\)</span> is a regular surface.<p></p>
+<p><strong>Solution.</strong> We have <span class="math inline">\({{\pmb{\sigma}}}_{u}= \mathbf{p}, {\pmb{\sigma}}_v = \mathbf{q}\)</span>. Since <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(\mathbf{q}\)</span> are orthonormal, we conclude that <span class="math inline">\({{\pmb{\sigma}}}_{u}\)</span> and <span class="math inline">\({{\pmb{\sigma}}}_{v}\)</span> are linearly independent and <span class="math inline">\({\pmb{\sigma}}\)</span> is regular. <span class="math inline">\({\pmb{\pi}}\)</span> is a regular surface because <span class="math inline">\({\pmb{\sigma}}\)</span> is a regular chart.</p>
+</div></details>
+</div>
+<div id="unit-cylinder" class="Example" title="Unit cylinder">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 24: </strong>Unit cylinder</summary><div><strong>Question.</strong> Consider the infinite unit cylinder <span class="math display">\[
+\mathcal{S}= \{  (x,y,z) \in \mathbb{R}^3 \, \colon \,x^2 + y^2 = 1 \} \,.
+\]</span> <span class="math inline">\(\mathcal{S}\)</span> is a surface with atlas <span class="math inline">\(\mathcal{A} = \{ {\pmb{\sigma}}_1,{\pmb{\sigma}}_2\}\)</span>, where <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}&amp; \colon \mathbb{R}^2 \to \mathbb{R}^3   \,,
+&amp; {\pmb{\sigma}}(u,v) &amp; = (\cos(u),\sin(u),v)\,, \\
+{\pmb{\sigma}}_1 &amp; := {\pmb{\sigma}}|_{U_1} \,,   &amp; {\pmb{\sigma}}_2 &amp; := {\pmb{\sigma}}|_{U_2} \,, \\
+U_1 &amp; := \left( 0,\frac{ 3 \pi}{2} \right) \times \mathbb{R}\,,
+&amp; U_2 &amp; := \left( \pi,\frac{ 5 \pi}{2} \right) \times \mathbb{R}\,.
+\end{align*}\]</span> Prove that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.<p></p>
+<p><strong>Solution.</strong> The map <span class="math inline">\({\pmb{\sigma}}\)</span> is regular because <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_u &amp; = (-\sin(u),\cos(u),0)\\
+{\pmb{\sigma}}_v &amp; = (0,0,1) \\
+{\pmb{\sigma}}_u \times {\pmb{\sigma}}_v &amp; = (\cos (u), \sin(u), 0) \\
+\left\| {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \right\| &amp; = 1 \neq 0 \,.
+\end{align*}\]</span> Therefore <span class="math inline">\({\pmb{\sigma}}_1\)</span> and <span class="math inline">\({\pmb{\sigma}}_2\)</span> are regular charts, being restrictions of <span class="math inline">\({\pmb{\sigma}}\)</span>. Thus, <span class="math inline">\(\mathcal{A}\)</span> is a regular atlas, making <span class="math inline">\(\mathcal{S}\)</span> a regular surface.</p>
+</div></details>
+</div>
+<div id="graph-of-a-function" class="Example" title="Graph of a function">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 25: </strong>Graph of a function</summary><div><strong>Question.</strong> Let <span class="math inline">\(U \subseteq \mathbb{R}^2\)</span> be open and <span class="math inline">\(f \colon U \to \mathbb{R}\)</span> be smooth. The graph of <span class="math inline">\(f\)</span> is the set <span class="math display">\[
+\Gamma_f := \{ (u,v,f(u,v)) \, \colon \,(u,v) \in U  \}  \,.
+\]</span> <span class="math inline">\(\Gamma_f\)</span> is surface with atlas given by <span class="math inline">\(\mathcal{A} = \{ {\pmb{\sigma}}\}\)</span>, where <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \Gamma_f \,, \quad
+{\pmb{\sigma}}(u,v):=(u,v,f(u,v)) \,.
+\]</span> Prove that <span class="math inline">\(\Gamma_f\)</span> is a regular surface.<p></p>
+<p><strong>Solution.</strong> The Jacobian matrix of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+J{\pmb{\sigma}}(u,v) =
+\left(
+\begin{array}{ccc}
+1  &amp;  0 \\
+0  &amp;  1 \\
+f_u  &amp; f_v \\
+\end{array}
+\right) \,.
+\]</span> The first minor of <span class="math inline">\(J{\pmb{\sigma}}\)</span> is the identity matrix, which has determinant <span class="math inline">\(1\)</span>, and is hence invertible. Therefore <span class="math inline">\(J{\pmb{\sigma}}\)</span> has rank 2, showing that <span class="math inline">\({\pmb{\sigma}}_u\)</span> and <span class="math inline">\({\pmb{\sigma}}_v\)</span> are linearly independent. Hence <span class="math inline">\({\pmb{\sigma}}\)</span> is regular. This implies <span class="math inline">\(\mathcal{A}\)</span> is a regular atlas, and <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.</p>
+</div></details>
+</div>
+<div id="spherical-coordinates" class="Definition" title="Spherical coordinates">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 26: </strong>Spherical coordinates</summary><div>A point <span class="math inline">\(\mathbf{p}= (x,y,z) \neq {\pmb{0}}\)</span> is represented in <strong>spherical coordinates</strong> by <span class="math display">\[\begin{align*}
+x &amp; = \rho \cos(\theta) \cos (\varphi)    \\
+y &amp; = \rho \sin(\theta) \cos (\varphi)   \\
+z &amp; = \rho \sin (\varphi)
+\end{align*}\]</span> where <span class="math display">\[
+\rho:=\sqrt{ x^2 + y^2 + z^2 } \,, \quad \theta \in [-\pi,\pi] \,, \quad \varphi\in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="unit-sphere-in-spherical-coordinates" class="Example" title="Unit sphere in spherical coordinates">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 27: </strong>Unit sphere in spherical coordinates</summary><div><strong>Question.</strong> Consider the unit sphere in <span class="math inline">\(\mathbb{R}^3\)</span> <span class="math display">\[
+\mathbb{S}^2 = \{  (x,y,z) \in \mathbb{R}^3 \, \colon \,x^2 + y^2 + z^2 = 1  \} \,.
+\]</span> Define the set <span class="math display">\[
+U = \left\{ (\theta,\varphi)  \in \mathbb{R}^2 \, \colon \,\theta \in ( -\pi,\pi), \, \varphi\in \left(  -\frac{\pi}{2} , \frac{\pi}{2} \right)  \right\} \,,
+\]</span> and the chart <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> by <span class="math display">\[
+{\pmb{\sigma}}( \theta , \varphi) :=  ( \cos(\theta) \cos(\varphi) , \sin(\theta) \cos(\varphi) , \sin (\varphi)  ) \,.
+\]</span> Prove that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.<p></p>
+<p><strong>Solution.</strong> We compute <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_{\theta} &amp; = (-\sin(\theta) \cos(\varphi), \cos(\theta) \cos(\varphi), 0 ) \\
+{\pmb{\sigma}}_{\varphi} &amp; = ( - \cos(\theta) \sin(\varphi), -\sin(\theta) \sin(\varphi), \cos(\varphi) )  \,.
+\end{align*}\]</span> Since <span class="math inline">\((\theta,\varphi)\in U\)</span>, we have <span class="math inline">\(\varphi\in ( -\pi/2, \pi/2 )\)</span>. Therefore, the last component <span class="math inline">\(\cos(\varphi)\)</span> of <span class="math inline">\({\pmb{\sigma}}_\varphi\)</span> is non-zero. As the last component of <span class="math inline">\({\pmb{\sigma}}_\theta\)</span> is <span class="math inline">\(0\)</span>, we conclude that <span class="math inline">\({\pmb{\sigma}}_\theta\)</span> and <span class="math inline">\({\pmb{\sigma}}_{\varphi}\)</span> are linearly independent for all <span class="math inline">\((\theta,\varphi) \in U\)</span>. Therefore <span class="math inline">\({\pmb{\sigma}}\)</span> is regular. Alternatively, compute <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_{\theta} \times {\pmb{\sigma}}_{\varphi} &amp; =
+( \cos(\theta) \cos^2(\varphi), \sin(\theta) \cos^2(\varphi), \cos(\varphi)\sin(\varphi) ) \\
+\left\|  {\pmb{\sigma}}_{\theta} \times {\pmb{\sigma}}_{\varphi}  \right\| &amp; = |\cos (\varphi)| =  \cos (\varphi) \neq 0 \,,
+\end{align*}\]</span> since <span class="math inline">\(\varphi\in ( -\pi/2, \pi/2 )\)</span>, showing that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.</p>
+</div></details>
+</div>
+<div id="Example-28" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 28</strong></summary><div><strong>Question.</strong> Prove that the following chart is not regular <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (u,v^2,v^3) \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We have <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_u &amp; = (1,0,0) \\
+{\pmb{\sigma}}_v &amp; = (0,2v,3v^2) \\
+{\pmb{\sigma}}_v(u,0) &amp; = (0,0,0) \,,
+\end{align*}\]</span> showing that <span class="math inline">\({\pmb{\sigma}}_u\)</span> and <span class="math inline">\({\pmb{\sigma}}_v\)</span> are linearly dependent along the line <span class="math display">\[
+L = \{ (u,0) \, \colon \,u \in \mathbb{R}\} \,.
+\]</span> Hence <span class="math inline">\({\pmb{\sigma}}\)</span> is not a regular chart.</p>
+</div></details>
+</div>
+</section>
+<section id="reparametrizations" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="reparametrizations"><span class="header-section-number">3.3</span> Reparametrizations</h2>
+<div id="reparametrization" class="Definition" title="Reparametrization">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 29: </strong>Reparametrization</summary><div>Suppose that <span class="math inline">\(U, \widetilde{U} \subseteq \mathbb{R}^2\)</span> are open sets and <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \mathbb{R}^3 \,, \quad
+\widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to \mathbb{R}^3 \,,
+\]</span> are surface charts. We say that <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> is a <strong>reparametrization</strong> of <span class="math inline">\({\pmb{\sigma}}\)</span> if there exists a diffeomorphism <span class="math inline">\(\Phi \colon \widetilde{U} \to U\)</span> such that <span class="math display">\[
+\widetilde{{\pmb{\sigma}}} = {\pmb{\sigma}}\circ \Phi \,.
+\]</span> We call <span class="math inline">\(\Phi\)</span> a <strong>reparametrization map</strong>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-30" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 30</strong></summary><div>Let <span class="math inline">\(U, \widetilde{U} \subseteq \mathbb{R}^2\)</span> be open and <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be regular. Suppose given a diffeomorphism <span class="math inline">\(\Phi \colon \widetilde{U} \to U\)</span>. The reparametrization <span class="math display">\[
+\widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to \mathbb{R}^3\,, \qquad \widetilde{{\pmb{\sigma}}} = {\pmb{\sigma}}\circ \Phi
+\]</span> is a regular chart, and it holds <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}_{\tilde u} \times \widetilde{{\pmb{\sigma}}}_{\tilde v} =\det  J \Phi \,  \left( {{\pmb{\sigma}}}_{u}\times {{\pmb{\sigma}}}_{v}\right) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="transition-map" class="Definition" title="Transition map">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 31: </strong>Transition map</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math display">\[
+{\pmb{\sigma}}\colon U \to  \mathcal{S}\,, \quad
+\widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to  \mathcal{S}
+\]</span> be regular charts. Suppose the images of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> overlap, that is, <span class="math display">\[
+I := {\pmb{\sigma}}(U) \cap \widetilde{{\pmb{\sigma}}} (\widetilde{U}) \neq \emptyset \,.
+\]</span> The set <span class="math inline">\(I\)</span> is open in <span class="math inline">\(\mathcal{S}\)</span>, being intersection of open sets. Define the sets <span class="math display">\[
+V := {\pmb{\sigma}}^{-1}(I) \subseteq U \,, \quad  \widetilde{V} := \widetilde{{\pmb{\sigma}}}^{-1} (I) \subseteq \widetilde{U} \,.
+\]</span> Note that <span class="math inline">\(V\)</span> and <span class="math inline">\(\widetilde{V}\)</span> are open, by continuity of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>. Since <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> are homeomorphisms, by construction <span class="math display">\[
+{\pmb{\sigma}}(V) = \widetilde{{\pmb{\sigma}}} (\widetilde{V} ) = I \,.
+\]</span> Therefore, they are well defined the restrictions <span class="math display">\[
+{\pmb{\sigma}}|_{V} \colon V \to I \,, \quad
+\widetilde{{\pmb{\sigma}}} |_{\widetilde{V}} \colon \widetilde{V} \to I \,.
+\]</span> The maps <span class="math inline">\({\pmb{\sigma}}|_{V}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}} |_{\widetilde{V}}\)</span> are homeomorphisms, being restrictions of homeomorphisms. The composition homeomorphism <span class="math display">\[
+\Phi \colon \widetilde{V} \to V \,, \quad \Phi := {\pmb{\sigma}}^{-1} \circ \widetilde{{\pmb{\sigma}}}
+\]</span> is called a <strong>transition map</strong> from <span class="math inline">\({\pmb{\sigma}}\)</span> to <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-32" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 32</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface. The transition maps between regular charts are diffeomorphisms.<p></p>
+</div></details>
+</div>
+<div id="Theorem-33" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 33</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \mathcal{S}\,, \quad
+\widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to  \mathcal{S}
+\]</span> be regular charts. Suppose the images of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> overlap, that is, <span class="math display">\[
+I := {\pmb{\sigma}}(U) \cap \widetilde{{\pmb{\sigma}}} (\widetilde{U}) \neq \emptyset \,.
+\]</span> Define the open sets <span class="math display">\[
+V := {\pmb{\sigma}}^{-1}(I) \subseteq U \,, \quad  \widetilde{V} := \widetilde{{\pmb{\sigma}}}^{-1}(I) \subseteq \widetilde{U} \,,
+\]</span> and the transition map <span class="math display">\[
+\Phi \colon \widetilde{V} \to V \,, \quad \Phi := {\pmb{\sigma}}^{-1}\circ \widetilde{{\pmb{\sigma}}}\,.
+\]</span> Then <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> are reparametrization of each other, with reparametrization map given by <span class="math inline">\(\Phi\)</span>, that is, <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}= {\pmb{\sigma}}\circ \Phi \,, \qquad {\pmb{\sigma}}= \widetilde{{\pmb{\sigma}}}\circ \Phi^{-1} \,.
+\]</span><p></p>
+</div></details>
+</div>
+</section>
+<section id="functions-between-surfaces" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="functions-between-surfaces"><span class="header-section-number">3.4</span> Functions between surfaces</h2>
+<div id="smooth-functions-between-surfaces" class="Definition" title="Smooth functions between surfaces">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 34: </strong>Smooth functions between surfaces</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}_1 \to \mathcal{S}_2\)</span> a map.</p>
+<ol type="1">
+<li><p><span class="math inline">\(f\)</span> is <em>smooth at <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span></em>, if <span class="math inline">\(\exists\)</span> charts <span class="math inline">\({\pmb{\sigma}}_i \colon U_i \to \mathcal{S}_i\)</span> for <span class="math inline">\(i=1,2\)</span> such that <span class="math display">\[
+\mathbf{p}\in {\pmb{\sigma}}_1(U_1)\,, \quad f(\mathbf{p}) \in {\pmb{\sigma}}_2(U_2)
+\]</span> and <span class="math display">\[
+({\pmb{\sigma}}_2^{-1} \circ f \circ {\pmb{\sigma}}_1 )  \colon U_1 \to U_2
+\]</span> is smooth.</p></li>
+<li><p><span class="math inline">\(f\)</span> is <em>smooth</em>, if it is smooth for each <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-35" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 35</strong></summary><div>If <span class="math inline">\(f \colon \mathcal{S}_1 \to \mathcal{S}_2\)</span> and <span class="math inline">\(g \colon \mathcal{S}_2 \to \mathcal{S}_3\)</span> are smooth maps between surfaces, then the composition <span class="math display">\[
+(g \circ f) \colon \mathcal{S}_1 \to \mathcal{S}_3
+\]</span> is smooth.<p></p>
+</div></details>
+</div>
+<div id="Theorem-36" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 36</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, and <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> a regular chart. The inverse <span class="math display">\[
+{\pmb{\sigma}}^{-1} \colon {\pmb{\sigma}}(U) \to U \subseteq \mathbb{R}^2 \,,
+\]</span> is a differentiable function.<p></p>
+</div></details>
+</div>
+<div id="theorem-diff-check-2" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 37</strong></summary><div>Let <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> be regular surfaces. Make the following assumptions:<p></p>
+<ol type="1">
+<li><span class="math inline">\(V \subseteq \mathbb{R}^3\)</span> is an open set such that <span class="math display">\[
+\mathcal{S}_1 \subseteq V \,,
+\]</span></li>
+<li><span class="math inline">\(f \colon V \to \mathbb{R}^3\)</span> is a differentiable function such that<br>
+<span class="math display">\[
+f(\mathcal{S}_1) \subseteq \mathcal{S}_2 \,.
+\]</span></li>
+</ol>
+<p>Then the restriction <span class="math display">\[
+f |_{\mathcal{S}_1} \colon \mathcal{S}_1 \to \mathcal{S}_2
+\]</span> is a differentiable map between surfaces.</p>
+</div></details>
+</div>
+<div id="diffeomorphism-of-surfaces" class="Definition" title="Diffeomorphism of surfaces">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 38: </strong>Diffeomorphism of surfaces</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> be regular surfaces.</p>
+<ol type="1">
+<li><p>A map <span class="math inline">\(f \colon \mathcal{S}_1 \to \mathcal{S}_2\)</span> is a <strong>diffeomorphism</strong>, if <span class="math inline">\(f\)</span> is smooth and admits smooth inverse.</p></li>
+<li><p>We say that <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> are <strong>diffeomorphic</strong>, if there exists <span class="math inline">\(f \colon \mathcal{S}_1 \to \mathcal{S}_2\)</span> diffeomorphism.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-39" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 39</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces, <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> diffeomorphism. If <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> is a regular chart for <span class="math inline">\(\mathcal{S}\)</span> at <span class="math inline">\(\mathbf{p}\)</span>, then <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}   \colon U \to \widetilde{\mathcal{S}} \,, \qquad \widetilde{{\pmb{\sigma}}} := f \circ {\pmb{\sigma}}\,,
+\]</span> is a regular chart for <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> at <span class="math inline">\(f(\mathbf{p})\)</span>.<p></p>
+</div></details>
+</div>
+<div id="local-diffeomorphism-1" class="Definition" title="Local diffeomorphism">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 40: </strong>Local diffeomorphism</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> be regular surfaces, and <span class="math display">\[
+f \colon \mathcal{S}_1 \to \mathcal{S}_2 \,,
+\]</span> be a differentiable map.</p>
+<ol type="1">
+<li><p><span class="math inline">\(f\)</span> is a <strong>local diffeomorphism</strong> at <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span> if:</p>
+<ul>
+<li>There exists An open set <span class="math inline">\(V \subseteq \mathcal{S}_1\)</span> with <span class="math inline">\(\mathbf{p}\in V\)</span>;</li>
+<li><span class="math inline">\(f(V) \subseteq \mathcal{S}_2\)</span> is open;</li>
+<li><span class="math inline">\(f \colon V \to f(V)\)</span> is a diffeomorphism between surfaces.</li>
+</ul></li>
+<li><p><span class="math inline">\(f\)</span> is a <strong>local diffeomorphism</strong> in <span class="math inline">\(\mathcal{S}_1\)</span>, if it is a local diffeomorphism at each <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathcal{S}_1\)</span> is <strong>locally diffeomorphic</strong> to <span class="math inline">\(\mathcal{S}_2\)</span>, if for each <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span> there exists <span class="math inline">\(f\)</span> local diffeomorphism at <span class="math inline">\(\mathbf{p}\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="tangent-plane" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="tangent-plane"><span class="header-section-number">3.5</span> Tangent plane</h2>
+<div id="tangent-vectors-and-tangent-plane" class="Definition" title="Tangent vectors and tangent plane">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 41: </strong>Tangent vectors and tangent plane</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a surface and <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>.</p>
+<ol type="1">
+<li><p>We say that <span class="math inline">\(\mathbf{v}\in \mathbb{R}^3\)</span> is a <strong>tangent vector</strong> to <span class="math inline">\(\mathcal{S}\)</span> at <span class="math inline">\(\mathbf{p}\)</span>, if there exists a smooth curve <span class="math display">\[
+{\pmb{\gamma}}\colon (-\varepsilon,\varepsilon) \to \mathbb{R}^3 \,,
+\]</span> such that <span class="math display">\[
+{\pmb{\gamma}}(-\varepsilon, \varepsilon) \subseteq \mathcal{S}\,, \quad {\pmb{\gamma}}(0) = \mathbf{p}\,, \quad \mathbf{v}= \dot{{\pmb{\gamma}}}(0) \,,
+\]</span> where <span class="math inline">\(\varepsilon&gt;0\)</span>.</p></li>
+<li><p>The <strong>tangent plane</strong> of <span class="math inline">\(\mathcal{S}\)</span> at <span class="math inline">\(\mathbf{p}\)</span> is the set <span class="math display">\[
+T_{\mathbf{p}} \mathcal{S}:= \{ \mathbf{v}\in \mathbb{R}^3 \, \colon \,\mathbf{v}\, \mbox{ tangent vector of } \, \mathcal{S}\, \mbox{ at } \, \mathbf{p}\} \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="curves-with-values-on-surfaces" class="Theorem" title="Curves with values on surfaces">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 42: </strong>Curves with values on surfaces</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>, and <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be a chart at <span class="math inline">\(\mathbf{p}\)</span>. Denote <span class="math display">\[
+(u_0,v_0) = {\pmb{\sigma}}^{-1}(\mathbf{p}) \,.
+\]</span> Suppose <span class="math inline">\({\pmb{\gamma}}\colon (-\varepsilon,\varepsilon) \to \mathbb{R}^3\)</span> is a smooth curve such that <span class="math display">\[
+{\pmb{\gamma}}(t) \in \mathcal{S}\,, \quad \forall \, t \in (-\varepsilon,\varepsilon) \,.
+\]</span> Then, there exist smooth functions <span class="math display">\[
+u , v \colon (\varepsilon_0,\varepsilon_0) \to \mathbb{R}\,,\quad u(0)=u_0 \,, \quad v(0) = v_0 \,,
+\]</span> such that <span class="math display">\[
+{\pmb{\gamma}}(t) = {\pmb{\sigma}}( u(t), v(t) ) \,, \quad \forall \, t \in (-\varepsilon,\varepsilon) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="characterization-of-tangent-plane" class="Theorem" title="Characterization of Tangent Plane">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 43: </strong>Characterization of Tangent Plane</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>. Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be a chart at <span class="math inline">\(\mathbf{p}\)</span>. Denote <span class="math display">\[
+(u_0,v_0) = {\pmb{\sigma}}^{-1}(\mathbf{p}) \,.
+\]</span> The tangent plane satisfies <span class="math display">\[
+T_{\mathbf{p}} \mathcal{S}= \operatorname{span} \{ {\pmb{\sigma}}_u , {\pmb{\sigma}}_v \} := \{  \lambda {\pmb{\sigma}}_u + \mu {\pmb{\sigma}}_v \, \colon \,\lambda,\mu \in \mathbb{R}\} \,,
+\]</span> where <span class="math inline">\({\pmb{\sigma}}_u\)</span> and <span class="math inline">\({\pmb{\sigma}}_v\)</span> are evaluated at <span class="math inline">\((u_0,v_0)\)</span>.<p></p>
+</div></details>
+</div>
+<div id="equation-of-tangent-plane" class="Theorem" title="Equation of tangent plane">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 44: </strong>Equation of tangent plane</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>. Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be a regular chart at <span class="math inline">\(\mathbf{p}\)</span>. Set <span class="math display">\[
+(u_0,v_0) := {\pmb{\sigma}}^{-1}(\mathbf{p}) \,, \quad \mathbf{n}:= {\pmb{\sigma}}_u (u_0,v_0) \times {\pmb{\sigma}}_v (u_0,v_0) \,.
+\]</span> They hold:</p>
+<ol type="1">
+<li><p>The equation of the tangent plane <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> is given by <span class="math display">\[
+\mathbf{x}\cdot \mathbf{n}= 0 \,, \quad  \forall \, \mathbf{x}\in \mathbb{R}^3 \,.
+\]</span></p></li>
+<li><p>The equation of the affine tangent plane <span class="math inline">\(\mathbf{p}+ T_{\mathbf{p}} \mathcal{S}\)</span> is given by <span class="math display">\[
+(\mathbf{x}- \mathbf{p}) \cdot \mathbf{n}= 0 \,, \quad  \forall \, \mathbf{x}\in \mathbb{R}^3 \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="Example-45" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 45</strong></summary><div>
+<p><strong>Question.</strong> Consider the surface <span class="math inline">\(\mathcal{S}\)</span> defined by the chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) := \left(   \sqrt{1-v} \cos(u) , \sqrt{1-v} \sin(u), v  \right) \,,
+\]</span> for <span class="math inline">\(u \in (0,2\pi)\)</span>, <span class="math inline">\(v &lt; 1\)</span>.</p>
+<ol type="1">
+<li><p>Prove that <span class="math inline">\({\pmb{\sigma}}\)</span> parametrizes a paraboloid.</p></li>
+<li><p>Prove that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.</p></li>
+<li><p>Compute the vector <span class="math inline">\(\mathbf{n}= {{\pmb{\sigma}}}_{u}\times {{\pmb{\sigma}}}_{v}\)</span></p></li>
+<li><p>Consider the point <span class="math display">\[
+\mathbf{p}= \left( \frac{\sqrt 2}{2}, \frac{\sqrt 2}{2}, 0  \right) \,.
+\]</span> Give a basis for <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> at the point</p></li>
+<li><p>Compute the cartesian equation of <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span>. Give your answer in the form <span class="math display">\[
+ax + by + cz = d\,,
+\]</span> for suitable <span class="math inline">\(a,b,c,d \in \mathbb{R}\)</span>.</p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Denote the coordinates of <span class="math inline">\({\pmb{\sigma}}\)</span> by <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (x,y,z) \,.
+\]</span> We have <span class="math display">\[\begin{align*}
+x^2 + y^2 &amp; = \left( \sqrt{1-v} \cos(u) \right)^2 + \left( \sqrt{1-v} \cos(u) \right)^2 \\
+       &amp; = 1 - v  \\
+       &amp; = 1 - z \,,
+\end{align*}\]</span> showing that <span class="math inline">\({\pmb{\sigma}}\)</span> parametrizes the paraboloid <span class="math display">\[
+z = - x^2 - y^2 + 1 \,.
+\]</span></p></li>
+<li><p>Proof that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular: <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_u &amp; = \left(  - \sqrt{1-v} \sin(u) , \sqrt{1-v} \cos(u), 0        \right) \\
+{\pmb{\sigma}}_v &amp; = \left( -   \frac{1}{2} (1-v)^{-1/2}  \cos(u) , -\frac{1}{2} (1-v)^{-1/2}   \sin(u), 1        \right)
+\end{align*}\]</span> The last component of <span class="math inline">\({\pmb{\sigma}}_u\)</span> is <span class="math inline">\(0\)</span>, and the last component of <span class="math inline">\({\pmb{\sigma}}_v\)</span> is <span class="math inline">\(1\)</span>, thus <span class="math inline">\({\pmb{\sigma}}_u\)</span> and <span class="math inline">\({\pmb{\sigma}}_v\)</span> are linearly independent. Hence <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.</p></li>
+<li><p>We compute: <span class="math display">\[\begin{align*}
+\mathbf{n}&amp; = {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \\
+&amp; =
+\left|
+\begin{array}{ccc}
+\mathbf{i}&amp; \mathbf{j}&amp; \mathbf{k}\\
+-\sqrt{1-v} \sin(u) &amp; \sqrt{1-v} \cos(u) &amp; 0 \\
+-\frac{1}{2} (1-v)^{-1/2}  \cos(u) &amp; -\frac{1}{2} (1-v)^{-1/2}   \sin(u) &amp; 1
+\end{array}
+\right| \\
+&amp; = \left(  \sqrt{1-v} \cos(u) , \sqrt{1-v} \sin(u), \frac12        \right)
+\end{align*}\]</span></p></li>
+<li><p>Notice that <span class="math display">\[
+{\pmb{\sigma}}\left( \frac{\pi}{4}, 0 \right)  = \mathbf{p}\,.
+\]</span> A basis for <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> is given by the vectors <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_u  \left( \frac{\pi}{4}, 0 \right) &amp; = \left(  - \frac{\sqrt{2}}{2} ,  \frac{\sqrt{2}}{2} , 0        \right)\,,\\
+{\pmb{\sigma}}_v  \left( \frac{\pi}{4}, 0 \right) &amp; = \left( -    \frac{\sqrt{2}}{4}  , - \frac{\sqrt{2}}{4} , 1        \right) \,.
+\end{align*}\]</span></p></li>
+<li><p>Using the calculation for <span class="math inline">\(\mathbf{n}\)</span> in Point 3, we find <span class="math display">\[
+\mathbf{n}\left( \frac{\pi}{4}, 0 \right)
+=  \left(  \frac{\sqrt 2}{2}, \frac{\sqrt 2}{2} , -\frac{1}{2}   \right) \,.
+\]</span> The equation for <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> is therefore <span class="math display">\[
+\mathbf{x}\cdot \mathbf{n}= 0 \,, \quad \forall \, \mathbf{x}\in \mathbb{R}^3 \,.
+\]</span> The above reads <span class="math display">\[
+\frac{\sqrt 2}{2} \, x + \frac{\sqrt 2}{2} \, y - \frac{1}{2} \, z = 0 \,,
+\]</span> which implies <span class="math display">\[
+\sqrt{2} \, x + \sqrt{2} \, y -  z = 0 \,,
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="unit-normal-and-orientability" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="unit-normal-and-orientability"><span class="header-section-number">3.6</span> Unit normal and orientability</h2>
+<div id="standard-unit-normal-of-a-chart" class="Definition" title="Standard unit normal of a chart">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 46: </strong>Standard unit normal of a chart</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> a regular chart. The <strong>standard unit normal</strong> of <span class="math inline">\({\pmb{\sigma}}\)</span> is the smooth function <span class="math display">\[
+\mathbf{N}_{{\pmb{\sigma}}} \colon U \to \mathbb{R}^3 \,, \quad \mathbf{N}_{{\pmb{\sigma}}} = \frac{ {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v }{ \left\| {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \right\| } \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="standard-unit-normal-of-the-plane" class="Example" title="Standard unit normal of the plane">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 47: </strong>Standard unit normal of the plane</summary><div>Let <span class="math inline">\(\mathbf{a} , \mathbf{p},\mathbf{q} \in \mathbb{R}^3\)</span>, with <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(\mathbf{q}\)</span> linearly independent. Consider the plane charted by <span class="math display">\[
+{\pmb{\sigma}}(u,v):= \mathbf{a} + \mathbf{p}u + \mathbf{q} v \,, \quad \forall \, (u,v) \in \mathbb{R}^2 \,.
+\]</span> Compute the standard unit normal to <span class="math inline">\({\pmb{\sigma}}\)</span>.<p></p>
+<p><em>Solution.</em> We have <span class="math display">\[
+{\pmb{\sigma}}_u = \mathbf{p}\,, \quad
+{\pmb{\sigma}}_v = \mathbf{q} \,, \quad
+\]</span> and therefore <span class="math display">\[
+\mathbf{N}_{{\pmb{\sigma}}} = \frac{ \mathbf{p}\times \mathbf{q}  }{ \left\|  \mathbf{p}\times \mathbf{q}  \right\| } \,.
+\]</span></p>
+</div></details>
+</div>
+<div id="unit-normal-of-a-surface" class="Definition" title="Unit normal of a surface">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 48: </strong>Unit normal of a surface</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface. A <strong>standard unit normal</strong> to <span class="math inline">\(\mathcal{S}\)</span> is a smooth function <span class="math inline">\(\mathbf{N}\colon \mathcal{S}\to \mathbb{R}^3\)</span> such that <span class="math display">\[
+\mathbf{N}(\mathbf{p}) \perp T_{\mathbf{p}} \mathcal{S}\,, \quad \| \mathbf{N}(\mathbf{p}) \| = 1 \,, \quad \forall \, \mathbf{p}\in \mathcal{S}\, .
+\]</span><p></p>
+</div></details>
+</div>
+<div id="orientable-surface" class="Definition" title="Orientable surface">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 49: </strong>Orientable surface</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface. We say that <span class="math inline">\(\mathcal{S}\)</span> is <strong>orientable</strong> if there exists a standard unit normal <span class="math inline">\(\mathbf{N}\colon \mathcal{S}\to \mathbb{R}^3\)</span> and an atlas <span class="math inline">\(\mathcal{A}\)</span> such that <span class="math display">\[
+\mathbf{N}\circ {\pmb{\sigma}}= \mathbf{N}_{{\pmb{\sigma}}} \,, \qquad \forall \, {\pmb{\sigma}}\in \mathcal{A} \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Example-50" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 50</strong></summary><div>
+<p><strong>Question.</strong> Let <span class="math inline">\(\mathcal{S}\)</span> be the surface described by the chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (e^u, u+v, v ) \,, \quad u,v \in \mathbb{R}\,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.</li>
+<li>Compute the standard unit normal to <span class="math inline">\({\pmb{\sigma}}\)</span>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Compute the following quantities: <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_{u} &amp; =\left(e^{u}, 1,0\right) \\
+{\pmb{\sigma}}_{v} &amp; =(0,1,1) \\
+{\pmb{\sigma}}_{u} \times {\pmb{\sigma}}_{v} &amp; = \left|\begin{array}{ccc}
+\mathbf{i}&amp; \mathbf{j}&amp; \mathbf{k}\\
+e^{u} &amp; 1 &amp; 0 \\
+0 &amp; 1 &amp; 1
+\end{array}\right| \\
+&amp; = \left(1,-e^{u}, e^{u}\right)
+\end{align*}\]</span> Since <span class="math display">\[
+\left\| {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \right\| =  \sqrt{1+2 e^{2 u}} \geq 1\,,
+\]</span> we see that <span class="math inline">\({\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \neq {\pmb{0}}\)</span>, showing that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular.</p></li>
+<li><p>The standard unit normal to <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathbf{N}= \frac{ {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v }{ \left\| {\pmb{\sigma}}_u \times {\pmb{\sigma}}_v \right\| }
+  = \frac{1}{\sqrt{1+2 e^{2 u}}} \, \left(1,-e^{u}, e^{u}\right) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="differential-of-smooth-functions" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="differential-of-smooth-functions"><span class="header-section-number">3.7</span> Differential of smooth functions</h2>
+<div id="differential-of-smooth-function" class="Definition" title="Differential of smooth function">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 51: </strong>Differential of smooth function</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> a smooth map. The differential <span class="math inline">\(d_{\mathbf{p}}f\)</span> of <span class="math inline">\(f\)</span> at <span class="math inline">\(\mathbf{p}\)</span> is defined as the map <span class="math display">\[
+d_{\mathbf{p}}f \colon T_{\mathbf{p}} \mathcal{S}\to T_{f(\mathbf{p})} \widetilde{\mathcal{S}} \,,  \quad d_{\mathbf{p}}f (\mathbf{v}) := (f \circ {\pmb{\gamma}})'(0) \,,
+\]</span> where <span class="math inline">\({\pmb{\gamma}}\colon (-\varepsilon,\varepsilon) \to \mathcal{S}\)</span> is any smooth curve such that <span class="math display">\[
+{\pmb{\gamma}}(0) = \mathbf{p}\,, \qquad  \dot{{\pmb{\gamma}}}(0) = \mathbf{v}\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="computing-d_mathbfpf-using-the-definition" class="Example" title="Computing d_{\mathbf{p}}f using the definition">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 52: </strong>Computing <span class="math inline">\(d_{\mathbf{p}}f\)</span> using the definition</summary><div>
+<p><strong>Question.</strong> Consider the portion of the plane <span class="math inline">\(\{z=0\}\)</span>, <span class="math display">\[
+\mathcal{S}= \left\{ (x,y,0) \in \mathbb{R}^3 \, \colon \, x \in (0,2\pi)\,, \, y \in  \mathbb{R}\right\} \,,
+\]</span> and the unit cylinder <span class="math display">\[
+\widetilde{\mathcal{S}} = \{ (x,y,z) \in \mathbb{R}^3 \, \colon \, x^2 + y^2 = 1 \}  \,.
+\]</span> Define the map <span class="math display">\[
+f \colon S \to \widetilde{\mathcal{S}} \,, \quad
+f(x,y,0) := (\cos x , \sin x, y) \,.
+\]</span></p>
+<ol type="1">
+<li><p>Compute <span class="math inline">\(T_{\mathbf{p}}\mathcal{S}\)</span>.</p></li>
+<li><p>Prove that the differential <span class="math inline">\(d_{\mathbf{p}}f\)</span> at <span class="math display">\[
+\mathbf{p}= (u_0,v_0,0) \,, \quad \mathbf{v}= (\lambda,\mu,0) \,,
+\]</span> is given by <span class="math display">\[
+d_{\mathbf{p}} f (\mathbf{v}) =   (- \lambda \sin (u_0), \lambda \cos (u_0), \mu) \,.
+\]</span></p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>A chart for <span class="math inline">\(\mathcal{S}\)</span> is given by <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (u,v,0) \,.
+\]</span> Therefore <span class="math display">\[
+{\pmb{\sigma}}_u = (1,0,0) \,, \qquad {\pmb{\sigma}}_v = (0,1,0) \,,
+\]</span> from which <span class="math display">\[\begin{align*}
+T_{\mathbf{p}} \mathcal{S}&amp; = \operatorname{span} \{ {\pmb{\sigma}}_u,{\pmb{\sigma}}_v \} \\
+          &amp; = \operatorname{span} \{ (1,0,0), (0,1,0)  \} \\
+          &amp; = \{ (\lambda,\mu,0) \, \colon \, \lambda,\mu \in \mathbb{R}\} \,.
+\end{align*}\]</span></p></li>
+<li><p>From the answer to Point 1, we see that <span class="math display">\[
+\mathbf{v}= (\lambda,\mu,0) \in T_{\mathbf{p}} \mathcal{S}\,.
+\]</span> Define the curve <span class="math inline">\({\pmb{\gamma}}\colon (-\varepsilon,\varepsilon) \to \mathcal{S}\)</span> by setting <span class="math display">\[
+{\pmb{\gamma}}(t) := {\pmb{\sigma}}(u_0 + t \lambda, v_0 + t \mu ) = (u_0 + t \lambda, v_0 + t \mu, 0)\,.
+\]</span> Clearly, <span class="math display">\[
+{\pmb{\gamma}}(0) = \mathbf{p}\,, \quad \dot{{\pmb{\gamma}}}(0) = \mathbf{v}= (\lambda,\mu,0)\,.
+\]</span> We have <span class="math display">\[\begin{align*}
+(f \circ {\pmb{\gamma}}) (t) &amp; = f(u_0 + t \lambda, v_0 + t \mu,0) \\
+              &amp; = ( \cos(u_0 + t \lambda), \sin(u_0 + t \lambda),v_0 + t \mu ) \,,\\
+(f \circ {\pmb{\gamma}})' (t) &amp; = (- \lambda \sin (u_0 + t\lambda), \lambda \cos (u_0 + t \lambda), \mu) \,.
+\end{align*}\]</span> Therefore, the differential is given by <span class="math display">\[
+d_{\mathbf{p}} f (\mathbf{v}) = (f \circ {\pmb{\gamma}})' (0) =  (- \lambda \sin (u_0), \lambda \cos (u_0), \mu) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-53" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 53</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> a smooth map. Denote the differential of <span class="math inline">\(f\)</span> by <span class="math display">\[
+d_{\mathbf{p}}f \colon T_{\mathbf{p}} \mathcal{S}\to T_{f(\mathbf{p})} \widetilde{\mathcal{S}} \,.
+\]</span> We have:</p>
+<ol type="1">
+<li><p><span class="math inline">\(d_{\mathbf{p}}f (\mathbf{v})\)</span> depends only on <span class="math inline">\(f, \mathbf{p},\mathbf{v}\)</span> (and not on <span class="math inline">\({\pmb{\gamma}}\)</span>).</p></li>
+<li><p><span class="math inline">\(d_{\mathbf{p}} f\)</span> is linear, that is, <span class="math display">\[
+d_{\mathbf{p}}f (\lambda \mathbf{v}+ \mu \mathbf{w}) = \lambda d_{\mathbf{p}}f (\mathbf{v}) + \mu d_{\mathbf{p}}f (\mathbf{w}) \,,
+\]</span> for all <span class="math inline">\(\mathbf{v},\mathbf{w}\in T_{\mathbf{p}} \mathcal{S}\)</span> and <span class="math inline">\(\lambda,\mu \in \mathbb{R}\)</span>.</p></li>
+<li><p>Let <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \mathcal{S}\,, \quad \widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to \widetilde{\mathcal{S}} \,,
+\]</span> be regular charts at <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(f(\mathbf{p})\)</span>, respectively. Denote by <span class="math display">\[
+(u,v)  \mapsto ( \alpha(u,v), \beta(u,v) )
+\]</span> the components of the smooth map <span class="math display">\[
+\Psi := \widetilde{{\pmb{\sigma}}}^{-1} \circ f \circ {\pmb{\sigma}}\colon U \to \widetilde{U} \,.
+\]</span> In particular it holds <span class="math display">\[
+\widetilde{{\pmb{\sigma}}} (  \alpha(u,v) , \beta(u,v) ) = f({\pmb{\sigma}}(u,v)) \,,
+\quad \forall \, (u,v) \in U \,.
+\]</span> The matrix of the linear map <span class="math inline">\(d_{\mathbf{p}}f\)</span> with respect to the basis <span class="math display">\[
+\{ {\pmb{\sigma}}_u , {\pmb{\sigma}}_v \} \,\, \mbox{ on } \,\, T_{\mathbf{p}} \mathcal{S}\,, \quad
+\{ \widetilde{{\pmb{\sigma}}}_{\tilde{u}} , \widetilde{{\pmb{\sigma}}}_{\tilde{v}} \} \,\, \mbox{ on } \,\, T_{f(\mathbf{p})} \widetilde{\mathcal{S}} \,,
+\]</span> is given by the Jacobian of the map <span class="math inline">\(\Psi\)</span>, that is, <span class="math display">\[
+d_{\mathbf{p}} f = J\Psi = \left(
+\begin{array}{cc}
+\alpha_u &amp; \alpha_v \\
+\beta_u &amp; \beta_v \\
+\end{array}
+\right) \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="computing-the-matrix-of-d_mathbfpf" class="Example" title="Computing the matrix of d_{\mathbf{p}}f">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 54: </strong>Computing the matrix of <span class="math inline">\(d_{\mathbf{p}}f\)</span></summary><div><strong>Question.</strong> Consider the unit cylinder, charted by <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (\cos u, \sin u, v) \,, \quad (u,v) \in U := (0,2\pi) \times \mathbb{R}\,.
+\]</span> Consider the plane <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> charted by <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}(u,v) = (u,v,0) \,, \quad (u,v) \in \widetilde{U}= \mathbb{R}^2 \,.
+\]</span> Define the map <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\,, \quad
+f(x,y,z) = (y,xz,0) \,.
+\]</span> Compute the matrix of <span class="math inline">\(d_{\mathbf{p}} f\)</span> with respect to these charts.<p></p>
+<p><strong>Solution.</strong> We need to compute the map <span class="math display">\[
+\Psi \colon U \to \widetilde{U} \,, \quad \Psi := \widetilde{{\pmb{\sigma}}}^{-1} \circ f \circ {\pmb{\sigma}}\,.
+\]</span> Clearly, we have <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}^{-1} (u,v,0) =(u,v) \,.
+\]</span> Therefore <span class="math display">\[\begin{align*}
+\Psi(u,v) &amp; = \widetilde{{\pmb{\sigma}}}^{-1} \left( f({\pmb{\sigma}}(u,v))    \right) \\
+          &amp; = \widetilde{{\pmb{\sigma}}}^{-1} \left( f(\cos u, \sin u, v )    \right) \\
+          &amp; =  \widetilde{{\pmb{\sigma}}}^{-1} \left( \sin (u), \cos (u) v, 0    \right) \\
+          &amp; = \left( \sin (u), \cos (u) v    \right) \,.
+\end{align*}\]</span> The components of <span class="math inline">\(\Psi\)</span> are <span class="math display">\[
+\alpha(u,v) = \sin(u) \,, \qquad \beta (u,v) =  \cos (u) v  \,.
+\]</span> Therefore <span class="math display">\[\begin{align*}
+\alpha_u &amp; = \cos (u) \,, &amp; \alpha_v &amp;  = 0 \\
+\beta_u  &amp; = -\sin (u) v \,,  &amp; \beta_v &amp;  = \cos(u)
+\end{align*}\]</span> The matrix of <span class="math inline">\(d_{\mathbf{p}}f\)</span> is hence <span class="math display">\[
+d_{\mathbf{p}}f = J\Psi =
+\left(
+\begin{array}{cc}
+\cos (u) &amp; 0 \\
+-\sin (u) v  &amp; \cos(u) \\
+\end{array}
+\right) \,.
+\]</span></p>
+</div></details>
+</div>
+<div id="Theorem-55" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 55</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}_1\)</span> and <span class="math inline">\(\mathcal{S}_2\)</span> be regular surfaces. Suppose that <span class="math display">\[
+f \colon \mathcal{S}_1 \to \mathcal{S}_2
+\]</span> is smooth, and let <span class="math inline">\(\mathbf{p}\in \mathcal{S}_1\)</span>. They are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is a local diffeomorphism at <span class="math inline">\(\mathbf{p}\)</span>.</li>
+<li>The differential <span class="math inline">\(d_{\mathbf{p}} f \colon T_{\mathbf{p}} \mathcal{S}_1 \to T_{f(\mathbf{p})} \mathcal{S}_2\)</span> is invertible at <span class="math inline">\(\mathbf{p}\)</span>.</li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="level-surfaces" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="level-surfaces"><span class="header-section-number">3.8</span> Level surfaces</h2>
+<div id="level-surface" class="Definition" title="Level surface">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 56: </strong>Level surface</summary><div>Let <span class="math inline">\(V \subseteq \mathbb{R}^3\)</span> be an open set and <span class="math inline">\(f \colon V \to \mathbb{R}\)</span> be smooth. The <strong>level surface</strong> associated with <span class="math inline">\(f\)</span> is the set <span class="math display">\[
+\mathcal{S}_f := f^{-1}(0) = \{ (x,y,z) \in V \, \colon \,f(x,y,z) = 0  \} \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Theorem-57" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 57</strong></summary><div>Let <span class="math inline">\(V \subseteq \mathbb{R}^3\)</span> be an open set and <span class="math inline">\(f \colon V \to \mathbb{R}\)</span> be smooth. Consider the level surface <span class="math display">\[
+\mathcal{S}_f = \{ (x,y,z) \in V \, \colon \,f(x,y,z) = 0  \} \,.
+\]</span> Suppose that <span class="math display">\[
+\nabla f (x,y,z) \neq 0 \,, \quad \forall \, (x,y,z) \in V \,.
+\]</span> Then <span class="math inline">\(\mathcal{S}_f\)</span> is a regular surface.<p></p>
+</div></details>
+</div>
+<div id="circular-cone" class="Example" title="Circular cone">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 58: </strong>Circular cone</summary><div><strong>Question.</strong> Consider the circular cone <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \,x^2 + y^2 = z^2 \,, \,  z&gt;0  \} \,.
+\]</span> Prove that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.<p></p>
+<p><strong>Solution.</strong> Define the open set <span class="math display">\[
+V = \{ (x,y,z) \in \mathbb{R}^3 \, \colon \,z &gt; 0 \} \,,
+\]</span> and the function <span class="math inline">\(f \colon V \to \mathbb{R}\)</span> by <span class="math display">\[
+f(x,y,z) = x^2 + y^2 - z^2 \,.
+\]</span> We have <span class="math display">\[
+\nabla f (x,y,z) = ( 2x, 2y, -2z ) \neq 0  \,, \quad
+\forall \, (x,y,z) \in V \,.
+\]</span> Since <span class="math display">\[
+\mathcal{S}= \mathcal{S}_f \,,
+\]</span> we conclude that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.</p>
+</div></details>
+</div>
+<div id="tangent-plane-of-level-surfaces" class="Theorem" title="Tangent plane of level surfaces">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 59: </strong>Tangent plane of level surfaces</summary><div>
+<p>Let <span class="math inline">\(V \subseteq \mathbb{R}^3\)</span> be an open set and <span class="math inline">\(f \colon V \to \mathbb{R}\)</span> be smooth. Suppose that <span class="math display">\[
+\nabla f (x,y,z) \neq 0 \,, \quad \forall \, (x,y,z) \in V \,.
+\]</span> Let <span class="math inline">\(\mathbf{p}\in \mathcal{S}_f\)</span>. We have <span class="math display">\[
+\nabla f(\mathbf{p}) \perp T_{\mathbf{p}} \mathcal{S}_f \,.
+\]</span> In particular, they hold:</p>
+<ol type="1">
+<li><p>The cartesian equation of <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}_f\)</span> is given by <span class="math display">\[
+\nabla f (\mathbf{p}) \cdot \mathbf{x}= 0    \,, \quad  \forall  \, \mathbf{x}\in \mathbb{R}^3\,,
+\]</span></p></li>
+<li><p>The cartesian equation for <span class="math inline">\(\mathbf{p}+ T_{\mathbf{p}} \mathcal{S}_f\)</span> is given by <span class="math display">\[
+\nabla f(\mathbf{p}) \cdot (\mathbf{x}- \mathbf{p}) = 0 \,, \quad \forall \, \mathbf{x}\in \mathbb{R}^3\,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="unit-cylinder-1" class="Example" title="Unit cylinder">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 60: </strong>Unit cylinder</summary><div>
+<p><strong>Question.</strong> Consider the unit cylinder <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \,x^2 + y^2 = 1 \}   \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.</li>
+<li>Let <span class="math display">\[
+\mathbf{p}= \left( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2},5 \right) \in \mathcal{S}
+\]</span> Show that <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> has cartesian equation <span class="math display">\[
+x + y = 0 \,.
+\]</span></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Define the open set <span class="math display">\[
+V = \mathbb{R}^3 \smallsetminus \{ (0,0,z) \, \colon \,z \in \mathbb{R}\} \,.
+\]</span> Note that <span class="math inline">\(V\)</span> is obtained by removing the <span class="math inline">\(z\)</span>-axis from <span class="math inline">\(\mathbb{R}^3\)</span>. Also define the function <span class="math inline">\(f \colon \mathbb{R}^3 \to \mathbb{R}\)</span> by <span class="math display">\[
+f(x,y,z) := x^2 + y^2 -1 \,.
+\]</span> We have <span class="math display">\[
+\nabla f (x,y,z) = ( 2x, 2y, 0 ) \neq 0  \,, \quad
+\forall \, (x,y,z) \in V \,.
+\]</span> Since <span class="math display">\[
+\mathcal{S}= \mathcal{S}_f \,,
+\]</span> we conclude that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.</p></li>
+<li><p>Using the expression for <span class="math inline">\(\nabla f\)</span> found in Point 1, we get <span class="math display">\[
+\nabla f (\mathbf{p}) = \nabla f \left( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2},5 \right) =
+(\sqrt{2},\sqrt{2},0) \,.
+\]</span> The equation for <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> is <span class="math display">\[
+\nabla f (\mathbf{p}) \cdot \mathbf{x}= 0 \,, \quad \forall \, \mathbf{x}\in \mathbb{R}^3 \,.
+\]</span> Therefore, we find <span class="math display">\[\begin{align*}
+\nabla f (\mathbf{p}) \cdot \mathbf{x}= 0 \,\, &amp; \iff \,\,
+(\sqrt{2},\sqrt{2},0) \cdot (x,y,z) = 0 \\
+\,\, &amp; \iff \,\,
+x + y = 0 \,.
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="ruled-surfaces" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="ruled-surfaces"><span class="header-section-number">3.9</span> Ruled surfaces</h2>
+<div id="ruled-surface" class="Definition" title="Ruled surface">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 61: </strong>Ruled surface</summary><div>
+<p>A <strong>ruled surface</strong> is a surface with chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) = {\pmb{\gamma}}(u) + v \mathbf{a}(u) \,,
+\]</span> where</p>
+<ol type="1">
+<li><span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> is a smooth curve,</li>
+<li><span class="math inline">\(\mathbf{a} \colon (a,b) \to \mathbb{R}^3\)</span> is a smooth curve,</li>
+<li><span class="math inline">\(\dot{{\pmb{\gamma}}}(t)\)</span> and <span class="math inline">\(\mathbf{a}(t)\)</span> are linearly independent for all <span class="math inline">\(t \in (a,b)\)</span>.</li>
+</ol>
+<p>We say that:</p>
+<ol type="1">
+<li><span class="math inline">\({\pmb{\gamma}}\)</span> is the <strong>base curve</strong>.</li>
+<li>The lines <span class="math inline">\(v \mapsto v \mathbf{a}(u)\)</span> are the <strong>rulings</strong>.</li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-62" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 62</strong></summary><div>A ruled surface <span class="math inline">\(\mathcal{S}\)</span> is regular if <span class="math inline">\(v\)</span> is sufficiently small.<p></p>
+</div></details>
+</div>
+<div id="unit-cylinder-is-ruled-surface" class="Example" title="Unit Cylinder is ruled surface">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 63: </strong>Unit Cylinder is ruled surface</summary><div><strong>Question.</strong> Prove that the unit cylinder <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \, x^2 + y^2 = 1 \} \,.
+\]</span> is a ruled surface.<p></p>
+<p><strong>Solution.</strong> We know that the unit cylinder is charted by <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (\cos(u), \cos(u),v ) \,, \quad (u,v) \in (0,2\pi) \times \mathbb{R}\,.
+\]</span> We can rewrite <span class="math inline">\({\pmb{\sigma}}\)</span> as <span class="math display">\[
+{\pmb{\sigma}}(u,v) = {\pmb{\gamma}}(u) + v \mathbf{a}(u) \,,
+\]</span> with <span class="math display">\[
+{\pmb{\gamma}}(u):= (\cos(u), \cos(u),0 ) \,, \quad \mathbf{a} = (0,0,1) \,.
+\]</span> Note that the vectors <span class="math display">\[
+\dot{{\pmb{\gamma}}}= (-\sin(u), \cos(u), 0 ) \,, \quad \mathbf{a} = (0,0,1)
+\]</span> are orthogonal, and hence linearly independent. Therefore <span class="math inline">\(\mathcal{S}\)</span> is a ruled surface.</p>
+</div></details>
+</div>
+<div id="möbius-band" class="Example" title="Möbius band">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 64: </strong>Möbius band</summary><div>
+<p><strong>Question.</strong> The Möbius band is a ruled surface with chart <span class="math display">\[
+{\pmb{\sigma}}= {\pmb{\gamma}}(u) + v \mathbf{a}(u) \,, \quad u \in (0,2\pi), \, v \in \left( -\frac12, \frac12 \right) \,,
+\]</span> where <span class="math display">\[
+{\pmb{\gamma}}(u) = (\cos(u), \sin(u), 0)
+\]</span> is the unit circle, and <span class="math display">\[
+\mathbf{a} = \left(   -\sin \left( \frac{u}{2} \right) \cos(u),
+                  -\sin \left( \frac{u}{2} \right) \sin(u),
+                   \cos \left( \frac{u}{2} \right)   \right)
+\]</span> is a vector which does a half rotation while going around the unit circle <span class="math inline">\({\pmb{\gamma}}\)</span>. In particular <span class="math display">\[
+{\pmb{\sigma}}(u,v) =  \left(   
+  \left[ 1 - v \sin \left( \frac{u}{2} \right) \right] \cos(u),
+  \left[ 1 - v \sin \left( \frac{u}{2} \right) \right] \sin(u),
+  v \cos \left( \frac{u}{2} \right)   \right) \,.
+\]</span></p>
+<ol type="1">
+<li>Compute the standard unit normal to <span class="math inline">\({\pmb{\sigma}}\)</span>.</li>
+<li>Prove that <span class="math inline">\(\mathcal{S}\)</span> is <strong>non orientable</strong>.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>From the formula for <span class="math inline">\({\pmb{\sigma}}\)</span>, it is easy to compute that <span class="math display">\[
+{{\pmb{\sigma}}}_{u}\times {{\pmb{\sigma}}}_{v}= \left( - \cos(u) \cos \left(  \frac{u}{2} \right),   - \sin(u) \cos \left(  \frac{u}{2} \right) , - \sin \left(  \frac{u}{2} \right) \right) \,.
+\]</span> It is also immediate to check that <span class="math inline">\(\left\| {{\pmb{\sigma}}}_{u}\times {{\pmb{\sigma}}}_{v} \right\| = 1\)</span>, and therefore the principal unit normal of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathbf{N}_{{\pmb{\sigma}}} = {\pmb{\sigma}}_u \times {{\pmb{\sigma}}}_{v}\,.
+\]</span></p></li>
+<li><p>Suppose by contradiction that <span class="math inline">\(\mathcal{S}\)</span> is orientable. This means there exists a globally defined principal unit normal vector <span class="math display">\[
+\mathbf{N}\colon \mathcal{S}\to \mathbb{R}^3 \,.
+\]</span> By definition of principal normal, we have either <span class="math display">\[
+\mathbf{N}\circ {\pmb{\sigma}}= \mathbf{N}_{{\pmb{\sigma}}}  \,.
+\]</span> Consider the point <span class="math inline">\(\mathbf{p}= (1,0,0)\)</span> on <span class="math inline">\(\mathcal{S}\)</span>. Notice that, by continuity, <span class="math inline">\(\mathbf{p}\)</span> can be obtained via <span class="math inline">\({\pmb{\sigma}}\)</span> through the limits <span class="math display">\[
+\mathbf{p}= \lim_{u \to 0^+} {\pmb{\sigma}}(u,0) = \lim_{u \to 2\pi^-} {\pmb{\sigma}}(u,0) \,.
+\]</span> Since <span class="math inline">\(\mathbf{N}\)</span> is continuous, the above implies <span id="eq-mobius-not-orientable-bis"><span class="math display">\[
+\mathbf{N}(\mathbf{p}) = \lim_{u \to 0^+} \mathbf{N}\circ {\pmb{\sigma}}(u,0) = \lim_{u \to 2\pi^-} \mathbf{N}\circ {\pmb{\sigma}}(u,0) \,.
+\tag{3.1}\]</span></span> However, by direct calculation: <span class="math display">\[\begin{align*}
+\lim_{u \to 0^+} \mathbf{N}\circ {\pmb{\sigma}}(u,0) &amp; =
+\lim_{u \to 0^+} \mathbf{N}_{{\pmb{\sigma}}} (u,0) = (-1,0,0) \\
+\lim_{u \to 2\pi^-} \mathbf{N}\circ {\pmb{\sigma}}(u,0) &amp; =
+\lim_{u \to 2\pi^-} \mathbf{N}_{{\pmb{\sigma}}} (u,0) = (1,0,0)
+\end{align*}\]</span> This clearly contradicts (<a href="#eq-mobius-not-orientable-bis" class="quarto-xref"><span>3.1</span></a>). Therefore <span class="math inline">\(\mathbf{N}\)</span> cannot exist, and <span class="math inline">\(\mathcal{S}\)</span> is not orientable.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="Example-65" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 65</strong></summary><div><strong>Question.</strong> Show that the surface <span class="math display">\[
+S=\left\{(x, y, z) \in \mathbb{R}^{3} \, \colon \, x^{2}+ 10 xy + 16x^2 - z = 0\right\}
+\]</span> is a ruled surface.<p></p>
+<p><strong>Solution.</strong> We shall make a change of variables. Notice that we can rearrange <span class="math display">\[
+\begin{aligned}
+x^{2}+10 x y+16 x^{2}-z &amp; =0 \\
+(x+8 y)(x+2 y) &amp; = z .
+\end{aligned}
+\]</span> Let <span class="math display">\[
+u=x+8 y, \qquad  v=x+2 y \,.
+\]</span> Then <span class="math inline">\(u v=z\)</span> and <span class="math display">\[
+\begin{aligned}
+u-v &amp; =6 y \quad \implies \quad  y=\frac{u-v}{6} \\
+x &amp; =u-8 y \\
+&amp; =u-\frac{8(u-v)}{6} \\
+&amp; =\frac{4 v-u}{3} .
+\end{aligned}
+\]</span> It follows that if <span class="math inline">\((x, y, z) \in S\)</span> then <span class="math display">\[
+\begin{aligned}
+(x, y, z) &amp; =\left(\frac{4 v-u}{3}, \frac{u-v}{6}, u v\right) \\
+&amp; =\left(-\frac{u}{3}, \frac{u}{6}, 0\right)+v\left(\frac{4}{3},-\frac{1}{6}, u\right) \\
+&amp; = {\pmb{\gamma}}(u) + v \mathbf{a}(u) \,,
+\end{aligned}
+\]</span> where we have set <span class="math display">\[\begin{align*}
+{\pmb{\gamma}}(u) &amp; = \left(-\frac{u}{3}, \frac{u}{6}, 0\right) \\
+\mathbf{a}(u) &amp; = \left(\frac{4}{3},-\frac{1}{6}, u\right) \,.
+\end{align*}\]</span> Notice that <span class="math display">\[
+\dot{{\pmb{\gamma}}}(u) = \left(-\frac{1}{3}, \frac{1}{6}, 0\right) \,.
+\]</span> For <span class="math inline">\(u \neq 0\)</span>, we clearly have that <span class="math inline">\(\mathbf{a}(u)\)</span> and <span class="math inline">\(\dot{{\pmb{\gamma}}}(u)\)</span> are linearly independent (the last component of <span class="math inline">\(\dot{{\pmb{\gamma}}}(u)\)</span> is <span class="math inline">\(0\)</span>). For <span class="math inline">\(u = 0\)</span> we have <span class="math display">\[
+\dot{{\pmb{\gamma}}}(0) = \left(-\frac{1}{3}, \frac{1}{6}, 0\right) \,, \qquad
+\mathbf{a}(0) = \left(\frac{4}{3},-\frac{1}{6}, 0\right) \,,
+\]</span> which are clearly linearly independent. Therefore, <span class="math inline">\(S\)</span> is a ruled surface.</p>
+</div></details>
+</div>
+</section>
+<section id="surfaces-of-revolution" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="surfaces-of-revolution"><span class="header-section-number">3.10</span> Surfaces of Revolution</h2>
+<div id="surface-of-revolution" class="Definition" title="Surface of revolution">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 66: </strong>Surface of revolution</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a smooth curve in the <span class="math inline">\((x,z)\)</span>-plane, that is, <span class="math display">\[
+{\pmb{\gamma}}(v) = (f(v), 0 , g(v)) \,.
+\]</span> Suppose that <span class="math inline">\(f&gt;0\)</span>. The surface <span class="math inline">\(\mathcal{S}\)</span> obtained by rotating <span class="math inline">\({\pmb{\gamma}}\)</span> about the <span class="math inline">\(z\)</span>-axis is called <strong>surface of revolution</strong>. A chart for <span class="math inline">\(\mathcal{S}\)</span> is given by <span class="math display">\[
+{\pmb{\sigma}}(u,v) =  (\cos(u)f(v) , \sin(u) f(v), g(v))\,,
+\]</span> with <span class="math inline">\(u \in (0,2\pi)\)</span> and <span class="math inline">\(v \in (a,b)\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-67" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 67</strong></summary><div>A surface of revolution is regular if and only if <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.<p></p>
+</div></details>
+</div>
+<div id="catenoid" class="Example" title="Catenoid">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 68: </strong>Catenoid</summary><div><strong>Question.</strong> The catenary function is defined by <span class="math display">\[
+f(v) = \cosh (v) \,.  
+\]</span> The Catenoid <span class="math inline">\(\mathcal{S}\)</span> is the surface of revolution obtained by rotating the catenary about the <span class="math inline">\(z\)</span>-axis, that is, by rotating the curve <span class="math display">\[
+{\pmb{\gamma}}(v) = \left(  \cosh (v), 0 , v \right) \,.
+\]</span> A chart <span class="math inline">\(\mathcal{S}\)</span> is given by <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (\cos(u) \cosh (v) , \sin(u) \cosh (v), v) \,,
+\]</span> where <span class="math inline">\(u \in [0,2\pi)\)</span> and <span class="math inline">\(v \in \mathbb{R}\)</span>. Prove that <span class="math inline">\(\mathcal{S}\)</span> is a regular surface.<p></p>
+<p><strong>Solution.</strong> Note that <span class="math inline">\(f&gt;0\)</span> and <span class="math display">\[
+\dot{{\pmb{\gamma}}}= \left(  \sinh (v), 0 , 1 \right) \,, \quad
+\left\| \dot{{\pmb{\gamma}}} \right\|^2 = 1+ \sinh(v)^2 \geq 1 \,.
+\]</span> Therefore <span class="math inline">\({\pmb{\gamma}}\)</span> is regular. As <span class="math inline">\(\mathcal{S}\)</span> is a surface of revolution, we conclude that <span class="math inline">\(\mathcal{S}\)</span> is regular.</p>
+</div></details>
+</div>
+</section>
+<section id="first-fundamental-form" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="first-fundamental-form"><span class="header-section-number">3.11</span> First fundamental form</h2>
+<div id="first-fundamental-form-1" class="Definition" title="First fundamental form">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 69: </strong>First fundamental form</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>. The <strong>first fundamental form</strong> of <span class="math inline">\(\mathcal{S}\)</span> at <span class="math inline">\(\mathbf{p}\)</span> is the bilinear symmetric map <span class="math display">\[
+I_{\mathbf{p}} \colon T_{\mathbf{p}} \mathcal{S}\times T_{\mathbf{p}} \mathcal{S}\to \mathbb{R}\,, \quad I_{\mathbf{p}} (\mathbf{v},\mathbf{w}) := \mathbf{v}\cdot \mathbf{w}\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="definition-coordinate-functions" class="Definition" title="Coordinate functions on tangent plane">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 70: </strong>Coordinate functions on tangent plane</summary><div>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span>. For each <span class="math inline">\(\mathbf{p}\in {\pmb{\sigma}}(U)\)</span> we have <span class="math display">\[
+T_{\mathbf{p}} \mathcal{S}= \operatorname{span} \{{\pmb{\sigma}}_u,{\pmb{\sigma}}_v\} \,,
+\]</span> where <span class="math inline">\({\pmb{\sigma}}_u\)</span> and <span class="math inline">\({\pmb{\sigma}}_v\)</span> are evaluated at the point <span class="math inline">\((u,v) \in U\)</span> such that <span class="math display">\[
+{\pmb{\sigma}}(u,v)=\mathbf{p}\,.
+\]</span> Therefore, for each <span class="math inline">\(\mathbf{v}\in T_{\mathbf{p}} \mathcal{S}\)</span>, there exist <span class="math inline">\(\lambda,\mu \in \mathbb{R}\)</span> such that <span class="math display">\[
+\mathbf{v}= \lambda {\pmb{\sigma}}_u + \mu {\pmb{\sigma}}_v \,.
+\]</span> The <strong>coordinate functions</strong> on <span class="math inline">\(T_{\mathbf{p}} \mathcal{S}\)</span> are the linear maps <span class="math display">\[
+du, dv \colon T_{\mathbf{p}} \mathcal{S}\to \mathbb{R}\,, \quad du(\mathbf{v}) := \lambda \,,  
+\quad dv(\mathbf{v}) := \mu \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="first-fundamental-form-of-a-chart" class="Definition" title="First fundamental form of a chart">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 71: </strong>First fundamental form of a chart</summary><div>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span>. Define the functions <span class="math display">\[
+E , F , G \colon U \to \mathbb{R}
+\]</span> by setting <span class="math display">\[
+E := {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_u \,, \quad  F := {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_v \,, \quad
+G := {\pmb{\sigma}}_v \cdot {\pmb{\sigma}}_v \,.
+\]</span> The <strong>first fundamental form</strong> of <span class="math inline">\({\pmb{\sigma}}\)</span> is the quadratic form <span class="math display">\[
+\mathscr{F}_1 \colon T_{\mathbf{p}} \mathcal{S}\to \mathbb{R}
+\]</span> defined by <span class="math display">\[
+\mathscr{F}_1 (\mathbf{v}) := E \, du^2(\mathbf{v}) + 2F \, du(\mathbf{v}) \, dv (\mathbf{v})+ G \, dv^2 (\mathbf{v}) \,,
+\]</span> for all <span class="math inline">\(\mathbf{v}\in T_{\mathbf{p}} \mathcal{S}\)</span>, and <span class="math inline">\(\mathbf{p}\in {\pmb{\sigma}}(U)\)</span>, where <span class="math inline">\(E,F,G\)</span> are evaluated at <span class="math display">\[
+(u,v) = {\pmb{\sigma}}^{-1}(\mathbf{p}) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Theorem-72" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 72</strong></summary><div>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span>, and <span class="math inline">\(\mathbf{p}\in {\pmb{\sigma}}(U)\)</span>. Then <span class="math display">\[
+I_{\mathbf{p}} (\mathbf{v},\mathbf{w}) = (du (\mathbf{v}), dv(\mathbf{v}) )  \,
+\left(
+\begin{array}{cc}
+E &amp; F \\
+F &amp; G
+\end{array}
+\right) \, (du(\mathbf{w}) , dv(\mathbf{w}))^T \,,
+\]</span> for all <span class="math inline">\(\mathbf{v},\mathbf{w}\in T_{\mathbf{p}} \mathcal{S}\)</span>. In particular, <span class="math inline">\(\mathscr{F}_1\)</span> is the quadratic form associated to the symmetric bilinear form <span class="math inline">\(I_{\mathbf{p}}\)</span>, that is, <span class="math display">\[
+\mathscr{F}_1 (\mathbf{v}) = I_{\mathbf{p}} (\mathbf{v},\mathbf{v}) \,, \quad \forall \, \mathbf{v}\in T_{\mathbf{p}} \mathcal{S}\,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="Definition-73" class="Definition">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 73</strong></summary><div>With a little abuse of notation, we also denote by <span class="math inline">\(\mathscr{F}_1\)</span> the <span class="math inline">\(2 \times 2\)</span> matrix <span class="math display">\[
+\mathscr{F}_1 :=
+\left(
+\begin{array}{cc}
+E &amp; F \\
+F &amp; G
+\end{array}
+\right) \,.
+\]</span><p></p>
+</div></details>
+</div>
+<div id="proposition-fff-reparametrization" class="Proposition" title="First fundamental form and reparametrizations">
+<details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 74: </strong>First fundamental form and reparametrizations</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> a regular chart. Suppose that <span class="math inline">\(\widetilde{{\pmb{\sigma}}} \colon \widetilde{U} \to \mathbb{R}^3\)</span> is a reparametrization of <span class="math inline">\({\pmb{\sigma}}\)</span>, that is, <span class="math display">\[
+\widetilde{{\pmb{\sigma}}} = {\pmb{\sigma}}\circ \Phi \,,
+\]</span> where <span class="math inline">\(\Phi \colon \widetilde{U} \to U\)</span> is a diffeomorphism. Denote the first fundamental forms of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> by, respectively, <span class="math display">\[\begin{align*}
+\mathscr{F}_1 &amp; = E \, du^2 + 2F \, du dv + G \, dv^2 \,, \\
+\widetilde{\mathscr{F}}_1 &amp; = \widetilde{E} \, d\tilde{u}^2 + 2 \widetilde{F} \, d\tilde{u} d\tilde{v} + \widetilde{G} \, d\tilde{v}^2 \,.
+\end{align*}\]</span></p>
+<ol type="1">
+<li><p>The matrices of <span class="math inline">\(\mathscr{F}_1\)</span> and <span class="math inline">\(\widetilde{\mathscr{F}}_1\)</span> are related by <span id="eq-fff-change-basis-1"><span class="math display">\[
+\left(
+\begin{array}{cc}
+\widetilde{E} &amp; \widetilde{F} \\
+\widetilde{F} &amp; \widetilde{G}
+\end{array}
+\right)  
+=
+(J \Phi)^T \,
+\left(
+\begin{array}{cc}
+E &amp; F \\
+F &amp; G
+\end{array}
+\right)
+\,
+J \Phi  \,,
+\tag{3.2}\]</span></span> where <span class="math inline">\(J\Phi\)</span> is the Jacobian of <span class="math inline">\(\Phi\)</span> <span class="math display">\[
+J\Phi = \left(   
+\begin{array}{cc}
+\dfrac{\partial u}{\partial \tilde u}  &amp;  \dfrac{\partial u}{\partial \tilde v}  \\
+\dfrac{\partial v}{\partial \tilde u}  &amp;  \dfrac{\partial v}{\partial \tilde v}
+\end{array}
+\right) \,.
+\]</span></p></li>
+<li><p>The linear maps <span class="math inline">\(du, dv\)</span> and <span class="math inline">\(d\tilde{u}, d\tilde{v}\)</span> are related by <span id="eq-fff-change-basis-2"><span class="math display">\[
+\begin{aligned}
+du &amp; = \frac{\partial u}{\partial \tilde{u}} \, d\tilde{u} + \frac{\partial u}{\partial \tilde{v}} \, d\tilde{v} \\
+dv &amp; = \frac{\partial v}{\partial \tilde{u}} \, d\tilde{u} + \frac{\partial v}{\partial \tilde{v}} \, d\tilde{v}
+\end{aligned}
+\tag{3.3}\]</span></span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="example-fff-plane" class="Example" title="FFF of Plane">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 75: </strong>FFF of Plane</summary><div><strong>Question.</strong> Let <span class="math inline">\(\mathbf{a}, \mathbf{p}, \mathbf{q} \in \mathbb{R}^3\)</span>, with <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(\mathbf{q}\)</span> orthonormal. Consider the plane with chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) = \mathbf{a} + u \mathbf{p}+ v \mathbf{q} \,, \quad (u,v) \in \mathbb{R}^2 \,.
+\]</span> Prove that the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = du^2 + dv^2 \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We have <span class="math display">\[
+{\pmb{\sigma}}_u = \mathbf{p}\,, \quad {\pmb{\sigma}}_v = \mathbf{q} \,,
+\]</span> and therefore, using that <span class="math inline">\(\mathbf{p}\)</span> and <span class="math inline">\(\mathbf{q}\)</span> are orthonormal, <span class="math display">\[\begin{align*}
+E &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_u = \left\| \mathbf{p} \right\|^2 = 1 \\
+F &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_v = \mathbf{p}\cdot \mathbf{q} = 0 \\
+G &amp; = {\pmb{\sigma}}_v \cdot {\pmb{\sigma}}_v = \left\| \mathbf{q} \right\|^2 = 1 \\
+\end{align*}\]</span> The first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is, therefore <span class="math display">\[
+\mathscr{F}_1 = E \, du^2 + 2 F\, du \, dv + G \, dv^2 = du^2 + dv^2 \,.  
+\]</span></p>
+</div></details>
+</div>
+<div id="example-fff-plane-polar" class="Example" title="FFF of Plane in polar coordinates">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 76: </strong>FFF of Plane in polar coordinates</summary><div>
+<p><strong>Question.</strong> Let <span class="math inline">\(\mathbf{a}, \mathbf{p}, \mathbf{q} \in \mathbb{R}^3\)</span>, with <span class="math inline">\(\mathbf{p}, \mathbf{q}\)</span> orthonormal. In polar coordinates, the plane is charted by <span class="math display">\[
+{\pmb{\sigma}}(\rho,\theta) = \mathbf{a} + \rho \cos(\theta) \mathbf{p}+ \rho \sin(\theta) \mathbf{q} \,, \quad \rho&gt;0 , \, \theta \in (0,2\pi) \,.
+\]</span></p>
+<ol type="1">
+<li><p>By direct calculation, show that the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = d\rho^2 + \rho^2 d\theta^2 \,.
+\]</span></p></li>
+<li><p>The first fundamental form of the plane in cartesian coordinates is <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 = du^2 + dv^2 \,.
+\]</span> Verify that <span class="math display">\[
+\left(
+\begin{array}{cc}
+E &amp; F \\
+F &amp; G
+\end{array}
+\right)  
+=
+(J \Phi)^T \,
+\left(
+\begin{array}{cc}
+\widetilde{E}&amp; \widetilde{F}\\
+\widetilde{F}&amp; \widetilde{G}
+\end{array}
+\right)
+\,
+J \Phi  \,,
+\]</span> where <span class="math inline">\(\Phi\)</span> is the change of variables from polar to cartesian coordinates.</p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Compute <span class="math inline">\(\mathscr{F}_1\)</span> directly: <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_{\rho} &amp; = \cos(\theta)\mathbf{p}+ \sin(\theta) \mathbf{q} \\
+{\pmb{\sigma}}_{\theta} &amp; = - \rho \sin(\theta) \mathbf{p}+ \rho \cos(\theta) \mathbf{q}
+\end{align*}\]</span> and therefore <span class="math display">\[\begin{align*}
+E &amp; = {\pmb{\sigma}}_{\rho} \cdot {\pmb{\sigma}}_{\rho} \\
+&amp; = \cos^2(\theta)\left\| \mathbf{p} \right\|^2 + \sin^2(\theta)\left\| \mathbf{q} \right\|^2 + 2 \cos(\theta) \sin(\theta) \mathbf{p}\cdot \mathbf{q} \\
+&amp; = 1 \\
+F &amp; = {\pmb{\sigma}}_{\rho} \cdot {\pmb{\sigma}}_{\theta} = 0 \\
+G &amp; = {\pmb{\sigma}}_{\theta} \cdot {\pmb{\sigma}}_{\theta} = r^2 \\
+\end{align*}\]</span> Then the first fundamental form is <span class="math display">\[
+\mathscr{F}_1 = E \, d{\rho}^2 + 2 F\, d{\rho} \, d\theta + G \, d\theta^2 = d{\rho}^2 + {\rho}^2 d\theta^2 \,.  
+\]</span></p></li>
+<li><p>The change of variables from polar to cartesian coordinates is <span class="math display">\[
+\Psi({\rho},\theta) = ( {\rho} \cos(\theta), {\rho} \sin (\theta) )\,.
+\]</span> The Jacobian of <span class="math inline">\(\Psi\)</span> is <span class="math display">\[
+J\Phi = \left(   
+\begin{array}{cc}
+\cos(\theta) &amp; - {\rho} \sin(\theta)  \\
+\sin(\theta)  &amp; {\rho} \cos(\theta)
+\end{array}
+\right) \,.
+\]</span> The matrix of <span class="math inline">\({\widetilde{\mathscr{F}}}_1\)</span> is just the identity: <span class="math display">\[
+\left(
+\begin{array}{cc}
+\widetilde{E}&amp; \widetilde{F}\\
+\widetilde{F}&amp; \widetilde{G}
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+1 &amp; 0 \\
+0 &amp; 1
+\end{array}
+\right) \,.
+\]</span> Therefore, we have <span class="math display">\[\begin{align*}
+(J \Phi)^T &amp;
+\left(
+\begin{array}{cc}
+\widetilde{E}&amp; \widetilde{F}\\
+\widetilde{F}&amp; \widetilde{G}
+\end{array}
+\right)
+\,
+J \Phi
+= (J \Phi)^T \, J \Phi \\
+&amp;=
+\left(
+\begin{array}{cc}
+\cos(\theta) &amp;  \sin(\theta) \\
+-\rho \sin(\theta) &amp; \rho \cos(\theta)
+\end{array}
+\right)
+\left(   
+\begin{array}{cc}
+\cos(\theta) &amp; - \rho \sin(\theta)  \\
+\sin(\theta)  &amp; \rho \cos(\theta)
+\end{array}
+\right) \\
+&amp;=
+\left(   
+\begin{array}{cc}
+1 &amp; 0  \\
+0  &amp; \rho^2  
+\end{array}
+\right)
+=
+\left(   
+\begin{array}{cc}
+E &amp; F  \\
+F  &amp; G  
+\end{array}
+\right) \,.
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+<div id="example-cylinder-fff" class="Example" title="FFF of Unit cylinder">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 77: </strong>FFF of Unit cylinder</summary><div><strong>Question.</strong> Consider the unit cylinder with chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (\cos(u), \sin(u),  v)  \,, \quad (u,v) \in (0,2\pi) \times \mathbb{R}\,.
+\]</span> Prove that the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = du^2 + dv^2 \,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We have <span class="math display">\[
+{\pmb{\sigma}}_u = (-\sin(u),\cos(u), 0 )  \,, \quad {\pmb{\sigma}}_v = (0,0,1) \,,
+\]</span> and therefore <span class="math display">\[\begin{align*}
+E &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_u = 1 \\
+F &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_v = 0 \\
+G &amp; = {\pmb{\sigma}}_v \cdot {\pmb{\sigma}}_v = 1 \\
+\end{align*}\]</span> Then the first fundamental form is <span class="math display">\[
+\mathscr{F}_1 = E \, du^2 + 2 F\, du \, dv + G \, dv^2 = du^2 + dv^2 \,.  
+\]</span></p>
+</div></details>
+</div>
+<div id="Example-78" class="Example">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 78</strong></summary><div><strong>Question.</strong> Find the first fundamental form of the surface chart <span class="math display">\[
+{\pmb{\sigma}}(u, v)=\left(u-v, u+v, u^{2}+v^{2}\right)\,.
+\]</span><p></p>
+<p><strong>Solution.</strong> We compute <span class="math display">\[
+\begin{aligned}
+{{\pmb{\sigma}}}_{u}&amp; =(1,1,2 u) \\
+{{\pmb{\sigma}}}_{v}&amp; =(-1,1,2 v) \\
+E &amp; = {{\pmb{\sigma}}}_{u}\cdot {{\pmb{\sigma}}}_{v}= 2\left(1+2 u^{2}\right) \\
+F &amp; ={{\pmb{\sigma}}}_{u}\cdot {{\pmb{\sigma}}}_{v}= 4 u v \\
+G &amp; = {{\pmb{\sigma}}}_{v}\cdot {{\pmb{\sigma}}}_{v}= \left(1+2 v^{2}\right)
+\end{aligned}
+\]</span> so that <span class="math display">\[
+\mathscr{F}_{1}=\left(\begin{array}{cc}
+2\left(1+2 u^{2}\right) &amp; 4 u v \\
+4 u v &amp; 2\left(1+2 v^{2}\right)
+\end{array}\right) \,.
+\]</span></p>
+</div></details>
+</div>
+</section>
+<section id="length-of-curves" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="length-of-curves"><span class="header-section-number">3.12</span> Length of curves</h2>
+<div id="Proposition-79" class="Proposition">
+<details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 79</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface with chart <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span>. Suppose <span class="math display">\[
+{\pmb{\gamma}}\colon (a,b) \to {\pmb{\sigma}}(U) \subseteq \mathcal{S}
+\]</span> is a smooth curve. Then <span class="math display">\[
+{\pmb{\gamma}}(t) = {\pmb{\sigma}}(u(t), v(t)) \,,
+\]</span> for some smooth functions <span class="math inline">\(u,v \colon (a,b) \to \mathbb{R}\)</span>, and <span class="math display">\[
+\int_{a}^{b} \left\| \dot{{\pmb{\gamma}}}(t) \right\| \, dt =
+\int_{a}^{b} \sqrt{  E \dot{u}^2 + 2F \dot u \dot v + G \dot{v}^2  } \, dt \,,
+\]</span> where in the above formula:</p>
+<ul>
+<li><span class="math inline">\(\dot u, \dot v\)</span> are computed at <span class="math inline">\(t\)</span>,</li>
+<li><span class="math inline">\(E,F,G\)</span> are computed at <span class="math inline">\((u(t),v(t))\)</span>.</li>
+</ul>
+</div></details>
+</div>
+<div id="example-fff-cone" class="Example" title="Curves on the Cone">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 80: </strong>Curves on the Cone</summary><div>
+<p><strong>Question.</strong> Consider the cone with chart <span class="math display">\[
+{\pmb{\sigma}}(u,v)=(\cos(u) v, \sin (u) v, v) \,,
+\]</span> where <span class="math inline">\(u  \in (0,2\pi)\)</span> and <span class="math inline">\(v &gt;0\)</span>. Prove the following:</p>
+<ol type="1">
+<li><p>The first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = 2 \, du^2 + u^2 \, dv^2 \,.
+\]</span></p></li>
+<li><p>Let <span class="math inline">\({\pmb{\gamma}}(t):= {\pmb{\sigma}}(t,t)\)</span>. The length of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\int_{\pi/2}^{\pi} \left\| \dot{{\pmb{\gamma}}}(t) \right\| \, dt = \int_{\pi/2}^{\pi} \sqrt{ t^2 + 2  } \, dt  \,.
+\]</span></p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>We have <span class="math display">\[\begin{align*}
+{\pmb{\sigma}}_u &amp; = (- \sin(u)v, \cos(u)v,0) \\
+{\pmb{\sigma}}_v &amp; = (\cos(u), \sin (u), 1) \\
+E &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_u = v^2 \\
+F &amp; = {\pmb{\sigma}}_u \cdot {\pmb{\sigma}}_v  = 0 \\
+G &amp; = {\pmb{\sigma}}_v \cdot {\pmb{\sigma}}_v = 2
+\end{align*}\]</span> The first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = v^2 \, du^2 + 2 \, dv^2 \,.
+\]</span></p></li>
+<li><p>By definition we have <span class="math display">\[
+{\pmb{\gamma}}(t) = {\pmb{\sigma}}(t,t) \,,
+\]</span> so that <span class="math display">\[
+{\pmb{\gamma}}(t) = {\pmb{\sigma}}(u(t),v(t))
+\]</span> with <span class="math display">\[
+u(t) = t \,, \quad v(t) = t \,.
+\]</span> In particular <span class="math display">\[
+\dot u = 1\,, \quad \dot v = 1
+\]</span> and <span class="math display">\[\begin{align*}
+E(u(t),v(t)) &amp; = E(t,t) = t^2 \\
+F(u(t),v(t)) &amp; = F(t,t) = 0 \\
+G(u(t),v(t)) &amp; = G(t,t) = 2  \,.
+\end{align*}\]</span> Therefore, <span class="math display">\[\begin{align*}
+\int_{\pi/2}^{\pi} \left\| \dot{{\pmb{\gamma}}}(t) \right\| \, dt &amp; =
+\int_{\pi/2}^{\pi} \sqrt{  E \dot{u}^2 + 2F \dot u \dot v + G \dot{v}^2  } \, dt \\
+&amp; = \int_{\pi/2}^{\pi} \sqrt{  t^2 + 2   } \, dt   \,.
+\end{align*}\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="isometries" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="isometries"><span class="header-section-number">3.13</span> Isometries</h2>
+<div id="local-isometry-and-isometry" class="Definition" title="Local Isometry and Isometry">
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 81: </strong>Local Isometry and Isometry</summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}
+\]</span> be a smooth map. Denote the differential of <span class="math inline">\(f\)</span> by <span class="math display">\[
+d_{\mathbf{p}}f \colon T_{\mathbf{p}} \mathcal{S}\to T_{f(\mathbf{p})} \widetilde{\mathcal{S}}\,.
+\]</span></p>
+<p>We say that:</p>
+<ol type="1">
+<li><p><span class="math inline">\(f\)</span> is a <strong>local isometry</strong>, if for all <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span> <span id="eq-loc-iso"><span class="math display">\[
+\mathbf{v}\cdot \mathbf{w}= d_{\mathbf{p}}f (\mathbf{v}) \cdot d_{\mathbf{p}}f (\mathbf{w}) \,, \quad
+\forall \, \mathbf{v}, \mathbf{w}\in T_{\mathbf{p}} \mathcal{S}\,.
+\tag{3.4}\]</span></span> In this case, <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are said to be <strong>locally isometric</strong>.</p></li>
+<li><p><span class="math inline">\(f\)</span> is an <strong>isometry</strong> if:</p>
+<ul>
+<li><span class="math inline">\(f\)</span> is a local isometry;</li>
+<li><span class="math inline">\(f\)</span> is a diffeomorphism of <span class="math inline">\(\mathcal{S}\)</span> into <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>.</li>
+</ul>
+<p>In this case, <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are said to be <strong>isometric</strong>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="Theorem-82" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 82</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}
+\]</span> a local isometry. Then <span class="math inline">\(f\)</span> is a local diffeomorphims.<p></p>
+</div></details>
+</div>
+<div id="Theorem-83" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 83</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> be a smooth map. They are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is a local isometry.</li>
+<li>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a curve in <span class="math inline">\(\mathcal{S}\)</span> and consider the curve <span class="math inline">\(\widetilde{{\pmb{\gamma}}}= f \circ {\pmb{\gamma}}\)</span> on <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>. Then <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> have the same length.</li>
+</ol>
+</div></details>
+</div>
+<div id="theorem-local-isometry-bis" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 84</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> be a local diffeomorphism. They are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is a local isometry.</li>
+<li>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span> and consider the chart of <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> given by<br>
+<span class="math display">\[
+\widetilde{{\pmb{\sigma}}} \colon U \to \widetilde{\mathcal{S}} \,, \qquad
+\widetilde{{\pmb{\sigma}}} = f \circ {\pmb{\sigma}}\,.
+\]</span> Then <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> have the same first fundamental form, that is, <span class="math display">\[
+E = \widetilde{E} \,, \quad F = \widetilde{F} \,, \quad G = \widetilde{G} \,.
+\]</span></li>
+</ol>
+</div></details>
+</div>
+<div id="theorem-local-isometry-2-bis" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 85</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and consider charts <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \mathcal{S}\,, \qquad
+\widetilde{{\pmb{\sigma}}}\colon U \to \widetilde{\mathcal{S}}\,.
+\]</span> Assume that <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> have the same first fundamental form: <span class="math display">\[
+E = \widetilde{E} \,, \quad F = \widetilde{F} \,, \quad G = \widetilde{G} \,.
+\]</span> We have:</p>
+<ol type="1">
+<li>The surfaces <span class="math inline">\({\pmb{\sigma}}(U)\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are locally isometric.</li>
+<li>A local isometry is given by <span class="math display">\[
+f \colon {\pmb{\sigma}}(U) \to \widetilde{\mathcal{S}}\,, \qquad
+f = \widetilde{{\pmb{\sigma}}}\circ {\pmb{\sigma}}^{-1} \,.
+\]</span></li>
+</ol>
+</div></details>
+</div>
+<div id="example-plane-cylinder" class="Example" title="Plane and Cylinder are locally isometric">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 86: </strong>Plane and Cylinder are locally isometric</summary><div>
+<p><strong>Question.</strong> Consider the plane <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3   \, \colon \, x = 0  \} \,,
+\]</span> and the unit cylinder <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \,  x^2 + y^2 = 1 \} \,.
+\]</span> Define the function <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\,, \qquad f(0,y,z) = (\cos(y),\sin(y),z) \,.
+\]</span></p>
+<ol type="1">
+<li>Prove that <span class="math inline">\(f\)</span> is smooth.</li>
+<li>Prove that <span class="math inline">\(f\)</span> is a local isometry.</li>
+</ol>
+<p><em>Note:</em> This shows that the Plane and the Cylinder are locally isometric.</p>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>Note that <span class="math inline">\(f \in \widetilde{\mathcal{S}}\)</span> because <span class="math display">\[
+\cos(y)^2 + \sin(y)^2 = 1\,,
+\]</span> therefore <span class="math inline">\(f\)</span> is well-defined. Moreover, <span class="math inline">\(f\)</span> is the restriction to <span class="math inline">\(\mathcal{S}\)</span> of the function <span class="math display">\[
+g \colon \mathbb{R}^3 \to \mathbb{R}^3 \,, \qquad g(x,y,z) = (\cos(y),\sin(y),z) \,.
+\]</span> Since <span class="math inline">\(g\)</span> is smooth, and <span class="math inline">\(g(\mathcal{S}) = \widetilde{\mathcal{S}}\)</span>, by Theorem <a href="chap_3.html#theorem-diff-check-2">37</a> we infer that <span class="math inline">\(g |_{\mathcal{S}} = f\)</span> is smooth between <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>.</p></li>
+<li><p>Define the chart of <span class="math inline">\(\mathcal{S}\)</span>: <span class="math display">\[
+{\pmb{\sigma}}(u,v) = (0,u,v) \,, \quad u,v \in \mathbb{R}\,.
+\]</span> We already know that <span class="math inline">\({\pmb{\sigma}}\)</span> is regular, with first fundamental form coefficients given by <span class="math display">\[
+E = 1 \,, \quad F = 1 \,, \quad G = 1 \,,
+\]</span> and corresponding first fundamental form <span class="math display">\[
+{\mathscr{F}}_1 = du^2 + dv^2 \,.
+\]</span> Define <span class="math inline">\(\widetilde{{\pmb{\sigma}}}= f \circ {\pmb{\sigma}}\)</span>. Therefore, <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}(u,v) = f(0,u,v) = (\cos(u),\sin(u),v) \,.
+\]</span> We have that <span class="math display">\[\begin{align*}
+{\widetilde{{\pmb{\sigma}}}}_{u}&amp; = ( -\sin(u),\cos(u),0 ) \\
+{\widetilde{{\pmb{\sigma}}}}_{v}&amp; = (0,0,1) \\
+\widetilde{E}&amp; = {\widetilde{{\pmb{\sigma}}}}_{u}\cdot {\widetilde{{\pmb{\sigma}}}}_{u}= 1 \\  
+\widetilde{F}&amp; = {\widetilde{{\pmb{\sigma}}}}_{u}\cdot {\widetilde{{\pmb{\sigma}}}}_{v}= 0 \\
+\widetilde{G}&amp; = {\widetilde{{\pmb{\sigma}}}}_{v}\cdot {\widetilde{{\pmb{\sigma}}}}_{v}= 1
+\end{align*}\]</span> Therefore, the first fundamental form of <span class="math inline">\(\widetilde{{\pmb{\sigma}}}= f \circ {\pmb{\sigma}}\)</span> is <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 =  du^2 + dv^2 \,.
+\]</span> In particular, we have shown that <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> have the same first fundamental form: <span class="math display">\[
+{\mathscr{F}}_1 = {\widetilde{\mathscr{F}}}_1 \,.
+\]</span> Since <span class="math inline">\(\mathcal{A} = \{{\pmb{\sigma}}\}\)</span> is an atlas for <span class="math inline">\(\mathcal{S}\)</span>, by Theorem <a href="chap_3.html#theorem-local-isometry-2-bis">85</a> we conclude that <span class="math inline">\(f\)</span> is a local isometry of <span class="math inline">\(\mathcal{S}\)</span> into <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="plane-and-cone-are-locally-isometric" class="Example" title="Plane and Cone are locally isometric">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 87: </strong>Plane and Cone are locally isometric</summary><div>
+<p><strong>Question.</strong> Consider the cone without tip <span class="math display">\[
+\mathcal{S}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \, x^2 + y^2 = z^2 \,, \,\, z &gt; 0 \} \,,
+\]</span> and the plane <span class="math display">\[
+\widetilde{\mathcal{S}}= \{ (x,y,z)\in \mathbb{R}^3 \, \colon \, z = 0 \} \,.
+\]</span></p>
+<ol type="1">
+<li><p>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be the chart of the Cone <span class="math display">\[
+{\pmb{\sigma}}(\rho,\theta) = (\rho \cos(\theta), \rho \sin(\theta), \rho ) \,,
+\]</span> where we define <span class="math display">\[
+U:= \left\{ (\rho,\theta) \in \mathbb{R}^2 \, \colon \, \rho &gt; 0 , \, \theta \in (0,2\pi) \right\} \,.
+\]</span> Compute the first fundamental form <span class="math inline">\({\mathscr{F}}_1\)</span> of <span class="math inline">\({\pmb{\sigma}}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\colon U \to \widetilde{\mathcal{S}}\)</span> be the chart of the Plane <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}(\rho,\theta) = (a\rho \cos(b\theta), a\rho \sin(b\theta), 0 )
+\]</span> where <span class="math inline">\(a&gt;0\)</span> and <span class="math inline">\(b \in (0,1]\)</span> are constants. Compute the first fundamental form <span class="math inline">\({\widetilde{\mathscr{F}}}_1\)</span> of <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>.</p></li>
+<li><p>Find coefficients <span class="math inline">\(a,b\)</span> such that <span class="math display">\[
+{\mathscr{F}}_1 = {\widetilde{\mathscr{F}}}_1 \,.
+\]</span></p></li>
+<li><p>Conclude that <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are locally isometric.</p></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>We have already computed in Example <a href="chap_3.html#example-fff-cone">81</a>, that the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+{\mathscr{F}}_1 = 2 d\rho^2 + \rho^2 d\theta^2 \,.
+\]</span></p></li>
+<li><p>First of all, note that <span class="math display">\[
+\theta \in (0,2\pi), \quad b \in (0,1] \quad \implies \quad
+b \theta \in (0,2\pi) \,,
+\]</span> showing that <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> is well defined for all <span class="math inline">\((\rho,\theta) \in U\)</span>. We compute <span class="math display">\[\begin{align*}
+{\widetilde{{\pmb{\sigma}}}}_{\rho} &amp; = ( a \cos(b\theta), a \sin(b\theta), 0 ) \\
+{\widetilde{{\pmb{\sigma}}}}_{\theta} &amp; = ( - ab \rho \sin(b \theta), ab\rho \cos(b\theta), 0 ) \\
+\widetilde{E}&amp; = {\widetilde{{\pmb{\sigma}}}}_{\rho} \cdot {\widetilde{{\pmb{\sigma}}}}_{\rho} = a^2 \\  
+\widetilde{F}&amp; = {\widetilde{{\pmb{\sigma}}}}_{\rho} \cdot {\widetilde{{\pmb{\sigma}}}}_{\theta} = 0 \\
+\widetilde{G}&amp; = {\widetilde{{\pmb{\sigma}}}}_{\theta} \cdot {\widetilde{{\pmb{\sigma}}}}_{\theta} = a^2b^2 \rho^2
+\end{align*}\]</span> from which we conclude that the first fundamental form of <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> is <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 = a^2 d\rho^2 + a^2b^2 \rho^2 d\rho^2 \,.
+\]</span></p></li>
+<li><p>Equating <span class="math inline">\({\mathscr{F}}_1\)</span> and <span class="math inline">\({\widetilde{\mathscr{F}}}_1\)</span> we obtain <span class="math display">\[
+a^2 = 2 , \,\, a^2b^2 = 1 \quad \implies \quad a = \sqrt{2} \,, \,\, b = \frac{1}{\sqrt{2}} \,.
+\]</span> Note that <span class="math inline">\(a&gt;0\)</span> and <span class="math inline">\(0&lt;b&lt;1\)</span>, showing that <span class="math inline">\(a,b\)</span> are admissible.</p></li>
+<li><p>For <span class="math inline">\(a = \sqrt{2}\)</span> and <span class="math inline">\(b = 1/\sqrt{2}\)</span> we have that <span class="math display">\[
+{\mathscr{F}}_1 = {\widetilde{\mathscr{F}}}_1 \,.
+\]</span> Since <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> are regular charts for <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>, respectively, from Theorem <a href="chap_3.html#theorem-local-isometry-bis">84</a> we conclude that <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are locally isometric. Furthermore, the local isometry is given by <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\,, \qquad f = \widetilde{{\pmb{\sigma}}}\circ {\pmb{\sigma}}^{-1} \,.
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="angles-between-curves" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="angles-between-curves"><span class="header-section-number">3.14</span> Angles between curves</h2>
+<div id="angle-between-curves" class="Definition" title="Angle between curves">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 88: </strong>Angle between curves</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface. Let <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be curves on <span class="math inline">\(\mathcal{S}\)</span> such that <span class="math display">\[
+{\pmb{\gamma}}(t_0) = \mathbf{p}= \widetilde{{\pmb{\gamma}}}( t_0 ) \,.
+\]</span> The angle <span class="math inline">\(\theta\)</span> between <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is <span class="math display">\[
+\cos(\theta) = \frac{ \dot{{\pmb{\gamma}}}\cdot \dot{\widetilde{{\pmb{\gamma}}}}}{ \| \dot{{\pmb{\gamma}}}\| \,  \| \dot{\widetilde{{\pmb{\gamma}}}}\| } \,,
+\]</span> where <span class="math inline">\(\dot{{\pmb{\gamma}}}\)</span> and <span class="math inline">\(\dot{\widetilde{{\pmb{\gamma}}}}\)</span> are evaluated at <span class="math inline">\(t_0\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-89" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 89</strong></summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, <span class="math inline">\({\pmb{\sigma}}\)</span> a regular chart at <span class="math inline">\(\mathbf{p}\)</span>, and <span class="math inline">\({\pmb{\gamma}},\widetilde{{\pmb{\gamma}}}\)</span> smooth curves on <span class="math inline">\(\mathcal{S}\)</span> such that <span class="math display">\[
+{\pmb{\gamma}}(t_0) = \mathbf{p}= \widetilde{{\pmb{\gamma}}}( t_0 )  \,.
+\]</span> There exist smooth functions <span class="math inline">\(u,v,\tilde{u},\tilde{v}\)</span> such that <span class="math display">\[
+{\pmb{\gamma}}(t) = {\pmb{\sigma}}(u(t),v(t)) \,, \quad
+\widetilde{{\pmb{\gamma}}}(t) = {\pmb{\sigma}}(\tilde{u}(t),\tilde{v}(t)) \,.
+\]</span> The angle between <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is <span class="math display">\[
+\cos(\theta) = \frac{ E  \dot u \dot{\tilde u} + F ( \dot u \dot{\tilde v}+ \dot{\tilde{u}} \dot v) + G \dot v \dot{\tilde v} }{ (E  \dot{u}^2 + 2 F  \dot u \dot v + G \dot{v}^2 )^{1/2} (E  \dot{\tilde{u}}^2 + 2 F  \dot{\tilde{u}} \dot{\tilde{v}} + G \dot{\tilde{v}}^2 )^{1/2} } \,,
+\]</span> where <span class="math inline">\(E,F,G,\widetilde{E},\widetilde{F},\widetilde{G}\)</span> are evaluated at <span class="math inline">\((u(t_0),v(t_0))\)</span> and <span class="math inline">\(\dot{u},\dot{v}, \dot{\widetilde{u}}, \dot{\widetilde{v}}\)</span> are evaluated at <span class="math inline">\(t_0\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Example-90" class="Example">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 90</strong></summary><div>
+<p><strong>Question.</strong> Let <span class="math inline">\(S\)</span> be a surface with surface chart <span class="math display">\[
+{\pmb{\sigma}}(u, v) = \left(u, v, e^{u v}\right) \,.
+\]</span></p>
+<ol type="1">
+<li>Calculate its first fundamental form.</li>
+<li>Calculate <span class="math inline">\(\cos (\theta)\)</span> where <span class="math inline">\(\theta\)</span> is the angle between the two curves <span class="math display">\[\begin{align*}
+{\pmb{\gamma}}(t) &amp; ={\pmb{\sigma}}(u(t), v(t)), \quad u(t)=t,\, v(t)=t \,, \\
+\widetilde{{\pmb{\gamma}}}(t) &amp; = {\pmb{\sigma}}( \tilde{u}(t),\tilde{v}(t) ) \,, \quad \tilde{u}(t) = 1 , \, \tilde{v}(t) = t \,.
+\end{align*}\]</span></li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>We calculate <span class="math display">\[
+{\pmb{\sigma}}_u = \left(1,0, e^{u v} v\right), \quad {\pmb{\sigma}}_v=\left(0,1, e^{u v} u\right) \,.
+\]</span> Therefore, the coefficients of the first fundamental form are <span class="math display">\[\begin{align*}
+E(u,v) &amp; =1+e^{2 u v} v^2 \\
+F(u,v) &amp; = e^{2 u v} u v \\
+G(u,v) &amp; = 1+e^{2 u v} u^2
+\end{align*}\]</span></p></li>
+<li><p>The curves <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> intersect at <span class="math display">\[
+{\pmb{\gamma}}(1)=\widetilde{{\pmb{\gamma}}}(1)={\pmb{\sigma}}(1,1) \,.
+\]</span> We calculate <span class="math display">\[
+\dot{u}(1)=1, \quad \dot{v}(1)=1, \quad \dot{\tilde{u}}(1)=0, \quad \dot{\tilde{v}}(1) = 1 \,,
+\]</span> and <span class="math display">\[\begin{align*}
+E(1,1) &amp; = 1+e^2 \\
+F(1,1) &amp; =e^2 \\
+G(1,1) &amp; =1+e^2
+\end{align*}\]</span> Therefore <span class="math display">\[
+\begin{aligned}
+\cos \theta &amp; =\frac{E \dot{u} \dot{\tilde{u}} + F \left(\dot{u} \dot{\tilde{v}}+ \dot{\tilde{u}}  \dot{v}\right)+G \dot{v} \dot{\tilde{v}}}{\sqrt{E \dot{u}^2 + 2 F \dot{u} \dot{v} + G \dot{v}^2} \sqrt{E \dot{\tilde{u}}^2 + 2 F\dot{\tilde{u}} \dot{\tilde{v}}+ G \dot{\tilde{v}}^2}} \\
+&amp; =\frac{1+2 e^2}{\sqrt{2+4 e^2} \sqrt{1+e^2}}=\sqrt{\frac{1+2 e^2}{2+2 e^2}} \,.
+\end{aligned}
+\]</span></p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="conformal-maps" class="level2" data-number="3.15">
+<h2 data-number="3.15" class="anchored" data-anchor-id="conformal-maps"><span class="header-section-number">3.15</span> Conformal maps</h2>
+<div id="conformal-map" class="Definition" title="Conformal map">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 91: </strong>Conformal map</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces, and <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}
+\]</span> a local diffeomorphism. We say that <span class="math inline">\(f\)</span> is a <strong>conformal map</strong> if for all <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span> and <span class="math inline">\(\mathbf{v}, \mathbf{w}\in T_{\mathbf{p}} \mathcal{S}\)</span> is holds <span class="math display">\[
+\theta = \widetilde{\theta} \,,
+\]</span> where:<p></p>
+<ul>
+<li><span class="math inline">\(\theta\)</span> is the angle between <span class="math inline">\(\mathbf{v}\)</span> and <span class="math inline">\(\mathbf{w}\)</span>,</li>
+<li><span class="math inline">\(\widetilde{\theta}\)</span> is the angle between <span class="math inline">\(d_{\mathbf{p}} f(\mathbf{v})\)</span> and <span class="math inline">\(d_{\mathbf{p}} f(\mathbf{w})\)</span>.</li>
+</ul>
+<p>In this case, we say that <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are <strong>conformal</strong>.</p>
+</div></details>
+</div>
+<div id="Proposition-92" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 92</strong></summary><div>Let <span class="math inline">\(f\)</span> be a local isometry. Then <span class="math inline">\(f\)</span> is a conformal map.<p></p>
+</div></details>
+</div>
+<div id="theorem-conformal-fff" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 93</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> be a local diffeomorphism. They are equivalent:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is a conformal map.</li>
+<li>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathcal{S}\)</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span> and consider the chart of <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> given by <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}  \colon U \to \widetilde{\mathcal{S}} \,, \qquad \widetilde{{\pmb{\sigma}}} = f \circ {\pmb{\sigma}}\,.
+\]</span> Then, there exists <span class="math inline">\(\lambda \colon U \to \mathbb{R}\)</span> such that <span class="math display">\[
+\widetilde{\mathscr{F}}_1 = \lambda (u,v) \mathscr{F}_1 \,, \quad \forall \, (u,v) \in U \,,
+\]</span> where <span class="math inline">\(\mathscr{F}_1\)</span> and <span class="math inline">\(\widetilde{\mathscr{F}}_1\)</span> are the first fundamental forms of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>, respectively.</li>
+</ol>
+</div></details>
+</div>
+<div id="theorem-conformal-fff-2" class="Theorem">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 94</strong></summary><div>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular surfaces and consider charts <span class="math display">\[
+{\pmb{\sigma}}\colon U \to \mathcal{S}\,, \qquad
+\widetilde{{\pmb{\sigma}}}\colon U \to \widetilde{\mathcal{S}}\,.
+\]</span> Assume there exists <span class="math inline">\(\lambda \colon U \to \mathbb{R}\)</span> such that <span class="math display">\[
+\widetilde{\mathscr{F}}_1 = \lambda (u,v) \mathscr{F}_1 \,, \quad \forall \, (u,v) \in U \,,
+\]</span> where <span class="math inline">\(\mathscr{F}_1\)</span> and <span class="math inline">\(\widetilde{\mathscr{F}}_1\)</span> are the first fundamental forms of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>, respectively. We have:</p>
+<ol type="1">
+<li>The surfaces <span class="math inline">\({\pmb{\sigma}}(U)\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are conformal.</li>
+<li>A conformal map is given by <span class="math display">\[
+f \colon {\pmb{\sigma}}(U) \to \widetilde{\mathcal{S}}\,, \qquad
+f = \widetilde{{\pmb{\sigma}}}\circ {\pmb{\sigma}}^{-1} \,.
+\]</span></li>
+</ol>
+</div></details>
+</div>
+<div id="example-conformal" class="Example" title="Stereographic Projection">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 95: </strong>Stereographic Projection</summary><div>
+<p><strong>Question.</strong> Denote the unit sphere by <span class="math display">\[
+\mathbb{S}^2 = \{ (x,y,z) \in \mathbb{R}^3 \, \colon \, x^2 + y^2 + z^2 = 1 \} \,,
+\]</span> and consider the surface <span class="math display">\[
+\mathcal{S}= \mathbb{S}^2 \smallsetminus \{N\} \,,
+\]</span> where the point <span class="math inline">\(N = (0,0,1)\)</span> is the North Pole. Denote the plane <span class="math inline">\(\{z = 0\}\)</span> by <span class="math display">\[
+\widetilde{\mathcal{S}}= \{ (x,y,z) \in \mathbb{R}^3 \, \colon \, z = 0 \} \,,
+\]</span> The plane <span class="math inline">\(\{z=0\}\)</span> slices through the equator of the sphere. Let <span class="math inline">\(P=(x,y,z)\)</span> be any point on <span class="math inline">\(\mathbb{S}^2\)</span> except the north pole. The line joining the north pole to <span class="math inline">\(P\)</span> intersects the plane <span class="math inline">\(\{z=0\}\)</span> at the point <span class="math inline">\(P'\)</span>. The point <span class="math inline">\(P'\)</span> defines the <em>Stereographic Projection</em> map, which is easily computed to be: <span class="math display">\[
+f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\,, \quad
+f(x,y,z) = \left( \frac{x}{1-z},\frac{y}{1-z},0  \right) \,.
+\]</span> Prove that:</p>
+<ol type="1">
+<li><span class="math inline">\(f\)</span> is a conformal map.</li>
+<li><span class="math inline">\(f\)</span> is not a local isometry.</li>
+</ol>
+<p><strong>Note</strong>: In particular, the Sphere and the Plane are conformal.</p>
+<p><strong>Solution.</strong> It is not difficult to prove that <span class="math inline">\(f\)</span> is invertible, with inverse given by <span class="math display">\[
+{\pmb{\sigma}}(u,v) =\left( \frac{2u}{u^2+v^2+1},  \frac{2v}{u^2+v^2+1} , 1-\frac{2}{u^2+v^2+1}\right) \,.
+\]</span> We have that <span class="math inline">\({\pmb{\sigma}}\)</span> is a regular chart for <span class="math inline">\(\mathcal{S}\)</span>, forming an altas of one chart. It is straightforward to compute that the coefficients of the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> are <span class="math display">\[
+E = G = \lambda(u,v) := \frac{4}{(u^2+v^2+1)^2} \,, \qquad F = 0 \,.
+\]</span> In particualar the fisrt fundamental form is <span class="math display">\[
+\mathscr{F}_1 = \lambda(u,v) (du^2 + dv^2) \,.
+\]</span> Define the chart of <span class="math inline">\(\widetilde{\mathcal{S}}\)</span>: <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}= f \circ {\pmb{\sigma}}\,.
+\]</span> Since <span class="math inline">\({\pmb{\sigma}}\)</span> is the inverse of <span class="math inline">\(f\)</span>, we have that <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}(u,v) = (u,v,0) \,.
+\]</span> As already computed, the first fundamental form of <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span> is <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 = du^2 + dv^2 \,.
+\]</span> We can now conclude:</p>
+<ol type="1">
+<li><p>We have that <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 = \frac{1}{\lambda} {\mathscr{F}}_1  \,.
+\]</span> Since <span class="math inline">\(\mathcal{A} = \{{\pmb{\sigma}}\}\)</span> is an atlas for <span class="math inline">\(\mathcal{S}\)</span>, by Theorem <a href="chap_3.html#theorem-conformal-fff">93</a> we conclude that <span class="math inline">\(f\)</span> is a conformal map.</p></li>
+<li><p>Since <span class="math inline">\({\lambda}\)</span> is not always equal to <span class="math inline">\(1\)</span>, we have that <span class="math display">\[
+{\widetilde{\mathscr{F}}}_1 \neq {\mathscr{F}}_1 \,.
+\]</span> Therefore, by Theorem <a href="chap_3.html#theorem-local-isometry-bis">84</a>, we conclude that <span class="math inline">\(f\)</span> cannot be a local isometry.</p></li>
+</ol>
+</div></details>
+</div>
+<div id="example-conformal-2" class="Example" title="Sphere and Plane are conformal">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 96: </strong>Sphere and Plane are conformal</summary><div>
+<p><strong>Question.</strong> Let <span class="math inline">\(\mathcal{S}\)</span> be the plane <span class="math inline">\(\{z=0\}\)</span> with chart <span class="math display">\[
+{\pmb{\sigma}}(u,v) := (u,v,0) \,, \quad u,v \in \mathbb{R}\,.
+\]</span> Let <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be the sphere <span class="math inline">\(\mathbb{S}^2\)</span> with parametrization <span class="math display">\[
+\widetilde{{\pmb{\sigma}}}(u,v) := \left(  \cos(u) \mathop{\mathrm{sech}}(v), \sin(u) \mathop{\mathrm{sech}}(v) , \tanh (v) \right) \,.
+\]</span></p>
+<ol type="1">
+<li>Compute the first fundamental forms of <span class="math inline">\({\pmb{\sigma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\sigma}}}\)</span>.</li>
+<li>Show that <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are conformal.</li>
+</ol>
+<p><strong>Solution.</strong></p>
+<ol type="1">
+<li><p>As already computed, the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> is <span class="math display">\[
+\mathscr{F}_1 = du^2 + dv^2 \,.
+\]</span> Using the identitities <span class="math display">\[\begin{align*}
+\frac{d}{dv} \left( \mathop{\mathrm{sech}}(v)  \right) &amp; = - \mathop{\mathrm{sech}}(v) \tanh (v) \,, \\
+\frac{d}{dv} \left( \tanh (v) \right)  &amp; = {\mathop{\mathrm{sech}}}^2 (v) \,,
+\end{align*}\]</span> we obtain <span class="math display">\[\begin{align*}
+\widetilde{{\pmb{\sigma}}}_u &amp; = ( -\sin(u) \mathop{\mathrm{sech}}(v) , \cos(u)\mathop{\mathrm{sech}}(v) , 0 )  \\
+\widetilde{{\pmb{\sigma}}}_v &amp; = ( -\cos(v) \mathop{\mathrm{sech}}(v) \tanh(v) , -\sin(u) \mathop{\mathrm{sech}}(v) \tanh(v) , {\mathop{\mathrm{sech}}}^2(v) )
+\end{align*}\]</span> By recalling that <span class="math display">\[
+{\mathop{\mathrm{sech}}}^2 (v) + {\tanh}^2 (v) = 1 \,,
+\]</span> we compute <span class="math display">\[\begin{align*}
+\widetilde{E} &amp; = \widetilde{{\pmb{\sigma}}}_u \cdot \widetilde{{\pmb{\sigma}}}_u = {\mathop{\mathrm{sech}}}^2(v) (\cos^2(u) + \sin^2(u)) = {\mathop{\mathrm{sech}}}^2(v)  \\
+\widetilde{F} &amp; = \widetilde{{\pmb{\sigma}}}_u \cdot \widetilde{{\pmb{\sigma}}}_v =  0 \\
+\widetilde{G} &amp; = \widetilde{{\pmb{\sigma}}}_v \cdot \widetilde{{\pmb{\sigma}}}_v = {\mathop{\mathrm{sech}}}^2(v) ({\tanh}^2(v) + {\mathop{\mathrm{sech}}}^2(v)) = {\mathop{\mathrm{sech}}}^2(v) \\
+\end{align*}\]</span> Hence the first fundamental form of <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> is <span class="math display">\[
+\widetilde{\mathscr{F}}_1 = {\mathop{\mathrm{sech}}}^2(v) \, \left(  du^2 + dv^2 \right) \,.
+\]</span></p></li>
+<li><p>We have computed that <span class="math display">\[
+\widetilde{\mathscr{F}}_1 =  {\mathop{\mathrm{sech}}}^2(v) \, \left(  du^2 + dv^2 \right) =  {\mathop{\mathrm{sech}}}^2(v) \,\mathscr{F}_1 \,.
+\]</span> Since <span class="math inline">\(A = \{{\pmb{\sigma}}\}\)</span> is an atlas for <span class="math inline">\(\mathcal{S}\)</span>, by Theorem <a href="chap_3.html#theorem-conformal-fff-2">94</a> we conclude that <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> are conformal.</p></li>
+</ol>
+</div></details>
+</div>
+</section>
+<section id="conformal-parametrizations" class="level2" data-number="3.16">
+<h2 data-number="3.16" class="anchored" data-anchor-id="conformal-parametrizations"><span class="header-section-number">3.16</span> Conformal parametrizations</h2>
+<div id="definition-conformal-parametrization" class="Definition" title="Conformal parametrization">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 97: </strong>Conformal parametrization</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math display">\[
+{\pmb{\sigma}}\colon U  \to  \mathcal{S}
+\]</span> be a regular chart of <span class="math inline">\(\mathcal{S}\)</span>. We say that <span class="math inline">\({\pmb{\sigma}}\)</span> is a <strong>conformal parametrization</strong> if the first fundamental form of <span class="math inline">\({\pmb{\sigma}}\)</span> satisfies <span class="math display">\[
+\mathscr{F}_1 = \lambda(u,v)  ( du^2 +  dv^2)
+\]</span> for some function <span class="math inline">\(\lambda \colon U \to \mathbb{R}\)</span>.<p></p>
+</div></details>
+</div>
+<div id="Theorem-98" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 98</strong></summary><div>A conformal parametrization <span class="math inline">\({\pmb{\sigma}}\)</span> preserves angles between vectors. Specifically, let <span class="math inline">\({\pmb{\gamma}}_{1}(t), {\pmb{\gamma}}_{2}(t)\)</span> be curves in <span class="math inline">\(\mathbb{R}^{2}\)</span> such that <span class="math inline">\({\dot{{\pmb{\gamma}}}}_{1}\left(t_{0}\right), {\dot{{\pmb{\gamma}}}}_{2}\left(t_{0}\right)\)</span> make angle <span class="math inline">\(\theta\)</span>. If <span class="math display">\[
+{\pmb{\gamma}}_{3}(t)={\pmb{\sigma}}\left({\pmb{\gamma}}_{1}(t)\right),  \qquad {\pmb{\gamma}}_{4}(t)={\pmb{\sigma}}\left({\pmb{\gamma}}_{2}(t)\right) \,,
+\]</span> then <span class="math inline">\({\dot{{\pmb{\gamma}}}}_{3}\left(t_{0}\right), {\dot{{\pmb{\gamma}}}}_{4}\left(t_{0}\right)\)</span> also make angle <span class="math inline">\(\theta\)</span>.<p></p>
+</div></details>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // default icon
+          link.classList.add("external");
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sections/chap_2.html" class="pagination-link" aria-label="Topology">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Topology</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sections/license.html" class="pagination-link" aria-label="License">
+        <span class="nav-page-text">License</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link active" href="../sections/license.html" aria-current="page">
+<p>License</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.silviofanzon.com/contact">
+<p>Contact</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

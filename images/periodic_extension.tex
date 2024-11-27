@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{tikzpicture}
+% Draw the real line
+  \draw[->] (-1,0) -- (8,0) node[right] {$\mathbb{R}$};
+  
+  % Draw the point 'x' and '0'
+   \filldraw (0,0) circle (1pt) node[below] {$a$};
+  \filldraw[red] (0.8,0) circle (1pt) node[below] {$\tilde{t}$};
+    \filldraw (2,0) circle (1pt) node[below] {$b$};
+    
+   
+    \filldraw (2.8,0) circle (1pt) node[below] {$\tilde{t} + T$};
+     
+     \filldraw (4.8,0) circle (1pt) node[below] {$\tilde{t} + 2T$};
+     
+      \filldraw[red] (6.8,0) circle (1pt) node[below] {$t = \tilde{t} + 3T$};
+
+
+  
+ 
+\draw (2.8,0.2) arc (0:180:1);
+\draw (4.8,0.2) arc (0:180:1);
+\draw (6.8,0.2) arc (0:180:1);
+  
+  
+  \end{tikzpicture}
+\end{document}

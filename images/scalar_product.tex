@@ -1,0 +1,23 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\begin{document}
+
+\begin{tikzpicture}
+  % Cartesian axes
+  \draw[->] (-2,0) -- (4,0) node[right] {$x$};
+  \draw[->] (0,-2) -- (0,4) node[above] {$y$};
+  
+  % Define vector u
+  \coordinate (u) at (2,2);
+  \draw[->,thick] (0,0) -- (u) node[midway, left] {$\mathbf{u}$};
+  
+  % Define vector v
+  \coordinate (v) at (3,-1);
+  \draw[->,thick] (0,0) -- (v) node[midway, below] {$\mathbf{v}$};
+  
+  % Calculate and label the angle theta
+  \draw (1.0,-0.34) arc (-35:110:0.5) node[midway,right] {$\theta$};
+\end{tikzpicture}
+
+\end{document}

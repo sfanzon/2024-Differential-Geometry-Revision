@@ -1,0 +1,30 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{decorations.markings}
+\usepackage{pgfplots}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+  \begin{axis}[
+    domain=-1:1, % Define the domain for x from -1 to 1
+    samples=100, % Number of samples to draw the curve
+    smooth, % Smoothly connect the points
+    axis lines=center, % Centered axes
+    axis line style={-latex}, % Arrows on axes
+    xtick={-1,0,1}, % No x-axis ticks
+    ytick={-1,0,1}, % No y-axis ticks
+    scale=0.8, % Scale down the plot
+    xmin=-1.3, xmax=1.3, % Extend x-axis by 1cm
+    ymin=-0.2, ymax=2, % Adjust the y-axis limits for cosh(x)
+    xlabel=$x$,
+    ylabel=$y$,
+  ]
+    \addplot[magenta, thick] {cosh(x)};
+  \end{axis}  
+  
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,2812 @@
+::: {.content-hidden}
+$
+{{< include macros.tex >}}
+$
+:::
+
+
+
+# Surfaces
+
+## Preliminaries
+
+::: Definition 
+### Topology of $\R^n$
+
+The Euclidean norm on $\R^n$ is denoted by 
+$$
+\| \xx \| := \sqrt{ \sum_{i=1}^n x_i^2 }\,, \quad \xx = (x_1 , \ldots, x_n) \in \R^n \,.
+$$
+The Euclidean norm induces the distance
+$$
+d(\xx,\yy) := \| \xx - \yy \| =   \sqrt{ \sum_{i=1}^n (x_i - y_i)^2 } \,.
+$$
+
+In particular, we have:
+
+1. The pair $(\R^n,d)$ is a metric space. 
+2. The topology induced by the metric $d$ is called the Euclidean topology, denoted by $\TT$. 
+3. A set $U \subseteq \R^n$ is **open** if for all $\xx \in U$ there exists $\e>0$ such that $B_{\e}(\xx) \subseteq U$, where
+$$
+B_{\e}(\xx) := \{  \yy \in \R^n \divider \| \xx - \yy  \| < \e   \}
+$$
+is the open ball of radius $\e>0$ and centered at $\xx$. In this case we write $U \in \TT$, with $\TT$ the Euclidean topology in $\R^n$.
+
+4. A set $V \subseteq \R^n$ is **closed** if $V^c := \R^n \smallsetminus U$ is open. 
+
+:::
+
+
+::: Definition 
+### Subspace Topology
+
+Given a subset $A \subseteq \R^n$ the **subspace topology** on $A$ is the family of sets
+$$
+\TT_A := \{  U \subseteq A \divider \exists \,\, W \in \TT \st U = A \cap W  \} \,.
+$$
+If $U \in \TT_A$, we say that $U$ is open in $A$.
+
+:::
+
+
+
+::: Definition
+### Continuous Function
+
+Let $f \colon U \subseteq \R^n \to \R^m$ with $U$ open. We say that $f$ is **continuous** at $\xx \in U$ if $\forall \, \e>0$,  $\exists \, \delta > 0$ such that 
+$$
+\|  \xx - \yy  \| < \delta \quad \implies \quad 
+\| f(\xx) - f (\yy) \| < \e \,.
+$$
+$f$ is continuous in $U$ if it is continuous for all $\xx \in U$.
+:::
+
+::: Theorem
+### Continuity: Topological definition
+
+Let $f \colon U \subseteq \R^n \to V \subseteq \R^m$, with $U,V$ open. We have that $f$ is continuous if and only if $f^{-1}(A)$ is open in $U$, for all $A$ open in $V$.
+
+:::
+
+
+::: Definition
+### Homeomorphism
+
+Let $f \colon U \subseteq \R^n \to V \subseteq \R^m$ with $U,V$ open. We say that $f$ is a **homeomorphism** if: 
+
+1. $f$ is continuous; 
+2. There exists continuous inverse $f^{-1} \colon V \to U$.
+
+:::
+
+
+::: Definition
+### Differentiable Function
+
+Let $f \colon U \subseteq \R^n \to \R^m$ with $U$ open. We say that $f$ is **differentiable** at $\xx \in U$ if there exists a linear map $d_{\xx} f \colon \R^n \to \R^m$ such that
+$$
+d_{\xx}f (\mathbf{h}) = \lim_{\e \to 0} \   \frac{ f(\xx + \e \mathbf{h} )  - f(\xx)  }{ \e } \,,
+$$
+for all $\mathbf{h} \in \R^n$, where the limit is taken in $\R^m$. The linear map $d_{\xx} f$ is called the **differential** of $f$ at $\xx$. 
+
+:::
+
+
+
+::: Definition
+### Partial Derivative
+
+Let $f \colon U \subseteq \R^n \to \R^m$, $U$ open, $f$ differentiable. The **partial derivative** of $f$ at $\xx \in U$ in direction $\ee_i$ is given by
+$$
+\frac{\partial f}{\partial x_i}(\xx) := d_{\xx} f (\ee_i) =  \lim_{\e \to 0}  \frac{ f( \xx + \e \ee_i ) - f(\xx) }{ \e } \,.
+$$
+
+:::
+
+
+
+::: Definition
+### Jacobian Matrix
+
+Let $f \colon U \subset \R^n \to \R^m$ be differentiable. The **Jacobian** of 
+$f$ at $\xx$ is the $m \times n$ matrix of partial derivatives:
+$$
+Jf(\xx):= \left( \frac{\partial f_i}{\partial x_j}(\xx) \right)_{i,j}  \in \R^{m \times n} \,.
+$$
+If $m=n$ then $Jf \in \R^{n \times n}$ is a square matrix and we can compute its determinant, denoted by
+$$
+\det (Jf) \,.
+$$
+:::
+
+
+::: Proposition
+### Matrix representation of $d_{\xx} f$
+
+Let $f \colon U \subseteq \R^n \to \R^m$ be differentiable. The matrix of the linear map $d_{\xx} f \colon \R^n \to \R^m$ with respect to the standard basis is given by the Jacobian matrix $Jf(\xx)$.
+
+:::
+
+
+
+
+::: Definition
+### Smooth Function
+
+Let $f \colon U \subseteq \R^n \to \R^m$ with $U$ open. We say that $f$ is smooth if the derivatives 
+$$
+\frac{\partial^{|\alpha|} f}{d\xx^\alpha} :=  \frac{\partial^{\alpha_1}}{ \partial x_1^{\alpha_1}} \cdots \frac{\partial^{\alpha_n}}{ \partial x_n^{\alpha_n}} \, f
+$$
+exist for each multi-index $\alpha \in \N^n$. Note that in this case all the derivatives of $f$ are automatically continuous.
+
+:::
+
+
+
+
+::: Notation
+### Gradient and partial derivatives
+
+Let $f \colon U \subseteq \R^n \to \R$ be smooth. We denote the partial derivatives by 
+$$
+\begin{aligned}
+\partial_{x_i} f & = f_{x_i} =  \frac{\partial f}{\partial x_i} \\
+\partial_{x_i x_j} f & = f_{x_i x_j} = \frac{\partial^2 f}{\partial x_i \partial x_j} \\
+\partial_{x_i x_j x_k} f & = f_{x_i x_j x_k} =  \frac{\partial^3 f}{\partial x_i \partial x_j \partial x_k} 
+\end{aligned}
+$$
+
+For $f \colon U \subseteq \R^n \to \R$ smooth we denote the **gradient** by
+$$
+\nabla f (\xx) = \left(  f_{x_1}(\xx) , \ldots ,  f_{x_n}(\xx) \right) \,.
+$$
+Note that $\nabla f(\xx)$ coincides with $Jf(\xx)$.
+
+
+:::
+
+
+
+::: Definition
+### Diffeomorphism
+  
+Let $f \colon U \to V$, with $U,V \subseteq \R^n$ open. We say that $f$ is a **diffeomorphism** between $U$ and $V$ if:
+
+1. $f$ is smooth,
+2. There exists the inverse $f^{-1} \colon V \to U$, 
+3. $f^{-1}$ is smooth.
+
+:::
+
+
+::: Definition
+### Local diffeomorphism
+
+A function $f \colon \R^n \to \R^n$ is a **local diffeomorphism** at 
+$\xx_0 \in \R^n$ if:
+
+1. There exists an open set $U \subseteq \R^n$ such that $\xx_0 \in U$,
+2. There exists an open set $V \subseteq \R^n$ such that $f(\xx_0) \in V$,
+3. $f \colon U \to V$ is a diffeomorphism.
+
+:::
+
+
+::: Theorem
+
+If $f \colon U \to V$ is a diffeomorphism, then $f$ is a local diffeomorphism at each $\xx_0 \in U$.
+
+:::
+
+
+
+::: Theorem
+
+Let $f \colon U \to \R^n$ with $U \subseteq \R^n$ open. Suppose $f$ is a local diffeomorhism at $\xx_0 \in U$. Then 
+$$
+\det Jf (\xx_0) \neq 0 \,.
+$$
+
+:::
+
+
+
+
+::: Theorem
+### Inverse Function Theorem
+
+Let $f \colon U \to \R^n$ with $U \subseteq \R^n$ open, $f$ smooth. Assume
+$$
+\det J f(\xx_0) \neq 0 \,,
+$$
+for some $\xx_0 \in U$. Then:
+
+1. There exists an open set $U_0 \subseteq U$ such that $\xx_0 \in U_0$,
+2. There exists an open set $V$ such that $f(\xx_0) \in V$,
+3. $f \colon U_0 \to V$ is a diffeomorphism.
+
+
+:::
+
+
+
+
+::: Example
+
+**Question.** Consider the function $f \colon \R^2 \to \R^2$
+$$
+f(x,y) = (e^x \cos(y), e^x \sin(y)) \,.
+$$
+
+1. Prove that $f$ is a local diffeomorphism at each point.
+
+2. Prove that $f$ is not a diffeomorphism.
+
+
+**Solution.** 
+
+1. We compute
+\begin{align*}
+& J f (x,y) = 
+e^x \left(
+\begin{array}{cc}
+  \cos(y)  &    \sin(y) \\
+  -\sin(y)    &  \cos(y) 
+\end{array}
+\right)  \\
+& \det Jf(x,y) = e^{2x} \neq 0
+\end{align*}
+By the Inverse Function Theorem, $f$ is a local diffeomorphism at each point $(x,y) \in \R^2$. 
+
+2. $f$ is not injective, since 
+$$
+f(x,y) = f(x, y + 2n\pi) \,, \quad \forall\, (x,y) \in \R^2 , \,  n \in \N  \,.
+$$
+Therefore $f$ is not invertible from $\R^2$ into $\R^2$. This implies $f$ cannot be a diffeomorphism of $\R^2$ into $\R^2$.
+
+
+
+:::
+
+
+
+
+
+
+## Regular surfaces
+
+
+::: Definition
+### Surface
+
+Let $\SSS \subseteq \R^3$ be a connected set. We say that $\SSS$ is a **surface** if for every point $\pp \in \SSS$ there exist 
+
+1. An open set $U \subseteq \R^2$,
+2. A smooth map $\sss \colon U \to  \sss(U) \subseteq \SSS$ such that 
+    - $\pp \in \sss(U)$, 
+    - $\sss(U)$ is open in $\SSS$
+    - $\sss$ is a homeomorphism between $U$ and $\sss(U)$
+
+The homeomorphism $\sss$ is called a **surface chart** at $\pp$.
+
+:::
+
+
+
+
+
+::: Definition
+### Atlas of a surface
+
+Let $\SSS$ be a surface. Assume given a collection of charts
+$$
+\mathcal{A} = \{ \sss_i\}_{i \in I} \,, \qquad 
+\sss_i  \colon U_i \to \sss(U_i) \subseteq \SSS \,.
+$$
+The family $\mathcal{A}$ is an **atlas** of $\SSS$ if 
+$$
+\SSS = \bigcup_{i \in I} \sss_i(U_i)  \,.
+$$
+
+:::
+
+
+
+::: Definition
+### Regular Chart
+
+Let $U \subseteq \R^2$ be open. A map
+$$
+\sss = \sss(u,v)  \colon U \to \R^3
+$$
+is called a **regular chart** if the partial derivatives
+$$
+\sss_u(u,v) = \frac{d\sss}{du}(u,v) \,, \quad
+\sss_v(u,v) = \frac{d\sss}{dv}(u,v) 
+$$
+are linearly independent vectors of $\R^3$ for all $(u,v) \in U$.
+:::
+
+
+
+::: Definition
+### Regular surface
+
+Let $\SSS$ be a surface. We say that:
+
+- $\mathcal{A}$ is a **regular atlas** if any $\sss$ in $\mathcal{A}$ is regular. 
+- $\SSS$ is a **regular surface** if it admits a regular atlas.
+
+:::
+
+
+
+::: Theorem
+
+Let $\sss  \colon U \to \R^3$ with $U \subseteq \R^2$ open. They are equivalent
+
+1. $\sss$ is a regular chart.
+2. $d_{\xx} \sss \colon \R^2 \to \R^3$ is injective for all $\xx \in U$.
+3. The Jacobian matrix $J \sss$ has rank $2$ for all $(u,v) \in U$.
+4. $\sss_u \times \sss_v \neq 0$ for all $(u,v) \in U$.
+
+
+:::
+
+
+
+::: Example
+### 2D Plane in $\R^3$
+
+**Question.** Let $\mathbf{a}, \pp, \mathbf{q} \in \R^3$, with $\pp$ and $\mathbf{q}$ orthonormal. The plane
+$$
+\p = \{ \mathbf{a} + u \pp + v \mathbf{q} \divider u,v \in \R \} 
+$$
+is a surface with atlas $\mathcal{A} = \{\sss\}$, where
+$$
+\sss \colon \R^2 \to \p \,, \quad \sss(u,v):= \mathbf{a} + u \pp + v \mathbf{q} \,.
+$$
+Prove that $\p$ is a regular surface.
+
+**Solution.** We have $\sssu = \pp, \sss_v = \mathbf{q}$. Since $\pp$ and $\mathbf{q}$ are orthonormal, we conclude that $\sssu$ and $\sssv$ are linearly independent and $\sss$ is regular. $\p$ is a regular surface because $\sss$ is a regular chart. 
+
+:::
+
+
+
+
+::: Example
+### Unit cylinder
+
+**Question.** Consider the infinite unit cylinder
+$$
+\SSS  = \{  (x,y,z) \in \R^3 \divider x^2 + y^2 = 1 \} \,.
+$$
+$\SSS$ is a surface with atlas $\mathcal{A} = \{ \sss_1,\sss_2\}$, where
+\begin{align*}
+\sss & \colon \R^2 \to \R^3   \,,
+& \sss(u,v) & = (\cos(u),\sin(u),v)\,, \\
+\sss_1 & := \sss |_{U_1} \,,   & \sss_2 & := \sss |_{U_2} \,, \\
+U_1 & := \left( 0,\frac{ 3 \pi}{2} \right) \times \R \,, 
+& U_2 & := \left( \pi,\frac{ 5 \pi}{2} \right) \times \R \,.
+\end{align*}
+Prove that $\SSS$ is a regular surface.
+
+**Solution.** The map $\sss$ is regular because
+\begin{align*}
+\sss_u & = (-\sin(u),\cos(u),0)\\
+\sss_v & = (0,0,1) \\
+\sss_u \times \sss_v & = (\cos (u), \sin(u), 0) \\
+\norm{\sss_u \times \sss_v} & = 1 \neq 0 \,.
+\end{align*}
+Therefore $\sss_1$ and $\sss_2$ are regular charts, being restrictions of $\sss$. Thus, $\mathcal{A}$ is a regular atlas, making $\SSS$ a regular surface.
+
+:::
+
+
+
+
+::: Example
+### Graph of a function
+
+**Question.** Let $U \subseteq \R^2$ be open and $f \colon U \to \R$ be smooth. The graph of $f$ is the set
+$$
+\Gamma_f := \{ (u,v,f(u,v)) \divider (u,v) \in U  \}  \,.
+$$
+$\Gamma_f$ is surface with atlas given by
+$\mathcal{A} = \{ \sss \}$, where
+$$
+\sss \colon U \to \Gamma_f \,, \quad 
+\sss(u,v):=(u,v,f(u,v)) \,.
+$$
+Prove that $\Gamma_f$ is a regular surface.
+
+
+**Solution.** The Jacobian matrix of $\sss$ is
+$$
+J\sss (u,v) = 
+\left(
+\begin{array}{ccc}
+1  &  0 \\
+0  &  1 \\
+f_u  & f_v \\
+\end{array} 
+\right) \,.
+$$
+The first minor of $J\sss$ is the identity matrix, which has determinant $1$, and is hence invertible. Therefore $J\sss$ has rank 2, showing that $\sss_u$ and $\sss_v$ are linearly independent. Hence $\sss$ is regular. This implies $\mathcal{A}$ is a regular atlas, and $\SSS$ is a regular surface.
+
+:::
+
+
+
+::: Definition
+### Spherical coordinates
+
+A point $\pp = (x,y,z) \neq \zero$ is represented in **spherical coordinates** by
+\begin{align*}
+x & = \rho \cos(\theta) \cos (\fi)    \\
+y & = \rho \sin(\theta) \cos (\fi)   \\
+z & = \rho \sin (\fi) 
+\end{align*}
+where 
+$$
+\rho:=\sqrt{ x^2 + y^2 + z^2 } \,, \quad \theta \in [-\pi,\pi] \,, \quad \fi \in \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] \,.
+$$
+
+
+:::
+
+
+
+
+
+::: Example
+### Unit sphere in spherical coordinates 
+
+**Question.** Consider the unit sphere in $\R^3$
+$$
+\sphere^2 = \{  (x,y,z) \in \R^3 \divider x^2 + y^2 + z^2 = 1  \} \,.
+$$
+Define the set
+$$
+U = \left\{ (\theta,\fi)  \in \R^2 \divider \theta \in ( -\pi,\pi), \, \fi \in \left(  -\frac{\pi}{2} , \frac{\pi}{2} \right)  \right\} \,,
+$$
+and the chart $\sss \colon U \to \R^3$ by
+$$
+\sss( \theta , \fi ) :=  ( \cos(\theta) \cos(\fi) , \sin(\theta) \cos(\fi) , \sin (\fi)  ) \,.
+$$
+Prove that $\sss$ is regular.
+
+**Solution.** We compute
+\begin{align*}
+\sss_{\theta} & = (-\sin(\theta) \cos(\fi), \cos(\theta) \cos(\fi), 0 ) \\
+ \sss_{\fi} & = ( - \cos(\theta) \sin(\fi), -\sin(\theta) \sin(\fi), \cos(\fi) )  \,.
+\end{align*} 
+Since $(\theta,\fi)\in U$, we have $\fi \in ( -\pi/2, \pi/2 )$. Therefore, the last component $\cos(\fi)$ of $\sss_\fi$ is non-zero. As the last component of $\sss_\theta$ is $0$, we conclude that $\sss_\theta$ and $\sss_{\fi}$ are linearly independent for all $(\theta,\fi) \in U$. Therefore $\sss$ is regular. Alternatively, compute
+\begin{align*}
+\sss_{\theta} \times \sss_{\fi} & = 
+( \cos(\theta) \cos^2(\fi), \sin(\theta) \cos^2(\fi), \cos(\fi)\sin(\fi) ) \\
+\norm{ \sss_{\theta} \times \sss_{\fi} } & = |\cos (\fi)| =  \cos (\fi) \neq 0 \,,
+\end{align*}
+since $\fi \in ( -\pi/2, \pi/2 )$, showing that $\sss$ is regular.
+
+:::
+
+
+
+
+
+::: Example
+
+**Question.** Prove that the following chart is not regular
+$$
+\sss(u,v) = (u,v^2,v^3) \,.
+$$
+
+**Solution.** We have
+\begin{align*}
+\sss_u & = (1,0,0) \\
+\sss_v & = (0,2v,3v^2) \\
+\sss_v(u,0) & = (0,0,0) \,, 
+\end{align*}
+showing that $\sss_u$ and $\sss_v$ are linearly dependent along the line
+$$
+L = \{ (u,0) \divider u \in \R \} \,.
+$$
+Hence $\sss$ is not a regular chart.
+
+:::
+
+
+
+## Reparametrizations
+
+
+::: Definition
+### Reparametrization
+
+Suppose that $U, \widetilde{U} \subseteq \R^2$ are open sets and 
+$$
+\sss \colon U \to \R^3 \,, \quad 
+\widetilde{\sss} \colon \widetilde{U} \to \R^3 \,,
+$$ 
+are surface charts. We say that $\widetilde{\sss}$ is a **reparametrization** of $\sss$ if there exists a diffeomorphism $\Phi \colon \widetilde{U} \to U$ such that 
+$$
+\widetilde{\sss} = \sss \circ \Phi \,.
+$$
+We call $\Phi$ a **reparametrization map**.
+:::
+
+
+
+
+
+::: Theorem
+
+Let $U, \widetilde{U} \subseteq \R^2$ be open and 
+$\sss \colon U \to \R^3$ be regular. Suppose given a diffeomorphism $\Phi \colon \widetilde{U} \to U$. The reparametrization
+$$
+\widetilde{\sss} \colon \widetilde{U} \to \R^3\,, \qquad \widetilde{\sss} = \sss \circ \Phi
+$$
+is a regular chart, and it holds
+$$
+ \widetilde{\sss}_{\tilde u} \times \widetilde{\sss}_{\tilde v} =\det  J \Phi \,  \left( \sssu \times \sssv  \right) \,.
+$$
+
+:::
+
+
+
+::: Definition
+### Transition map
+
+Let $\SSS$ be a regular surface and 
+$$
+\sss \colon U \to  \SSS \,, \quad
+\widetilde{\sss} \colon \widetilde{U} \to  \SSS
+$$
+be regular charts. Suppose the images of $\sss$ and $\widetilde{\sss}$ overlap, that is,
+$$
+I := \sss (U) \cap \widetilde{\sss} (\widetilde{U}) \neq \emptyset \,.
+$$
+The set $I$ is open in $\SSS$, being intersection of open sets. Define the sets
+$$
+V := \sss^{-1}(I) \subseteq U \,, \quad  \widetilde{V} := \widetilde{\sss}^{-1} (I) \subseteq \widetilde{U} \,.
+$$
+Note that $V$ and $\widetilde{V}$ are open, by continuity of $\sss$ and $\widetilde{\sss}$. Since $\sss$ and $\widetilde{\sss}$ are homeomorphisms, by construction
+$$
+\sss(V) = \widetilde{\sss} (\widetilde{V} ) = I \,.
+$$
+Therefore, they are well defined the restrictions
+$$
+\sss |_{V} \colon V \to I \,, \quad 
+\widetilde{\sss} |_{\widetilde{V}} \colon \widetilde{V} \to I \,.
+$$
+The maps $\sss |_{V}$ and $\widetilde{\sss} |_{\widetilde{V}}$ are homeomorphisms, being restrictions of homeomorphisms. The composition homeomorphism
+$$
+\Phi \colon \widetilde{V} \to V \,, \quad \Phi := \sss^{-1} \circ \widetilde{\sss}
+$$
+is called a **transition map** from $\sss$ to $\widetilde{\sss}$.
+
+:::
+
+
+
+::: Theorem
+
+Let $\SSS$ be a regular surface. The transition maps between regular charts are diffeomorphisms. 
+
+:::
+
+
+::: Theorem
+
+Let $\SSS$ be a regular surface and 
+$$
+\sss \colon U \to \SSS \,, \quad
+\widetilde{\sss} \colon \widetilde{U} \to  \SSS
+$$
+be regular charts. Suppose the images of $\sss$ and $\widetilde{\sss}$ overlap, that is,
+$$
+I := \sss (U) \cap \widetilde{\sss} (\widetilde{U}) \neq \emptyset \,.
+$$
+Define the open sets
+$$
+V := \sss^{-1}(I) \subseteq U \,, \quad  \widetilde{V} := \wsss^{-1}(I) \subseteq \widetilde{U} \,,
+$$
+and the transition map
+$$
+\Phi \colon \widetilde{V} \to V \,, \quad \Phi := \sss^{-1}\circ \wsss \,.
+$$
+Then $\sss$ and $\wsss$ are reparametrization of each other, with reparametrization map given by $\Phi$, that is,
+$$
+\wsss = \sss \circ \Phi \,, \qquad \sss = \wsss \circ \Phi^{-1} \,.
+$$
+
+
+:::
+
+
+
+
+
+## Functions between surfaces
+
+
+
+::: Definition  
+### Smooth functions between surfaces
+
+Let $\SSS_1$ and $\SSS_2$ be regular surfaces and $f \colon \SSS_1 \to \SSS_2$ a map.
+
+1. $f$ is *smooth at $\pp \in \SSS_1$*, if $\exists$ charts $\sss_i \colon U_i \to \SSS_i$ for $i=1,2$ such that
+$$
+\pp \in \sss_1(U_1)\,, \quad f(\pp) \in \sss_2(U_2) 
+$$
+and 
+$$
+(\sss_2^{-1} \circ f \circ \sss_1 )  \colon U_1 \to U_2
+$$
+is smooth.
+
+2. $f$ is *smooth*, if it is smooth for each $\pp \in \SSS_1$.
+
+:::
+
+
+
+::: Theorem
+
+If $f \colon \SSS_1 \to \SSS_2$ and $g \colon \SSS_2 \to \SSS_3$ are smooth maps between surfaces, then the composition 
+$$
+(g \circ f) \colon \SSS_1 \to \SSS_3
+$$
+is smooth.
+
+
+:::
+
+
+::: Theorem
+
+Let $\SSS$ be a regular surface, and $\sss \colon U \to \SSS$ a regular chart. The inverse
+$$
+\sss^{-1} \colon \sss(U) \to U \subseteq \R^2 \,,
+$$
+is a differentiable function.
+
+:::
+
+
+
+
+::: {.Theorem #theorem-diff-check-2}
+
+Let $\SSS_1$ and $\SSS_2$ be regular surfaces. Make the following assumptions:
+
+1. $V \subseteq \R^3$ is an open set such that 
+$$
+\SSS_1 \subseteq V \,,
+$$
+2. $f \colon V \to \R^3$ is a differentiable function such that  
+$$
+f(\SSS_1) \subseteq \SSS_2 \,.
+$$
+
+Then the restriction 
+$$
+f |_{\SSS_1} \colon \SSS_1 \to \SSS_2 
+$$
+is a differentiable map between surfaces.
+
+:::
+
+
+
+::: Definition
+### Diffeomorphism of surfaces
+
+Let $\SSS_1$ and $\SSS_2$ be regular surfaces. 
+
+1. A map $f \colon \SSS_1 \to \SSS_2$ is a **diffeomorphism**, if $f$ is smooth and admits smooth inverse.
+
+2. We say that $\SSS_1$ and $\SSS_2$ are **diffeomorphic**, if there exists $f \colon \SSS_1 \to \SSS_2$ diffeomorphism.
+
+:::
+
+
+
+::: Theorem
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces, $f \colon \SSS \to \widetilde{\SSS}$ diffeomorphism. If 
+$\sss \colon U \to \SSS$ is a regular chart for $\SSS$ at $\pp$, then
+$$
+\widetilde{\sss}   \colon U \to \widetilde{\SSS} \,, \qquad \widetilde{\sss} := f \circ \sss \,,
+$$
+is a regular chart for $\widetilde{\SSS}$ at $f(\pp)$.
+
+:::
+
+
+::: Definition
+### Local diffeomorphism
+
+Let $\SSS_1$ and $\SSS_2$ be regular surfaces, and 
+$$
+f \colon \SSS_1 \to \SSS_2 \,,
+$$
+be a differentiable map.
+
+1. $f$ is a **local diffeomorphism** at $\pp \in \SSS_1$ if:
+    * There exists An open set $V \subseteq \SSS_1$ with $\pp \in V$; 
+    * $f(V) \subseteq \SSS_2$ is open;
+    * $f \colon V \to f(V)$ is a diffeomorphism between surfaces.
+
+2. $f$ is a **local diffeomorphism** in $\SSS_1$, if it is a local diffeomorphism at each $\pp \in \SSS_1$.
+
+3. $\SSS_1$ is **locally diffeomorphic** to $\SSS_2$, if for each $\pp \in \SSS_1$ there exists $f$ local diffeomorphism at $\pp$.
+
+:::
+
+
+
+
+## Tangent plane
+
+
+::: Definition
+### Tangent vectors and tangent plane
+
+Let $\SSS$ be a surface and $\pp \in \SSS$. 
+
+1. We say that $\vv \in \R^3$ is 
+a **tangent vector** to $\SSS$ at $\pp$, if there exists a smooth curve
+$$
+\g \colon (-\e,\e) \to \R^3 \,, 
+$$
+such that
+$$
+\g (-\e , \e) \subseteq \SSS \,, \quad \g(0) = \pp \,, \quad \vv = \dg(0) \,,
+$$
+where $\e>0$. 
+
+2. The **tangent plane** of $\SSS$ at $\pp$ is the set
+$$
+T_{\pp} \SSS := \{ \vv \in \R^3 \divider \vv \, \mbox{ tangent vector of } \, \SSS \, \mbox{ at } \, \pp \} \,.
+$$
+
+
+:::
+
+
+::: Theorem
+### Curves with values on surfaces
+
+Let $\SSS$ be a regular surface, $\pp \in \SSS$, and $\sss \colon U \to \SSS$ be a chart at $\pp$. Denote
+$$
+(u_0,v_0) = \sss^{-1}(\pp) \,.
+$$
+Suppose $\g \colon (-\e,\e) \to \R^3$ is a smooth curve such that 
+$$
+\g(t) \in \SSS \,, \quad \forall \, t \in (-\e,\e) \,.
+$$
+Then, there exist smooth functions
+$$
+u , v \colon (\e_0,\e_0) \to \R \,,\quad u(0)=u_0 \,, \quad v(0) = v_0 \,,
+$$
+such that
+$$
+\g(t) = \sss( u(t), v(t) ) \,, \quad \forall \, t \in (-\e,\e) \,.
+$$
+
+:::
+
+
+
+
+::: Theorem
+### Characterization of Tangent Plane
+
+Let $\SSS$ be a regular surface and $\pp \in \SSS$. 
+Let $\sss \colon U \to \SSS$ be a chart at $\pp$. Denote
+$$
+(u_0,v_0) = \sss^{-1}(\pp) \,.
+$$
+The tangent plane satisfies
+$$
+T_{\pp} \SSS = \operatorname{span} \{ \sss_u , \sss_v \} := \{  \lambda \sss_u + \mu \sss_v \divider \lambda,\mu \in \R \} \,,
+$$
+where $\sss_u$ and $\sss_v$ are evaluated at $(u_0,v_0)$. 
+
+
+:::
+
+
+
+
+
+
+::: Theorem
+### Equation of tangent plane
+
+Let $\SSS$ be a regular surface and $\pp \in \SSS$. Let $\sss \colon U \to \SSS$ be a regular chart at $\pp$. Set
+$$
+(u_0,v_0) := \sss^{-1}(\pp) \,, \quad \nn := \sss_u (u_0,v_0) \times \sss_v (u_0,v_0) \,.
+$$
+They hold:
+
+1. The equation of the tangent plane $T_{\pp} \SSS$ is given by
+$$
+\xx \cdot \nn = 0 \,, \quad  \forall \, \xx \in \R^3 \,.
+$$
+
+2. The equation of the affine tangent plane $\pp + T_{\pp} \SSS$ is given by
+$$
+(\xx - \pp) \cdot \nn = 0 \,, \quad  \forall \, \xx \in \R^3 \,.
+$$
+
+:::
+
+
+
+
+::: Example
+
+**Question.** Consider the surface $\SSS$ defined by the chart
+$$
+\sss (u,v) := \left(   \sqrt{1-v} \cos(u) , \sqrt{1-v} \sin(u), v  \right) \,,
+$$
+for $u \in (0,2\pi)$, $v < 1$.
+
+1. Prove that $\sss$ parametrizes a paraboloid.
+2. Prove that $\sss$ is regular.
+3. Compute the vector $\nn = \sssu \times \sssv$
+4. Consider the point
+$$
+\pp = \left( \frac{\sqrt 2}{2}, \frac{\sqrt 2}{2}, 0  \right) \,.
+$$
+Give a basis for $T_{\pp} \SSS$ at the point
+
+5. Compute the cartesian equation of $T_{\pp} \SSS$. Give your answer in the form
+$$
+ax + by + cz = d\,,
+$$
+for suitable $a,b,c,d \in \R$.
+
+
+**Solution.**
+
+1. Denote the coordinates of $\sss$ by
+$$
+\sss(u,v) = (x,y,z) \,.
+$$
+We have
+\begin{align*}
+x^2 + y^2 & = \left( \sqrt{1-v} \cos(u) \right)^2 + \left( \sqrt{1-v} \cos(u) \right)^2 \\
+          & = 1 - v  \\
+          & = 1 - z \,,
+\end{align*}
+showing that $\sss$ parametrizes the paraboloid
+$$
+z = - x^2 - y^2 + 1 \,.
+$$
+
+2. Proof that $\sss$ is regular:
+\begin{align*}
+\sss_u & = \left(  - \sqrt{1-v} \sin(u) , \sqrt{1-v} \cos(u), 0        \right) \\
+\sss_v & = \left( -   \frac{1}{2} (1-v)^{-1/2}  \cos(u) , -\frac{1}{2} (1-v)^{-1/2}   \sin(u), 1        \right) 
+\end{align*}
+The last component of $\sss_u$ is $0$, and the last component of $\sss_v$ is $1$, thus $\sss_u$ and $\sss_v$ are linearly independent. Hence $\sss$ is regular. 
+
+3. We compute:
+\begin{align*}
+\nn & = \sss_u \times \sss_v \\
+    & = 
+\left| 
+\begin{array}{ccc}
+\ii & \jj & \kk \\
+-\sqrt{1-v} \sin(u) & \sqrt{1-v} \cos(u) & 0 \\
+-\frac{1}{2} (1-v)^{-1/2}  \cos(u) & -\frac{1}{2} (1-v)^{-1/2}   \sin(u) & 1
+\end{array}
+\right| \\
+& = \left(  \sqrt{1-v} \cos(u) , \sqrt{1-v} \sin(u), \frac12        \right) 
+\end{align*}
+
+4. Notice that 
+$$
+\sss \left( \frac{\pi}{4}, 0 \right)  = \pp \,.
+$$
+A basis for $T_{\pp} \SSS$ is given by the vectors
+\begin{align*}
+\sss_u  \left( \frac{\pi}{4}, 0 \right) & = \left(  - \frac{\sqrt{2}}{2} ,  \frac{\sqrt{2}}{2} , 0        \right)\,,\\
+\sss_v  \left( \frac{\pi}{4}, 0 \right) & = \left( -    \frac{\sqrt{2}}{4}  , - \frac{\sqrt{2}}{4} , 1        \right) \,.
+\end{align*}
+
+5. Using the calculation for $\nn$ in Point 3, we find
+$$
+\nn  \left( \frac{\pi}{4}, 0 \right) 
+=  \left(  \frac{\sqrt 2}{2}, \frac{\sqrt 2}{2} , -\frac{1}{2}   \right) \,.
+$$
+The equation for $T_{\pp} \SSS$ is therefore
+$$
+\xx \cdot \nn = 0 \,, \quad \forall \, \xx \in \R^3 \,.
+$$
+The above reads
+$$
+\frac{\sqrt 2}{2} \, x + \frac{\sqrt 2}{2} \, y - \frac{1}{2} \, z = 0 \,,
+$$
+which implies 
+$$
+\sqrt{2} \, x + \sqrt{2} \, y -  z = 0 \,,
+$$
+
+:::
+
+
+
+## Unit normal and orientability
+
+::: Definition
+### Standard unit normal of a chart
+
+Let $\SSS$ be a regular surface and $\sss \colon U \to \R^3$ a regular chart. The **standard unit normal** of $\sss$ is the smooth function
+$$
+\NN_{\sss} \colon U \to \R^3 \,, \quad \NN_{\sss} = \frac{ \sss_u \times \sss_v }{ \norm{\sss_u \times \sss_v} } \,. 
+$$
+
+:::
+
+
+
+
+::: Example
+### Standard unit normal of the plane
+
+Let $\mathbf{a} , \pp ,\mathbf{q} \in \R^3$, with $\pp$ and $\mathbf{q}$ linearly independent. Consider the plane charted by
+$$
+\sss (u,v):= \mathbf{a} + \pp u + \mathbf{q} v \,, \quad \forall \, (u,v) \in \R^2 \,.
+$$
+Compute the standard unit normal to $\sss$.
+
+*Solution.* We have
+$$
+\sss_u = \pp \,, \quad 
+\sss_v = \mathbf{q} \,, \quad 
+$$
+and therefore
+$$
+\NN_{\sss} = \frac{ \pp \times \mathbf{q}  }{ \norm{ \pp \times \mathbf{q} } } \,.
+$$
+
+
+:::
+
+
+
+::: Definition
+### Unit normal of a surface
+
+Let $\SSS$ be a regular surface. A **standard unit normal** to $\SSS$ is a smooth function
+$\NN \colon \SSS \to \R^3$ such that
+$$
+\NN (\pp) \perp T_{\pp} \SSS \,, \quad \| \NN (\pp) \| = 1 \,, \quad \forall \, \pp \in \SSS \, .
+$$
+
+:::
+
+
+
+
+::: Definition
+### Orientable surface
+
+Let $\SSS$ be a regular surface. We say that $\SSS$ is **orientable** if there exists a standard unit normal $\NN \colon \SSS \to \R^3$ and an atlas $\mathcal{A}$ such that 
+$$
+\NN \circ \sss = \NN_{\sss} \,, \qquad \forall \, \sss \in \mathcal{A} \,.
+$$
+
+:::
+
+
+
+
+
+::: Example
+
+**Question.** Let $\SSS$ be the surface described by the chart
+$$
+\sss(u,v) = (e^u, u+v, v ) \,, \quad u,v \in \R \,.
+$$
+
+1. Prove that $\sss$ is regular.
+2. Compute the standard unit normal to $\sss$.
+
+
+**Solution.**
+
+1. Compute the following quantities:
+\begin{align*}
+\sss_{u} & =\left(e^{u}, 1,0\right) \\
+\sss_{v} & =(0,1,1) \\
+\sss_{u} \times \sss_{v} & = \left|\begin{array}{ccc}
+\ii & \jj & \kk \\
+e^{u} & 1 & 0 \\
+0 & 1 & 1
+\end{array}\right| \\
+& = \left(1,-e^{u}, e^{u}\right)
+\end{align*}
+Since 
+$$
+\norm{\sss_u \times \sss_v} =  \sqrt{1+2 e^{2 u}} \geq 1\,,
+$$
+we see that $\sss_u \times \sss_v \neq \zero$, showing that $\sss$ is regular. 
+
+2. The standard unit normal to $\sss$ is
+$$
+\NN  = \frac{ \sss_u \times \sss_v }{ \norm{\sss_u \times \sss_v} }
+     = \frac{1}{\sqrt{1+2 e^{2 u}}} \, \left(1,-e^{u}, e^{u}\right) \,.
+$$
+
+
+:::
+
+
+
+
+
+## Differential of smooth functions
+
+
+::: Definition
+### Differential of smooth function
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and $f \colon \SSS \to \widetilde{\SSS}$ a smooth map. 
+The differential $d_{\pp}f$ of $f$ at $\pp$ is defined as the map
+$$
+d_{\pp}f \colon T_{\pp} \SSS \to T_{f(\pp)} \widetilde{\SSS} \,,  \quad d_{\pp}f (\vv) := (f \circ \g)'(0) \,,
+$$
+where $\g \colon (-\e,\e) \to \SSS$ is any smooth curve such that
+$$
+\g(0) = \pp \,, \qquad  \dg(0) = \vv \,.
+$$
+
+:::
+
+
+
+
+
+
+
+::: Example
+### Computing $d_{\pp}f$ using the definition
+
+**Question.** Consider the portion of the plane $\{z=0\}$,
+$$
+\SSS = \left\{ (x,y,0) \in \R^3 \, \colon \, x \in (0,2\pi)\,, \, y \in  \R \right\} \,,
+$$ 
+and the unit cylinder
+$$
+\widetilde{\SSS} = \{ (x,y,z) \in \R^3 \, \colon \, x^2 + y^2 = 1 \}  \,.
+$$
+Define the map 
+$$
+f \colon S \to \widetilde{\SSS} \,, \quad 
+f(x,y,0) := (\cos x , \sin x, y) \,.
+$$
+
+1. Compute $T_{\pp}\SSS$.
+
+2. Prove that the differential $d_{\pp}f$ at
+$$
+\pp = (u_0,v_0,0) \,, \quad \vv = (\lambda,\mu,0) \,,
+$$
+is given by
+$$
+d_{\pp} f (\vv) =   (- \lambda \sin (u_0), \lambda \cos (u_0), \mu) \,.
+$$
+
+
+**Solution.**
+
+1. A chart for $\SSS$ is given by
+$$
+\sss(u,v) = (u,v,0) \,.
+$$
+Therefore 
+$$
+\sss_u = (1,0,0) \,, \qquad \sss_v = (0,1,0) \,, 
+$$
+from which
+\begin{align*}
+T_{\pp} \SSS & = \operatorname{span} \{ \sss_u,\sss_v \} \\
+             & = \operatorname{span} \{ (1,0,0), (0,1,0)  \} \\
+             & = \{ (\lambda,\mu,0) \, \colon \, \lambda,\mu \in \R \} \,.
+\end{align*}
+
+2. From the answer to Point 1, we see that 
+$$
+\vv = (\lambda,\mu,0) \in T_{\pp} \SSS \,. 
+$$
+Define the curve $\g \colon (-\e,\e) \to \SSS$ by setting
+$$
+\g(t) := \sss(u_0 + t \lambda, v_0 + t \mu ) = (u_0 + t \lambda, v_0 + t \mu, 0)\,.
+$$
+Clearly,
+$$
+\g(0) = \pp \,, \quad \dg(0) = \vv = (\lambda,\mu,0)\,.
+$$
+We have
+\begin{align*}
+(f \circ \g) (t) & = f(u_0 + t \lambda, v_0 + t \mu,0) \\
+                 & = ( \cos(u_0 + t \lambda), \sin(u_0 + t \lambda),v_0 + t \mu ) \,,\\
+(f \circ \g)' (t) & = (- \lambda \sin (u_0 + t\lambda), \lambda \cos (u_0 + t \lambda), \mu) \,.
+\end{align*}
+Therefore, the differential is given by
+$$
+d_{\pp} f (\vv) = (f \circ \g)' (0) =  (- \lambda \sin (u_0), \lambda \cos (u_0), \mu) \,.
+$$
+
+:::
+
+
+
+
+
+::: Theorem
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and $f \colon \SSS \to \widetilde{\SSS}$ a smooth map. Denote the differential of $f$ by
+$$
+d_{\pp}f \colon T_{\pp} \SSS \to T_{f(\pp)} \widetilde{\SSS} \,.
+$$
+We have:
+
+1. $d_{\pp}f (\vv)$ depends only on $f, \pp,\vv$ (and not on $\g$).
+
+2. $d_{\pp} f$ is linear, that is,
+$$
+d_{\pp}f (\lambda \vv + \mu \ww) = \lambda d_{\pp}f (\vv) + \mu d_{\pp}f (\ww) \,, 
+$$
+for all $\vv,\ww \in T_{\pp} \SSS$ and $\lambda,\mu \in \R$.
+3. Let 
+$$
+\sss \colon U \to \SSS \,, \quad \widetilde{\sss} \colon \widetilde{U} \to \widetilde{\SSS} \,,
+$$
+be regular charts at $\pp$ and $f(\pp)$, respectively. Denote by 
+$$
+(u,v)  \mapsto ( \alpha(u,v), \beta(u,v) ) 
+$$
+the components of the smooth map
+$$
+\Psi := \widetilde{\sss}^{-1} \circ f \circ \sss \colon U \to \widetilde{U} \,.
+$$
+In particular it holds
+$$
+\widetilde{\sss} (  \alpha(u,v) , \beta(u,v) ) = f(\sss (u,v)) \,, 
+\quad \forall \, (u,v) \in U \,.
+$$
+The matrix of the linear map $d_{\pp}f$ with respect to the basis 
+$$
+\{ \sss_u , \sss_v \} \,\, \mbox{ on } \,\, T_{\pp} \SSS \,, \quad
+\{ \widetilde{\sss}_{\tilde{u}} , \widetilde{\sss}_{\tilde{v}} \} \,\, \mbox{ on } \,\, T_{f(\pp)} \widetilde{\SSS} \,,
+$$
+is given by the Jacobian of the map $\Psi$, that is,
+$$
+d_{\pp} f = J\Psi = \left(
+\begin{array}{cc}
+\alpha_u & \alpha_v \\
+\beta_u & \beta_v \\
+\end{array}
+\right) \,.
+$$
+
+:::
+
+
+
+::: Example
+### Computing the matrix of $d_{\pp}f$
+
+**Question.** Consider the unit cylinder, charted by
+$$
+\sss(u,v) = (\cos u, \sin u, v) \,, \quad (u,v) \in U := (0,2\pi) \times \R \,.
+$$
+Consider the plane $\widetilde{\SSS}$ charted by
+$$
+\widetilde{\sss}(u,v) = (u,v,0) \,, \quad (u,v) \in \wU = \R^2 \,.
+$$
+Define the map
+$$
+f \colon \SSS \to \wSSS \,, \quad 
+f(x,y,z) = (y,xz,0) \,.
+$$
+Compute the matrix of $d_{\pp} f$ with respect to these charts.
+
+**Solution.** We need to compute the map
+$$
+\Psi \colon U \to \widetilde{U} \,, \quad \Psi := \widetilde{\sss}^{-1} \circ f \circ \sss \,.
+$$
+Clearly, we have
+$$
+\widetilde{\sss}^{-1} (u,v,0) =(u,v) \,.
+$$
+Therefore
+\begin{align*}
+\Psi(u,v) & = \widetilde{\sss}^{-1} \left( f(\sss(u,v))    \right) \\
+          & = \widetilde{\sss}^{-1} \left( f(\cos u, \sin u, v )    \right) \\
+          & =  \widetilde{\sss}^{-1} \left( \sin (u), \cos (u) v, 0    \right) \\
+          & = \left( \sin (u), \cos (u) v    \right) \,.
+\end{align*}
+The components of $\Psi$ are
+$$
+\alpha(u,v) = \sin(u) \,, \qquad \beta (u,v) =  \cos (u) v  \,.
+$$
+Therefore 
+\begin{align*}
+\alpha_u & = \cos (u) \,, & \alpha_v &  = 0 \\
+\beta_u  & = -\sin (u) v \,,  & \beta_v &  = \cos(u) 
+\end{align*}
+The matrix of $d_{\pp}f$ is hence
+$$
+d_{\pp}f = J\Psi = 
+\left(
+\begin{array}{cc}
+\cos (u) & 0 \\
+-\sin (u) v  & \cos(u) \\
+\end{array}
+\right) \,.
+$$
+
+:::
+
+
+
+::: Theorem
+
+Let $\SSS_1$ and $\SSS_2$ be regular surfaces. Suppose that 
+$$
+f \colon \SSS_1 \to \SSS_2 
+$$
+is smooth, and let $\pp \in \SSS_1$. They are equivalent:
+
+1. $f$ is a local diffeomorphism at $\pp$.
+2. The differential $d_{\pp} f \colon T_{\pp} \SSS_1 \to T_{f(\pp)} \SSS_2$ is invertible at $\pp$.
+
+
+:::
+
+
+
+
+## Level surfaces
+
+::: Definition
+### Level surface
+
+Let $V \subseteq \R^3$ be an open set and $f \colon V \to \R$ be smooth. The **level surface** associated with $f$ is the set
+$$
+\SSS_f := f^{-1}(0) = \{ (x,y,z) \in V \divider f(x,y,z) = 0  \} \,.
+$$
+
+
+:::
+
+
+
+::: Theorem
+
+Let $V \subseteq \R^3$ be an open set and $f \colon V \to \R$ be smooth. Consider the level surface
+$$
+\SSS_f = \{ (x,y,z) \in V \divider f(x,y,z) = 0  \} \,.
+$$
+Suppose that 
+$$
+\nabla f (x,y,z) \neq 0 \,, \quad \forall \, (x,y,z) \in V \,.
+$$
+Then $\SSS_f$ is a regular surface.
+
+:::
+
+
+
+
+::: Example
+### Circular cone
+
+**Question.** Consider the circular cone
+$$
+\SSS = \{ (x,y,z) \in \R^3 \divider x^2 + y^2 = z^2 \,, \,  z>0  \} \,.
+$$
+Prove that $\SSS$ is a regular surface.
+
+**Solution.** Define the open set 
+$$
+V = \{ (x,y,z) \in \R^3 \divider z > 0 \} \,,
+$$
+and the function $f \colon V \to \R$ by
+$$
+f(x,y,z) = x^2 + y^2 - z^2 \,.
+$$
+We have
+$$
+\nabla f (x,y,z) = ( 2x, 2y, -2z ) \neq 0  \,, \quad 
+\forall \, (x,y,z) \in V \,.
+$$
+Since 
+$$
+\SSS = \SSS_f \,,
+$$
+we conclude that $\SSS$ is a regular surface.
+
+:::
+
+
+
+
+::: Theorem
+### Tangent plane of level surfaces
+
+Let $V \subseteq \R^3$ be an open set and $f \colon V \to \R$ be smooth. 
+Suppose that 
+$$
+\nabla f (x,y,z) \neq 0 \,, \quad \forall \, (x,y,z) \in V \,.
+$$
+Let $\pp \in \SSS_f$. We have
+$$
+\nabla f(\pp) \perp T_{\pp} \SSS_f \,.
+$$ 
+In particular, they hold:
+
+1. The cartesian equation of $T_{\pp} \SSS_f$ is given by
+$$
+\nabla f (\pp) \cdot \xx = 0    \,, \quad  \forall  \, \xx \in \R^3\,,
+$$
+
+2. The cartesian equation for $\pp + T_{\pp} \SSS_f$ is given by
+$$
+\nabla f(\pp) \cdot (\xx- \pp) = 0 \,, \quad \forall \, \xx \in \R^3\,.
+$$
+
+:::
+
+
+
+
+::: Example
+## Unit cylinder
+
+**Question.** Consider the unit cylinder 
+$$
+\SSS = \{ (x,y,z) \in \R^3 \divider x^2 + y^2 = 1 \}   \,.
+$$
+
+1. Prove that $\SSS$ is a regular surface. 
+2. Let 
+$$
+\pp = \left( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2},5 \right) \in \SSS
+$$
+Show that $T_{\pp} \SSS$ has cartesian equation 
+$$
+x + y = 0 \,.
+$$
+
+
+**Solution.**
+
+1. Define the open set
+$$
+V = \R^3 \smallsetminus \{ (0,0,z) \divider z \in \R \} \,.
+$$
+Note that $V$ is obtained by removing the $z$-axis from $\R^3$. Also define  the function $f \colon \R^3 \to \R$ by
+$$
+f(x,y,z) := x^2 + y^2 -1 \,.
+$$
+We have
+$$
+\nabla f (x,y,z) = ( 2x, 2y, 0 ) \neq 0  \,, \quad 
+\forall \, (x,y,z) \in V \,.
+$$
+Since 
+$$
+\SSS = \SSS_f \,,
+$$
+we conclude that $\SSS$ is a regular surface.
+
+2. Using the expression for $\nabla f$ found in Point 1, we get
+$$
+\nabla f (\pp) = \nabla f \left( \frac{\sqrt{2}}{2},\frac{\sqrt{2}}{2},5 \right) = 
+(\sqrt{2},\sqrt{2},0) \,.
+$$
+The equation for $T_{\pp} \SSS$ is
+$$
+\nabla f (\pp) \cdot \xx = 0 \,, \quad \forall \, \xx \in \R^3 \,.
+$$
+Therefore, we find
+\begin{align*}
+\nabla f (\pp) \cdot \xx = 0 \,\, & \iff \,\,
+(\sqrt{2},\sqrt{2},0) \cdot (x,y,z) = 0 \\ 
+\,\, & \iff \,\, 
+x + y = 0 \,.
+\end{align*}
+
+:::
+
+
+
+
+## Ruled surfaces
+
+
+::: Definition
+### Ruled surface
+
+A **ruled surface** is a surface with 
+chart
+$$
+\sss(u,v) = \g(u) + v \mathbf{a}(u) \,,
+$$
+where
+
+1. $\g \colon (a,b) \to \R^3$ is a smooth curve,
+2. $\mathbf{a} \colon (a,b) \to \R^3$ is a smooth curve,
+3. $\dg(t)$ and $\mathbf{a}(t)$ are linearly independent for all $t \in (a,b)$. 
+
+We say that:
+
+1. $\g$ is the **base curve**.
+2. The lines $v \mapsto v \mathbf{a}(u)$ are the **rulings**.
+
+:::
+
+
+::: Theorem
+
+A ruled surface $\SSS$ is regular if $v$ is sufficiently small.
+
+:::
+
+
+
+
+::: Example
+### Unit Cylinder is ruled surface
+
+**Question.** Prove that the unit cylinder 
+$$
+\SSS = \{ (x,y,z) \in \R^3 \, \colon \, x^2 + y^2 = 1 \} \,.
+$$
+is a ruled surface.
+
+
+**Solution.** 
+We know that the unit cylinder is charted by
+$$
+\sss (u,v) = (\cos(u), \cos(u),v ) \,, \quad (u,v) \in (0,2\pi) \times \R \,.
+$$
+We can rewrite $\sss$ as
+$$
+\sss(u,v) = \g(u) + v \mathbf{a}(u) \,,
+$$
+with
+$$
+\g(u):= (\cos(u), \cos(u),0 ) \,, \quad \mathbf{a} = (0,0,1) \,.
+$$
+Note that the vectors
+$$
+\dg = (-\sin(u), \cos(u), 0 ) \,, \quad \mathbf{a} = (0,0,1)
+$$
+are orthogonal, and hence linearly independent. Therefore $\SSS$ is a ruled surface.
+
+:::
+
+
+
+
+::: Example
+### Möbius band
+
+**Question.** The Möbius band is a ruled surface with chart
+$$
+\sss = \g(u) + v \mathbf{a}(u) \,, \quad u \in (0,2\pi), \, v \in \left( -\frac12, \frac12 \right) \,,
+$$
+where 
+$$
+\g(u) = (\cos(u), \sin(u), 0) 
+$$
+is the unit circle, and
+$$
+\mathbf{a} = \left(   -\sin \left( \frac{u}{2} \right) \cos(u),
+                  -\sin \left( \frac{u}{2} \right) \sin(u),
+                   \cos \left( \frac{u}{2} \right)   \right) 
+$$
+is a vector which does a half rotation while going around the unit
+circle $\g$. In particular 
+$$
+\sss (u,v) =  \left(   
+  \left[ 1 - v \sin \left( \frac{u}{2} \right) \right] \cos(u),
+  \left[ 1 - v \sin \left( \frac{u}{2} \right) \right] \sin(u),
+  v \cos \left( \frac{u}{2} \right)   \right) \,.
+$$
+
+1. Compute the standard unit normal to $\sss$.
+2. Prove that $\SSS$ is **non orientable**. 
+
+
+**Solution.**
+
+1. From the formula for $\sss$, it is easy to compute that 
+$$
+\sssu \times \sssv = \left( - \cos(u) \cos \left(  \frac{u}{2} \right),   - \sin(u) \cos \left(  \frac{u}{2} \right) , - \sin \left(  \frac{u}{2} \right) \right) \,.
+$$
+It is also immediate to check that $\norm{\sssu \times \sssv} = 1$, and therefore the principal unit normal of $\sss$ is
+$$
+\NN_{\sss} = \sss_u \times \sssv \,.
+$$
+
+2. Suppose by contradiction that $\SSS$ is orientable. This means there exists a globally defined principal unit normal vector
+$$
+\NN \colon \SSS \to \R^3 \,.
+$$
+By definition of principal normal, we have either 
+$$
+\NN \circ \sss = \NN_{\sss}  \,.
+$$
+Consider the point $\pp = (1,0,0)$ on $\SSS$. Notice that, by continuity, $\pp$ can be obtained via $\sss$ through the limits
+$$
+\pp = \lim_{u \to 0^+} \sss(u,0) = \lim_{u \to 2\pi^-} \sss(u,0) \,.
+$$
+Since $\NN$ is continuous, the above implies
+$$
+\NN(\pp) = \lim_{u \to 0^+} \NN \circ \sss(u,0) = \lim_{u \to 2\pi^-} \NN \circ \sss(u,0) \,.
+$${#eq-mobius-not-orientable-bis}
+However, by direct calculation:
+\begin{align*}
+\lim_{u \to 0^+} \NN \circ \sss(u,0) & =
+\lim_{u \to 0^+} \NN_{\sss} (u,0) = (-1,0,0) \\
+\lim_{u \to 2\pi^-} \NN \circ \sss(u,0) & =
+\lim_{u \to 2\pi^-} \NN_{\sss} (u,0) = (1,0,0)
+\end{align*}
+This clearly contradicts (@eq-mobius-not-orientable-bis). Therefore $\NN$ cannot exist, and $\SSS$ is not orientable.
+
+
+:::
+
+
+::: Example
+
+**Question.** Show that the surface 
+$$
+S=\left\{(x, y, z) \in \mathbb{R}^{3} \, \colon \, x^{2}+ 10 xy + 16x^2 - z = 0\right\}
+$$ 
+is a ruled surface.
+
+**Solution.** We shall make a change of variables. Notice that we can rearrange
+$$
+\begin{aligned}
+x^{2}+10 x y+16 x^{2}-z & =0 \\
+(x+8 y)(x+2 y) & = z .
+\end{aligned}
+$$
+Let 
+$$
+u=x+8 y, \qquad  v=x+2 y \,.
+$$ 
+Then $u v=z$ and
+$$
+\begin{aligned}
+u-v & =6 y \quad \implies \quad  y=\frac{u-v}{6} \\
+x & =u-8 y \\
+& =u-\frac{8(u-v)}{6} \\
+& =\frac{4 v-u}{3} .
+\end{aligned}
+$$
+It follows that if $(x, y, z) \in S$ then
+$$
+\begin{aligned}
+(x, y, z) & =\left(\frac{4 v-u}{3}, \frac{u-v}{6}, u v\right) \\
+& =\left(-\frac{u}{3}, \frac{u}{6}, 0\right)+v\left(\frac{4}{3},-\frac{1}{6}, u\right) \\
+& = \g(u) + v \mathbf{a}(u) \,,
+\end{aligned}
+$$
+where we have set
+\begin{align*}
+\g (u) & = \left(-\frac{u}{3}, \frac{u}{6}, 0\right) \\
+\mathbf{a}(u) & = \left(\frac{4}{3},-\frac{1}{6}, u\right) \,.
+\end{align*}
+Notice that 
+$$
+\dg(u) = \left(-\frac{1}{3}, \frac{1}{6}, 0\right) \,.
+$$
+For $u \neq 0$, we clearly have that $\mathbf{a}(u)$ and $\dg(u)$ are linearly independent (the last component of $\dg(u)$ is $0$). For $u = 0$ we have
+$$
+\dg(0) = \left(-\frac{1}{3}, \frac{1}{6}, 0\right) \,, \qquad 
+ \mathbf{a}(0) = \left(\frac{4}{3},-\frac{1}{6}, 0\right) \,,
+$$
+which are clearly linearly independent. Therefore, $S$ is a ruled surface.
+
+:::
+
+
+
+## Surfaces of Revolution
+
+
+::: Definition
+### Surface of revolution
+
+Let $\g \colon (a,b) \to \R^3$ be a smooth curve in the $(x,z)$-plane, that is,
+$$
+\g(v) = (f(v), 0 , g(v)) \,.
+$$
+Suppose that $f>0$. The surface $\SSS$ obtained by rotating $\g$ about the $z$-axis is called **surface of revolution**. A chart for $\SSS$ is given by
+$$
+\sss (u,v) =  (\cos(u)f(v) , \sin(u) f(v), g(v))\,,
+$$
+with $u \in (0,2\pi)$ and $v \in (a,b)$.
+
+:::
+
+
+::: Theorem
+
+A surface of revolution is regular if and only if $\g$ is regular.
+
+:::
+
+
+
+
+::: Example
+### Catenoid
+
+**Question.** The catenary function is defined by
+$$
+f(v) = \cosh (v) \,.  
+$$
+The Catenoid $\SSS$ is the surface of revolution obtained by rotating the catenary about the $z$-axis, that is, by rotating the curve
+$$
+\g(v) = \left(  \cosh (v), 0 , v \right) \,.
+$$
+A chart $\SSS$ is given by
+$$
+\sss (u,v) = (\cos(u) \cosh (v) , \sin(u) \cosh (v), v) \,, 
+$$
+where $u \in [0,2\pi)$ and $v \in \R$. Prove that $\SSS$ is a regular surface.
+
+**Solution.** Note that $f>0$ and 
+$$
+\dg = \left(  \sinh (v), 0 , 1 \right) \,, \quad 
+\norm{\dg}^2 = 1+ \sinh(v)^2 \geq 1 \,.
+$$
+Therefore $\g$ is regular. As $\SSS$ is a surface of revolution, we conclude that $\SSS$ is regular.
+
+
+:::
+
+
+
+
+
+
+
+## First fundamental form
+
+
+
+::: Definition
+### First fundamental form
+
+Let $\SSS$ be a regular surface and $\pp \in \SSS$. The 
+**first fundamental form** of $\SSS$ at $\pp$ is the bilinear symmetric map
+$$
+I_{\pp} \colon T_{\pp} \SSS \times T_{\pp} \SSS \to \R \,, \quad I_{\pp} (\vv,\ww) := \vv \cdot \ww \,.
+$$
+
+
+:::
+
+
+
+::: Definition
+### Coordinate functions on tangent plane  {#definition-coordinate-functions}
+
+Let $\sss \colon U \to \R^3$ be a regular chart of $\SSS$. 
+For each $\pp \in \sss(U)$ we have
+$$
+T_{\pp} \SSS = \operatorname{span} \{\sss_u,\sss_v\} \,,
+$$
+where $\sss_u$ and $\sss_v$ are evaluated at the point $(u,v) \in U$ such that 
+$$
+\sss(u,v)=\pp \,.
+$$
+Therefore, for each $\vv \in T_{\pp} \SSS$, there exist $\lambda,\mu \in \R$ such that
+$$
+\vv = \lambda \sss_u + \mu \sss_v \,.
+$$
+The **coordinate functions** on $T_{\pp} \SSS$ are the linear maps
+$$
+du, dv \colon T_{\pp} \SSS \to \R \,, \quad du(\vv) := \lambda \,,  
+\quad dv(\vv) := \mu \,.
+$$
+
+:::
+
+
+
+::: Definition
+### First fundamental form of a chart
+
+Let $\sss \colon U \to \R^3$ be a regular chart of $\SSS$. Define the functions
+$$
+E , F , G \colon U \to \R 
+$$
+by setting
+$$
+E := \sss_u \cdot \sss_u \,, \quad  F := \sss_u \cdot \sss_v \,, \quad 
+G := \sss_v \cdot \sss_v \,.
+$$
+The **first fundamental form** of $\sss$ is the quadratic form
+$$
+\mathscr{F}_1 \colon T_{\pp} \SSS \to \R
+$$
+defined by
+$$
+\mathscr{F}_1 (\vv) := E \, du^2(\vv) + 2F \, du(\vv) \, dv (\vv)+ G \, dv^2 (\vv) \,,
+$$
+for all $\vv \in T_{\pp} \SSS$, and $\pp \in \sss(U)$, where $E,F,G$ are evaluated at 
+$$
+(u,v) = \sss^{-1}(\pp) \,.
+$$
+
+:::
+
+
+
+
+::: Theorem
+
+Let $\sss \colon U \to \R^3$ be a regular chart of $\SSS$, and $\pp \in \sss(U)$. Then
+$$
+I_{\pp} (\vv,\ww) = (du (\vv), dv(\vv) )  \, 
+\left( 
+\begin{array}{cc}
+E & F \\
+F & G 
+\end{array}
+\right) \, (du(\ww) , dv(\ww))^T \,,
+$$
+for all $\vv,\ww \in T_{\pp} \SSS$. In particular, $\mathscr{F}_1$ is the quadratic form associated to the symmetric bilinear form $I_{\pp}$, that is,
+$$
+\mathscr{F}_1 (\vv) = I_{\pp} (\vv,\vv) \,, \quad \forall \, \vv \in T_{\pp} \SSS \,.
+$$
+
+
+:::
+
+
+
+
+::: Definition
+
+With a little abuse of notation, we also denote by $\mathscr{F}_1$ the $2 \times 2$ matrix
+$$
+\mathscr{F}_1 := 
+\left(
+\begin{array}{cc}
+E & F \\
+F & G
+\end{array}
+\right) \,.
+$$
+
+:::
+
+
+
+
+::: Proposition
+### First fundamental form and reparametrizations  {#proposition-fff-reparametrization}
+
+
+Let $\SSS$ be a regular surface and $\sss \colon U \to \R^3$ a regular chart. Suppose that $\widetilde{\sss} \colon \widetilde{U} \to \R^3$ is a reparametrization of $\sss$, that is, 
+$$
+\widetilde{\sss} = \sss \circ \Phi \,,
+$$
+where $\Phi \colon \widetilde{U} \to U$ is a diffeomorphism. Denote the first fundamental forms of $\sss$ and $\wsss$ by, respectively,
+\begin{align*}
+\mathscr{F}_1 & = E \, du^2 + 2F \, du dv + G \, dv^2 \,, \\
+\widetilde{\mathscr{F}}_1 & = \widetilde{E} \, d\tilde{u}^2 + 2 \widetilde{F} \, d\tilde{u} d\tilde{v} + \widetilde{G} \, d\tilde{v}^2 \,.
+\end{align*}
+
+1. The matrices of $\mathscr{F}_1$ and $\widetilde{\mathscr{F}}_1$ are related by
+$$
+\left(
+\begin{array}{cc}
+\widetilde{E} & \widetilde{F} \\
+\widetilde{F} & \widetilde{G}
+\end{array}
+\right)  
+= 
+(J \Phi)^T \,
+\left(
+\begin{array}{cc}
+E & F \\
+F & G
+\end{array}
+\right)
+\, 
+J \Phi  \,,
+$${#eq-fff-change-basis-1}
+where $J\Phi$ is the Jacobian of $\Phi$
+$$
+J\Phi = \left(   
+\begin{array}{cc}
+ \dfrac{\partial u}{\partial \tilde u}  &  \dfrac{\partial u}{\partial \tilde v}  \\
+ \dfrac{\partial v}{\partial \tilde u}  &  \dfrac{\partial v}{\partial \tilde v}
+\end{array}
+\right) \,.
+$$
+
+
+2. The linear maps $du, dv$ and $d\tilde{u}, d\tilde{v}$ are related by
+$$
+\begin{aligned}
+du & = \frac{\partial u}{\partial \tilde{u}} \, d\tilde{u} + \frac{\partial u}{\partial \tilde{v}} \, d\tilde{v} \\ 
+dv & = \frac{\partial v}{\partial \tilde{u}} \, d\tilde{u} + \frac{\partial v}{\partial \tilde{v}} \, d\tilde{v} 
+\end{aligned}
+$${#eq-fff-change-basis-2}
+
+:::
+
+
+
+
+
+::: Example
+### FFF of Plane {#example-fff-plane}
+
+**Question.** Let $\mathbf{a}, \pp, \mathbf{q} \in \R^3$, with $\pp$ and $\mathbf{q}$ orthonormal. Consider the plane with chart
+$$
+\sss(u,v) = \mathbf{a} + u \pp + v \mathbf{q} \,, \quad (u,v) \in \R^2 \,.
+$$
+Prove that the first fundamental form of $\sss$ is
+$$
+\mathscr{F}_1 = du^2 + dv^2 \,.
+$$
+
+**Solution.** We have
+$$
+\sss_u = \pp \,, \quad \sss_v = \mathbf{q} \,,
+$$
+and therefore, using that $\pp$ and $\mathbf{q}$ are orthonormal,
+\begin{align*}
+E & = \sss_u \cdot \sss_u = \norm{\pp}^2 = 1 \\
+F & = \sss_u \cdot \sss_v = \pp \cdot \mathbf{q} = 0 \\
+G & = \sss_v \cdot \sss_v = \norm{\mathbf{q}}^2 = 1 \\
+\end{align*}
+The first fundamental form of $\sss$ is, therefore
+$$
+\mathscr{F}_1 = E \, du^2 + 2 F\, du \, dv + G \, dv^2 = du^2 + dv^2 \,.  
+$$
+
+:::
+
+
+
+::: Example
+### FFF of Plane in polar coordinates   {#example-fff-plane-polar}
+
+**Question.** Let $\mathbf{a}, \pp, \mathbf{q} \in \R^3$, with $\pp, \mathbf{q}$ orthonormal. In polar coordinates, the plane is charted by
+$$
+\sss(\rho,\theta) = \mathbf{a} + \rho \cos(\theta) \pp + \rho \sin(\theta) \mathbf{q} \,, \quad \rho>0 , \, \theta \in (0,2\pi) \,.
+$$
+
+1. By direct calculation, show that the first fundamental form of $\sss$ is
+$$
+\mathscr{F}_1 = d\rho^2 + \rho^2 d\theta^2 \,.
+$$
+
+2. The first fundamental form of the plane in cartesian coordinates is 
+$$
+{\wFF}_1 = du^2 + dv^2 \,.
+$$
+Verify that 
+$$
+\left(
+\begin{array}{cc}
+E & F \\
+F & G
+\end{array}
+\right)  
+= 
+(J \Phi)^T \,
+\left(
+\begin{array}{cc}
+\wE & \wF \\
+\wF & \wG
+\end{array}
+\right)
+\, 
+J \Phi  \,,
+$$
+where $\Phi$ is the change of variables from polar to cartesian coordinates.
+
+**Solution.** 
+
+1. Compute $\mathscr{F}_1$ directly:
+\begin{align*}
+\sss_{\rho} & = \cos(\theta)\pp + \sin(\theta) \mathbf{q} \\ 
+\sss_{\theta} & = - \rho \sin(\theta) \pp + \rho \cos(\theta) \mathbf{q}
+\end{align*}
+and therefore 
+\begin{align*}
+E & = \sss_{\rho} \cdot \sss_{\rho} \\
+    & = \cos^2(\theta)\norm{\pp}^2 + \sin^2(\theta)\norm{\mathbf{q}}^2 + 2 \cos(\theta) \sin(\theta) \pp \cdot \mathbf{q} \\
+    & = 1 \\
+F & = \sss_{\rho} \cdot \sss_{\theta} = 0 \\
+G & = \sss_{\theta} \cdot \sss_{\theta} = r^2 \\
+\end{align*}
+Then the first fundamental form is
+$$
+\mathscr{F}_1 = E \, d{\rho}^2 + 2 F\, d{\rho} \, d\theta + G \, d\theta^2 = d{\rho}^2 + {\rho}^2 d\theta^2 \,.  
+$$
+
+2. The change of variables from polar to cartesian coordinates is
+$$
+\Psi({\rho},\theta) = ( {\rho} \cos(\theta), {\rho} \sin (\theta) )\,.
+$$
+The Jacobian of $\Psi$ is
+$$
+J\Phi = \left(   
+\begin{array}{cc}
+ \cos(\theta) & - {\rho} \sin(\theta)  \\
+ \sin(\theta)  & {\rho} \cos(\theta) 
+\end{array}
+\right) \,.
+$$
+The matrix of ${\wFF}_1$ is just the identity:
+$$
+\left(
+\begin{array}{cc}
+\wE & \wF \\
+\wF & \wG
+\end{array}
+\right)
+=
+\left(
+\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}
+\right) \,.
+$$
+Therefore, we have
+\begin{align*}
+(J \Phi)^T &
+\left(
+\begin{array}{cc}
+\wE & \wF \\
+\wF & \wG
+\end{array}
+\right)
+\, 
+J \Phi
+= (J \Phi)^T \, J \Phi \\
+&= 
+\left(
+\begin{array}{cc}
+\cos(\theta) &  \sin(\theta) \\
+-\rho \sin(\theta) & \rho \cos(\theta)
+\end{array}
+\right)
+\left(   
+\begin{array}{cc}
+ \cos(\theta) & - \rho \sin(\theta)  \\
+ \sin(\theta)  & \rho \cos(\theta) 
+\end{array}
+\right) \\
+&= 
+\left(   
+\begin{array}{cc}
+1 & 0  \\
+0  & \rho^2  
+\end{array}
+\right) 
+ = 
+\left(   
+\begin{array}{cc}
+ E & F  \\
+ F  & G  
+\end{array}
+\right) \,.
+\end{align*}
+
+
+:::
+
+
+
+::: Example
+### FFF of Unit cylinder  {#example-cylinder-fff}
+
+**Question.** Consider the unit cylinder with chart
+$$
+\sss(u,v) = (\cos(u), \sin(u),  v)  \,, \quad (u,v) \in (0,2\pi) \times \R \,.
+$$
+Prove that the first fundamental form of $\sss$ is
+$$
+\mathscr{F}_1 = du^2 + dv^2 \,.
+$$
+
+**Solution.** We have
+$$
+\sss_u = (-\sin(u),\cos(u), 0 )  \,, \quad \sss_v = (0,0,1) \,, 
+$$
+and therefore 
+\begin{align*}
+E & = \sss_u \cdot \sss_u = 1 \\
+F & = \sss_u \cdot \sss_v = 0 \\
+G & = \sss_v \cdot \sss_v = 1 \\
+\end{align*}
+Then the first fundamental form is
+$$
+\mathscr{F}_1 = E \, du^2 + 2 F\, du \, dv + G \, dv^2 = du^2 + dv^2 \,.  
+$$
+
+:::
+
+
+
+
+::: Example
+
+**Question.** Find the first fundamental form of the surface chart
+$$
+\sss(u, v)=\left(u-v, u+v, u^{2}+v^{2}\right)\,.
+$$
+
+**Solution.** We compute
+$$
+\begin{aligned}
+\sssu & =(1,1,2 u) \\
+\sssv & =(-1,1,2 v) \\
+E & = \sssu \cdot \sssv = 2\left(1+2 u^{2}\right) \\
+F & =\sssu \cdot \sssv = 4 u v \\
+G & = \sssv \cdot \sssv = \left(1+2 v^{2}\right)
+\end{aligned}
+$$
+so that
+$$
+\mathscr{F}_{1}=\left(\begin{array}{cc}
+2\left(1+2 u^{2}\right) & 4 u v \\
+4 u v & 2\left(1+2 v^{2}\right)
+\end{array}\right) \,.
+$$
+
+
+:::
+
+
+
+
+## Length of curves
+
+
+::: Proposition
+
+Let $\SSS$ be a regular surface with chart $\sss \colon U \to \R^3$. Suppose
+$$
+\g \colon (a,b) \to \sss(U) \subseteq \SSS 
+$$
+is a smooth curve. Then
+$$
+\g(t) = \sss (u(t), v(t)) \,, 
+$$
+for some smooth functions $u,v \colon (a,b) \to \R$, and 
+$$
+\int_{a}^{b} \norm{\dg(t)} \, dt =
+\int_{a}^{b} \sqrt{  E \dot{u}^2 + 2F \dot u \dot v + G \dot{v}^2  } \, dt \,,
+$$
+where in the above formula:
+
+- $\dot u, \dot v$ are computed at $t$,
+- $E,F,G$ are computed at $(u(t),v(t))$.
+
+:::
+
+
+
+
+
+::: Example
+### Curves on the Cone {#example-fff-cone}
+
+**Question.** Consider the cone with chart
+$$
+\sss (u,v)=(\cos(u) v, \sin (u) v, v) \,, 
+$$
+where $u  \in (0,2\pi)$ and $v >0$. Prove the following:
+
+1. The first fundamental form of $\sss$ is
+$$
+\mathscr{F}_1 = 2 \, du^2 + u^2 \, dv^2 \,.
+$$
+
+2. Let $\g (t):= \sss(t,t)$. The length of $\g$ is
+$$
+\int_{\pi/2}^{\pi} \norm{\dg(t)} \, dt = \int_{\pi/2}^{\pi} \sqrt{ t^2 + 2  } \, dt  \,.
+$$
+
+**Solution.** 
+
+1. We have
+\begin{align*}
+\sss_u & = (- \sin(u)v, \cos(u)v,0) \\
+\sss_v & = (\cos(u), \sin (u), 1) \\
+E & = \sss_u \cdot \sss_u = v^2 \\
+F & = \sss_u \cdot \sss_v  = 0 \\
+G & = \sss_v \cdot \sss_v = 2
+\end{align*}
+The first fundamental form of $\sss$ is 
+$$
+\mathscr{F}_1 = v^2 \, du^2 + 2 \, dv^2 \,.
+$$
+
+2. By definition we have
+$$
+\g(t) = \sss(t,t) \,,
+$$
+so that 
+$$
+\g (t) = \sss(u(t),v(t))
+$$ 
+with 
+$$
+u(t) = t \,, \quad v(t) = t \,.
+$$
+In particular
+$$
+\dot u = 1\,, \quad \dot v = 1
+$$ 
+and 
+\begin{align*}
+E(u(t),v(t)) & = E(t,t) = t^2 \\
+F(u(t),v(t)) & = F(t,t) = 0 \\
+G(u(t),v(t)) & = G(t,t) = 2  \,.
+\end{align*}
+Therefore,
+\begin{align*}
+\int_{\pi/2}^{\pi} \norm{\dg(t)} \, dt & = 
+\int_{\pi/2}^{\pi} \sqrt{  E \dot{u}^2 + 2F \dot u \dot v + G \dot{v}^2  } \, dt \\
+& = \int_{\pi/2}^{\pi} \sqrt{  t^2 + 2   } \, dt   \,.
+\end{align*}
+
+:::
+
+
+
+
+
+
+## Isometries
+
+
+::: Definition 
+### Local Isometry and Isometry
+
+Let $\SSS$ and $\wSSS$ be regular surfaces and 
+$$
+f \colon \SSS \to \wSSS
+$$
+be a smooth map. Denote the differential of $f$ by
+$$
+d_{\pp}f \colon T_{\pp} \SSS \to T_{f(\pp)} \wSSS \,.
+$$
+
+We say that:
+
+
+1. $f$ is a **local isometry**, if for all $\pp \in \SSS$
+$$
+\vv \cdot \ww  = d_{\pp}f (\vv) \cdot d_{\pp}f (\ww) \,, \quad 
+\forall \, \vv, \ww \in T_{\pp} \SSS \,. 
+$${#eq-loc-iso}
+In this case, $\SSS$ and $\wSSS$ are said to be **locally isometric**.
+
+2. $f$ is an **isometry** if:
+    * $f$ is a local isometry;
+    * $f$ is a diffeomorphism of $\SSS$ into $\wSSS$.  
+    
+   In this case, $\SSS$ and $\wSSS$ are said to be **isometric**.
+    
+
+:::
+
+
+
+::: Theorem
+
+Let $\SSS$ and $\wSSS$ be regular surfaces and 
+$$
+f \colon \SSS \to \wSSS
+$$
+a local isometry. Then $f$ is a local diffeomorphims.
+
+:::
+
+
+::: Theorem
+
+Let $\SSS$ and $\wSSS$ be regular surfaces and $f \colon \SSS \to \wSSS$ be a smooth map. They are equivalent:
+
+1. $f$ is a local isometry.
+2. Let $\g$ be a curve in $\SSS$ and consider the curve $\tg = f \circ \g$ on $\wSSS$. Then $\g$ and $\tg$ have the same length.
+
+:::
+
+
+
+
+::: {.Theorem #theorem-local-isometry-bis}
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and $f \colon \SSS \to \widetilde{\SSS}$ be a local diffeomorphism. They are equivalent:
+
+1. $f$ is a local isometry.
+2. Let $\sss \colon U \to \SSS$ be a regular chart of $\SSS$ and consider the chart of $\widetilde{\SSS}$ given by  
+$$
+\widetilde{\sss} \colon U \to \widetilde{\SSS} \,, \qquad 
+\widetilde{\sss} = f \circ \sss \,.
+$$
+Then $\sss$ and $\widetilde{\sss}$ have the same first fundamental form, that is, 
+$$
+E = \widetilde{E} \,, \quad F = \widetilde{F} \,, \quad G = \widetilde{G} \,.
+$$
+
+:::
+
+
+
+
+::: {.Theorem #theorem-local-isometry-2-bis}
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and consider charts
+$$
+\sss \colon U \to \SSS \,, \qquad 
+\wsss \colon U \to \wSSS \,.
+$$
+Assume that $\sss$ and $\wsss$ have the same first fundamental form: 
+$$
+E = \widetilde{E} \,, \quad F = \widetilde{F} \,, \quad G = \widetilde{G} \,.
+$$
+We have:
+
+1. The surfaces $\sss(U)$ and $\wSSS$ are locally isometric.
+2. A local isometry is given by
+$$
+f \colon \sss(U) \to \wSSS \,, \qquad 
+f = \wsss \circ \sss^{-1} \,.
+$$
+
+:::
+
+
+
+::: Example
+### Plane and Cylinder are locally isometric {#example-plane-cylinder}
+
+**Question.** Consider the plane
+$$
+\SSS = \{ (x,y,z) \in \R^3   \, \colon \, x = 0  \} \,,
+$$
+and the unit cylinder 
+$$
+\SSS = \{ (x,y,z) \in \R^3 \, \colon \,  x^2 + y^2 = 1 \} \,.
+$$
+Define the function
+$$
+f \colon \SSS \to \wSSS \,, \qquad f(0,y,z) = (\cos(y),\sin(y),z) \,.
+$$
+
+1. Prove that $f$ is smooth.
+2. Prove that $f$ is a local isometry.
+
+*Note:* This shows that the Plane and the Cylinder are locally isometric.
+
+**Solution.**
+
+1. Note that $f \in \wSSS$ because
+$$
+\cos(y)^2 + \sin(y)^2 = 1\,,
+$$
+therefore $f$ is well-defined. Moreover, $f$ is the restriction to $\SSS$ of the function
+$$
+g \colon \R^3 \to \R^3 \,, \qquad g(x,y,z) = (\cos(y),\sin(y),z) \,.
+$$
+Since $g$ is smooth, and $g(\SSS) = \wSSS$, 
+by Theorem \ref{theorem-diff-check-2} we infer that $g |_{\SSS} = f$ is smooth between $\SSS$ and $\wSSS$.
+
+2. Define the chart of $\SSS$:
+$$
+\sss(u,v) = (0,u,v) \,, \quad u,v \in \R \,.
+$$
+We already know that $\sss$ is regular, with first fundamental form coefficients given by
+$$
+E = 1 \,, \quad F = 1 \,, \quad G = 1 \,,
+$$
+and corresponding first fundamental form
+$$
+{\FF}_1 = du^2 + dv^2 \,.
+$$
+Define $\wsss = f \circ \sss$. Therefore,
+$$
+\wsss(u,v) = f(0,u,v) = (\cos(u),\sin(u),v) \,.
+$$
+We have that
+\begin{align*}
+\wsssu & = ( -\sin(u),\cos(u),0 ) \\
+\wsssv & = (0,0,1) \\
+\wE & = \wsssu \cdot \wsssu = 1 \\  
+\wF & = \wsssu \cdot \wsssv = 0 \\
+\wG & = \wsssv \cdot \wsssv = 1 
+\end{align*}
+Therefore, the first fundamental form of $\wsss = f \circ \sss$ is
+$$
+{\wFF}_1 =  du^2 + dv^2 \,.
+$$
+In particular, we have shown that $\sss$ and $\wsss$ have the same first fundamental form:
+$$
+{\FF}_1 = {\wFF}_1 \,.
+$$
+Since $\mathcal{A} = \{\sss\}$ is an atlas for $\SSS$, by Theorem \ref{theorem-local-isometry-2-bis} we conclude that $f$ is a local isometry of $\SSS$ into $\wSSS$.
+
+:::
+
+
+
+
+
+::: Example
+### Plane and Cone are locally isometric
+
+**Question.** Consider the cone without tip
+$$
+\SSS = \{ (x,y,z) \in \R^3 \, \colon \, x^2 + y^2 = z^2 \,, \,\, z > 0 \} \,,
+$$
+and the plane
+$$
+\wSSS = \{ (x,y,z)\in \R^3 \, \colon \, z = 0 \} \,.
+$$
+
+1. Let $\sss \colon U \to \SSS$ be the chart of the Cone
+$$
+\sss(\rho,\theta) = (\rho \cos(\theta), \rho \sin(\theta), \rho ) \,,
+$$
+where we define
+$$
+U:= \left\{ (\rho,\theta) \in \R^2 \, \colon \, \rho > 0 , \, \theta \in (0,2\pi) \right\} \,. 
+$$ 
+Compute the first fundamental form ${\FF}_1$ of $\sss$.
+
+2. Let $\wsss \colon U \to \wSSS$ be the chart of the Plane
+$$
+\wsss(\rho,\theta) = (a\rho \cos(b\theta), a\rho \sin(b\theta), 0 )
+$$
+where $a>0$ and $b \in (0,1]$ are constants. Compute the first fundamental form ${\wFF}_1$ of $\wsss$.
+
+
+3. Find coefficients $a,b$ such that 
+$$
+{\FF}_1 = {\wFF}_1 \,.
+$$
+
+4. Conclude that $\SSS$ and $\wSSS$ are locally isometric.
+
+
+**Solution.**
+
+1. We have already computed in Example \ref{example-fff-cone}, that the first fundamental form of $\sss$ is
+$$
+{\FF}_1 = 2 d\rho^2 + \rho^2 d\theta^2 \,.
+$$
+
+
+2. First of all, note that 
+$$
+\theta \in (0,2\pi), \quad b \in (0,1] \quad \implies \quad 
+b \theta \in (0,2\pi) \,,
+$$
+showing that $\wsss$ is well defined for all $(\rho,\theta) \in U$. We compute
+\begin{align*}
+{\wsss}_{\rho} & = ( a \cos(b\theta), a \sin(b\theta), 0 ) \\
+{\wsss}_{\theta} & = ( - ab \rho \sin(b \theta), ab\rho \cos(b\theta), 0 ) \\
+\wE & = {\wsss}_{\rho} \cdot {\wsss}_{\rho} = a^2 \\  
+\wF & = {\wsss}_{\rho} \cdot {\wsss}_{\theta} = 0 \\
+\wG & = {\wsss}_{\theta} \cdot {\wsss}_{\theta} = a^2b^2 \rho^2
+\end{align*}
+from which we conclude that the first fundamental form of $\wsss$ is
+$$
+{\wFF}_1 = a^2 d\rho^2 + a^2b^2 \rho^2 d\rho^2 \,.
+$$
+
+
+3. Equating ${\FF}_1$ and ${\wFF}_1$ we obtain
+$$
+a^2 = 2 , \,\, a^2b^2 = 1 \quad \implies \quad a = \sqrt{2} \,, \,\, b = \frac{1}{\sqrt{2}} \,.
+$$
+Note that $a>0$ and $0<b<1$, showing that $a,b$ are admissible.
+
+
+4. For $a = \sqrt{2}$ and $b = 1/\sqrt{2}$ we have that 
+$$
+{\FF}_1 = {\wFF}_1 \,.
+$$
+Since $\sss$ and $\wsss$ are regular charts for $\SSS$ and $\wSSS$, respectively, from Theorem \ref{theorem-local-isometry-bis} we conclude that $\SSS$ and $\wSSS$ are locally isometric. Furthermore, the local isometry is given by
+$$
+f \colon \SSS \to \wSSS \,, \qquad f = \wsss \circ \sss^{-1} \,.
+$$
+
+
+:::
+
+
+
+
+
+## Angles between curves
+
+
+
+::: Definition
+### Angle between curves
+
+Let $\SSS$ be a regular surface. Let $\g$ and $\tg$ be curves on $\SSS$ such that
+$$
+\g(t_0) = \pp = \tg( t_0 ) \,.
+$$
+The angle $\theta$ between $\g$ and $\tg$ is
+$$
+\cos(\theta) = \frac{ \dg \cdot \dtg }{ \| \dg \| \,  \| \dtg \| } \,,
+$$
+where $\dg$ and $\dtg$ are evaluated at $t_0$.
+
+:::
+
+
+
+
+
+::: Theorem
+
+
+Let $\SSS$ be a regular surface, $\sss$ a regular chart at $\pp$, and $\g,\tg$ smooth curves on $\SSS$ such that 
+$$
+\g(t_0) = \pp = \tg( t_0 )  \,.
+$$
+There exist smooth functions $u,v,\tilde{u},\tilde{v}$ such that
+$$
+\g(t) = \sss (u(t),v(t)) \,, \quad 
+\tg(t) = \sss (\tilde{u}(t),\tilde{v}(t)) \,.
+$$
+The angle between $\g$ and $\tg$ is
+$$
+\cos(\theta) = \frac{ E  \dot u \dot{\tilde u} + F ( \dot u \dot{\tilde v}+ \dot{\tilde{u}} \dot v) + G \dot v \dot{\tilde v} }{ (E  \dot{u}^2 + 2 F  \dot u \dot v + G \dot{v}^2 )^{1/2} (E  \dot{\tilde{u}}^2 + 2 F  \dot{\tilde{u}} \dot{\tilde{v}} + G \dot{\tilde{v}}^2 )^{1/2} } \,,
+$$
+where $E,F,G,\wE,\wF,\wG$ are evaluated at $(u(t_0),v(t_0))$ and $\dot{u},\dot{v}, \dot{\widetilde{u}}, \dot{\widetilde{v}}$ are evaluated at $t_0$.
+
+
+:::
+
+
+
+::: Example
+
+**Question.** Let $S$ be a surface with surface chart 
+$$
+\sss(u, v) = \left(u, v, e^{u v}\right) \,.
+$$
+
+1. Calculate its first fundamental form.
+2. Calculate $\cos (\theta)$ where $\theta$ is the angle between the two curves
+\begin{align*}
+\g(t) & =\sss(u(t), v(t)), \quad u(t)=t,\, v(t)=t \,, \\
+\tg(t) & = \sss( \tilde{u}(t),\tilde{v}(t) ) \,, \quad \tilde{u}(t) = 1 , \, \tilde{v}(t) = t \,.
+\end{align*}
+
+
+**Solution.**
+
+1. We calculate
+$$
+\sss_u = \left(1,0, e^{u v} v\right), \quad \sss_v=\left(0,1, e^{u v} u\right) \,.
+$$
+Therefore, the coefficients of the first fundamental form are
+\begin{align*}
+E(u,v) & =1+e^{2 u v} v^2 \\
+F(u,v) & = e^{2 u v} u v \\
+G(u,v) & = 1+e^{2 u v} u^2
+\end{align*}
+
+
+2. The curves $\g$ and $\tg$ intersect at
+$$
+\g(1)=\tg(1)=\sss(1,1) \,.
+$$
+We calculate
+$$
+\dot{u}(1)=1, \quad \dot{v}(1)=1, \quad \dot{\tilde{u}}(1)=0, \quad \dot{\tilde{v}}(1) = 1 \,,
+$$
+and
+\begin{align*}
+E(1,1) & = 1+e^2 \\
+F(1,1) & =e^2 \\
+G(1,1) & =1+e^2
+\end{align*}
+Therefore
+$$
+\begin{aligned}
+\cos \theta & =\frac{E \dot{u} \dot{\tilde{u}} + F \left(\dot{u} \dot{\tilde{v}}+ \dot{\tilde{u}}  \dot{v}\right)+G \dot{v} \dot{\tilde{v}}}{\sqrt{E \dot{u}^2 + 2 F \dot{u} \dot{v} + G \dot{v}^2} \sqrt{E \dot{\tilde{u}}^2 + 2 F\dot{\tilde{u}} \dot{\tilde{v}}+ G \dot{\tilde{v}}^2}} \\
+& =\frac{1+2 e^2}{\sqrt{2+4 e^2} \sqrt{1+e^2}}=\sqrt{\frac{1+2 e^2}{2+2 e^2}} \,.
+\end{aligned}
+$$
+
+:::
+
+
+
+
+
+## Conformal maps
+
+
+::: Definition
+### Conformal map
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces, and 
+$$
+f \colon \SSS \to \wSSS
+$$
+a local diffeomorphism. We say that $f$ is a **conformal map** if for all $\pp \in \SSS$ and $\vv , \ww \in T_{\pp} \SSS$ is holds
+$$
+\theta = \widetilde{\theta} \,,
+$$
+where:
+
+- $\theta$ is the angle between $\vv$ and $\ww$,
+- $\widetilde{\theta}$ is the angle between $d_{\pp} f(\vv)$ and $d_{\pp} f(\ww)$.
+
+In this case, we say that $\SSS$ and $\wSSS$ are **conformal**.
+:::
+
+
+
+
+::: Proposition
+
+Let $f$ be a local isometry. Then $f$ is a conformal map.
+
+:::
+
+
+
+
+
+::: {.Theorem #theorem-conformal-fff}
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and $f \colon \SSS \to \widetilde{\SSS}$ be a local diffeomorphism. They are equivalent:
+
+1. $f$ is a conformal map.
+2. Let $\sss \colon U \to \SSS$ be a regular chart of $\SSS$ and consider the chart of $\widetilde{\SSS}$ given by 
+$$
+\widetilde{\sss}  \colon U \to \widetilde{\SSS} \,, \qquad \widetilde{\sss} = f \circ \sss \,.
+$$ 
+Then, there exists $\lambda \colon U \to \R$ such that 
+$$
+\widetilde{\mathscr{F}}_1 = \lambda (u,v) \mathscr{F}_1 \,, \quad \forall \, (u,v) \in U \,,
+$$
+where $\mathscr{F}_1$ and $\widetilde{\mathscr{F}}_1$ are the first fundamental forms of $\sss$ and $\widetilde{\sss}$, respectively.
+
+:::
+
+
+
+
+::: {.Theorem  #theorem-conformal-fff-2}
+
+Let $\SSS$ and $\widetilde{\SSS}$ be regular surfaces and consider charts
+$$
+\sss \colon U \to \SSS \,, \qquad 
+\wsss \colon U \to \wSSS \,.
+$$
+Assume there exists $\lambda \colon U \to \R$ such that 
+$$
+\widetilde{\mathscr{F}}_1 = \lambda (u,v) \mathscr{F}_1 \,, \quad \forall \, (u,v) \in U \,,
+$$
+where $\mathscr{F}_1$ and $\widetilde{\mathscr{F}}_1$ are the first fundamental forms of $\sss$ and $\widetilde{\sss}$, respectively. We have:
+
+1. The surfaces $\sss(U)$ and $\wSSS$ are conformal.
+2. A conformal map is given by
+$$
+f \colon \sss(U) \to \wSSS \,, \qquad 
+f = \wsss \circ \sss^{-1} \,.
+$$
+
+:::
+
+
+
+::: Example
+### Stereographic Projection {#example-conformal}
+
+**Question.** Denote the unit sphere by 
+$$
+\sphere^2 = \{ (x,y,z) \in \R^3 \, \colon \, x^2 + y^2 + z^2 = 1 \} \,,
+$$
+and consider the surface
+$$
+\SSS = \sphere^2 \smallsetminus \{N\} \,,
+$$
+where the point $N = (0,0,1)$ is the North Pole. Denote the plane $\{z = 0\}$ by
+$$
+\wSSS = \{ (x,y,z) \in \R^3 \, \colon \, z = 0 \} \,,
+$$ 
+The plane $\{z=0\}$ slices through the equator of the sphere. Let $P=(x,y,z)$ be any point on $\sphere^2$ except the north pole. The line joining the north pole to $P$ intersects the plane $\{z=0\}$ at the point $P'$. The point $P'$ defines the *Stereographic Projection* map, which is easily computed to be:
+$$
+f \colon \SSS \to \wSSS \,, \quad 
+f(x,y,z) = \left( \frac{x}{1-z},\frac{y}{1-z},0  \right) \,.
+$$
+Prove that:
+
+1. $f$ is a conformal map.
+2. $f$ is not a local isometry.
+
+**Note**: In particular, the Sphere and the Plane are conformal.
+
+::: {.content-hidden}
+Notice that $\pi$ is slightly different from the map described in @fig-stereographic: there the projection is done onto the plane $\{z=-1\}$, while in this example we project on the plane $\{z=0\}$. This is just because calculations are more convenient when projecting on $\{z=0\}$. 
+
+:::
+
+
+**Solution.** It is not difficult to prove that $f$ is invertible, with inverse given by 
+$$
+\sss(u,v) =\left( \frac{2u}{u^2+v^2+1},  \frac{2v}{u^2+v^2+1} , 1-\frac{2}{u^2+v^2+1}\right) \,.
+$$
+We have that $\sss$ is a regular chart for $\SSS$, forming an altas of one chart. It is straightforward to compute that the coefficients of the first fundamental form of $\sss$ are
+$$
+E = G = \lambda(u,v) := \frac{4}{(u^2+v^2+1)^2} \,, \qquad F = 0 \,.
+$$
+In particualar the fisrt fundamental form is
+$$
+\mathscr{F}_1 = \lambda(u,v) (du^2 + dv^2) \,.
+$$
+Define the chart of $\wSSS$: 
+$$
+\wsss = f \circ \sss \,.
+$$
+Since $\sss$ is the inverse of $f$, we have that
+$$
+\wsss(u,v) = (u,v,0) \,.
+$$
+As already computed, the first fundamental form of $\wsss$ is 
+$$
+{\wFF}_1 = du^2 + dv^2 \,.
+$$
+We can now conclude:
+
+1. We have that
+$$
+{\wFF}_1 = \frac{1}{\lambda} {\FF}_1  \,.
+$$
+Since $\mathcal{A} = \{\sss\}$ is an atlas for $\SSS$, by Theorem \ref{theorem-conformal-fff} we conclude that $f$ is a conformal map.
+
+2. Since ${\lambda}$ is not always equal to $1$, we have that 
+$$
+{\wFF}_1 \neq {\FF}_1 \,.
+$$
+Therefore, by Theorem \ref{theorem-local-isometry-bis}, we conclude that $f$ cannot be a 
+local isometry.
+
+::: {.content-hidden}
+However, $\sss$ is not equi-areal. Indeed, recall that the first fundamental form of the plane is $du^2 + dv^2$. Therefore the area element of the plane is $1$. 
+The area element for $\sss$ is
+$$
+EG - F^2 =  \frac{16}{(u^2+v^2+1)^4} \neq 1 \,,
+$$
+showing that $\sss$ is not equi-areal. 
+:::
+
+:::
+
+
+
+::: Example 
+### Sphere and Plane are conformal {#example-conformal-2}
+
+**Question.** Let $\SSS$ be the plane $\{z=0\}$ with chart
+$$
+\sss(u,v) := (u,v,0) \,, \quad u,v \in \R \,.
+$$
+Let $\widetilde{\SSS}$ be the sphere $\sphere^2$ with parametrization
+$$
+\widetilde{\sss}(u,v) := \left(  \cos(u) \sech(v), \sin(u) \sech(v) , \tanh (v) \right) \,.
+$$
+
+1. Compute the first fundamental forms of $\sss$ and $\wsss$.
+2. Show that $\SSS$ and $\wSSS$ are conformal.
+
+
+**Solution.** 
+
+1. As already computed, the first fundamental form of $\sss$ is 
+$$
+\mathscr{F}_1 = du^2 + dv^2 \,.
+$$
+Using the identitities
+\begin{align*}
+\frac{d}{dv} \left( \sech (v)  \right) & = - \sech (v) \tanh (v) \,, \\
+\frac{d}{dv} \left( \tanh (v) \right)  & = {\sech}^2 (v) \,,
+\end{align*}
+we obtain
+\begin{align*}
+\widetilde{\sss}_u & = ( -\sin(u) \sech(v) , \cos(u)\sech(v) , 0 )  \\
+\widetilde{\sss}_v & = ( -\cos(v) \sech(v) \tanh(v) , -\sin(u) \sech(v) \tanh(v) , {\sech}^2(v) )
+\end{align*}
+By recalling that
+$$
+{\sech}^2 (v) + {\tanh}^2 (v) = 1 \,,
+$$
+we compute
+\begin{align*}
+\widetilde{E} & = \widetilde{\sss}_u \cdot \widetilde{\sss}_u = {\sech}^2(v) (\cos^2(u) + \sin^2(u)) = {\sech}^2(v)  \\ 
+\widetilde{F} & = \widetilde{\sss}_u \cdot \widetilde{\sss}_v =  0 \\ 
+\widetilde{G} & = \widetilde{\sss}_v \cdot \widetilde{\sss}_v = {\sech}^2(v) ({\tanh}^2(v) + {\sech}^2(v)) = {\sech}^2(v) \\ 
+\end{align*}
+Hence the first fundamental form of $\widetilde{\SSS}$ is
+$$
+\widetilde{\mathscr{F}}_1 = {\sech}^2(v) \, \left(  du^2 + dv^2 \right) \,.
+$$
+
+2. We have computed that
+$$
+\widetilde{\mathscr{F}}_1 =  {\sech}^2(v) \, \left(  du^2 + dv^2 \right) =  {\sech}^2(v) \,\mathscr{F}_1 \,.
+$$
+Since $A = \{\sss\}$ is an atlas for $\SSS$, by Theorem \ref{theorem-conformal-fff-2} we conclude that $\SSS$ and $\wSSS$ are conformal.
+
+:::
+
+
+
+
+## Conformal parametrizations
+
+
+::: Definition
+### Conformal parametrization {#definition-conformal-parametrization}
+
+Let $\SSS$ be a regular surface and 
+$$
+\sss \colon U  \to  \SSS
+$$ 
+be a regular chart of $\SSS$. We say that $\sss$ is a **conformal parametrization** if the first fundamental form of $\sss$ satisfies
+$$
+\mathscr{F}_1 = \lambda(u,v)  ( du^2 +  dv^2)
+$$
+for some function $\lambda \colon U \to \R$. 
+
+
+:::
+
+
+::: Theorem
+A conformal parametrization $\sss$ preserves angles between vectors. Specifically, let $\g_{1}(t), \g_{2}(t)$ be curves in $\mathbb{R}^{2}$ such that ${\dg}_{1}\left(t_{0}\right), {\dg}_{2}\left(t_{0}\right)$ make angle $\theta$. If 
+$$
+\g_{3}(t)=\sss\left(\g_{1}(t)\right),  \qquad \g_{4}(t)=\sss \left(\g_{2}(t)\right) \,,
+$$
+then ${\dg}_{3}\left(t_{0}\right), {\dg}_{4}\left(t_{0}\right)$ also make angle $\theta$.
+
+
+:::
+
+
+
+

@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 5efe384b-9358-4dbe-8976-4b4a6092dc55
+      url: 'https://silviofanzon.quarto.pub/2023-differential-geometry'

@@ -1,0 +1,31 @@
+# License {.unnumbered}
+
+## Reuse {.unnumbered}
+
+This work is licensed under  
+[CC-BY-NC-ND 4.0](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+
+
+
+![](/images/by-nc-nd.png){width=1.3in}
+
+
+
+## Citation {.unnumbered}
+
+For attribution, please cite this work as:
+
+> Fanzon, Silvio. (2024). **Revision Guide of Differential Geometry**.  
+[https://www.silviofanzon.com/2024-Differential-Geometry-Revision/](https://www.silviofanzon.com/2024-Differential-Geometry-Revision/)
+
+
+BibTex citation:
+
+
+```bibtex
+@electronic{Fanzon-Differential-Geometry-Revision-2024,
+	author = {Fanzon, Silvio},
+	title = {Revision Guide of Differential Geometry},
+	url = {https://www.silviofanzon.com/2024-Differential-Geometry-Revision/},
+	year = {2024}}
+```
