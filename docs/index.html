@@ -7,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Silvio Fanzon">
-<meta name="dcterms.date" content="2024-11-27">
 
 <title>Differential Geometry</title>
 <style>
@@ -73,17 +72,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Question {
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Important {
   --color1: #f4cce0;
   --color2: #db4d92;
-}
-.Definition {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
 }
 .Proof {
   --color1: #f1f1f2;
   --color2: #c0c0c1;
+}
+.Remark {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Question {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Example {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
 }
 .Proposition {
   --color1: #f4cce0;
@@ -97,19 +116,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Important {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Axiom {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Notation {
+.Definition {
   --color1: #c6e6ed;
   --color2: #1995ad;
 }
@@ -117,29 +124,21 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
 .Lemma {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Warning {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Example {
-  --color1: #bce5de;
-  --color2: #21aa93;
-}
-.Remark {
-  --color1: #bce5de;
-  --color2: #21aa93;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
 .Corollary {
   --color1: #f4cce0;
   --color2: #db4d92;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 </style>
 
@@ -259,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">27 Nov 2024</p>
+      <p class="date">6 Dec 2024</p>
     </div>
   </div>
   
@@ -273,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="revision-guide" class="level1 unnumbered">
 <h1 class="unnumbered">Revision Guide</h1>
-<p>Revision Guide document for the module <strong>Differential Geometry 661955</strong> 2024/25 at the University of Hull. If you have any question or find any typo, please email me at</p>
+<p>Revision Guide for the Exam of the module <strong>Differential Geometry 661955</strong> 2024/25 at the University of Hull. If you have any question or find any typo, please email me at</p>
 <div style="text-align: center;">
 <p><strong><a href="mailto:%20S.Fanzon@hull.ac.uk">S.Fanzon@hull.ac.uk</a></strong></p>
 </div>
@@ -294,25 +293,43 @@ ul.task-list li input[type="checkbox"] {
 <section id="checklist" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="checklist">Checklist</h2>
 <p>You should be comfortable with the following topics/taks:</p>
-<p>You should be comfortable with the following topics/tasks:</p>
 <p><strong>Curves</strong></p>
 <ul>
 <li><p>Regularity of curves</p></li>
-<li><p>Length, arc-length, and arc-length reparametrization</p></li>
-<li><p>Calculating the curvature and torsion of unit speed curves from the definitions</p></li>
-<li><p>Calculating the curvature and torsion of (possibly not unit speed) curves from the formulae</p></li>
-<li><p>Calculating the Frenet frame of a unit-speed curve</p></li>
+<li><p>Computing the length of a curve</p></li>
+<li><p>Computing arc-length function and arc-length reparametrization</p></li>
+<li><p>Calculating the curvature and torsion of unit-speed curves from the definitions</p></li>
+<li><p>Calculating the curvature and torsion of (possibly not unit-speed) curves from the formulae</p></li>
+<li><p>Calculating the Frenet frame of a unit-speed curve from the definitions</p></li>
+<li><p>Calculating the Frenet frame of a (possibly not unit-speed) unit-speed curve from the formulas</p></li>
 <li><p>Applying the Fundamental Theorem of Space Curves to determine if two curves coincide, up to a ridig motion</p></li>
 <li><p>Proving that a curve is contained in a plane, and computing the equation of such plane</p></li>
 <li><p>Proving that a curve is part of a circle</p></li>
 </ul>
-<p><strong>Topology:</strong> To be completed</p>
+<p><strong>Topology:</strong></p>
+<ul>
+<li><p>Proving that a given collection of sets is a topology</p></li>
+<li><p>Proving that a given set is open / closed</p></li>
+<li><p>Proving that a given topology is discrete</p></li>
+<li><p>Comparing two topology, determining which one is finer</p></li>
+<li><p>Studying convergent sequences in topological space</p></li>
+<li><p>Proving that a given set with a distance function is a metric space</p></li>
+<li><p>Studying the topology induced by the metric</p></li>
+<li><p>Studying convergent sequences in metric space</p></li>
+<li><p>Studying the interior, closure, boundary and limit points of a set</p></li>
+<li><p>Proving that a topological space is Hausdorff</p></li>
+<li><p>Proving that a given function between topological spaces is continuous / sequentially continuous</p></li>
+<li><p>Studying the subspace topology of a given subset of a topological space</p></li>
+<li><p>Identifying the basis of a given topology</p></li>
+<li><p>Showing that a given topological space is connected / path-connected</p></li>
+<li><p>Proving that two given topological spaces are not homeomorphic, by making use of connectedness arguments</p></li>
+</ul>
 <p><strong>Surfaces:</strong></p>
 <ul>
 <li><p>Regularity of surface charts</p></li>
-<li><p>Computing reparametrizations</p></li>
-<li><p>Computing a basis and the equation of the tangent plane</p></li>
+<li><p>Computing reparametrizations of surface charts</p></li>
 <li><p>Calculating the standard unit normal of a surface chart</p></li>
+<li><p>Given a surface chart, compute a basis and the equation of the tangent plane</p></li>
 <li><p>Calculating the differential of a smooth function between surfaces</p></li>
 <li><p>Proving that a given level surface is regular, and computing its tangent plane</p></li>
 <li><p>Proving that a given surface is ruled</p></li>
@@ -321,10 +338,11 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Prove that a given parametrization is conformal</p></li>
 <li><p>Calculating length and angles of curves on surfaces</p></li>
 <li><p>Calculating the second fundamental form of a surface chart</p></li>
-<li><p>Calculating the matrix of the Weingarten map, the principal curvatures, and principal directions of a surface chart</p></li>
+<li><p>Calculating the matrix of the Weingarten map, the principal curvatures and vectors of a surface chart</p></li>
 <li><p>Calculating Gaussian and mean curvature of a surface chart</p></li>
-<li><p>Calculating normal and geodesic curvature of a curve on a surface</p></li>
-<li><p>Classifying points of a surface as elliptic, parabolic, hyperbolic, planar</p></li>
+<li><p>Calculating normal and geodesic curvature of a unit-speed curve on a surface</p></li>
+<li><p>Calculating the normal and geodesic curvature of a (possibly not unit-speed) curve on a surface from the formulae</p></li>
+<li><p>Classifying surface points as elliptic, parabolic, hyperbolic, planar, umbilical</p></li>
 </ul>
 
 

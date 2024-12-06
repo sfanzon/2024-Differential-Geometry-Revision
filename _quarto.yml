@@ -77,14 +77,14 @@ format:
     fontfamilyoptions:
       - osf
       - p
-    fontsize: 11pt
+    fontsize: 10pt
     geometry:
-      - top=10mm
-      - left=10mm
-      - right=10mm
-      - bottom=12mm
-      - headheight=14pt
-      - footskip=20pt
+      - top=10pt
+      - left=10pt
+      - right=10pt
+      - bottom=16pt
+      - headheight=0pt
+      - footskip=10pt
     link-citations: true
     link-external-icon: true
     linkcolor: magenta
@@ -97,10 +97,18 @@ format:
     include-in-header:
       - text: |
           \usepackage{fvextra}
+          \usepackage{centernot}
           \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
           \setlength{\parindent}{0pt}
-
-  
+          \RedeclareSectionCommand[
+          beforeskip=2ex plus 1ex minus 0.5ex, % Space before the section
+          afterskip=1ex plus 0.5ex minus 0.2ex % Space after the section
+          ]{section}
+          \RedeclareSectionCommand[
+          beforeskip=1.5ex plus 0.7ex minus 0.5ex,
+          afterskip=0.8ex plus 0.5ex minus 0.2ex
+          ]{subsection}
+          \raggedbottom
 
 
 

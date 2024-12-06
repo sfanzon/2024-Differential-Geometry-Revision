@@ -7,7 +7,7 @@ $$
 
 # Revision Guide {.unnumbered}
 
-Revision Guide document for the module **Differential Geometry 661955** 2024/25 at the University of Hull. If you have any question or find any typo, please email me at
+Revision Guide for the Exam of the module **Differential Geometry 661955** 2024/25 at the University of Hull. If you have any question or find any typo, please email me at
 
 
 ::: {.content-visible when-format="html"}
@@ -61,20 +61,22 @@ Make sure you are very comfortable with:
 You should be comfortable with the following topics/taks:
 
 
-You should be comfortable with the following topics/tasks:
-
 
 **Curves**
 
 - Regularity of curves
 
-- Length, arc-length, and arc-length reparametrization
+- Computing the length of a curve
 
-- Calculating the curvature and torsion of unit speed curves from the definitions
+- Computing arc-length function and arc-length reparametrization
 
-- Calculating the curvature and torsion of (possibly not unit speed) curves from the formulae
+- Calculating the curvature and torsion of unit-speed curves from the definitions
 
-- Calculating the Frenet frame of a unit-speed curve
+- Calculating the curvature and torsion of (possibly not unit-speed) curves from the formulae
+
+- Calculating the Frenet frame of a unit-speed curve from the definitions
+
+- Calculating the Frenet frame of a (possibly not unit-speed) unit-speed curve from the formulas
 
 - Applying the Fundamental Theorem of Space Curves to determine if two curves coincide, up to a ridig motion
 
@@ -84,18 +86,54 @@ You should be comfortable with the following topics/tasks:
 
 
 
-**Topology:** To be completed
+**Topology:** 
+
+- Proving that a given collection of sets is a topology
+
+- Proving that a given set is open / closed
+
+- Proving that a given topology is discrete
+
+- Comparing two topology, determining which one is finer
+
+- Studying convergent sequences in topological space
+
+- Proving that a given set with a distance function is a metric space
+
+- Studying the topology induced by the metric
+
+- Studying convergent sequences in metric space
+
+- Studying the interior, closure, boundary and limit points of a set
+
+- Proving that a topological space is Hausdorff
+
+- Proving that a given function between topological spaces is continuous / sequentially continuous
+
+- Studying the subspace topology of a given subset of a topological space
+
+- Identifying the basis of a given topology
+
+- Showing that a given topological space is connected / path-connected
+
+- Proving that two given topological spaces are not homeomorphic, by making use of connectedness arguments
+
+
+
+
+
+
 
 
 **Surfaces:**
 
 - Regularity of surface charts
 
-- Computing reparametrizations
-
-- Computing a basis and the equation of the tangent plane
+- Computing reparametrizations of surface charts
 
 - Calculating the standard unit normal of a surface chart
+
+- Given a surface chart, compute a basis and the equation of the tangent plane
 
 - Calculating the differential of a smooth function between surfaces
 
@@ -113,11 +151,13 @@ You should be comfortable with the following topics/tasks:
 
 - Calculating the second fundamental form of a surface chart
 
-- Calculating the matrix of the Weingarten map, the principal curvatures, and principal directions of a surface chart
+- Calculating the matrix of the Weingarten map, the principal curvatures and vectors of a surface chart
 
 - Calculating Gaussian and mean curvature of a surface chart
 
-- Calculating normal and geodesic curvature of a curve on a surface
+- Calculating normal and geodesic curvature of a unit-speed curve on a surface
 
-- Classifying points of a surface as elliptic, parabolic, hyperbolic, planar
+- Calculating the normal and geodesic curvature of a (possibly not unit-speed) curve on a surface from the formulae
+
+- Classifying surface points as elliptic, parabolic, hyperbolic, planar, umbilical
 

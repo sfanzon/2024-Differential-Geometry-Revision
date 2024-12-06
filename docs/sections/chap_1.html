@@ -72,61 +72,29 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Question {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Warning {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Definition {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Remark {
-  --color1: #bce5de;
-  --color2: #21aa93;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Conjecture {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Theorem {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
 .Lemma {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Problem {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Proposition {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Notation {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.Axiom {
+.Conjecture {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
 .Proof {
   --color1: #f1f1f2;
   --color2: #c0c0c1;
+}
+.Definition {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Question {
+  --color1: #f4cce0;
+  --color2: #db4d92;
 }
 .Example {
   --color1: #bce5de;
@@ -136,7 +104,39 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
 .Important {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Theorem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Problem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Remark {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Proposition {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -277,44 +277,32 @@ window.Quarto = {
 </header>
 
 
-<div id="length" class="Definition" title="Length">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 1: </strong>Length</summary><div>The <strong>length</strong> of the curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <span class="math display">\[
+<div id="length-of-a-curve" class="Definition" title="Length of a curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 1: </strong>Length of a curve</summary><div>The <strong>length</strong> of the curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <span class="math display">\[
 L({\pmb{\gamma}}) = \int_a^b  \left\| \dot{{\pmb{\gamma}}}(u) \right\| \, du \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="length-of-circle" class="Example" title="Length of Circle">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 2: </strong>Length of Circle</summary><div><strong>Question.</strong> Compute the length of the circle of radius <span class="math inline">\(R\)</span> <span class="math display">\[
-{\pmb{\gamma}}(t) = (x_0 + R\cos(t), y_0 + R\sin(t),0) \,.
-\]</span><p></p>
-<p><strong>Solution.</strong> We compute <span class="math display">\[\begin{align*}
-\dot{{\pmb{\gamma}}}(t) &amp; = (-R\sin(t), R\cos(t),0) \\
-\left\| \dot{{\pmb{\gamma}}}(t) \right\| &amp; = \sqrt{ {\dot\gamma}_1^2(t) +   {\dot \gamma}_2^2(t)      }  = R \\
-L({\pmb{\gamma}})  &amp; = \int_{0}^{2\pi}  \left\|   \dot{{\pmb{\gamma}}}(t) \right\| \, dt
-        = \int_0^{2\pi} R \, dt  = 2 \pi R \,.
-\end{align*}\]</span></p>
-</div></details>
-</div>
-<div id="length-of-helix" class="Example" title="Length of Helix">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 3: </strong>Length of Helix</summary><div><strong>Question.</strong> Compute the length of the Helix <span class="math display">\[
+<div id="length-of-the-helix" class="Example" title="Length of the Helix">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 2: </strong>Length of the Helix</summary><div><strong>Question.</strong> Compute the length of the Helix <span class="math display">\[
 {\pmb{\gamma}}(t) = (R\cos(t), R\sin(t) ,Ht) \,, \quad t \in (0,2\pi) \,.
 \]</span><p></p>
 <p><strong>Solution.</strong> We compute <span class="math display">\[\begin{align*}
-\dot{{\pmb{\gamma}}}(t) &amp; = (-R\sin(t), R\cos(t) , H) \\
-\left\|  \dot{{\pmb{\gamma}}}(t)   \right\| &amp;  = \sqrt{R^2 + H^2} \\
+\dot{{\pmb{\gamma}}}(t) &amp; = (-R\sin(t), R\cos(t) , H) \qquad
+\left\|  \dot{{\pmb{\gamma}}}(t)   \right\|  = \sqrt{R^2 + H^2} \\
 L({\pmb{\gamma}}) &amp; = \int_0^{2\pi} \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du = 2 \pi \sqrt{R^2 + H^2}
 \end{align*}\]</span></p>
 </div></details>
 </div>
-<div id="arc-length" class="Definition" title="Arc-Length">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 4: </strong>Arc-Length</summary><div>The <strong>arc-length</strong> along <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> from <span class="math inline">\(t_{0}\)</span> to <span class="math inline">\(t\)</span> is <span class="math display">\[
-s \colon (a,b) \to \mathbb{R}\,, \quad s(t)=\int_{t_{0}}^{t}\|\dot{{\pmb{\gamma}}}(u)\| d u \,.
+<div id="arc-length-of-a-curve" class="Definition" title="Arc-Length of a curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 3: </strong>Arc-Length of a curve</summary><div>The <strong>arc-length</strong> along <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> from <span class="math inline">\(t_{0}\)</span> to <span class="math inline">\(t\)</span> is <span class="math display">\[
+s \colon (a,b) \to \mathbb{R}\,, \qquad s(t)=\int_{t_{0}}^{t}\|\dot{{\pmb{\gamma}}}(u)\| d u \,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="arc-length-of-logarithmic-spiral" class="Example" title="Arc-length of Logarithmic Spiral">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 5: </strong>Arc-length of Logarithmic Spiral</summary><div><strong>Question.</strong> Compute the arc-length of <span class="math display">\[
-{\pmb{\gamma}}(t) = (e^{kt} \cos(t), e^{kt} \sin(t),0) \,, \quad t \in (0,2\pi) \,.
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 4: </strong>Arc-length of Logarithmic Spiral</summary><div><strong>Question.</strong> Compute the arc-length of <span class="math display">\[
+{\pmb{\gamma}}(t) = (e^{kt} \cos(t), e^{kt} \sin(t),0) \,.
 \]</span><p></p>
 <p><strong>Solution.</strong> The arc-length starting from <span class="math inline">\(t_0\)</span> is <span class="math display">\[\begin{align*}
 \dot{{\pmb{\gamma}}}(t) &amp; = e^{kt} ( k \cos(t) - \sin(t), k \sin(t) + \cos(t) ,0) \\
@@ -325,13 +313,13 @@ s(t) &amp; = \int_{t_0}^t \left\| \dot{{\pmb{\gamma}}}(\tau) \right\| \, d \tau
 </div></details>
 </div>
 <div id="unit-speed-curve" class="Definition" title="Unit-speed curve">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 6: </strong>Unit-speed curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>unit-speed</strong> if <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 5: </strong>Unit-speed curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>unit-speed</strong> if <span class="math display">\[
 \left\| \dot{{\pmb{\gamma}}}(t) \right\|  = 1 \,, \quad \forall \, t \in (a,b) \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="Theorem-7" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 7</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^n\)</span> be a unit-speed curve. Then <span class="math display">\[
+<div id="Proposition-6" class="Proposition">
+<p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 6</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed. Then <span class="math display">\[
 \dot{{\pmb{\gamma}}}\cdot \ddot{{\pmb{\gamma}}}= 0  \,, \quad \forall \, t \in (a,b) \,.
 \]</span><p></p>
 </div></details>
@@ -344,25 +332,25 @@ s(t) &amp; = \int_{t_0}^t \left\| \dot{{\pmb{\gamma}}}(\tau) \right\| \, d \tau
 </div></details>
 </div>
 <div id="reparametrization" class="Definition" title="Reparametrization">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 8: </strong>Reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a curve <span class="math inline">\(\tilde{{\pmb{\gamma}}} \ \colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> such that <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 7: </strong>Reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a curve <span class="math inline">\(\tilde{{\pmb{\gamma}}} \ \colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> such that <span class="math display">\[
 \widetilde{{\pmb{\gamma}}}(t) = {\pmb{\gamma}}(\phi(t)) \,,\quad \forall \, t \in (\tilde{a},\tilde{b})\,,
-\]</span> for <span class="math inline">\(\phi\colon (\tilde{a},\tilde{b}) \to (a,b)\)</span> diffeomorphism.<p></p>
+\]</span> for <span class="math inline">\(\phi\colon (\tilde{a},\tilde{b}) \to (a,b)\)</span> diffeomorphism. We call both <span class="math inline">\(\phi\)</span> and <span class="math inline">\(\phi^{-1}\)</span> <strong>reparametrization maps</strong>.<p></p>
 </div></details>
 </div>
 <div id="unit-speed-reparametrization" class="Definition" title="Unit-speed reparametrization">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 9: </strong>Unit-speed reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>unit-speed reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> which is unit-speed, that is, <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 8: </strong>Unit-speed reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span>. A <strong>unit-speed reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is a reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> which is unit-speed, that is, <span class="math display">\[
 \left\|  \dot{\widetilde{{\pmb{\gamma}}}}(t)  \right\| = 1 \,, \quad \forall \, t \in (\tilde{a},\tilde{b})\,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="regular-curve" class="Definition" title="Regular curve">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 10: </strong>Regular curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>regular</strong> if <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 9: </strong>Regular curve</summary><div>A curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> is <strong>regular</strong> if <span class="math display">\[
 \left\| \dot{{\pmb{\gamma}}}(t) \right\|  \neq 0 \,, \quad \forall \, t \in (a,b)
 \]</span><p></p>
 </div></details>
 </div>
-<div id="existence-of-unit-speed-reparametrization" class="Theorem" title="Existence of unit-speed reparametrization">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 11: </strong>Existence of unit-speed reparametrization</summary><div>
+<div id="theorem-regular-unit-speed" class="Theorem" title="Existence of unit-speed reparametrization">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 10: </strong>Existence of unit-speed reparametrization</summary><div>
 <p>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a curve. They are equivalent:</p>
 <ol type="1">
 <li><span class="math inline">\({\pmb{\gamma}}\)</span> is regular,</li>
@@ -370,8 +358,8 @@ s(t) &amp; = \int_{t_0}^t \left\| \dot{{\pmb{\gamma}}}(\tau) \right\| \, d \tau
 </ol>
 </div></details>
 </div>
-<div id="arc-length-and-unit-speed-reparametrization" class="Theorem" title="Arc-length and unit-speed reparametrization">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 12: </strong>Arc-length and unit-speed reparametrization</summary><div>
+<div id="theorem-arc-length-unit" class="Theorem" title="Characterization of unit-speed reparametrizations">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 11: </strong>Characterization of unit-speed reparametrizations</summary><div>
 <p>Let <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve. Let <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\ \colon (\tilde{a},\tilde{b}) \to \mathbb{R}^3\)</span> be a reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>, that is, <span class="math display">\[
 {\pmb{\gamma}}(t) = \widetilde{{\pmb{\gamma}}}( \phi(t) )  , \quad \forall \, t \in (a,b)
 \]</span> for some diffeomorphism <span class="math inline">\(\phi\ \colon (a,b) \to (\tilde{a},\tilde{b})\)</span>. We have</p>
@@ -384,76 +372,55 @@ s(t) &amp; = \int_{t_0}^t \left\| \dot{{\pmb{\gamma}}}(\tau) \right\| \, d \tau
 </div></details>
 </div>
 <div id="arc-length-reparametrization" class="Definition" title="Arc-length reparametrization">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 13: </strong>Arc-length reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be regular. The <strong>arc-length reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the curve <span class="math display">\[
-\widetilde{{\pmb{\gamma}}}= {\pmb{\gamma}}\circ s^{-1}
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 12: </strong>Arc-length reparametrization</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\)</span> be regular. The <strong>arc-length reparametrization</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\widetilde{{\pmb{\gamma}}}= {\pmb{\gamma}}\circ s^{-1} \,,
 \]</span> with <span class="math inline">\(s^{-1}\)</span> inverse of the arc-length function of <span class="math inline">\({\pmb{\gamma}}\)</span>.<p></p>
 </div></details>
 </div>
-<div id="arc-length-reparametrization-of-circle" class="Example" title="Arc-length reparametrization of Circle">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 14: </strong>Arc-length reparametrization of Circle</summary><div><strong>Question.</strong> The circle of radius <span class="math inline">\(R&gt;0\)</span> is <span class="math display">\[
-{\pmb{\gamma}}(t) = ( x_0 + R \cos (t), y_0 + \sin (t),0) \,.
-\]</span> Reparametrize <span class="math inline">\({\pmb{\gamma}}\)</span> by arc-length.<p></p>
-<p><strong>Solution.</strong> The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting from <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[
-s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = Rt
-\]</span> The inverse is <span class="math inline">\(t(s) = s/R\)</span>. The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
-\widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}(t(s)) = \left( x_0 + R \cos \left( \frac{s}{R} \right), y_0 + \sin \left( \frac{s}{R} \right), 0 \right) \,.
-\]</span></p>
-</div></details>
-</div>
-<div id="Example-15" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 15</strong></summary><div>
-<p><strong>Question.</strong> Consider the curve <span class="math display">\[
+<div id="reparametrization-by-arc-length" class="Example" title="Reparametrization by arc-length">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 13: </strong>Reparametrization by arc-length</summary><div><strong>Question.</strong> Consider the curve <span class="math display">\[
 {\pmb{\gamma}}(t)=(5 \cos (t), 5 \sin (t), 12 t) \,.
-\]</span></p>
-<ol type="1">
-<li>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular.</li>
-<li>Reparametrize <span class="math inline">\({\pmb{\gamma}}\)</span> by arc-length.</li>
-</ol>
-<p><strong>Solution.</strong></p>
-<ol type="1">
-<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[\begin{align*}
-\dot{{\pmb{\gamma}}}(t) &amp; =(-5 \sin (t), 5 \cos (t), 12) \\
-\|\dot{{\pmb{\gamma}}}(t)\| &amp; = 13 \neq 0
-\end{align*}\]</span></p></li>
-<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting from <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[
-s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = 13 t \,.
-\]</span> The inverse is <span class="math inline">\(t(s) = s/13\)</span>. The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\]</span><p></p>
+<p>Prove that <span class="math inline">\({\pmb{\gamma}}\)</span> is regular, and reparametrize it by arc-length.</p>
+<p><strong>Solution.</strong> <span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[
+\dot{{\pmb{\gamma}}}(t)  =(-5 \sin (t), 5 \cos (t), 12) \,, \qquad
+\|\dot{{\pmb{\gamma}}}(t)\|  = 13 \neq 0
+\]</span> The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting from <span class="math inline">\(t_0 = 0\)</span>, and its inverse, are <span class="math display">\[
+s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = 13 t \,, \qquad t(s) = \frac{s}{13} \,.
+\]</span> The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \widetilde{{\pmb{\gamma}}}(s)= {\pmb{\gamma}}(t(s)) = \left(5 \cos \left(\frac{s}{13} \right), 5 \sin \left(\frac{s}{13} \right), \frac{12}{13} s\right) \,.
-\]</span></p></li>
-</ol>
+\]</span></p>
 </div></details>
 </div>
 <section id="curvature" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="curvature"><span class="header-section-number">1.1</span> Curvature</h2>
 <div id="curvature-of-unit-speed-curve" class="Definition" title="Curvature of unit-speed curve">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 16: </strong>Curvature of unit-speed curve</summary><div>The <strong>curvature</strong> of a unit-speed curve <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 14: </strong>Curvature of unit-speed curve</summary><div>The <strong>curvature</strong> of a unit-speed curve <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> is <span class="math display">\[
 \kappa(t) = \left\| \ddot{{\pmb{\gamma}}}(t) \right\| \,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="curvature-of-the-circle" class="Example" title="Curvature of the Circle">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 17: </strong>Curvature of the Circle</summary><div><strong>Question.</strong> Compute the curvature of the circle of radius <span class="math inline">\(R&gt;0\)</span> <span class="math display">\[
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 15: </strong>Curvature of the Circle</summary><div><strong>Question.</strong> Compute the curvature of the circle of radius <span class="math inline">\(R&gt;0\)</span> <span class="math display">\[
 {\pmb{\gamma}}(t) =  \left( x_0 + R \cos \left( \frac{t}{R} \right), y_0 + \sin \left( \frac{t}{R} \right) , 0\right)  \,.
 \]</span><p></p>
-<p><strong>Solution.</strong> First, check that <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed: <span class="math display">\[\begin{align*}
-\dot{{\pmb{\gamma}}}(t) &amp; =  \left( - \sin \left( \frac{t}{R} \right) ,  \cos \left( \frac{t}{R} \right), 0\right) \\
-\left\| \dot{{\pmb{\gamma}}}(t) \right\| &amp; = 1
-\end{align*}\]</span> Now, compute second derivative and curvature <span class="math display">\[\begin{align*}
-\ddot{{\pmb{\gamma}}}(t) &amp; =  \left( -\frac{1}{R} \cos \left( \frac{t}{R} \right) ,  - \frac{1}{R} \sin \left( \frac{t}{R} \right) ,0\right) \\
-\kappa(t) &amp; = \left\|  \ddot{{\pmb{\gamma}}}(t)  \right\| = \frac{1}{R}
+<p><strong>Solution.</strong> First, check that <span class="math inline">\({\pmb{\gamma}}\)</span> is unit-speed: <span class="math display">\[
+\dot{{\pmb{\gamma}}}(t)  =  \left( - \sin \left( \frac{t}{R} \right) ,  \cos \left( \frac{t}{R} \right), 0\right) \,, \qquad
+\left\| \dot{{\pmb{\gamma}}}(t) \right\|  = 1 \,
+\]</span> Now, compute second derivative and curvature <span class="math display">\[\begin{align*}
+\ddot{{\pmb{\gamma}}}(t) &amp; =  \left( -\frac{1}{R} \cos \left( \frac{t}{R} \right) ,  - \frac{1}{R} \sin \left( \frac{t}{R} \right) ,0\right) \,, \\
+\kappa(t)  &amp; = \left\|  \ddot{{\pmb{\gamma}}}(t)  \right\| = \frac{1}{R} \,.
 \end{align*}\]</span></p>
 </div></details>
 </div>
-<div id="curvature-of-regular-curve" class="Definition" title="Curvature of regular curve">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 18: </strong>Curvature of regular curve</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>, with <span class="math display">\[
-{\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi \,,  \quad \phi\colon  (a,b) \to (\tilde{a},\tilde{b}) \,.
-\]</span> Let <span class="math inline">\(\widetilde{\kappa}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>curvature</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<div id="definition-curvature" class="Definition" title="Curvature of regular curve">
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 16: </strong>Curvature of regular curve</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span>, with <span class="math inline">\({\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi\)</span> and <span class="math inline">\(\phi\colon  (a,b) \to (\tilde{a},\tilde{b})\)</span>. Let <span class="math inline">\(\widetilde{\kappa}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>curvature</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \kappa(t) = \widetilde{\kappa}(\phi(t)) \,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="computing-curvature-of-regular-pmbgamma" class="Remark" title="Computing curvature of regular {\pmb{\gamma}}">
-<details class="Remark fbx-simplebox fbx-default" open=""><summary><strong>Remark 19: </strong>Computing curvature of regular <span class="math inline">\({\pmb{\gamma}}\)</span></summary><div>
+<details class="Remark fbx-simplebox fbx-default" open=""><summary><strong>Remark 17: </strong>Computing curvature of regular <span class="math inline">\({\pmb{\gamma}}\)</span></summary><div>
 <ol type="1">
 <li><p>Compute the arc-length <span class="math inline">\(s(t)\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span> and its inverse <span class="math inline">\(t(s)\)</span>.</p></li>
 <li><p>Compute the arc-length reparametrization <span class="math display">\[
@@ -469,27 +436,29 @@ s(t) = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, d u = 13 t \,.
 </div></details>
 </div>
 <div id="hyperbolic-functions" class="Definition" title="Hyperbolic functions">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 20: </strong>Hyperbolic functions</summary><div>The <strong>hyperbolic functions</strong> are defined by:<p></p>
-<p><span class="math display">\[\begin{align*}
-\cosh (t) &amp; = \frac {e^t + e^{-t}} {2} \,, \quad
-\sinh (t)  = \frac {e^t - e^{-t}} {2}  \\
-\tanh(t) &amp; = \frac{\sinh (t)}{\cosh (t)} \,, \quad
-\coth (t)  = \frac{\cosh (t)}{\sinh (t)} \\
-\mathop{\mathrm{sech}}(t) &amp; = \frac{1}{\cosh (t)}\,, \quad
-\mathop{\mathrm{csch}}(t)  = \frac{1}{\sinh (t)}
-\end{align*}\]</span></p>
-<p>Key identities involving hyperbolic functions:</p>
-<p><span class="math display">\[\begin{align*}
-&amp;\cosh^2(t) - \sinh^2(t)  = 1 \,, \quad
-{\mathop{\mathrm{sech}}}^2(t) - \tanh^2(t)  = 1  \\
-&amp; \frac{d}{dt} \left[ \sinh(t) \right]  = \cosh (t) \,, \quad
-\frac{d}{dt} \left[ \cosh(t) \right]  = \sinh (t) \\
-&amp; \frac{d}{dt} \left[ \tanh(t) \right]  = 1 - \tanh^2 (t) = - {\mathop{\mathrm{csch}}}^2(t)
-\end{align*}\]</span></p>
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 18: </strong>Hyperbolic functions</summary><div><span class="math display">\[\begin{align*}
+&amp; \cosh (t)  = \frac {e^t + e^{-t}} {2}
+&amp;\,\,\,&amp;  \sinh (t)  = \frac {e^t - e^{-t}} {2}  \\
+&amp; \tanh(t) = \frac{\sinh (t)}{\cosh (t)}  
+&amp;\,\,\,&amp; \coth (t)  = \frac{\cosh (t)}{\sinh (t)} \\
+&amp; \mathop{\mathrm{sech}}(t) = \frac{1}{\cosh (t)}
+&amp;\,\,\,&amp; \mathop{\mathrm{csch}}(t)  = \frac{1}{\sinh (t)}
+\end{align*}\]</span><p></p>
+</div></details>
+</div>
+<div id="properties-of-hyperbolic-functions" class="Theorem" title="Properties of Hyperbolic Functions">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 19: </strong>Properties of Hyperbolic Functions</summary><div><span class="math display">\[\begin{align*}
+&amp;\cosh^2(t) - \sinh^2(t)  = 1
+&amp;\,\,\,&amp;  {\mathop{\mathrm{sech}}}^2(t) + \tanh^2(t)  = 1  \\
+&amp; \sinh(t)'  = \cosh (t)
+&amp; \,\,\, &amp; \cosh(t)'  = \sinh (t) \\
+&amp; \tanh(t)'  = {\mathop{\mathrm{sech}}}^2 (t)
+&amp;\,\,\,&amp; \mathop{\mathrm{sech}}(t)' = - \mathop{\mathrm{sech}}(t)\tanh(t)
+\end{align*}\]</span><p></p>
 </div></details>
 </div>
 <div id="curvature-of-the-catenary" class="Example" title="Curvature of the Catenary">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 21: </strong>Curvature of the Catenary</summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 20: </strong>Curvature of the Catenary</summary><div>
 <p><strong>Question.</strong> Consider the Catenary curve <span class="math display">\[
 {\pmb{\gamma}}(t) = ( t, \cosh(t) ) \,, \quad t \in \mathbb{R}\,.
 \]</span></p>
@@ -515,16 +484,15 @@ e^{2t} - 2s e^{t} - 1 = 0 \quad &amp; \iff \quad y^{2} - 2s y - 1 = 0 \\
                         \quad &amp; \iff \quad y_{\pm} = s \pm \sqrt{1+s^2} \,.
 \end{align*}\]</span> Notice that <span class="math display">\[
 y_{+} = s + \sqrt{1 + s^2} \geq s + \sqrt{s^2} = s + |s| \geq 0
-\]</span> by definition of absolute value. As we were looking for <span class="math inline">\(y\)</span> in the form <span class="math inline">\(y=e^t\)</span>, we only consider the positive solution <span class="math inline">\(y_+\)</span>. Then, <span class="math display">\[\begin{align*}
-&amp; e^t  = y_+ = s + \sqrt{1 + s^2 } \\
-&amp; t(s)  = \log \left( s + \sqrt{1 + s^2} \right)
+\]</span> by definition of absolute value. Therefore, <span class="math display">\[\begin{align*}
+e^t  = y_+ = s + \sqrt{1 + s^2 } \,\, \implies \,\,
+t(s)  = \log \left( s + \sqrt{1 + s^2} \right)
 \end{align*}\]</span> The arc-length reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}( t(s) ) = \left(  \log \left( s + \sqrt{ 1+ s^2} \right) , \sqrt{1 + s^2}  \right)
 \]</span></p></li>
 <li><p>Compute the curvature of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> <span class="math display">\[\begin{align*}
 \dot{\widetilde{{\pmb{\gamma}}}}(s) &amp;  = \left(  \frac{1}{ \sqrt{1 + s^2} } , \frac{s}{ \sqrt{1 + s^2}}   \right) \\
 \ddot{\widetilde{{\pmb{\gamma}}}}(s) &amp; = \left( - \frac{s}{ (1 + s^2)^{3/2} } , \frac{1}{(1 + s^2)^{3/2} }   \right) \\
-\left\| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \right\|^2 &amp; = \frac{1}{(1+s^2)^2} \\
 \widetilde{\kappa}(s) &amp; = \left\| \ddot{\widetilde{{\pmb{\gamma}}}}(s) \right\|= \frac{1}{1+s^2}
 \end{align*}\]</span></p></li>
 <li><p>Recalling that <span class="math inline">\(s(t) = \sinh(t)\)</span>, the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
@@ -535,27 +503,7 @@ y_{+} = s + \sqrt{1 + s^2} \geq s + \sqrt{s^2} = s + |s| \geq 0
 </div></details>
 </div>
 <div id="vector-product" class="Definition" title="Vector product">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 22: </strong>Vector product</summary><div>The <strong>vector product</strong> of two vectors <span class="math inline">\(\mathbf{u},\mathbf{v}\in \mathbb{R}^3\)</span> is <span id="eq-formula-cross-product"><span class="math display">\[
-\mathbf{u}\times \mathbf{v}=
-\left|
-\begin{array}{cc}
-u_2 &amp; u_3  \\
-v_2 &amp; v_3
-\end{array}
-\right| \mathbf{e}_1 -
-\left|
-\begin{array}{cc}
-u_1 &amp; u_3  \\
-v_1 &amp; v_3
-\end{array}
-\right| \mathbf{e}_2 +
-\left|
-\begin{array}{cc}
-u_1 &amp; u_2  \\
-v_1 &amp; v_2
-\end{array}
-\right| \mathbf{e}_3  \,
-\tag{1.2}\]</span></span> with <span class="math inline">\(\mathbf{e}_1,\mathbf{e}_2,\mathbf{e}_3\)</span> vectors of the standard basis of <span class="math inline">\(R^3\)</span>. Formula (<a href="#eq-formula-cross-product" class="quarto-xref"><span>1.2</span></a>) is usually denoted by <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 21: </strong>Vector product</summary><div>The <strong>vector product</strong> of two vectors <span class="math inline">\(\mathbf{u},\mathbf{v}\in \mathbb{R}^3\)</span> is <span class="math display">\[
 \mathbf{u}\times \mathbf{v}=
 \left|
 \begin{array}{ccc}
@@ -567,38 +515,36 @@ v_1 &amp; v_2 &amp; v_3
 \]</span><p></p>
 </div></details>
 </div>
-<div id="geometric-properties-of-vector-product" class="Theorem" title="Geometric Properties of vector product">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 23: </strong>Geometric Properties of vector product</summary><div>
+<div id="theorem-vector-product" class="Theorem" title="Geometric Properties of vector product">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 22: </strong>Geometric Properties of vector product</summary><div>
 <p>Let <span class="math inline">\(\mathbf{u},\mathbf{v}\in \mathbb{R}^3\)</span> be linearly independent. Then</p>
 <ul>
 <li><span class="math inline">\(\mathbf{u}\times \mathbf{v}\)</span> is orthogonal to the plane spanned by <span class="math inline">\(\mathbf{u},\mathbf{v}\)</span></li>
-<li><span class="math inline">\(\| \mathbf{u}\times \mathbf{v}\|\)</span> equals the area of the parallelogram with sides <span class="math inline">\(\mathbf{u},\mathbf{v}\)</span></li>
-<li>The following triple is a positive (right-handed) basis of <span class="math inline">\(\mathbb{R}^3\)</span> <span class="math display">\[
-(\mathbf{u},\mathbf{v},\mathbf{u}\times \mathbf{v}) \,.
-\]</span></li>
+<li><span class="math inline">\(\| \mathbf{u}\times \mathbf{v}\|\)</span> is the area of the parallelogram with sides <span class="math inline">\(\mathbf{u},\mathbf{v}\)</span></li>
+<li>The triple <span class="math inline">\((\mathbf{u},\mathbf{v},\mathbf{u}\times \mathbf{v})\)</span> is a positive basis of <span class="math inline">\(\mathbb{R}^3\)</span></li>
 </ul>
 </div></details>
 </div>
-<div id="Theorem-24" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 24</strong></summary><div>For all <span class="math inline">\(\mathbf{u}, \mathbf{v}, \mathbf{w}\in \mathbb{R}^3\)</span> it holds: <span class="math display">\[
+<div id="Theorem-23" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 23</strong></summary><div>For all <span class="math inline">\(\mathbf{u}, \mathbf{v}, \mathbf{w}\in \mathbb{R}^3\)</span> it holds: <span class="math display">\[
 (\mathbf{u}\times \mathbf{v}) \times \mathbf{w}= ( \mathbf{u}\cdot \mathbf{w}) \mathbf{v}- ( \mathbf{v}\cdot \mathbf{w}) \mathbf{u}
 \]</span><p></p>
 </div></details>
 </div>
-<div id="Theorem-25" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 25</strong></summary><div>Suppose <span class="math inline">\({\pmb{\gamma}},{\pmb{\eta}}\ \colon (a,b) \to \mathbb{R}^3\)</span> are parametrized curves. Then, the curve <span class="math inline">\({\pmb{\gamma}}\times {\pmb{\eta}}\)</span> is smooth, and <span class="math display">\[
+<div id="Theorem-24" class="Theorem">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 24</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}},{\pmb{\eta}}\ \colon (a,b) \to \mathbb{R}^3\)</span>. Then, the curve <span class="math inline">\({\pmb{\gamma}}\times {\pmb{\eta}}\)</span> is smooth, and <span class="math display">\[
 \frac{d}{dt} ( {\pmb{\gamma}}\times {\pmb{\eta}}) = \dot{{\pmb{\gamma}}}\times {\pmb{\eta}}+ {\pmb{\gamma}}\times \dot{{\pmb{\eta}}}  \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="curvature-formula" class="Theorem" title="Curvature formula">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 26: </strong>Curvature formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve. The curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<div id="theorem-curvature-formula" class="Theorem" title="Curvature formula">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 25: </strong>Curvature formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular. The curvature of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \kappa(t) = \frac{ \left\| \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) \right\| }{ \left\| \dot{{\pmb{\gamma}}}(t) \right\|^3 } \,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="curvature-of-the-helix" class="Example" title="Curvature of the Helix">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 27: </strong>Curvature of the Helix</summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 26: </strong>Curvature of the Helix</summary><div>
 <p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H\)</span>, <span class="math display">\[
 {\pmb{\gamma}}(t) = ( R\cos(t) , R\sin(t) , Ht) \,.
 \]</span></p>
@@ -626,8 +572,8 @@ R^2
 </ol>
 </div></details>
 </div>
-<div id="example-curvature" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 28</strong></summary><div>
+<div id="example-curvature" class="Example" title="Calculation of curvature">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 27: </strong>Calculation of curvature</summary><div>
 <p><strong>Question.</strong> Define the curve <span class="math display">\[
 {\pmb{\gamma}}(t)=\left(\frac{8}{5} \cos (t), 1-2 \sin (t), \frac{6}{5} \cos (t)\right) \,.
 \]</span></p>
@@ -638,24 +584,22 @@ R^2
 <p><strong>Solution.</strong></p>
 <ol type="1">
 <li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular because <span class="math display">\[
-\begin{aligned}
-\dot{{\pmb{\gamma}}}(t) &amp; =\left(-\frac{8}{5} \sin (t),-2 \cos (t),-\frac{6}{5} \sin (t)\right) \\
-\|\dot{{\pmb{\gamma}}}(t)\| &amp; =2 \neq 0
-\end{aligned}
+\dot{{\pmb{\gamma}}}=\left(-\frac{8}{5} \sin (t),-2 \cos (t),-\frac{6}{5} \sin (t)\right) \,, \qquad
+\|\dot{{\pmb{\gamma}}}\| =2 \neq 0 \,.
 \]</span></p></li>
 <li><p>Compute the curvature using the formula: <span class="math display">\[
 \begin{aligned}
-&amp; \ddot{{\pmb{\gamma}}}(t) =\left(-\frac{8}{5} \cos (t), 2 \sin (t),-\frac{6}{5} \cos (t)\right) \\
-&amp; \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)=\left(-\frac{12}{5}, 0, \frac{16}{5}\right) \\
-&amp; \|\dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)\|=4 \\
-&amp; \kappa(t)  = \frac{1}{2} \,.
+&amp; \ddot{{\pmb{\gamma}}}=\left(-\frac{8}{5} \cos (t), 2 \sin (t),-\frac{6}{5} \cos (t)\right)
+&amp;\,\,\,\,&amp; \|\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}\|=4 \\
+&amp; \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}=\left(-\frac{12}{5}, 0, \frac{16}{5}\right)
+&amp;\,\,\,\,&amp; \kappa  = \frac{1}{2} \,.
 \end{aligned}
 \]</span></p></li>
 </ol>
 </div></details>
 </div>
 <div id="different-curves-same-curvature" class="Example" title="Different curves, same curvature">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 29: </strong>Different curves, same curvature</summary><div><strong>Question</strong> Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a circle <span class="math display">\[
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 28: </strong>Different curves, same curvature</summary><div><strong>Question</strong> Let <span class="math inline">\({\pmb{\gamma}}\)</span> be a circle <span class="math display">\[
 {\pmb{\gamma}}(t) = (2\cos(t),2\sin(t),0) \,,
 \]</span> and <span class="math inline">\({\pmb{\eta}}\)</span> be a helix of radius <span class="math inline">\(S&gt;0\)</span> and rise <span class="math inline">\(H&gt;0\)</span> <span class="math display">\[
 {\pmb{\eta}}(t) = (S\cos(t),S\sin(t),Ht) \,.
@@ -672,32 +616,32 @@ R^2
 <section id="frenet-frame-and-torsion" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="frenet-frame-and-torsion"><span class="header-section-number">1.2</span> Frenet frame and torsion</h2>
 <div id="frenet-frame-of-unit-speed-curve" class="Definition" title="Frenet frame of unit-speed curve">
-<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 30: </strong>Frenet frame of unit-speed curve</summary><div>
-<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>.</p>
+<details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 29: </strong>Frenet frame of unit-speed curve</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed, with <span class="math inline">\(\kappa \neq 0\)</span>.</p>
 <ol type="1">
-<li><p>The <strong>tangent vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<li><p>The <strong>tangent vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> at <span class="math inline">\({\pmb{\gamma}}(t)\)</span> is <span class="math display">\[
 \mathbf{t}(t)= \dot{{\pmb{\gamma}}}(t) \,.
 \]</span></p></li>
-<li><p>The <strong>principal normal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
-\mathbf{n}(t) = \frac{1}{\kappa (t)} \, \ddot{{\pmb{\gamma}}}(t) \,.
+<li><p>The <strong>principal normal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> at <span class="math inline">\({\pmb{\gamma}}(t)\)</span> is <span class="math display">\[
+\mathbf{n}(t) = \frac{\ddot{{\pmb{\gamma}}}(t)}{\kappa (t)}  \,.
 \]</span></p></li>
-<li><p>The <strong>binormal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<li><p>The <strong>binormal vector</strong> to <span class="math inline">\({\pmb{\gamma}}\)</span> at <span class="math inline">\({\pmb{\gamma}}(t)\)</span> is <span class="math display">\[
 \mathbf{b}(t) = \dot{{\pmb{\gamma}}}(t) \times \mathbf{n}(t) \,.
 \]</span></p></li>
-<li><p>The <strong>Frenet frame</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the triple <span class="math display">\[
-\{ \mathbf{t}, \mathbf{n}, \mathbf{b}\} \,.
+<li><p>The <strong>Frenet frame</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> at <span class="math inline">\({\pmb{\gamma}}(t)\)</span> is the triple <span class="math display">\[
+\{ \mathbf{t}(t), \mathbf{n}(t), \mathbf{b}(t)\} \,.
 \]</span></p></li>
 </ol>
 </div></details>
 </div>
-<div id="Theorem-31" class="Theorem">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 31</strong></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame <span class="math display">\[
+<div id="frenet-frame-is-orthonormal-basis" class="Theorem" title="Frenet frame is orthonormal basis">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 30: </strong>Frenet frame is orthonormal basis</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed, with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame <span class="math display">\[
 \{ \mathbf{t}(t), \mathbf{n}(t), \mathbf{b}(t)\}
 \]</span> is a positive orthonomal basis of <span class="math inline">\(\mathbb{R}^3\)</span> for each <span class="math inline">\(t \in (a,b)\)</span>.<p></p>
 </div></details>
 </div>
 <div id="torsion-of-unit-speed-curve-with-kappa-neq-0" class="Definition" title="Torsion of unit-speed curve with \kappa \neq 0">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 32: </strong>Torsion of unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the unique scalar <span class="math inline">\(\tau (t)\)</span> such that <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 31: </strong>Torsion of unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed, with <span class="math inline">\(\kappa \neq 0\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is the unique scalar <span class="math inline">\(\tau (t)\)</span> such that <span class="math display">\[
 \dot{\mathbf{b}} (t) = - \tau(t) \mathbf{n}(t) \,.
 \]</span> In particular, <span class="math display">\[
 \tau(t) = - \dot{\mathbf{b}} (t) \cdot \mathbf{n}(t) \,.
@@ -705,15 +649,13 @@ R^2
 </div></details>
 </div>
 <div id="torsion-of-regular-curve-with-kappa-neq-0" class="Definition" title="Torsion of regular curve with \kappa \neq 0">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 33: </strong>Torsion of regular curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve with <span class="math inline">\(\kappa \neq 0\)</span>. Let <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> with <span class="math display">\[
-{\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi \,,  \quad \phi\colon  (a,b) \to (\tilde{a},\tilde{b})  \,.
-\]</span> Let <span class="math inline">\(\widetilde{\tau}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the torsion of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 32: </strong>Torsion of regular curve with <span class="math inline">\(\kappa \neq 0\)</span></summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve with <span class="math inline">\(\kappa \neq 0\)</span>. Let <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> be a unit-speed reparametrization of <span class="math inline">\({\pmb{\gamma}}\)</span> with <span class="math inline">\({\pmb{\gamma}}= \widetilde{{\pmb{\gamma}}}\circ \phi\)</span> and <span class="math inline">\(\phi\colon  (a,b) \to (\tilde{a},\tilde{b})\)</span>. Let <span class="math inline">\(\widetilde{\tau}\colon (\tilde{a},\tilde{b}) \to \mathbb{R}\)</span> be the torsion of <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span>. The <strong>torsion</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \tau(t) = \widetilde{\tau}(\phi(t)) \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="frenet-frame-of-helix" class="Example" title="Frenet frame of Helix">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 34: </strong>Frenet frame of Helix</summary><div>
+<div id="curvature-and-torsion-of-helix-with-frenet-frame" class="Example" title="Curvature and torsion of Helix with Frenet frame">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 33: </strong>Curvature and torsion of Helix with Frenet frame</summary><div>
 <p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H\)</span> <span class="math display">\[
 {\pmb{\gamma}}(t) = ( R\cos(t), R\sin(t),t H)\,, \quad \, t \in \mathbb{R}\,.
 \]</span></p>
@@ -724,13 +666,12 @@ R^2
 </ol>
 <p><strong>Solution.</strong></p>
 <ol type="1">
-<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting at <span class="math inline">\(t_0 = 0\)</span> is <span class="math display">\[\begin{align*}
+<li><p>The arc-length of <span class="math inline">\({\pmb{\gamma}}\)</span> starting at <span class="math inline">\(t_0 = 0\)</span>, and its inverse, are <span class="math display">\[\begin{align*}
 \dot{{\pmb{\gamma}}}(t) &amp; = ( -R\sin(t), R\cos(t), H )  \\
 \left\|  \dot{{\pmb{\gamma}}} \right\| &amp; = \rho, \qquad \rho := \sqrt{R^2 + H^2} \\
-s(t) &amp; = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du = \rho  t \,,
-\end{align*}\]</span> which is invertible, with inverse <span class="math display">\[
-t(s) = \frac{s}{\rho} \,.
-\]</span> The arc-length reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+s(t) &amp; = \int_0^t \left\|  \dot{{\pmb{\gamma}}}(u)  \right\| \, du = \rho  t \,, \qquad
+t(s)  = \frac{s}{\rho} \,.
+\end{align*}\]</span> The arc-length reparametrization <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \widetilde{{\pmb{\gamma}}}(s) = {\pmb{\gamma}}( t(s)) = \left( R \cos \left( \frac{s}{\rho}  \right) ,R \sin \left( \frac{s}{\rho}  \right) , \frac{H s }{\rho}    \right) \,.
 \]</span></p></li>
 <li><p>Compute the tangent vector to <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> and its derivative <span class="math display">\[\begin{align*}
@@ -760,14 +701,14 @@ R \cos \left( \frac{s}{\rho}  \right)
 </ol>
 </div></details>
 </div>
-<div id="torsion-formula" class="Theorem" title="Torsion formula">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 35: </strong>Torsion formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a regular curve with <span class="math inline">\(\kappa \neq 0\)</span>. The torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+<div id="theorem-torsion-formula" class="Theorem" title="Torsion formula">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 34: </strong>Torsion formula</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular, with <span class="math inline">\(\kappa \neq 0\)</span>. The torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
 \tau (t) = \frac{ ( \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) ) \cdot \dddot{{\pmb{\gamma}}}(t) }{ \left\|  \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)  \right\|^2 } \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="torsion-of-helix-with-formula" class="Example" title="Torsion of Helix with formula">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 36: </strong>Torsion of Helix with formula</summary><div>
+<div id="example-torsion-helix" class="Example" title="Torsion of the Helix with formula">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 35: </strong>Torsion of the Helix with formula</summary><div>
 <p><strong>Question.</strong> Consider the Helix of radius <span class="math inline">\(R&gt;0\)</span> and rise <span class="math inline">\(H&gt;0\)</span> <span class="math display">\[
 {\pmb{\gamma}}(t) = ( R\cos(t) , R\sin(t) , Ht) \,, \quad t \in \mathbb{R}\,.
 \]</span></p>
@@ -777,10 +718,10 @@ R \cos \left( \frac{s}{\rho}  \right)
 </ol>
 <p><strong>Solution.</strong></p>
 <ol type="1">
-<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular with non-vanishing curvature, since <span class="math display">\[\begin{align*}
-&amp; \left\| \dot{{\pmb{\gamma}}}(t) \right\| = \sqrt{R^2 + H^2} \geq R &gt; 0 \,,\\
-&amp; \kappa  = \frac{R}{R^2 + H^2} &gt; 0 \,.
-\end{align*}\]</span></p></li>
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular with non-vanishing curvature, since <span class="math display">\[
+\left\| \dot{{\pmb{\gamma}}}(t) \right\| = \sqrt{R^2 + H^2} \geq R &gt; 0 \,, \qquad
+\kappa  = \frac{R}{R^2 + H^2} &gt; 0 \,.
+\]</span></p></li>
 <li><p>We compute the torsion using the formula: <span class="math display">\[\begin{align*}
 \dot{{\pmb{\gamma}}}(t) &amp; = ( -R\sin(t) , R\cos(t) , H)  \\
 \ddot{{\pmb{\gamma}}}(t) &amp; = ( -R\cos(t) , -R\sin(t) , 0) \\
@@ -794,29 +735,29 @@ R \cos \left( \frac{s}{\rho}  \right)
 </ol>
 </div></details>
 </div>
-<div id="Example-37" class="Example">
-<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 37</strong></summary><div><strong>Question.</strong> Compute the torsion of the curve <span class="math display">\[
+<div id="calculation-of-torsion" class="Example" title="Calculation of torsion">
+<p></p><details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 36: </strong>Calculation of torsion</summary><div><strong>Question.</strong> Compute the torsion of the curve <span class="math display">\[
 {\pmb{\gamma}}(t) = \left(\frac{8}{5} \cos (t), 1-2 \sin (t), \frac{6}{5} \cos (t)\right) \,.
 \]</span><p></p>
-<p><strong>Solution.</strong> Resuming calculations from Example <a href="chap_1.html#example-curvature">28</a>, <span class="math display">\[
+<p><strong>Solution.</strong> Resuming calculations from Example <a href="chap_1.html#example-curvature">27</a>, <span class="math display">\[
 \begin{aligned}
-\dddot{{\pmb{\gamma}}}(t) &amp; =\left(\frac{8}{5} \sin (t), 2 \cos (t), \frac{6}{5} \sin (t)\right) \\
-( \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t)) \cdot \dddot{{\pmb{\gamma}}}(t) &amp; = \frac{96}{25} \sin (t)-\frac{96}{25} \sin (t) = 0 \\
+\dddot{{\pmb{\gamma}}}&amp; =\left(\frac{8}{5} \sin (t), 2 \cos (t), \frac{6}{5} \sin (t)\right) \\
+( \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}&amp; = \frac{96}{25} \sin (t)-\frac{96}{25} \sin (t) = 0 \\
 \tau(t) &amp; = \frac{ ( \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}}{ \left\|  \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|^2 } =  0
 \end{aligned}
 \]</span></p>
 </div></details>
 </div>
 <div id="general-frenet-frame-formulas" class="Theorem" title="General Frenet frame formulas">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 38: </strong>General Frenet frame formulas</summary><div>The Frenet frame of a regular curve <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[\begin{align*}
-&amp; \mathbf{t}= \frac{\dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|} \,, \quad \,\,
-\mathbf{b}= \frac{ \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| } \,, \\
-&amp; \mathbf{n}= \mathbf{b}\times \mathbf{t}= \frac{(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}})\times \dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| \left\| \dot{{\pmb{\gamma}}} \right\|} \,.
-\end{align*}\]</span><p></p>
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 37: </strong>General Frenet frame formulas</summary><div>The Frenet frame of a regular curve <span class="math inline">\({\pmb{\gamma}}\)</span> is <span class="math display">\[
+\mathbf{t}= \frac{\dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|} \,, \quad
+\mathbf{b}= \frac{ \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| } \,, \quad
+\mathbf{n}= \mathbf{b}\times \mathbf{t}= \frac{(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}})\times \dot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| \left\| \dot{{\pmb{\gamma}}} \right\|} \,.
+\]</span><p></p>
 </div></details>
 </div>
 <div id="twisted-cubic" class="Example" title="Twisted cubic">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 39: </strong>Twisted cubic</summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 38: </strong>Twisted cubic</summary><div>
 <p><strong>Question.</strong> Let <span class="math inline">\({\pmb{\gamma}}\colon \mathbb{R}\to \mathbb{R}^3\)</span> be the <em>twisted cubic</em> <span class="math display">\[
 {\pmb{\gamma}}(t) = (t,t^2,t^3 ) \,.
 \]</span></p>
@@ -828,16 +769,17 @@ R \cos \left( \frac{s}{\rho}  \right)
 <p><strong>Solution.</strong></p>
 <ol type="1">
 <li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regular, but not-unit speed, because <span class="math display">\[\begin{align*}
-\dot {\pmb{\gamma}}(t) &amp; = (1 , 2t , 3t^2) \\
-\left\| \dot {\pmb{\gamma}}(t) \right\| &amp; = \sqrt{1 + 4t^2 + 9t^4} \geq 1 \\
-\left\| \dot{\pmb{\gamma}}(1) \right\| &amp; = \sqrt{14} \neq 1
+&amp; \dot {\pmb{\gamma}}(t)  = (1 , 2t , 3t^2) \\
+&amp; \left\| \dot {\pmb{\gamma}}(t) \right\|  = \sqrt{1 + 4t^2 + 9t^4} \geq 1  \qquad
+\left\| \dot{\pmb{\gamma}}(1) \right\|  = \sqrt{14} \neq 1
 \end{align*}\]</span></p></li>
-<li><p>Compute curvature and torsion using the formulas: <span class="math display">\[\begin{align*}
-\ddot {\pmb{\gamma}}(t) &amp; = (0,2,6t) \\
-\dddot {\pmb{\gamma}}(t) &amp; = (0,0,6) \\
-\dot {\pmb{\gamma}}(t) \times \ddot {\pmb{\gamma}}(t) &amp; = (6t^2, -6t, 2 ) \\
-\left\| \dot {\pmb{\gamma}}(t) \times \ddot {\pmb{\gamma}}(t) \right\| &amp; = 2 \sqrt{ 1 + 9t^2 + 9t^4  } \\
-(\dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}) \cdot \dddot {\pmb{\gamma}}&amp;  = 12 \\
+<li><p>Compute the following quantities <span class="math display">\[\begin{align*}
+&amp; \ddot{{\pmb{\gamma}}}= (0,2,6t)
+&amp;\,&amp; \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|  = 2 \sqrt{ 1 + 9t^2 + 9t^4  } \\
+&amp; \dddot {\pmb{\gamma}}= (0,0,6)
+&amp;\,&amp; (\dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}) \cdot \dddot {\pmb{\gamma}}= 12 \\
+&amp; \dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}= (6t^2, -6t, 2 )
+\end{align*}\]</span> Compute curvature and torsion using the formulas: <span class="math display">\[\begin{align*}
 \kappa(t) &amp; = \frac{ \left\| \dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}} \right\| }{\left\|  \dot {\pmb{\gamma}} \right\|^3}
            = \frac{ 2 \sqrt{ 1 + 9t^2 + 9t^4  }  }{ (1 + 4t^2 + 9t^4)^{3/2}   } \\
 \tau(t) &amp; = \frac{ (\dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}}) \cdot \dddot {\pmb{\gamma}}}{ \left\| \dot {\pmb{\gamma}}\times \ddot {\pmb{\gamma}} \right\|^2  } = \frac{3}{1 + 9t^2 + 9t^4} \,.
@@ -855,16 +797,8 @@ R \cos \left( \frac{s}{\rho}  \right)
 </section>
 <section id="frenet-serret-equations" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="frenet-serret-equations"><span class="header-section-number">1.3</span> Frenet-Serret equations</h2>
-<div id="frenet-frame-is-right-handed" class="Theorem" title="Frenet frame is right-handed">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 40: </strong>Frenet frame is right-handed</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve with <span class="math inline">\(\kappa \neq 0\)</span>. Then <span class="math display">\[
-\mathbf{b}= \mathbf{t}\times \mathbf{n}\,, \quad
-\mathbf{n}= \mathbf{b}\times \mathbf{t}\,, \quad
-\mathbf{t}= \mathbf{n}\times \mathbf{b}\,.
-\]</span><p></p>
-</div></details>
-</div>
 <div id="frenet-serret-equations-1" class="Theorem" title="Frenet-Serret equations">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 41: </strong>Frenet-Serret equations</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame of <span class="math inline">\({\pmb{\gamma}}\)</span> solves the <strong>Frenet-Serret</strong> equations <span class="math display">\[\begin{align*}  
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 39: </strong>Frenet-Serret equations</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed with <span class="math inline">\(\kappa \neq 0\)</span>. The Frenet frame of <span class="math inline">\({\pmb{\gamma}}\)</span> solves the <strong>Frenet-Serret</strong> equations <span class="math display">\[\begin{align*}  
 \dot{\mathbf{t}}  = \kappa \mathbf{n}\,, \qquad
 \dot{\mathbf{n}}  = - \kappa \mathbf{t}+ \tau \mathbf{b}\,, \qquad
 \dot{\mathbf{b}}  = -\tau \mathbf{n}\,.
@@ -872,15 +806,15 @@ R \cos \left( \frac{s}{\rho}  \right)
 </div></details>
 </div>
 <div id="rigid-motion" class="Definition" title="Rigid motion">
-<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 42: </strong>Rigid motion</summary><div>A <strong>rigid motion</strong> of <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> of the form <span class="math display">\[
+<p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 40: </strong>Rigid motion</summary><div>A <strong>rigid motion</strong> of <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> of the form <span class="math display">\[
 M(\mathbf{v}) = R \mathbf{v}+ \mathbf{p}\,, \qquad \mathbf{v}\in \mathbb{R}^3 \,,
-\]</span> where <span class="math inline">\(\mathbf{p}\in \mathbb{R}^3\)</span>, and <span class="math inline">\(R \in \mathbb{R}^{3 \times 3}\)</span> <strong>rotation matrix</strong>, <span class="math display">\[
-R \in \mathrm{SO}(3) := \{ R \in \mathbb{R}^{3 \times 3} \ \colon \ R^T R = I \,, \,\, \det(R) = 1 \} \,.
+\]</span> where <span class="math inline">\(\mathbf{p}\in \mathbb{R}^3\)</span>, and <span class="math inline">\(R \in \mathrm{SO}(3)\)</span> <strong>rotation matrix</strong>, <span class="math display">\[
+\mathrm{SO}(3) = \{ R \in \mathbb{R}^{3 \times 3} \ \colon \ R^T R = I \,, \,\, \det(R) = 1 \} \,.
 \]</span><p></p>
 </div></details>
 </div>
 <div id="fundamental-theorem-of-space-curves" class="Theorem" title="Fundamental Theorem of Space Curves">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 43: </strong>Fundamental Theorem of Space Curves</summary><div>
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 41: </strong>Fundamental Theorem of Space Curves</summary><div>
 <p>Let <span class="math inline">\(\kappa, \tau \ \colon (a,b) \to \mathbb{R}\)</span> be smooth, with <span class="math inline">\(\kappa&gt;0\)</span>. Then:</p>
 <ol type="1">
 <li><p>There exists a unit-speed curve <span class="math inline">\({\pmb{\gamma}}\ \colon (a,b) \to \mathbb{R}^3\)</span> with curvature <span class="math inline">\(\kappa(t)\)</span> and torsion <span class="math inline">\(\tau(t)\)</span>.</p></li>
@@ -895,7 +829,7 @@ R \in \mathrm{SO}(3) := \{ R \in \mathbb{R}^{3 \times 3} \ \colon \ R^T R = I \,
 </div></details>
 </div>
 <div id="application-of-ftsc" class="Example" title="Application of FTSC">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 44: </strong>Application of FTSC</summary><div>
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 42: </strong>Application of FTSC</summary><div>
 <p><strong>Question.</strong> Consider the curve <span class="math display">\[
     {\pmb{\gamma}}( t ) = \left( \sqrt{3}\, t - \sin ( t ) , \sqrt{3} \sin ( t ) + t , 2 \cos ( t ) \right)\,.
 \]</span></p>
@@ -907,7 +841,7 @@ R \in \mathrm{SO}(3) := \{ R \in \mathbb{R}^{3 \times 3} \ \colon \ R^T R = I \,
 \kappa^{{\pmb{\eta}}} = \frac{R}{R^2 + H^2} \,, \qquad \tau^{{\pmb{\eta}}} = \frac{H}{R^2 + H^2} \,.
 \]</span> Prove that there exist a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> such that <span id="eq-rigid-example"><span class="math display">\[
 {\pmb{\gamma}}(t) = M({\pmb{\eta}}(t)) \,, \quad \forall \, t \in \mathbb{R}\,.
-  \tag{1.3}\]</span></span></p></li>
+  \tag{1.2}\]</span></span></p></li>
 </ol>
 <p><strong>Solution.</strong></p>
 <ol type="1">
@@ -932,31 +866,31 @@ R^2 + H^2 = 4 R \,, \qquad
              R^2 + H^2 = -4 H \,,
 \]</span> from which we find the relation <span class="math inline">\(R = -  H\)</span>. Substituting into <span class="math inline">\(R^2 + H^2 = -4 H\)</span>, we get <span class="math display">\[
 H = - 2 \,, \quad R = - H = 2 \,.
-\]</span> For these values of <span class="math inline">\(R\)</span> and <span class="math inline">\(H\)</span> we have <span class="math inline">\(\kappa = \kappa^{{\pmb{\eta}}}\)</span> and <span class="math inline">\(\tau = \tau^{{\pmb{\eta}}}\)</span>. By the FTSC, there exists a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> satisfying (<a href="#eq-rigid-example" class="quarto-xref"><span>1.3</span></a>).</p></li>
+\]</span> For these values of <span class="math inline">\(R\)</span> and <span class="math inline">\(H\)</span> we have <span class="math inline">\(\kappa = \kappa^{{\pmb{\eta}}}\)</span> and <span class="math inline">\(\tau = \tau^{{\pmb{\eta}}}\)</span>. By the FTSC, there exists a rigid motion <span class="math inline">\(M \colon \mathbb{R}^3 \to \mathbb{R}^3\)</span> satisfying (<a href="#eq-rigid-example" class="quarto-xref"><span>1.2</span></a>).</p></li>
 </ol>
 </div></details>
 </div>
-<div id="curves-contained-in-a-plane" class="Theorem" title="Curves contained in a plane">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 45: </strong>Curves contained in a plane</summary><div>
-<p>For <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> regular with <span class="math inline">\(\kappa \neq 0\)</span>,they are equivalent</p>
+<div id="theorem-zero-torsion" class="Theorem" title="Curves contained in a plane - Part I">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 43: </strong>Curves contained in a plane - Part I</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular with <span class="math inline">\(\kappa \neq 0\)</span>. They are equivalent:</p>
 <ol type="1">
 <li><p>The torsion of <span class="math inline">\({\pmb{\gamma}}\)</span> satisfies <span class="math display">\[
 \tau(t) = 0 \,, \quad \forall  \, t \in (a,b) \,.
 \]</span></p></li>
-<li><p>The image of <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a plane: There exists a vector <span class="math inline">\(\mathbf{P} \in \mathbb{R}^3\)</span> and a scalar <span class="math inline">\(d \in \mathbb{R}\)</span> such that <span class="math display">\[
+<li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a plane: There exists a vector <span class="math inline">\(\mathbf{P} \in \mathbb{R}^3\)</span> and a scalar <span class="math inline">\(d \in \mathbb{R}\)</span> such that <span class="math display">\[
 {\pmb{\gamma}}(t)\cdot \mathbf{P} = d \,, \quad \forall \, t \in (a,b) \,.
 \]</span></p></li>
 </ol>
 </div></details>
 </div>
-<div id="curves-contained-in-a-plane-1" class="Theorem" title="Curves contained in a plane">
-<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 46: </strong>Curves contained in a plane</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular, with <span class="math inline">\(\kappa \neq 0\)</span> and <span class="math inline">\(\tau = 0\)</span>. Then, the binormal <span class="math inline">\(\mathbf{b}\)</span> is a constant vector, and <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in the plane of equation <span class="math display">\[
+<div id="corollary-zero-torsion" class="Theorem" title="Curves contained in a plane - Part II">
+<p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 44: </strong>Curves contained in a plane - Part II</summary><div>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be regular, with <span class="math inline">\(\kappa \neq 0\)</span> and <span class="math inline">\(\tau = 0\)</span>. Then, the binormal <span class="math inline">\(\mathbf{b}\)</span> is a constant vector, and <span class="math inline">\({\pmb{\gamma}}\)</span> is contained in the plane of equation <span class="math display">\[
 (\mathbf{x}- {\pmb{\gamma}}(t_0)) \cdot \mathbf{b}= 0 \,.
 \]</span><p></p>
 </div></details>
 </div>
-<div id="Example-47" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 47</strong></summary><div>
+<div id="a-planar-curve" class="Example" title="A planar curve">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 45: </strong>A planar curve</summary><div>
 <p><strong>Question.</strong> Consider the curve <span class="math display">\[
 {\pmb{\gamma}}(t) = ( t,2t,t^4) \,, \quad t &gt; 0 \,.
 \]</span></p>
@@ -968,29 +902,30 @@ H = - 2 \,, \quad R = - H = 2 \,.
 <p><strong>Solution.</strong></p>
 <ol type="1">
 <li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is regualar because <span class="math inline">\(\dot{{\pmb{\gamma}}}(t) = (1,2,4t^3) \neq {\pmb{0}}\)</span>.</p></li>
-<li><p>Compute curvature and torsion with the formulas <span class="math display">\[\begin{align*}
-&amp; \left\| \dot{{\pmb{\gamma}}}(t) \right\| = \sqrt{5 + 16 t^4} \\
-&amp; \ddot{{\pmb{\gamma}}}(t)   = 12 \, (0,0,t^2) \\
-&amp; \dddot{{\pmb{\gamma}}}(t) = 24 \, (0,0,t) \\
-&amp; \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) = 12 \,(2t^2, -t^2, 0) \\
-&amp; \left\| \dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) \right\| = 12 \sqrt{5} \, t^2 \\
-&amp; (\dot{{\pmb{\gamma}}}(t) \times \ddot{{\pmb{\gamma}}}(t) ) \cdot \dddot{{\pmb{\gamma}}}(t) = 0 \\
+<li><p>Compute the following quantities <span class="math display">\[\begin{align*}
+&amp; \left\| \dot{{\pmb{\gamma}}} \right\| = \sqrt{5 + 16 t^4}
+&amp;\,&amp; \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}= 12 \,(2t^2, -t^2, 0) \\
+&amp; \ddot{{\pmb{\gamma}}}= 12 \, (0,0,t^2)
+&amp;\,&amp; \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| = 12 \sqrt{5} \, t^2 \\
+&amp; \dddot{{\pmb{\gamma}}}= 24 \, (0,0,t)
+&amp;\,&amp; (\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}= 0 \\
+\end{align*}\]</span> Compute curvature and torsion with the formulas <span class="math display">\[\begin{align*}
 &amp; \kappa(t) = \frac{\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}} \right\|^3} =
 \frac{12 \sqrt{5} \, t^2}{\sqrt{ 5 + 16 t^4 }} \\
 &amp; \tau(t) = \frac{(\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}) \cdot \dddot{{\pmb{\gamma}}}}{ \left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\| } = 0 \,.
 \end{align*}\]</span></p></li>
 <li><p><span class="math inline">\({\pmb{\gamma}}\)</span> lies in a plane because <span class="math inline">\(\tau = 0\)</span>. The binormal is <span class="math display">\[
 \mathbf{b}= \frac{\dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}}}{\left\| \dot{{\pmb{\gamma}}}\times \ddot{{\pmb{\gamma}}} \right\|} = \frac{1}{\sqrt{5}} \, (2,-1,0) \,.
-\]</span> At <span class="math inline">\(t_0 = 0\)</span> we have <span class="math inline">\({\pmb{\gamma}}\left( 0 \right) = {\pmb{0}}\)</span>. The equation of the plane containing <span class="math inline">\({\pmb{\gamma}}\)</span> is then <span class="math display">\[
+\]</span> At <span class="math inline">\(t_0 = 0\)</span> we have <span class="math inline">\({\pmb{\gamma}}\left( 0 \right) = {\pmb{0}}\)</span>. The equation of the plane containing <span class="math inline">\({\pmb{\gamma}}\)</span> is then <span class="math inline">\(\mathbf{x}\cdot \mathbf{b}= 0\)</span>, which reads <span class="math display">\[
 \frac{2}{\sqrt5} x -  \frac{1}{\sqrt5} y = 0 \quad \implies \quad
 2x - y = 0 \,.
 \]</span></p></li>
 </ol>
 </div></details>
 </div>
-<div id="curves-contained-in-a-circle" class="Theorem" title="Curves contained in a circle">
-<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 48: </strong>Curves contained in a circle</summary><div>
-<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be a unit-speed curve. They are equivalent:</p>
+<div id="theorem-constant-k-zero-t" class="Theorem" title="Curves contained in a circle">
+<details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 46: </strong>Curves contained in a circle</summary><div>
+<p>Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathbb{R}^3\)</span> be unit-speed. They are equivalent:</p>
 <ol type="1">
 <li><p><span class="math inline">\({\pmb{\gamma}}\)</span> is contained in a circle of radius <span class="math inline">\(R&gt;0\)</span>.</p></li>
 <li><p>There exists <span class="math inline">\(R&gt;0\)</span> such that <span class="math display">\[
@@ -999,8 +934,8 @@ H = - 2 \,, \quad R = - H = 2 \,.
 </ol>
 </div></details>
 </div>
-<div id="Example-49" class="Example">
-<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 49</strong></summary><div>
+<div id="a-curve-contained-in-a-circle" class="Example" title="A curve contained in a circle">
+<details class="Example fbx-simplebox fbx-default" open=""><summary><strong>Example 47: </strong>A curve contained in a circle</summary><div>
 <p><strong>Question.</strong> Consider the curve <span class="math display">\[
 {\pmb{\gamma}}(t) = \left( \frac45 \cos(t),  1 - \sin(t) , -\frac35 \cos(t)  \right) \,.
 \]</span></p>
