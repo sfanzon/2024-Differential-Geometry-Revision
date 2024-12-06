@@ -1392,6 +1392,8 @@ J \Phi
 
 
 
+## Length of curves
+
 
 ::: Proposition
 ### Length of curves and FFF {#proposition-fff-length}
@@ -1458,6 +1460,7 @@ $$
 
 
 
+## Local isometries
 
 
 ::: Definition 
@@ -1630,6 +1633,7 @@ Note that $a>0$ and $0<b<1$, showing that $a,b$ are admissible. Hence, for $a = 
 
 
 
+## Angle between curves
 
 
 ::: Definition
@@ -1716,6 +1720,9 @@ $$
 
 :::
 
+
+
+## Conformal maps
 
 
 
@@ -1987,6 +1994,9 @@ where the formula holds with the plus sign if $\det J\Phi > 0$, and with the min
 
 :::
 
+
+
+## Gauss and Weingarten maps
 
 
 ::: Definition
@@ -2632,6 +2642,7 @@ $$
 
 
 
+## Normal and Geodesic curvatures
 
 
 ::: Definition
@@ -3101,6 +3112,8 @@ By Proposition \ref{proposition-gauss-shape} we conclude that every point is ell
 :::
 
 
+
+## Umbilical points
 
 
 ::: Definition

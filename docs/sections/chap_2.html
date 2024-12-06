@@ -72,29 +72,9 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Proposition {
+.Important {
   --color1: #f4cce0;
   --color2: #db4d92;
-}
-.Conjecture {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Lemma {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Notation {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.Definition {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
 }
 .Problem {
   --color1: #f4cce0;
@@ -104,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Warning {
+.Lemma {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -112,15 +92,11 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f1f1f2;
   --color2: #c0c0c1;
 }
-.Example {
-  --color1: #bce5de;
-  --color2: #21aa93;
+.Definition {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
 }
-.Important {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Question {
+.Conjecture {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -128,7 +104,23 @@ ul.task-list li input[type="checkbox"] {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Theorem {
+.Proposition {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Example {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Question {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -136,7 +128,15 @@ ul.task-list li input[type="checkbox"] {
   --color1: #bce5de;
   --color2: #21aa93;
 }
-.Axiom {
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Theorem {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -249,12 +249,16 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#metric-spaces" id="toc-metric-spaces" class="nav-link active" data-scroll-target="#metric-spaces"><span class="header-section-number">2.1</span> Metric spaces</a></li>
-  <li><a href="#interior-closure-and-boundary" id="toc-interior-closure-and-boundary" class="nav-link" data-scroll-target="#interior-closure-and-boundary"><span class="header-section-number">2.2</span> Interior, closure and boundary</a></li>
-  <li><a href="#hausdorff-spaces" id="toc-hausdorff-spaces" class="nav-link" data-scroll-target="#hausdorff-spaces"><span class="header-section-number">2.3</span> Hausdorff spaces</a></li>
-  <li><a href="#continuity" id="toc-continuity" class="nav-link" data-scroll-target="#continuity"><span class="header-section-number">2.4</span> Continuity</a></li>
-  <li><a href="#subspace-basis-and-product" id="toc-subspace-basis-and-product" class="nav-link" data-scroll-target="#subspace-basis-and-product"><span class="header-section-number">2.5</span> Subspace, basis and product</a></li>
-  <li><a href="#connectedness" id="toc-connectedness" class="nav-link" data-scroll-target="#connectedness"><span class="header-section-number">2.6</span> Connectedness</a></li>
+  <li><a href="#sequences" id="toc-sequences" class="nav-link active" data-scroll-target="#sequences"><span class="header-section-number">2.1</span> Sequences</a></li>
+  <li><a href="#metric-spaces" id="toc-metric-spaces" class="nav-link" data-scroll-target="#metric-spaces"><span class="header-section-number">2.2</span> Metric spaces</a></li>
+  <li><a href="#interior-closure-and-boundary" id="toc-interior-closure-and-boundary" class="nav-link" data-scroll-target="#interior-closure-and-boundary"><span class="header-section-number">2.3</span> Interior, closure and boundary</a></li>
+  <li><a href="#hausdorff-spaces" id="toc-hausdorff-spaces" class="nav-link" data-scroll-target="#hausdorff-spaces"><span class="header-section-number">2.4</span> Hausdorff spaces</a></li>
+  <li><a href="#continuity" id="toc-continuity" class="nav-link" data-scroll-target="#continuity"><span class="header-section-number">2.5</span> Continuity</a></li>
+  <li><a href="#subspace-topology" id="toc-subspace-topology" class="nav-link" data-scroll-target="#subspace-topology"><span class="header-section-number">2.6</span> Subspace topology</a></li>
+  <li><a href="#topological-basis" id="toc-topological-basis" class="nav-link" data-scroll-target="#topological-basis"><span class="header-section-number">2.7</span> Topological basis</a></li>
+  <li><a href="#product-topology" id="toc-product-topology" class="nav-link" data-scroll-target="#product-topology"><span class="header-section-number">2.8</span> Product topology</a></li>
+  <li><a href="#connectedness" id="toc-connectedness" class="nav-link" data-scroll-target="#connectedness"><span class="header-section-number">2.9</span> Connectedness</a></li>
+  <li><a href="#path-connectedness" id="toc-path-connectedness" class="nav-link" data-scroll-target="#path-connectedness"><span class="header-section-number">2.10</span> Path-connectedness</a></li>
   </ul>
 </nav>
     </div>
@@ -425,6 +429,8 @@ U =  \{x_1, \ldots,x_n\}^c = \bigcup_{i=0}^{n} (x_i,x_{i+1}) \,, \quad x_0 := -\
 <p><strong>Part 3.</strong> consider the interval <span class="math inline">\(U=(0,1)\)</span>. Then <span class="math inline">\(U \in \mathcal{T}_{\textrm{euclid}}\)</span>. However <span class="math inline">\(U^c\)</span> is neither <span class="math inline">\(\mathbb{R}\)</span>, nor finite. Thus <span class="math inline">\(U \notin \mathcal{T}_{\textrm{cofinite}}\)</span>.</p>
 </div></details>
 </div>
+<section id="sequences" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sequences"><span class="header-section-number">2.1</span> Sequences</h2>
 <div id="convergent-sequence" class="Definition" title="Convergent sequence">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 12: </strong>Convergent sequence</summary><div>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space. Consider a sequence <span class="math inline">\(\{x_n\} \subseteq X\)</span> and a point <span class="math inline">\(x \in X\)</span>. We say that <span class="math inline">\(x_n\)</span> converges to <span class="math inline">\(x_0\)</span> in the topology <span class="math inline">\(\mathcal{T}\)</span>, if the following property holds: <span id="eq-convergence"><span class="math display">\[
 \begin{aligned}
@@ -508,8 +514,9 @@ x_n \to x_0 \,\, \mbox{ in } \,\, \mathcal{T}_2 \,.
 \]</span><p></p>
 </div></details>
 </div>
-<section id="metric-spaces" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="metric-spaces"><span class="header-section-number">2.1</span> Metric spaces</h2>
+</section>
+<section id="metric-spaces" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="metric-spaces"><span class="header-section-number">2.2</span> Metric spaces</h2>
 <div id="distance-and-metric-space" class="Definition" title="Distance and Metric space">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 18: </strong>Distance and Metric space</summary><div>Let <span class="math inline">\(X\)</span> be a set. A <strong>distance</strong> on <span class="math inline">\(X\)</span> is a function <span class="math inline">\(d \colon X \times X \to \mathbb{R}\)</span> such that, for all <span class="math inline">\(x,y,z \in X\)</span> they hold:<p></p>
 <ul>
@@ -586,8 +593,8 @@ x_n \in B_r(x_0) \, , \,\, \forall \, n \geq \mathbb{N}\,.
 </div></details>
 </div>
 </section>
-<section id="interior-closure-and-boundary" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="interior-closure-and-boundary"><span class="header-section-number">2.2</span> Interior, closure and boundary</h2>
+<section id="interior-closure-and-boundary" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="interior-closure-and-boundary"><span class="header-section-number">2.3</span> Interior, closure and boundary</h2>
 <div id="interior-of-a-set" class="Definition" title="Interior of a set">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 26: </strong>Interior of a set</summary><div>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space, <span class="math inline">\(A \subseteq X\)</span>. The <strong>interior</strong> of <span class="math inline">\(A\)</span> is <span class="math display">\[
 \mathop{\mathrm{Int}}{A} :=  \bigcup_{ \substack{U \subseteq A \\ U \in \mathcal{T}} } \, U \,.
@@ -775,8 +782,8 @@ A \cap U \neq \emptyset \,, \quad \, \forall \,\, U \in \mathcal{T}\,, \,\, U \n
 </div></details>
 </div>
 </section>
-<section id="hausdorff-spaces" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="hausdorff-spaces"><span class="header-section-number">2.3</span> Hausdorff spaces</h2>
+<section id="hausdorff-spaces" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="hausdorff-spaces"><span class="header-section-number">2.4</span> Hausdorff spaces</h2>
 <div id="hausdorff-space" class="Definition" title="Hausdorff space">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 42: </strong>Hausdorff space</summary><div>We say that a topological space <span class="math inline">\((X,\mathcal{T})\)</span> is <strong>Hausdorff</strong> if for every <span class="math inline">\(x,y \in X\)</span> with <span class="math inline">\(x \neq y\)</span>, there exist <span class="math inline">\(U,V \in \mathcal{T}\)</span> such that <span class="math display">\[
 x \in U \,, \quad y \in V \,, \quad U \cap V = \emptyset \,.
@@ -886,8 +893,8 @@ x_n \in U \cap V \,, \quad \forall \, n \geq N  \,.
 </div></details>
 </div>
 </section>
-<section id="continuity" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="continuity"><span class="header-section-number">2.4</span> Continuity</h2>
+<section id="continuity" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="continuity"><span class="header-section-number">2.5</span> Continuity</h2>
 <div id="images-and-pre-images" class="Definition" title="Images and Pre-images">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 50: </strong>Images and Pre-images</summary><div>
 <p>Let <span class="math inline">\(X, Y\)</span> be sets and <span class="math inline">\(f \colon X \to Y\)</span> be a function.</p>
@@ -1064,8 +1071,8 @@ f^{-1}(\{ x\}) = \{x\} \notin {\mathcal{T}}_{\textrm{cc}} \,,
 </div></details>
 </div>
 </section>
-<section id="subspace-basis-and-product" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="subspace-basis-and-product"><span class="header-section-number">2.5</span> Subspace, basis and product</h2>
+<section id="subspace-topology" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="subspace-topology"><span class="header-section-number">2.6</span> Subspace topology</h2>
 <div id="definition-subspace-topology" class="Definition" title="Subspace topology">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 65: </strong>Subspace topology</summary><div>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space and <span class="math inline">\(Y \subseteq X\)</span> a subset. Define the family of sets <span class="math display">\[\begin{align*}
 \mathcal{S}&amp; := \{ A \subseteq Y \, \colon \,\exists \,\, U \in \mathcal{T}\, \text{ s.t. } \, A = U \cap Y   \} \\
@@ -1105,7 +1112,10 @@ A = \cup_{z \in A} \, \{ z \} \,.
 </ol>
 </div></details>
 </div>
-<div id="topological-basis" class="Definition" title="Topological basis">
+</section>
+<section id="topological-basis" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="topological-basis"><span class="header-section-number">2.7</span> Topological basis</h2>
+<div id="topological-basis-1" class="Definition" title="Topological basis">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 68: </strong>Topological basis</summary><div>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space and let <span class="math inline">\(\mathcal{B} \subseteq \mathcal{T}\)</span>. We say that <span class="math inline">\(\mathcal{B}\)</span> is a <strong>topological basis</strong> for the topology <span class="math inline">\(\mathcal{T}\)</span>, if for all <span class="math inline">\(U \in \mathcal{T}\)</span> there exist open sets <span class="math inline">\(\{B_i\}_{i \in I} \subseteq \mathcal{B}\)</span>, with <span class="math inline">\(I\)</span> family of indices, such that <span id="eq-topo-basis"><span class="math display">\[
 U = \bigcup_{i \in I} \, B_i \,.
 \tag{2.7}\]</span></span><p></p>
@@ -1174,6 +1184,9 @@ U_1 \cap U_2 = \bigcup_{i \in I} \, B_i \,.
 \]</span> Then <span class="math inline">\(\mathcal{T}\)</span> is a topology on <span class="math inline">\(X\)</span>, with basis given by <span class="math inline">\(\mathcal{B}\)</span>.<p></p>
 </div></details>
 </div>
+</section>
+<section id="product-topology" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="product-topology"><span class="header-section-number">2.8</span> Product topology</h2>
 <div id="Proposition-73" class="Proposition">
 <p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 73</strong></summary><div>Let <span class="math inline">\((X,\mathcal{T}_X)\)</span> and <span class="math inline">\((Y,\mathcal{T}_Y)\)</span> be topological spaces. Define the family <span class="math inline">\(\mathcal{B}\)</span> of subsets of <span class="math inline">\(X \times Y\)</span> as <span class="math display">\[
 \mathcal{B} := \{   U \times V \, \colon \,U \in \mathcal{T}_X \,, \,\, V \in \mathcal{T}_Y  \} \subseteq \mathcal{T}_X \times \mathcal{T}_Y \,.
@@ -1182,7 +1195,7 @@ U_1 \cap U_2 = \bigcup_{i \in I} \, B_i \,.
 \tag{2.8}\]</span></span> is a topology on <span class="math inline">\(X \times Y\)</span>.<p></p>
 </div></details>
 </div>
-<div id="product-topology" class="Definition" title="Product topology">
+<div id="product-topology-1" class="Definition" title="Product topology">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 74: </strong>Product topology</summary><div>Let <span class="math inline">\((X,\mathcal{T}_X)\)</span> and <span class="math inline">\((Y,\mathcal{T}_Y)\)</span> be topological spaces. The <strong>product topology</strong> on <span class="math inline">\(X \times Y\)</span> is the collection of sets <span class="math inline">\(\mathcal{T}_{X \times Y}\)</span> at (<a href="#eq-product-topology" class="quarto-xref"><span>2.8</span></a>).<p></p>
 </div></details>
 </div>
@@ -1191,8 +1204,8 @@ U_1 \cap U_2 = \bigcup_{i \in I} \, B_i \,.
 </div></details>
 </div>
 </section>
-<section id="connectedness" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="connectedness"><span class="header-section-number">2.6</span> Connectedness</h2>
+<section id="connectedness" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="connectedness"><span class="header-section-number">2.9</span> Connectedness</h2>
 <div id="connected-space" class="Definition" title="Connected space">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 76: </strong>Connected space</summary><div>
 <p>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space. We say that:</p>
@@ -1316,7 +1329,10 @@ f(a) = 0 \,, \quad  f(b) = 1 \,.
 \]</span> Since <span class="math inline">\(f\)</span> is continuous, and <span class="math inline">\(f(a) = 0 &lt; 1 = f(b)\)</span>, by the <em>Intermediate Value Theorem in <span class="math inline">\(\mathbb{R}\)</span></em>, there exists <span class="math inline">\(\xi \in [a,b]\)</span> such that <span class="math inline">\(f(\xi)=1/2\)</span>. As <span class="math inline">\(I\)</span> is an interval, <span class="math inline">\(a,b \in I\)</span>, and <span class="math inline">\(a\leq \xi \leq b\)</span>, it follows that <span class="math inline">\(\xi \in I\)</span>. This is a contradiction, since <span class="math inline">\(f\)</span> maps <span class="math inline">\(I\)</span> into <span class="math inline">\(\{0,1\}\)</span>, and <span class="math inline">\(f(\xi) = 1/2 \notin \{0,1\}\)</span>. Therefore <span class="math inline">\(I\)</span> is connected.</p>
 </div></details>
 </div>
-<div id="path-connectedness" class="Definition" title="Path-connectedness">
+</section>
+<section id="path-connectedness" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="path-connectedness"><span class="header-section-number">2.10</span> Path-connectedness</h2>
+<div id="path-connectedness-1" class="Definition" title="Path-connectedness">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 88: </strong>Path-connectedness</summary><div>Let <span class="math inline">\((X,\mathcal{T})\)</span> be a topological space. We say that <span class="math inline">\(X\)</span> is <strong>path-connected</strong> if for every <span class="math inline">\(x,y \in X\)</span> there exist <span class="math inline">\(a,b \in \mathbb{R}\)</span> with <span class="math inline">\(a&lt;b\)</span>, and a continuous function <span class="math display">\[
 \alpha \colon [a,b] \to X  \,\, \, \text{ s.t. } \, \,\, \alpha (a) = x \,, \quad \alpha(b) = y \,.
 \]</span><p></p>

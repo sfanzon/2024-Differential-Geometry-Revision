@@ -72,6 +72,18 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
+.Example {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Corollary {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
 .Problem {
   --color1: #f4cce0;
   --color2: #db4d92;
@@ -80,47 +92,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Definition {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.Axiom {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Conjecture {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Example {
-  --color1: #bce5de;
-  --color2: #21aa93;
-}
-.Notation {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.Theorem {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Proof {
-  --color1: #f1f1f2;
-  --color2: #c0c0c1;
-}
-.Lemma {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Corollary {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Warning {
+.Proposition {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -128,15 +100,43 @@ ul.task-list li input[type="checkbox"] {
   --color1: #bce5de;
   --color2: #21aa93;
 }
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Warning {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Lemma {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Proof {
+  --color1: #f1f1f2;
+  --color2: #c0c0c1;
+}
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
+}
 .TODO {
   --color1: #e7b1b4;
   --color2: #8c3236;
 }
-.Important {
+.Conjecture {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
-.Proposition {
+.Definition {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Theorem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Important {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -253,9 +253,16 @@ window.Quarto = {
   <li><a href="#smooth-maps-and-tangent-plane" id="toc-smooth-maps-and-tangent-plane" class="nav-link" data-scroll-target="#smooth-maps-and-tangent-plane"><span class="header-section-number">3.2</span> Smooth maps and tangent plane</a></li>
   <li><a href="#examples-of-surfaces" id="toc-examples-of-surfaces" class="nav-link" data-scroll-target="#examples-of-surfaces"><span class="header-section-number">3.3</span> Examples of Surfaces</a></li>
   <li><a href="#first-fundamental-form" id="toc-first-fundamental-form" class="nav-link" data-scroll-target="#first-fundamental-form"><span class="header-section-number">3.4</span> First fundamental form</a></li>
-  <li><a href="#second-fundamental-form" id="toc-second-fundamental-form" class="nav-link" data-scroll-target="#second-fundamental-form"><span class="header-section-number">3.5</span> Second fundamental form</a></li>
-  <li><a href="#curvatures" id="toc-curvatures" class="nav-link" data-scroll-target="#curvatures"><span class="header-section-number">3.6</span> Curvatures</a></li>
-  <li><a href="#local-shape-of-a-surface" id="toc-local-shape-of-a-surface" class="nav-link" data-scroll-target="#local-shape-of-a-surface"><span class="header-section-number">3.7</span> Local shape of a surface</a></li>
+  <li><a href="#length-of-curves" id="toc-length-of-curves" class="nav-link" data-scroll-target="#length-of-curves"><span class="header-section-number">3.5</span> Length of curves</a></li>
+  <li><a href="#local-isometries" id="toc-local-isometries" class="nav-link" data-scroll-target="#local-isometries"><span class="header-section-number">3.6</span> Local isometries</a></li>
+  <li><a href="#angle-between-curves" id="toc-angle-between-curves" class="nav-link" data-scroll-target="#angle-between-curves"><span class="header-section-number">3.7</span> Angle between curves</a></li>
+  <li><a href="#conformal-maps" id="toc-conformal-maps" class="nav-link" data-scroll-target="#conformal-maps"><span class="header-section-number">3.8</span> Conformal maps</a></li>
+  <li><a href="#second-fundamental-form" id="toc-second-fundamental-form" class="nav-link" data-scroll-target="#second-fundamental-form"><span class="header-section-number">3.9</span> Second fundamental form</a></li>
+  <li><a href="#gauss-and-weingarten-maps" id="toc-gauss-and-weingarten-maps" class="nav-link" data-scroll-target="#gauss-and-weingarten-maps"><span class="header-section-number">3.10</span> Gauss and Weingarten maps</a></li>
+  <li><a href="#curvatures" id="toc-curvatures" class="nav-link" data-scroll-target="#curvatures"><span class="header-section-number">3.11</span> Curvatures</a></li>
+  <li><a href="#normal-and-geodesic-curvatures" id="toc-normal-and-geodesic-curvatures" class="nav-link" data-scroll-target="#normal-and-geodesic-curvatures"><span class="header-section-number">3.12</span> Normal and Geodesic curvatures</a></li>
+  <li><a href="#local-shape-of-a-surface" id="toc-local-shape-of-a-surface" class="nav-link" data-scroll-target="#local-shape-of-a-surface"><span class="header-section-number">3.13</span> Local shape of a surface</a></li>
+  <li><a href="#umbilical-points" id="toc-umbilical-points" class="nav-link" data-scroll-target="#umbilical-points"><span class="header-section-number">3.14</span> Umbilical points</a></li>
   </ul>
 </nav>
     </div>
@@ -1072,6 +1079,9 @@ J \Phi
 </ol>
 </div></details>
 </div>
+</section>
+<section id="length-of-curves" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="length-of-curves"><span class="header-section-number">3.5</span> Length of curves</h2>
 <div id="proposition-fff-length" class="Proposition" title="Length of curves and FFF">
 <p></p><details class="Proposition fbx-simplebox fbx-default" open=""><summary><strong>Proposition 68: </strong>Length of curves and FFF</summary><div>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be regular, <span class="math inline">\(\mathcal{S}= {\pmb{\sigma}}(U)\)</span>. Let <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathcal{S}\)</span> be a smooth curve. Then <span class="math display">\[
 {\pmb{\gamma}}(t) = {\pmb{\sigma}}(u(t), v(t)) \,,
@@ -1112,6 +1122,9 @@ J \Phi
 </ol>
 </div></details>
 </div>
+</section>
+<section id="local-isometries" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="local-isometries"><span class="header-section-number">3.6</span> Local isometries</h2>
 <div id="local-isometry" class="Definition" title="Local isometry">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 70: </strong>Local isometry</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\widetilde{\mathcal{S}}\)</span> be regular and <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> smooth. We say that <span class="math inline">\(f\)</span> is a <strong>local isometry</strong>, if for all <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span> <span class="math display">\[
 \mathbf{v}\cdot \mathbf{w}= d_{\mathbf{p}}f (\mathbf{v}) \cdot d_{\mathbf{p}}f (\mathbf{w}) \,, \quad
@@ -1212,7 +1225,10 @@ a^2 = 2 , \,\, a^2b^2 = 1 \quad \implies \quad a = \sqrt{2} \,, \,\, b = \frac{1
 </ol>
 </div></details>
 </div>
-<div id="angle-between-curves" class="Definition" title="Angle between curves">
+</section>
+<section id="angle-between-curves" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="angle-between-curves"><span class="header-section-number">3.7</span> Angle between curves</h2>
+<div id="angle-between-curves-1" class="Definition" title="Angle between curves">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 77: </strong>Angle between curves</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, and <span class="math inline">\({\pmb{\gamma}}\)</span>, <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> curves on <span class="math inline">\(\mathcal{S}\)</span> intersecting at <span class="math display">\[
 {\pmb{\gamma}}(t_0) = \mathbf{p}= \widetilde{{\pmb{\gamma}}}( t_0 ) \,.
 \]</span> The angle <span class="math inline">\(\theta\)</span> between <span class="math inline">\({\pmb{\gamma}}\)</span> and <span class="math inline">\(\widetilde{{\pmb{\gamma}}}\)</span> is <span class="math display">\[
@@ -1264,6 +1280,9 @@ a^2 = 2 , \,\, a^2b^2 = 1 \quad \implies \quad a = \sqrt{2} \,, \,\, b = \frac{1
 </ol>
 </div></details>
 </div>
+</section>
+<section id="conformal-maps" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="conformal-maps"><span class="header-section-number">3.8</span> Conformal maps</h2>
 <div id="conformal-map" class="Definition" title="Conformal map">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 80: </strong>Conformal map</summary><div>Let <span class="math inline">\(\mathcal{S},\widetilde{\mathcal{S}}\)</span> be regular surfaces, <span class="math inline">\(f \colon \mathcal{S}\to \widetilde{\mathcal{S}}\)</span> local diffeomorphism. We say that <span class="math inline">\(f\)</span> is a <strong>conformal map</strong>, if for all <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span> <span class="math display">\[
 \theta = \widetilde{\theta} \,, \quad
@@ -1342,8 +1361,8 @@ f(x,y,z) = \left( \frac{x}{1-z},\frac{y}{1-z},0  \right) \,.
 </div></details>
 </div>
 </section>
-<section id="second-fundamental-form" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="second-fundamental-form"><span class="header-section-number">3.5</span> Second fundamental form</h2>
+<section id="second-fundamental-form" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="second-fundamental-form"><span class="header-section-number">3.9</span> Second fundamental form</h2>
 <div id="second-fundamental-form-of-a-chart" class="Definition" title="Second fundamental form of a chart">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 88: </strong>Second fundamental form of a chart</summary><div>Let <span class="math inline">\({\pmb{\sigma}}\colon U \to \mathbb{R}^3\)</span> be regular, <span class="math inline">\(\mathcal{S}= {\pmb{\sigma}}(U)\)</span>. Define <span class="math inline">\(L , M , N \colon U \to \mathbb{R}\)</span> <span class="math display">\[
 L := {\pmb{\sigma}}_{uu} \cdot \mathbf{N}\,, \quad  M := {\pmb{\sigma}}_{uv} \cdot \mathbf{N}\,, \quad
@@ -1405,6 +1424,9 @@ M = {\pmb{\sigma}}_{uv} \cdot \mathbf{N}= 0 \,, \quad
 \]</span> where the formula holds with the plus sign if <span class="math inline">\(\det J\Phi &gt; 0\)</span>, and with the minus sign if <span class="math inline">\(\det J\Phi &lt; 0\)</span>.<p></p>
 </div></details>
 </div>
+</section>
+<section id="gauss-and-weingarten-maps" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="gauss-and-weingarten-maps"><span class="header-section-number">3.10</span> Gauss and Weingarten maps</h2>
 <div id="gauss-map" class="Definition" title="Gauss map">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 92: </strong>Gauss map</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be an oriented surface with standard unit normal <span class="math inline">\(\mathbf{N}\)</span>. The <strong>Gauss map</strong> of <span class="math inline">\(\mathcal{S}\)</span> is <span class="math display">\[
 {\mathcal{G}}_{\mathcal{S}} \colon \mathcal{S}\to \mathbb{S}^2 \,, \quad
@@ -1544,8 +1566,8 @@ N &amp; = {\pmb{\sigma}}_{vv} \cdot \mathbf{N}= 0 \\
 </div></details>
 </div>
 </section>
-<section id="curvatures" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="curvatures"><span class="header-section-number">3.6</span> Curvatures</h2>
+<section id="curvatures" class="level2" data-number="3.11">
+<h2 data-number="3.11" class="anchored" data-anchor-id="curvatures"><span class="header-section-number">3.11</span> Curvatures</h2>
 <div id="gaussian-and-mean-curvature" class="Definition" title="Gaussian and mean curvature">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 100: </strong>Gaussian and mean curvature</summary><div>
 <p>Let <span class="math inline">\(\mathcal{S}\)</span> be an orientable surface. Let <span class="math inline">\(\mathcal{W}\)</span> be the matrix of the Weingarten map <span class="math inline">\(\mathcal{W}_{\mathbf{p},\mathcal{S}}\)</span> of <span class="math inline">\(\mathcal{S}\)</span> at <span class="math inline">\(\mathbf{p}\)</span>. We define:</p>
@@ -1849,6 +1871,9 @@ K= \kappa_1 \kappa_2 = 1 \,.
 \]</span></p>
 </div></details>
 </div>
+</section>
+<section id="normal-and-geodesic-curvatures" class="level2" data-number="3.12">
+<h2 data-number="3.12" class="anchored" data-anchor-id="normal-and-geodesic-curvatures"><span class="header-section-number">3.12</span> Normal and Geodesic curvatures</h2>
 <div id="darboux-frame" class="Definition" title="Darboux frame">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 112: </strong>Darboux frame</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathcal{S}\)</span> a unit-speed curve. The <strong>Darboux frame</strong> of <span class="math inline">\({\pmb{\gamma}}\)</span> at <span class="math inline">\(t\)</span> is the triple <span class="math display">\[
 \{ \dot{{\pmb{\gamma}}}, \mathbf{N}, \mathbf{N}\times \dot{{\pmb{\gamma}}}\} \,,
@@ -1871,7 +1896,7 @@ K= \kappa_1 \kappa_2 = 1 \,.
 \]</span> where <span class="math inline">\(\kappa\)</span> is the curvature of <span class="math inline">\({\pmb{\gamma}}\)</span>, and <span class="math inline">\(\phi\)</span> is the angle between <span class="math inline">\(\mathbf{N}\)</span> and <span class="math inline">\(\mathbf{n}\)</span>, the principal unit normal of <span class="math inline">\({\pmb{\gamma}}\)</span>.<p></p>
 </div></details>
 </div>
-<div id="normal-and-geodesic-curvatures" class="Definition" title="Normal and geodesic curvatures">
+<div id="normal-and-geodesic-curvatures-1" class="Definition" title="Normal and geodesic curvatures">
 <details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 115: </strong>Normal and geodesic curvatures</summary><div>
 <p>Let <span class="math inline">\(\mathcal{S}\)</span> be regular and <span class="math inline">\({\pmb{\gamma}}\colon (a,b) \to \mathcal{S}\)</span> a unit-speed curve. Let <span class="math inline">\(\mathbf{N}\)</span> bet the standard unit normal to <span class="math inline">\(\mathcal{S}\)</span>.</p>
 <ol type="1">
@@ -2021,8 +2046,8 @@ L = \cos^{2}(v), \quad M = 0 , \quad N = 1\,.
 </div></details>
 </div>
 </section>
-<section id="local-shape-of-a-surface" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="local-shape-of-a-surface"><span class="header-section-number">3.7</span> Local shape of a surface</h2>
+<section id="local-shape-of-a-surface" class="level2" data-number="3.13">
+<h2 data-number="3.13" class="anchored" data-anchor-id="local-shape-of-a-surface"><span class="header-section-number">3.13</span> Local shape of a surface</h2>
 <div id="theorem-local-surface" class="Theorem" title="Local structure of surfaces">
 <p></p><details class="Theorem fbx-simplebox fbx-default" open=""><summary><strong>Theorem 123: </strong>Local structure of surfaces</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface and <span class="math inline">\(\mathbf{p}\in \mathcal{S}\)</span>. In the vicinity of <span class="math inline">\(\mathbf{p}\)</span>, the surface <span class="math inline">\(\mathcal{S}\)</span> is approximated by the quadric surface of equation <span class="math display">\[
 z = \frac12 \left( x^2 \kappa_1 (\mathbf{p}) + y^2 \kappa_2(\mathbf{p}) \right) \,,
@@ -2146,6 +2171,9 @@ K = \det(\mathcal{W}) = \frac{1}{(1 + 2u^2 + 2v^2)^2} &gt;0\,.
 </ol>
 </div></details>
 </div>
+</section>
+<section id="umbilical-points" class="level2" data-number="3.14">
+<h2 data-number="3.14" class="anchored" data-anchor-id="umbilical-points"><span class="header-section-number">3.14</span> Umbilical points</h2>
 <div id="umbilical-point" class="Definition" title="Umbilical point">
 <p></p><details class="Definition fbx-simplebox fbx-default" open=""><summary><strong>Definition 127: </strong>Umbilical point</summary><div>Let <span class="math inline">\(\mathcal{S}\)</span> be a regular surface, with <span class="math inline">\(\kappa_1(\mathbf{p})\)</span> and <span class="math inline">\(\kappa_2(\mathbf{p})\)</span> the principal curvatures at <span class="math inline">\(\mathbf{p}\)</span>. We say that <span class="math inline">\(\mathbf{p}\)</span> is an <strong>umbilical point</strong> if <span class="math display">\[
 \kappa_{1}(\mathbf{p})=\kappa_{2}(\mathbf{p}) \,.

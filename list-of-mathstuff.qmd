@@ -257,7 +257,7 @@
 
  [**Example 2.67**](#Example-2.67)\Pageref{Example-2.67}
 
- [**Definition 2.68**](#topological-basis): Topological basis\Pageref{topological-basis}
+ [**Definition 2.68**](#topological-basis-1): Topological basis\Pageref{topological-basis-1}
 
  [**Example 2.69**](#Example-2.69)\Pageref{Example-2.69}
 
@@ -269,7 +269,7 @@
 
  [**Proposition 2.73**](#Proposition-2.73)\Pageref{Proposition-2.73}
 
- [**Definition 2.74**](#product-topology): Product topology\Pageref{product-topology}
+ [**Definition 2.74**](#product-topology-1): Product topology\Pageref{product-topology-1}
 
  [**Example 2.75**](#Example-2.75)\Pageref{Example-2.75}
 
@@ -297,7 +297,7 @@
 
  [**Example 2.87**](#intervals-are-connected---alternative-proof): Intervals are connected - Alternative proof\Pageref{intervals-are-connected---alternative-proof}
 
- [**Definition 2.88**](#path-connectedness): Path-connectedness\Pageref{path-connectedness}
+ [**Definition 2.88**](#path-connectedness-1): Path-connectedness\Pageref{path-connectedness-1}
 
  [**Theorem 2.89**](#theorem-path-connected): Path-connectedness implies connectedness\Pageref{theorem-path-connected}
 
@@ -313,7 +313,7 @@
 
  [**Definition 3.1**](#topology-of-mathbbrn): Topology of $\mathbb{R}^n$\Pageref{topology-of-mathbbrn}
 
- [**Definition 3.2**](#subspace-topology): Subspace Topology\Pageref{subspace-topology}
+ [**Definition 3.2**](#subspace-topology-1): Subspace Topology\Pageref{subspace-topology-1}
 
  [**Definition 3.3**](#continuous-function-1): Continuous Function\Pageref{continuous-function-1}
 
@@ -463,7 +463,7 @@
 
  [**Example 3.76**](#plane-and-cone-are-locally-isometric): Plane and Cone are locally isometric\Pageref{plane-and-cone-are-locally-isometric}
 
- [**Definition 3.77**](#angle-between-curves): Angle between curves\Pageref{angle-between-curves}
+ [**Definition 3.77**](#angle-between-curves-1): Angle between curves\Pageref{angle-between-curves-1}
 
  [**Theorem 3.78**](#angle-between-curves-and-fff): Angle between curves and FFF\Pageref{angle-between-curves-and-fff}
 
@@ -539,7 +539,7 @@
 
  [**Proposition 3.114**](#coefficients-of-ddotpmbgamma-in-the-darboux-frame): Coefficients of $\ddot{{\pmb{\gamma}}}$ in the Darboux frame\Pageref{coefficients-of-ddotpmbgamma-in-the-darboux-frame}
 
- [**Definition 3.115**](#normal-and-geodesic-curvatures): Normal and geodesic curvatures\Pageref{normal-and-geodesic-curvatures}
+ [**Definition 3.115**](#normal-and-geodesic-curvatures-1): Normal and geodesic curvatures\Pageref{normal-and-geodesic-curvatures-1}
 
  [**Theorem 3.116**](#theorem-normal-curvature): Computing $\kappa_n$ with SFF\Pageref{theorem-normal-curvature}
 

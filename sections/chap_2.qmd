@@ -276,6 +276,7 @@ In both cases, $U \in \TTe$. Therefore $\TTcof \subseteq \TTe$.
 
 
 
+## Sequences
 
 ::: Definition
 ### Convergent sequence
@@ -1389,7 +1390,7 @@ Let $(X,\TT_X)$, $(Y,\TT_Y)$ be topological space. A function $f \colon X \to Y$
 
 
 
-## Subspace, basis and product
+## Subspace topology
 
 
 ::: Definition
@@ -1464,6 +1465,7 @@ As $\{z\} \in \SSS$, we infer that $A \in \SSS$ by (A2).
 
 
 
+## Topological basis
 
 ::: Definition
 ### Topological basis
@@ -1594,7 +1596,7 @@ Then $\TT$ is a topology on $X$, with basis given by $\mathcal{B}$.
 
 
 
-
+## Product topology
 
 ::: Proposition
  
@@ -1850,7 +1852,7 @@ Since $f$ is continuous, and $f(a) = 0 < 1 = f(b)$, by the *Intermediate Value T
 
 
 
-
+## Path-connectedness
 
 ::: Definition
 ### Path-connectedness
