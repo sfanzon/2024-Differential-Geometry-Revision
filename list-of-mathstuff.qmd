@@ -109,207 +109,127 @@
 
  [**Proposition 2.6**](#proposition-balls-open): $B_r(\mathbf{x})$ is an open set of $\mathcal{T}_{\textrm{euclid}}$\Pageref{proposition-balls-open}
 
- [**Proof**](#Proof*-2.2)\Pageref{Proof*-2.2}
-
  [**Definition 2.7**](#closed-set): Closed set\Pageref{closed-set}
 
- [**Proposition 2.8**](#Proposition-2.8)\Pageref{Proposition-2.8}
+ [**Definition 2.8**](#comparing-topologies): Comparing topologies\Pageref{comparing-topologies}
 
- [**Definition 2.9**](#comparing-topologies): Comparing topologies\Pageref{comparing-topologies}
+ [**Example 2.9**](#comparing-mathcalt_textrmtrivial-and-mathcalt_textrmdiscrete): Comparing $\mathcal{T}_{\textrm{trivial}}$ and $\mathcal{T}_{\textrm{discrete}}$\Pageref{comparing-mathcalt_textrmtrivial-and-mathcalt_textrmdiscrete}
 
- [**Example 2.10**](#comparing-mathcalt_textrmtrivial-and-mathcalt_textrmdiscrete): Comparing $\mathcal{T}_{\textrm{trivial}}$ and $\mathcal{T}_{\textrm{discrete}}$\Pageref{comparing-mathcalt_textrmtrivial-and-mathcalt_textrmdiscrete}
+ [**Example 2.10**](#cofinite-topology-on-mathbbr): Cofinite topology on $\mathbb{R}$\Pageref{cofinite-topology-on-mathbbr}
 
- [**Example 2.11**](#cofinite-topology-on-mathbbr): Cofinite topology on $\mathbb{R}$\Pageref{cofinite-topology-on-mathbbr}
+ [**Definition 2.11**](#convergent-sequence): Convergent sequence\Pageref{convergent-sequence}
 
- [**Definition 2.12**](#convergent-sequence): Convergent sequence\Pageref{convergent-sequence}
+ [**Proposition 2.12**](#proposition-convergence-trivial): Convergent sequences in $\mathcal{T}_{\textrm{trivial}}$\Pageref{proposition-convergence-trivial}
 
- [**Proposition 2.13**](#proposition-convergence-trivial): Convergent sequences in $\mathcal{T}_{\textrm{trivial}}$\Pageref{proposition-convergence-trivial}
+ [**Proof**](#Proof*-2.2)\Pageref{Proof*-2.2}
 
- [**Proof**](#Proof*-2.3)\Pageref{Proof*-2.3}
+ [**Warning**](#Warning*-2.3)\Pageref{Warning*-2.3}
 
- [**Warning**](#Warning*-2.4)\Pageref{Warning*-2.4}
+ [**Proposition 2.13**](#convergent-sequences-in-mathcalt_textrmdiscrete): Convergent sequences in $\mathcal{T}_{\textrm{discrete}}$\Pageref{convergent-sequences-in-mathcalt_textrmdiscrete}
 
- [**Proposition 2.14**](#convergent-sequences-in-mathcalt_textrmdiscrete): Convergent sequences in $\mathcal{T}_{\textrm{discrete}}$\Pageref{convergent-sequences-in-mathcalt_textrmdiscrete}
+ [**Proof**](#Proof*-2.4)\Pageref{Proof*-2.4}
+
+ [**Definition 2.14**](#classical-convergence-in-mathbbrn): Classical convergence in $\mathbb{R}^n$\Pageref{classical-convergence-in-mathbbrn}
+
+ [**Proposition 2.15**](#proposition-convergence-Rn): Convergent sequences in $\mathcal{T}_{\textrm{euclid}}$\Pageref{proposition-convergence-Rn}
+
+ [**Definition 2.16**](#distance-and-metric-space): Distance and Metric space\Pageref{distance-and-metric-space}
+
+ [**Definition 2.17**](#euclidean-distance-on-mathbbrn): Euclidean distance on $\mathbb{R}^n$\Pageref{euclidean-distance-on-mathbbrn}
+
+ [**Proposition 2.18**](#Proposition-2.18)\Pageref{Proposition-2.18}
+
+ [**Definition 2.19**](#definition-metric-topology): Topology induced by the metric\Pageref{definition-metric-topology}
+
+ [**Remark 2.20**](#topology-induced-by-euclidean-distance): Topology induced by Euclidean distance\Pageref{topology-induced-by-euclidean-distance}
+
+ [**Example 2.21**](#discrete-distance): Discrete distance\Pageref{discrete-distance}
+
+ [**Proposition 2.22**](#convergence-in-metric-space): Convergence in metric space\Pageref{convergence-in-metric-space}
+
+ [**Definition 2.23**](#hausdorff-space): Hausdorff space\Pageref{hausdorff-space}
+
+ [**Proposition 2.24**](#proposition-hausdorff-1)\Pageref{proposition-hausdorff-1}
 
  [**Proof**](#Proof*-2.5)\Pageref{Proof*-2.5}
 
- [**Definition 2.15**](#classical-convergence-in-mathbbrn): Classical convergence in $\mathbb{R}^n$\Pageref{classical-convergence-in-mathbbrn}
+ [**Definition 2.25**](#metrizable-space): Metrizable space\Pageref{metrizable-space}
 
- [**Proposition 2.16**](#proposition-convergence-Rn): Convergent sequences in $\mathcal{T}_{\textrm{euclid}}$\Pageref{proposition-convergence-Rn}
+ [**Corollary 2.26**](#corollary-hausdorff)\Pageref{corollary-hausdorff}
 
- [**Proof**](#Proof*-2.6)\Pageref{Proof*-2.6}
+ [**Example 2.27**](#xmathcalt_textrmtrivial-is-not-hausdorff): $(X,\mathcal{T}_{\textrm{trivial}})$ is not Hausdorff\Pageref{xmathcalt_textrmtrivial-is-not-hausdorff}
 
- [**Proposition 2.17**](#Proposition-2.17)\Pageref{Proposition-2.17}
+ [**Example 2.28**](#mathbbrmathcalt_textrmcofinite-is-not-hausdorff): $(\mathbb{R},\mathcal{T}_{\textrm{cofinite}})$ is not Hausdorff\Pageref{mathbbrmathcalt_textrmcofinite-is-not-hausdorff}
 
- [**Definition 2.18**](#distance-and-metric-space): Distance and Metric space\Pageref{distance-and-metric-space}
+ [**Example 2.29**](#lower-limit-topology-on-mathbbr-is-not-hausdorff): Lower-limit topology on $\mathbb{R}$ is not Hausdorff\Pageref{lower-limit-topology-on-mathbbr-is-not-hausdorff}
 
- [**Definition 2.19**](#euclidean-distance-on-mathbbrn): Euclidean distance on $\mathbb{R}^n$\Pageref{euclidean-distance-on-mathbbrn}
+ [**Proposition 2.30**](#uniqueness-of-limit-in-hausdorff-spaces): Uniqueness of limit in Hausdorff spaces\Pageref{uniqueness-of-limit-in-hausdorff-spaces}
 
- [**Proposition 2.20**](#Proposition-2.20)\Pageref{Proposition-2.20}
+ [**Definition 2.31**](#images-and-pre-images): Images and Pre-images\Pageref{images-and-pre-images}
 
- [**Definition 2.21**](#definition-metric-topology): Topology induced by the metric\Pageref{definition-metric-topology}
+ [**Warning**](#Warning*-2.6)\Pageref{Warning*-2.6}
 
- [**Remark 2.22**](#topology-induced-by-euclidean-distance): Topology induced by Euclidean distance\Pageref{topology-induced-by-euclidean-distance}
+ [**Definition 2.32**](#continuous-function): Continuous function\Pageref{continuous-function}
 
- [**Example 2.23**](#discrete-distance): Discrete distance\Pageref{discrete-distance}
+ [**Proposition 2.33**](#proposition-continuity-characterization)\Pageref{proposition-continuity-characterization}
 
- [**Proposition 2.24**](#proposition-metric-ball)\Pageref{proposition-metric-ball}
+ [**Example 2.34**](#Example-2.34)\Pageref{Example-2.34}
 
- [**Proposition 2.25**](#convergence-in-metric-space): Convergence in metric space\Pageref{convergence-in-metric-space}
+ [**Definition 2.35**](#continuity-in-the-classical-sense): Continuity in the classical sense\Pageref{continuity-in-the-classical-sense}
 
- [**Definition 2.26**](#interior-of-a-set): Interior of a set\Pageref{interior-of-a-set}
+ [**Proposition 2.36**](#Proposition-2.36)\Pageref{Proposition-2.36}
 
- [**Proposition 2.27**](#mathopmathrminta-is-the-largest-open-set-contained-in-a): $\mathop{\mathrm{Int}}{A}$ is the largest open set contained in $A$\Pageref{mathopmathrminta-is-the-largest-open-set-contained-in-a}
+ [**Proposition 2.37**](#Proposition-2.37)\Pageref{Proposition-2.37}
 
- [**Definition 2.28**](#closure-of-a-set): Closure of a set\Pageref{closure-of-a-set}
+ [**Example 2.38**](#Example-2.38)\Pageref{Example-2.38}
 
- [**Proposition 2.29**](#mkern-2mu-overlinemkern-2mu-a-mkern-2mumkern-2mu-is-the-smallest-closed-set-containing-a): ${}\mkern 2mu \overline{\mkern-2mu A \mkern-2mu}\mkern 2mu {}$ is the smallest closed set containing $A$\Pageref{mkern-2mu-overlinemkern-2mu-a-mkern-2mumkern-2mu-is-the-smallest-closed-set-containing-a}
+ [**Example 2.39**](#Example-2.39)\Pageref{Example-2.39}
 
- [**Lemma 2.30**](#lemma-closure-intersection)\Pageref{lemma-closure-intersection}
+ [**Proposition 2.40**](#continuity-of-compositions): Continuity of compositions\Pageref{continuity-of-compositions}
 
- [**Definition 2.31**](#boundary-of-a-set): Boundary of a set\Pageref{boundary-of-a-set}
+ [**Definition 2.41**](#homeomorphism): Homeomorphism\Pageref{homeomorphism}
 
- [**Proposition 2.32**](#Proposition-2.32)\Pageref{Proposition-2.32}
+ [**Definition 2.42**](#definition-subspace-topology): Subspace topology\Pageref{definition-subspace-topology}
 
- [**Definition 2.33**](#set-of-limit-points): Set of limit points\Pageref{set-of-limit-points}
+ [**Proposition 2.43**](#Proposition-2.43)\Pageref{Proposition-2.43}
 
- [**Proposition 2.34**](#proposition-closure-sequence)\Pageref{proposition-closure-sequence}
+ [**Warning**](#Warning*-2.7)\Pageref{Warning*-2.7}
 
- [**Proof**](#Proof*-2.7)\Pageref{Proof*-2.7}
+ [**Example 2.44**](#Example-2.44)\Pageref{Example-2.44}
+
+ [**Definition 2.45**](#connected-space): Connected space\Pageref{connected-space}
+
+ [**Definition 2.46**](#proper-subset): Proper subset\Pageref{proper-subset}
+
+ [**Proposition 2.47**](#proposition-connected-equivalent): Equivalent definition for connectedness\Pageref{proposition-connected-equivalent}
+
+ [**Example 2.48**](#Example-2.48)\Pageref{Example-2.48}
+
+ [**Example 2.49**](#example-R-minus-p)\Pageref{example-R-minus-p}
+
+ [**Theorem 2.50**](#theorem-connected)\Pageref{theorem-connected}
+
+ [**Theorem 2.51**](#theorem-invariant-connected): Connectedness is topological invariant\Pageref{theorem-invariant-connected}
+
+ [**Example 2.52**](#Example-2.52)\Pageref{Example-2.52}
+
+ [**Definition 2.53**](#interval): Interval\Pageref{interval}
+
+ [**Theorem 2.54**](#theorem-interval-connected): Intervals are connected\Pageref{theorem-interval-connected}
+
+ [**Theorem 2.55**](#intermediate-value-theorem): Intermediate Value Theorem\Pageref{intermediate-value-theorem}
+
+ [**Example 2.56**](#intervals-are-connected---alternative-proof): Intervals are connected - Alternative proof\Pageref{intervals-are-connected---alternative-proof}
+
+ [**Definition 2.57**](#path-connectedness-1): Path-connectedness\Pageref{path-connectedness-1}
+
+ [**Theorem 2.58**](#theorem-path-connected): Path-connectedness implies connectedness\Pageref{theorem-path-connected}
+
+ [**Example 2.59**](#Example-2.59)\Pageref{Example-2.59}
+
+ [**Example 2.60**](#spaces-of-matrices): Spaces of matrices\Pageref{spaces-of-matrices}
 
  [**Warning**](#Warning*-2.8)\Pageref{Warning*-2.8}
-
- [**Example 2.35**](#example-closure-counter): Co-countable topology on $\mathbb{R}$\Pageref{example-closure-counter}
-
- [**Proposition 2.36**](#proposition-closure-metric): Characterization of $\mathop{\mathrm{Int}}{A}$ and ${}\mkern 2mu \overline{\mkern-2mu A \mkern-2mu}\mkern 2mu {}$ in metric space\Pageref{proposition-closure-metric}
-
- [**Proof**](#Proof*-2.9)\Pageref{Proof*-2.9}
-
- [**Example 2.37**](#Example-2.37)\Pageref{Example-2.37}
-
- [**Definition 2.38**](#density): Density\Pageref{density}
-
- [**Proposition 2.39**](#proposition-density): Characterization of density\Pageref{proposition-density}
-
- [**Example 2.40**](#mathbbz-is-not-dense-in-mathbbrmathcalt_textrmeuclid): $\mathbb{Z}$ is not dense in $(\mathbb{R},\mathcal{T}_{\textrm{euclid}})$\Pageref{mathbbz-is-not-dense-in-mathbbrmathcalt_textrmeuclid}
-
- [**Example 2.41**](#mathbbz-is-dense-in-mathbbrmathcalt_textrmcofinite): $\mathbb{Z}$ is dense in $(\mathbb{R},\mathcal{T}_{\textrm{cofinite}})$\Pageref{mathbbz-is-dense-in-mathbbrmathcalt_textrmcofinite}
-
- [**Definition 2.42**](#hausdorff-space): Hausdorff space\Pageref{hausdorff-space}
-
- [**Proposition 2.43**](#proposition-hausdorff-1)\Pageref{proposition-hausdorff-1}
-
- [**Proof**](#Proof*-2.10)\Pageref{Proof*-2.10}
-
- [**Definition 2.44**](#metrizable-space): Metrizable space\Pageref{metrizable-space}
-
- [**Corollary 2.45**](#corollary-hausdorff)\Pageref{corollary-hausdorff}
-
- [**Example 2.46**](#xmathcalt_textrmtrivial-is-not-hausdorff): $(X,\mathcal{T}_{\textrm{trivial}})$ is not Hausdorff\Pageref{xmathcalt_textrmtrivial-is-not-hausdorff}
-
- [**Example 2.47**](#mathbbrmathcalt_textrmcofinite-is-not-hausdorff): $(\mathbb{R},\mathcal{T}_{\textrm{cofinite}})$ is not Hausdorff\Pageref{mathbbrmathcalt_textrmcofinite-is-not-hausdorff}
-
- [**Example 2.48**](#lower-limit-topology-on-mathbbr-is-not-hausdorff): Lower-limit topology on $\mathbb{R}$ is not Hausdorff\Pageref{lower-limit-topology-on-mathbbr-is-not-hausdorff}
-
- [**Proposition 2.49**](#uniqueness-of-limit-in-hausdorff-spaces): Uniqueness of limit in Hausdorff spaces\Pageref{uniqueness-of-limit-in-hausdorff-spaces}
-
- [**Proof**](#Proof*-2.11)\Pageref{Proof*-2.11}
-
- [**Definition 2.50**](#images-and-pre-images): Images and Pre-images\Pageref{images-and-pre-images}
-
- [**Warning**](#Warning*-2.12)\Pageref{Warning*-2.12}
-
- [**Definition 2.51**](#continuous-function): Continuous function\Pageref{continuous-function}
-
- [**Proposition 2.52**](#proposition-continuity-characterization)\Pageref{proposition-continuity-characterization}
-
- [**Example 2.53**](#Example-2.53)\Pageref{Example-2.53}
-
- [**Definition 2.54**](#continuity-in-the-classical-sense): Continuity in the classical sense\Pageref{continuity-in-the-classical-sense}
-
- [**Proposition 2.55**](#Proposition-2.55)\Pageref{Proposition-2.55}
-
- [**Proposition 2.56**](#Proposition-2.56)\Pageref{Proposition-2.56}
-
- [**Example 2.57**](#Example-2.57)\Pageref{Example-2.57}
-
- [**Example 2.58**](#Example-2.58)\Pageref{Example-2.58}
-
- [**Definition 2.59**](#sequential-continuity): Sequential continuity\Pageref{sequential-continuity}
-
- [**Proposition 2.60**](#proposition-continuity-sequential)\Pageref{proposition-continuity-sequential}
-
- [**Warning**](#Warning*-2.13)\Pageref{Warning*-2.13}
-
- [**Proposition 2.61**](#proposition-sequential-continuity)\Pageref{proposition-sequential-continuity}
-
- [**Example 2.62**](#example-sequential-continuity): Sequential continuity does not imply continuity\Pageref{example-sequential-continuity}
-
- [**Proposition 2.63**](#continuity-of-compositions): Continuity of compositions\Pageref{continuity-of-compositions}
-
- [**Definition 2.64**](#homeomoprhim): Homeomoprhim\Pageref{homeomoprhim}
-
- [**Definition 2.65**](#definition-subspace-topology): Subspace topology\Pageref{definition-subspace-topology}
-
- [**Proposition 2.66**](#Proposition-2.66)\Pageref{Proposition-2.66}
-
- [**Warning**](#Warning*-2.14)\Pageref{Warning*-2.14}
-
- [**Example 2.67**](#Example-2.67)\Pageref{Example-2.67}
-
- [**Definition 2.68**](#topological-basis-1): Topological basis\Pageref{topological-basis-1}
-
- [**Example 2.69**](#Example-2.69)\Pageref{Example-2.69}
-
- [**Example 2.70**](#Example-2.70)\Pageref{Example-2.70}
-
- [**Proposition 2.71**](#proposition-basis)\Pageref{proposition-basis}
-
- [**Proposition 2.72**](#proposition-topology-basis)\Pageref{proposition-topology-basis}
-
- [**Proposition 2.73**](#Proposition-2.73)\Pageref{Proposition-2.73}
-
- [**Definition 2.74**](#product-topology-1): Product topology\Pageref{product-topology-1}
-
- [**Example 2.75**](#Example-2.75)\Pageref{Example-2.75}
-
- [**Definition 2.76**](#connected-space): Connected space\Pageref{connected-space}
-
- [**Definition 2.77**](#proper-subset): Proper subset\Pageref{proper-subset}
-
- [**Proposition 2.78**](#proposition-connected-equivalent): Equivalent definition for connectedness\Pageref{proposition-connected-equivalent}
-
- [**Example 2.79**](#Example-2.79)\Pageref{Example-2.79}
-
- [**Example 2.80**](#example-R-minus-p)\Pageref{example-R-minus-p}
-
- [**Theorem 2.81**](#theorem-connected)\Pageref{theorem-connected}
-
- [**Theorem 2.82**](#theorem-invariant-connected): Connectedness is topological invariant\Pageref{theorem-invariant-connected}
-
- [**Example 2.83**](#Example-2.83)\Pageref{Example-2.83}
-
- [**Definition 2.84**](#interval): Interval\Pageref{interval}
-
- [**Theorem 2.85**](#theorem-interval-connected): Intervals are connected\Pageref{theorem-interval-connected}
-
- [**Theorem 2.86**](#intermediate-value-theorem): Intermediate Value Theorem\Pageref{intermediate-value-theorem}
-
- [**Example 2.87**](#intervals-are-connected---alternative-proof): Intervals are connected - Alternative proof\Pageref{intervals-are-connected---alternative-proof}
-
- [**Definition 2.88**](#path-connectedness-1): Path-connectedness\Pageref{path-connectedness-1}
-
- [**Theorem 2.89**](#theorem-path-connected): Path-connectedness implies connectedness\Pageref{theorem-path-connected}
-
- [**Example 2.90**](#Example-2.90)\Pageref{Example-2.90}
-
- [**Example 2.91**](#spaces-of-matrices): Spaces of matrices\Pageref{spaces-of-matrices}
-
- [**Warning**](#Warning*-2.15)\Pageref{Warning*-2.15}
-
- [**Proposition 2.92**](#proposition-topologist-curve): Topologist curve\Pageref{proposition-topologist-curve}
-
- [**Theorem 2.93**](#Theorem-2.93)\Pageref{Theorem-2.93}
 
  [**Definition 3.1**](#topology-of-mathbbrn): Topology of $\mathbb{R}^n$\Pageref{topology-of-mathbbrn}
 
@@ -319,7 +239,7 @@
 
  [**Theorem 3.4**](#continuity-topological-definition): Continuity: Topological definition\Pageref{continuity-topological-definition}
 
- [**Definition 3.5**](#homeomorphism): Homeomorphism\Pageref{homeomorphism}
+ [**Definition 3.5**](#homeomorphism-1): Homeomorphism\Pageref{homeomorphism-1}
 
  [**Definition 3.6**](#differentiable-function): Differentiable Function\Pageref{differentiable-function}
 

@@ -94,7 +94,7 @@ You should be comfortable with the following topics/taks:
 
 - Proving that a given topology is discrete
 
-- Comparing two topology, determining which one is finer
+- Comparing two topologies, and determining which one is finer
 
 - Studying convergent sequences in topological space
 
@@ -104,15 +104,11 @@ You should be comfortable with the following topics/taks:
 
 - Studying convergent sequences in metric space
 
-- Studying the interior, closure, boundary and limit points of a set
-
 - Proving that a topological space is Hausdorff
 
-- Proving that a given function between topological spaces is continuous / sequentially continuous
+- Proving that a given function between topological spaces is continuous
 
 - Studying the subspace topology of a given subset of a topological space
-
-- Identifying the basis of a given topology
 
 - Showing that a given topological space is connected / path-connected
 
