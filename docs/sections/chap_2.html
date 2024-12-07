@@ -72,59 +72,19 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Important {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.TODO {
-  --color1: #e7b1b4;
-  --color2: #8c3236;
-}
-.Proof {
-  --color1: #f1f1f2;
-  --color2: #c0c0c1;
-}
-.Axiom {
-  --color1: #f4cce0;
-  --color2: #db4d92;
+.DONE {
+  --color1: #cce7b1;
+  --color2: #86b754;
 }
 .Example {
   --color1: #bce5de;
   --color2: #21aa93;
 }
-.Problem {
+.Question {
   --color1: #f4cce0;
   --color2: #db4d92;
-}
-.Notation {
-  --color1: #c6e6ed;
-  --color2: #1995ad;
-}
-.DONE {
-  --color1: #cce7b1;
-  --color2: #86b754;
-}
-.Lemma {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Proposition {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Remark {
-  --color1: #bce5de;
-  --color2: #21aa93;
 }
 .Warning {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Theorem {
-  --color1: #f4cce0;
-  --color2: #db4d92;
-}
-.Question {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -132,11 +92,51 @@ ul.task-list li input[type="checkbox"] {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
+.Important {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Conjecture {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Notation {
+  --color1: #c6e6ed;
+  --color2: #1995ad;
+}
+.Axiom {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Lemma {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Remark {
+  --color1: #bce5de;
+  --color2: #21aa93;
+}
+.Proof {
+  --color1: #f1f1f2;
+  --color2: #c0c0c1;
+}
 .Definition {
   --color1: #c6e6ed;
   --color2: #1995ad;
 }
-.Conjecture {
+.Theorem {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.Proposition {
+  --color1: #f4cce0;
+  --color2: #db4d92;
+}
+.TODO {
+  --color1: #e7b1b4;
+  --color2: #8c3236;
+}
+.Problem {
   --color1: #f4cce0;
   --color2: #db4d92;
 }
@@ -553,7 +553,7 @@ x \in U \,, \quad y \in V \,, \quad U \cap V = \emptyset \,.
 <p></p><details class="Proof fbx-simplebox fbx-default" open=""><summary><strong>Proof</strong></summary><div>Let <span class="math inline">\(x,y \in X\)</span> with <span class="math inline">\(x \neq y\)</span>. Define <span class="math display">\[
 U := B_{\varepsilon}(x)\,, \quad
 V := B_{\varepsilon}(y) \,, \quad \varepsilon:= \frac12 \, d(x,y) \,.
-\]</span> By Proposition <a href="chap_2.html#proposition-metric-ball">23</a>, we know that <span class="math inline">\(U, V \in \mathcal{T}_d\)</span>. Moreover <span class="math inline">\(x \in U\)</span>, <span class="math inline">\(y \in V\)</span>. We are left to show that <span class="math inline">\(U \cap V = \emptyset\)</span>. Suppose by contradiction that <span class="math inline">\(U \cap V \neq \emptyset\)</span> and let <span class="math inline">\(z \in U \cap V\)</span>. Therefore <span class="math display">\[
+\]</span> By Proposition <a href="chap_2.html#proposition-metric-ball">24</a>, we know that <span class="math inline">\(U, V \in \mathcal{T}_d\)</span>. Moreover <span class="math inline">\(x \in U\)</span>, <span class="math inline">\(y \in V\)</span>. We are left to show that <span class="math inline">\(U \cap V = \emptyset\)</span>. Suppose by contradiction that <span class="math inline">\(U \cap V \neq \emptyset\)</span> and let <span class="math inline">\(z \in U \cap V\)</span>. Therefore <span class="math display">\[
 d(x,z) &lt; \varepsilon\,,  \quad d(y,z) &lt; \varepsilon\,.
 \]</span> By triangle inequality we have <span class="math display">\[
 d(x,y) \leq d(x,z) +  d(y,z) &lt; \varepsilon+ \varepsilon= d(x,y) \,,
